@@ -106,7 +106,3 @@ module.exports = {getregister,postregister,getlogin,postlogin}
 
 
 
-
-
-
-

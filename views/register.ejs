@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Registration Form </title>
+
+    <link rel="stylesheet" href="../public/style/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+
+        <div class="registration form">
+            <header>Signup</header>
+            <form action="/registration" method="post">
+                <input type="text" placeholder="Enter your email" name="user_email" id="email" onkeyup="emailCorrect()"> <small id="erroremail"></small>
+                <input type="password" placeholder="Create a password" name="user_password" id="Password" onkeyup="passwordError()">
+                <small id="passtype"></small> <br><small id="passno"></small>
+                <input type="password" placeholder="Confirm your password" onkeyup="confirmPassword()" id="Cpassword">
+                <small id="passvalid"></small>
+                <input type="submit" class="button" value="Submit">
+            </form>
+            <div class="signup">
+                <span class="signup">Already have an account?
+                <a  href="#">Login</a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <script src="../routes/register.js"></script>
+</body>
+
+</html>

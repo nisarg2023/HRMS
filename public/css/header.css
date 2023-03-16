@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.root {
+    --color-background: #f6f6f9;
+    --color-dark: #363938;
+    --color-light: rgba(136, 139, 200, 0.18);
+    --color-info-dark: #7d8da1;
+    --color-info-light: #dce1eb;
+    --color-white: #fff;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+}
+
+.container {
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 23rem;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: poppins, sans-serif;
+    font-size: 0.88rem;
+    /* background-color: rgb(149, 179, 174); */
+    user-select: none;
+    overflow-x: hidden;
+}
+
+a {
+    color: black;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h3 {
+    font-size: 0.87rem;
+}
+
+aside {
+    height: 100vh;
+    background: white;
+    border: 2px dotted yellowgreen;
+
+}
+
+aside .logo img {
+    height: 12rem;
+    width: 12rem;
+}
+
+aside .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;
+    top: 3rem;
+    border: 2px dotted yellowgreen;
+}
+
+aside h3 {
+    font-weight: 500;
+}
+
+.x {
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    margin-left: 2rem;
+    height: 3.7rem;
+}
+
+.x .left {
+
+    padding-top: 5px;
+
+}
+
+aside .sidebar a:last-child {
+    width: 100%;
+    bottom: 2rem;
+    position: absolute;
+}
+
+/* ===============MAIN==================== */
+
+main {
+    margin-top: 1.4rem;
+}
+
+main .insights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+}
+
+main .insights>div {
+    background: #fff;
+    padding: 2.8rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 1rem 2rem;
+
+}
+
+.main-left {
+    padding: 20px;
+}
+
+.card h2 {
+    padding-bottom: 1rem;
+}
+
+h2:after {
+    content: ' ';
+    display: block;
+    border: 1px solid rgb(90, 87, 87);
+}
+
+.end {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.last {
+    gap: 1rem;
+    text-align: right;
+    margin-left: 7rem;
+    display: flex;
+}
+
+.photo img {
+    margin-right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.ins {
+    margin: auto;
+    margin: 1rem;
+    margin-top: 3rem;
+    border: 1px solid red;
+    border-radius: 1rem;
+    padding: 2rem;
+    height: 85%;
+}
+
+main .ins>div {
+    background: #fff;
+    padding: 2.8rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 1rem 2rem;
+
+}
+
+
+
+.card h2 {
+    padding-bottom: 1rem;
+}

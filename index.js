@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const session =require('express-session')
+const multer  = require('multer')
 
 const db = require('./config/dbConnect');
 
@@ -16,6 +18,11 @@ const userRoutes = require('./routes/user.route');
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(session({
+    key:"sessionid",
+    resave:false,
+saveUninitialized:true,
+secret:"red"}));
 
 app.use(express.static(__dirname + '/public'))
 app.set('view engine', 'ejs');

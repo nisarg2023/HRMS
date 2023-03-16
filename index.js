@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 const db = require('./config/dbConnect');
-
+const conn = db();
 
 //require routes
 const userRoutes = require('./routes/user.route');

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/activation.css">
+</head>
+<body>
+    <div class="activation-wrapper flex justify-center item-center">
+        <div class="activation-container flex item-center flex-col">
+            <h1 class="">You Need To activate Your Account to use it.</h1>
+            <p class="active-btn" onclick="active(`<%= email%>`)" href="/activate">Active</p>
+        </div>
+    </div>
+    <script>
+        function active(email){
+            fetch(`/activate?email=${email}`)
+        }
+    </script>
+</body>
+</html>

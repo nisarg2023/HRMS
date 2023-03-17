@@ -6,7 +6,10 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 
-const db = require('./config/dbConnect');
+const conn = require('./config/dbConnect');
+const util =  require('util');
+const query =  util.promisify(conn.query).bind(conn)
+
 
 
 //require routes

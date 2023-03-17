@@ -46,7 +46,7 @@ function checkBasicDetails(){
 }
 
 form_1_next_btn.addEventListener("click", function(){
-
+    
     if(!checkBasicDetails()){
         return false;
     }

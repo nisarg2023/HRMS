@@ -1,9 +1,11 @@
-
+const conn = require('../config/dbConnect');
+const util =  require('util');
+const query =  util.promisify(conn.query).bind(conn)
 const bcrypt = require('bcryptjs')
-const conn =  require('../config/dbConnect')
 
 const getRegistration = (req,res)=>{
-    res.send("get registration")
+    // res.send("get registration")
+    res.render('register')
 }
 
 
@@ -17,9 +19,8 @@ const postRegistration=async(req,res)=>{
         console.log("hash"+hashPass);
 
         var sql = `insert into hrms_employee(email,password) values('${email}','${hashPass}')`;
-        var query = await conn()
-        var [result] =  await query.execute(sql);
-        console.log(result[0])
+        var result =  await query(sql);
+        // console.log(result)
 
         res.send("post registration")
     }

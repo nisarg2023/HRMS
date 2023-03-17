@@ -1,8 +1,11 @@
-const db = require('../config/dbConnect');
+const conn = require('../config/dbConnect');
+const util =  require('util');
+const query =  util.promisify(conn.query).bind(conn)
 const bcrypt = require('bcryptjs');
 
 const getLogin = (req, res) => {
-    res.send('get login');
+    // res.send('get login');
+    res.render('employee-data-form')
 }
 
 const postLogin = async (req, res) => {
@@ -10,11 +13,11 @@ const postLogin = async (req, res) => {
         let email = req.body.email;
         let pass = req.body.password;
         console.log(email)
-        var varifyUser = `select * from hrms_employee where email = '${email}'`;
-        var query = await db()
+        var verifyUser = `select * from hrms_employee where email = '${email}'`;
 
-        var result = await query.execute(varifyUser)
-        console.log("result",result[0][0]);
+
+        var result = await query(verifyUser)
+        console.log("result",result);
 
 
 
@@ -25,7 +28,7 @@ const postLogin = async (req, res) => {
         }
 
 
-        const data = result[0][0].password;
+        const data = result[0].password;
         console.log(pass)
         console.log(data)
         var match = await bcrypt.compare(pass, data);

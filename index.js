@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs');
 const db = require('./config/dbConnect');
 
 
+
 //require routes
 const userRoutes = require('./routes/user.route');
 
@@ -23,6 +24,11 @@ app.set('view engine', 'ejs');
 
 //define routes
 app.use("/",userRoutes);
+
+// HEADER-UI
+app.get("/dashboard", function(req,res){
+    res.render('dashboard.ejs')
+})
 
 app.listen(8000, () => {
     console.log("Server is running on port 8000");

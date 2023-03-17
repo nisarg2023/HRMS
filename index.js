@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
-
 const conn = require('./config/dbConnect');
 const util =  require('util');
 const query =  util.promisify(conn.query).bind(conn)
@@ -19,6 +18,7 @@ const userRoutes = require('./routes/user.route');
 //set up middlewares
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }))
+
 app.use(bodyParser.json())
 app.use(session({
     key:"sessionid",

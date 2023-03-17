@@ -13,8 +13,8 @@ router.post('/post-login',loginController.postLogin);
 router.get('/get-registration',registrationController.getRegistration);
 router.post('/post-registration',registrationController.postRegistration);
 
-router.get('/activation',activationController.activation);
-router.get('/activate',activationController.activate);
+router.get('/get-activate',activationController.getActivate);
+router.post('/post-activate',activationController.postActivate);
 
 
 router.get('/employee-data',employeeController);

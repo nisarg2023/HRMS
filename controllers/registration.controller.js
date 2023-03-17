@@ -11,21 +11,23 @@ const getRegistration = (req,res)=>{
 
 
 const postRegistration=async(req,res)=>{
+    
     try{
+        
+        let {user_email,user_password}=req.body;
+        
+        var hashPassword = await bcrypt.hash(user_password,10);//(Data , salt)
+        
 
-        const{email,password} = req.body;
-        console.log(req.body.email)
-        var hashPass = await bcrypt.hash(password,10);//(Data , salt)
-        console.log("hash"+hashPass);
-
-        var sql = `insert into hrms_employee(email,password) values('${email}','${hashPass}')`;
+        var sql = `insert into hrms_employee(email,password) values('${user_email}','${hashPassword}')`;
         var result =  await query(sql);
-        // console.log(result)
+       
 
-        res.send("post registration")
+        res.redirect("/get-login")
     }
     catch (error) {
         console.error(error);
+        res.send(error.message);
     }
 }
 module.exports = {getRegistration,postRegistration};

@@ -44,18 +44,7 @@ const postlogin=async(req,res)=>{
 
 
 
-    // //check email exists or not
-    // var sql = (`select * from hrms_employee where email = '${email}'`);
-    // // var result = await conn.execute(sql);
-    // var query = await conn()
-    // var result = await query.execute(sql);
-
-    // console.log(result)
-    // if (result.length > 0) {
-    // res.json({ exists: true });
-    // } else {
-    // res.json({ exists: false });
-    // }
+  
        
         if(result.length == 0){
             return res.send("user not found")

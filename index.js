@@ -3,13 +3,13 @@ const app = express();
 const bodyParser = require('body-parser')
 
 // const bcrypt = require('bcryptjs');
-const util=require("util")
+// const util=require("util")
 const cookieParser = require("cookie-parser");
-var http = require('http');
-var url = require('url');
-var querystring = require('querystring');
-const { json } = require("express");
-const mysql = require("mysql2/promise");
+// var http = require('http');
+// var url = require('url');
+// var querystring = require('querystring');
+// const { json } = require("express");
+
 const path = require("path")
 
 app.use(express.static(path.join(__dirname,"/public")))
@@ -40,7 +40,7 @@ app.set('view engine', 'ejs');
 //define routes
 app.use("/",userRoutes);
 
-app.listen(8000, () => {
+app.listen(8888, () => {
     console.log("Server is running on port 8000");
 
 })

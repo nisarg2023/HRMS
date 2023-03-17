@@ -13,3 +13,4 @@ const postLogin=(req,res)=>{
     res.send(req.session);
 }
 module.exports={postLogin,getLogin};
+

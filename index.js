@@ -29,6 +29,7 @@ app.set('view engine', 'ejs');
 
 
 //define routes
+
 app.use("/",userRoutes);
 
 app.listen(8000, () => {

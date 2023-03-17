@@ -15,4 +15,5 @@ router.get('/activation',activationController.activation);
 router.get('/activate',activationController.activate);
 
 
+
 module.exports=router;

@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1170px;
+    padding: 16px;
+    width: 300px;
+    text-align: left;
+    background-color: white;
+}
+
+.check_text {
+    font-weight: 300;
+    font-size: 25px;
+    color: rgb(44, 39, 39);
+}
+
+.check-info {
+    display: flex;
+    margin-top: 30px;
+}
+
+.current {
+    width: 50%;
+}
+
+.check-inout {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn-checkin {
+    width: 45%;
+    color: white;
+    margin: 5px;
+    background-color: green;
+    border-radius: 5px;
+    padding: 5px;
+    pointer-events: auto;
+}
+
+.btn-checkin1 {
+    width: 45%;
+    color: white;
+    margin: 5px;
+    background-color: rgb(171, 223, 171);
+    border-radius: 5px;
+    padding: 5px;
+    pointer-events: none;
+}
+
+.btn-brakein {
+    width: 45%;
+    color: white;
+    margin: 5px;
+    background-color: rgb(255, 220, 156);
+    border-radius: 5px;
+    padding: 5px;
+    pointer-events: none;
+}
+
+.btn-brakein1 {
+    width: 45%;
+    color: white;
+    margin: 5px;
+    background-color: orange;
+    border-radius: 5px;
+    padding: 5px;
+    pointer-events: auto;
+}
+
+.btn-checkout {
+    width: 45%;
+    display: flex;
+    color: white;
+    margin: 5px;
+    background-color: rgb(221, 145, 145);
+    border-radius: 5px;
+    padding: 5px;
+    pointer-events: none;
+}
+
+.btn-checkout1 {
+    width: 45%;
+    display: flex;
+    color: white;
+    margin: 5px;
+    background-color: red;
+    border-radius: 5px;
+    padding: 5px;
+    pointer-events: auto;
+}
+
+.btn-brakeout {
+    width: 45%;
+    color: white;
+    margin: 5px;
+    background-color: rgb(206, 196, 144);
+    border-radius: 5px;
+    padding: 5px;
+    pointer-events: none;
+}
+
+.btn-brakeout1 {
+    width: 45%;
+    color: white;
+    margin: 5px;
+    background-color: rgb(190, 167, 37);
+    border-radius: 5px;
+    padding: 5px;
+    pointer-events: auto;
+}
+
+.btn-checkin a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-checkin1 a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-brakeout a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-brakeout1 a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-brakein a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-brakein1 a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-checkout a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-checkout1 a {
+    text-decoration: none;
+    color: white;
+}
+
+.attendace {
+    margin-top: 15px;
+}
+
+.check-green {
+    background-color: green;
+    padding: 5px;
+    padding-left: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: left;
+    color: white;
+}
+
+.check-orange {
+    background-color: orange;
+    padding: 5px;
+    padding-left: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: left;
+    color: white;
+}
+
+.check-red {
+    background-color: red;
+    padding: 5px;
+    padding-left: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: left;
+    color: white;
+}
+
+.check-yellow {
+    background-color: rgb(190, 167, 37);
+    padding: 5px;
+    padding-left: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: left;
+    color: white;
+}
+
+.btn_in {
+    display: inline;
+}

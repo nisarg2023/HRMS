@@ -41,32 +41,7 @@ const passwordError = () => {
     }
 }
 
-// const passwordError = () => {
-//     let newPassword = document.getElementById('Password').value;
-//     if (!(/[a-z]/.test(newPassword))) {
-//         console.log("abc");
-//         return false;
 
-//     }
-//     if (!(/[A-Z]/.test(newPassword))) {
-//         console.log("ABC");
-
-//         return false;
-//     }
-//     if (!(/[0-9]/.test(newPassword))) {
-//         console.log(09);
-//         return false;
-//     }
-//     if (!(/[!@#$%^&*]/.test(newPassword))) {
-//         console.log("SPECIAL;");
-
-//         return false;
-//     }
-//     if (newPassword.lenght < 6) {
-//         return false;
-//     }
-//     return true;
-// }
 
 
 const emailCorrect = () => {

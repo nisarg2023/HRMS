@@ -16,8 +16,10 @@ router.post('/post-registration',registrationController.postRegistration);
 router.get('/get-activate',activationController.getActivate);
 router.post('/post-activate',activationController.postActivate);
 
+//router.get('/employee-data',employeeController);
 
-router.get('/employee-data',employeeController);
+
+//router.get('get-allUsersEmail')
 
 
 

@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lato&family=Oswald&display=swap');
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Lato', sans-serif;
+}
+:root{
+    --primary-bg-color:#f1f5f9;
+    --primary-color:#4338ca;
+    --white:#fff;
+}
+.flex{
+    display: flex;
+}
+
+.justify-center{
+    justify-content: center;
+}
+.item-center{
+    align-items: center;
+}
+.flex-row{
+    flex-direction: row;
+}
+.flex-col{
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+}
+
+.activation-wrapper{
+    height: 100vh;
+    background-color: #cbd5e1;
+}
+.activation-container{
+    background-color: var(--primary-bg-color);
+    /* border: 1px solid black; */
+    border-radius: 8px;
+    padding: 60px;
+    box-shadow: 0px 0px 5px rgb(138, 138, 138);
+    color:var(--primary-color);
+}
+
+.active-btn{
+    margin-top: 40px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 6px 8px;
+    transition: 0.3s ease-in-out;
+}
+
+.active-btn:hover{
+    background-color: var(--primary-color);
+    color: var(--white);
+}

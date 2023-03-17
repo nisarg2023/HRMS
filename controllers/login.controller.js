@@ -1,16 +1,6 @@
 
-
-
-const getLogin=(req,res)=>{
-    res.send('get login');
+const login=(req,res)=>{
+    res.send('login');
 }
 
-const postLogin=(req,res)=>{
-
-    req.session.email = req.body.email;
-    
-    req.session.save();
-    res.send(req.session);
-}
-module.exports={postLogin,getLogin};
-
+module.exports=login;

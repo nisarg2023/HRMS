@@ -4,11 +4,9 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const session =require('express-session')
-const multer  = require('multer')
 
 const db = require('./config/dbConnect');
-const conn = db();
+
 
 //require routes
 const userRoutes = require('./routes/user.route');

@@ -33,7 +33,7 @@ const postLogin = async (req, res) => {
 
             if(result[0].isactivate)
             {
-                res.send("dashboard");    
+                res.send('dashboard');    
             }
             else{
 

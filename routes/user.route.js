@@ -5,6 +5,7 @@ const loginController=require('../controllers/login.controller');
 const registrationController = require('../controllers/registration.controller')
 const activationController=require('../controllers/activation.controller');
 const employeeController=require('../controllers/employee-data.controller');
+const dashboardController=require('../controllers/dashboard.controller');
 const {auth} = require('../middleware/auth')
 
 
@@ -18,6 +19,8 @@ router.post('/post-activate',activationController.postActivate);
 
 
 router.get('/employee-data',employeeController);
+
+router.get('/dashboard', dashboardController )
 
 
 

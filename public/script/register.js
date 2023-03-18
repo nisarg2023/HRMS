@@ -46,11 +46,24 @@ const passwordError = () => {
 
 
 const emailCorrect = () => {
-    console.log("emailCorrect");
+    
     let regex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
 
     let email = document.getElementById('email').value;
     let emailErr = document.getElementById("emailErr");
+
+    fetch('http://localhost:8000/get-allUsersEmail')
+    .then(res=>res.json())
+    .then((emails) => {
+        if(emails.includes(email))
+        {
+            emailErr.innerHTML = 'user already exists';    
+        }
+        else{
+            emailErr.innerHTML = '';    
+        }
+
+    })
 
     if (email == "" || !regex.test(email)) {
         
@@ -71,7 +84,7 @@ const changBtnStatus = () => {
     let passvalid = document.getElementById("passvalid").innerHTML;
     let passwordErr = document.getElementById("passwordErr").innerHTML;
     let emailErr = document.getElementById("emailErr").innerHTML;
-    console.log(passvalid);
+   
     if(passvalid=="" && passwordErr=="" &&emailErr=="")
     {
         submit_btn.disabled=false;

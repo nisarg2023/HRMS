@@ -1,9 +1,6 @@
  const multer  = require('multer')
 
 
-
-
-
 const postEmployeeForm = (req,res)=>{
   
    
@@ -32,8 +29,6 @@ const getEmployeeForm = (req,res)=>{
     res.render('multerDemo');
 };
 
-
-
-
-
 module.exports = { getEmployeeForm,postEmployeeForm };
+
+

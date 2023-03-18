@@ -19,11 +19,11 @@
         <div class="registration form">
             <header>Signup</header>
             <form action="/post-registration" method="post">
-                <input type="text" placeholder="Enter your email" name="user_email" id="email" onchange="emailCorrect()"> <small id="emailErr"></small>
+                <input type="text" placeholder="Enter your email" name="user_email" id="email" onchange="emailCorrect()"> <small id="emailErr">*</small>
                 <input type="password" placeholder="Create a password" name="user_password" id="Password" onchange="passwordError()">
-                <small id="passwordErr"></small> 
+                <small id="passwordErr">*</small> 
                 <input type="password" placeholder="Confirm your password" onchange="confirmPassword()" id="Cpassword">
-                <small id="passvalid"></small>
+                <small id="passvalid">*</small>
                 <input type="submit" id="submit_btn" class="button" value="Submit">
             </form>
             <div class="signup">

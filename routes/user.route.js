@@ -6,7 +6,7 @@ const registrationController = require('../controllers/registration.controller')
 const activationController=require('../controllers/activation.controller');
 const employeeController=require('../controllers/employee-data.controller');
 const userEmail = require('../controllers/get-all-user-email.controller');
-const dashboardController=require('../controllers/dashboard.controller');
+//const dashboardController=require('../controllers/dashboard.controller');
 const {auth} = require('../middleware/auth')
 
 
@@ -23,7 +23,7 @@ router.post('/post-activate',activationController.postActivate);
 
 router.get('/get-allUsersEmail',userEmail.getAllUsersEmail);
 
-router.get('/dashboard', dashboardController )
+//router.get('/dashboard', dashboardController )
 
 
 

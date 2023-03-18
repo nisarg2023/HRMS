@@ -1,6 +1,11 @@
-const dashboard = (req,res)=>{
+const getDashboard = (req,res)=>{
     res.render('dashboard')
+    //res.send("hello");
 
 }
 
-module.exports = dashboard
+const getHotlines = (req,res)=>{
+    res.render('hotline');
+}
+
+module.exports = {getDashboard,getHotlines}

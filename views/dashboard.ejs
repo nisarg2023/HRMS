@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/2d11fdd863.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style/dashboard.css">
+    <link rel="stylesheet" href="style/checkin.css">
+    <script src="script/checkin.js"></script>
     <title>HRMS- Dashboard</title>
 </head>
 <body>
@@ -15,8 +17,9 @@
 
         </div>
         <div class="dashboard-left">
-            <%- include('components/header.ejs') %>
+            <%- include('components/header.ejs',{name:"Deshbord"}) %>
         <div class="dashboard-data-container flex flex-row">
+            <div class="col_3">
             <div class="dashboard-attendance-card flex">
                 <div class="dashboard-attendance-time-container flex">
                     <div>
@@ -35,8 +38,36 @@
                     <p class="check-out dashboard-attendance-btn">Check Out</p>
                 </div>
             </div>
-            <div class="dashboard-attendance-card"></div>
-            <div class="dashboard-attendance-card"></div>
+        </div>
+
+        <div class="col_3">
+            <div class="dashboard-attendance-card flex">
+                <div class="dashboard-attendance-time-container flex">
+                    <div>
+                        <p class="dashboard-attendance-head">Current Date</p>
+                        <p class="dashboard-attendance-text">99/99/9999</p>
+                    </div>
+                    <div>
+                        <p class="dashboard-attendance-head">Current Time</p>
+                        <p class="dashboard-attendance-text">99:99:9999</p>
+                    </div>
+                </div>
+                <div class="dashboard-attendance-btn-container">
+                    <p class="check-in dashboard-attendance-btn">Check In</p>
+                    <p class="break-in dashboard-attendance-btn">Break In</p>
+                    <p class="break-out dashboard-attendance-btn">Break Out</p>
+                    <p class="check-out dashboard-attendance-btn">Check Out</p>
+                </div>
+            </div>
+        </div>
+            
+            <div class="col_3">
+              <%- include("components/checkin")%>
+            
+            </div>
+           
+
+            
         </div>
        
         </div>

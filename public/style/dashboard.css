@@ -31,8 +31,10 @@ li{
 .flex{
     display: flex;
 }
+
 .flex-row{
     flex-direction: row;
+    
 }
 .flex-col{
     flex-direction: column;
@@ -48,10 +50,16 @@ li{
     margin: 0 auto;
     padding: 0 16px;
 }
+.dashboard-right{
+    width: 20%;
+}
+.dashboard-left{
+    width: 80%;
+}
 
 .side-container{
     padding: 32px;
-    width: 280px;
+    /* width: 280px; */
     height: 100vh;
     /* border: 1px solid var(--black); */
     background-color: var(--white);
@@ -119,7 +127,7 @@ li{
 
 /* header styling */
 .header-wrapper{
-    width:calc(100vw - 280px);
+    /* width:calc(100vw - 280px); */
     box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.219);
 }
 
@@ -136,12 +144,16 @@ li{
 }
 /* dashboard data styling */
 .dashboard-data-container{
-    margin-top: 16px;
-    margin-left: 32px;
-    column-gap: 32px;
+   padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.col_3{
+    width: calc(100%/3);
+    padding: 1rem;
 }
 .dashboard-attendance-card{
-    width: calc((100vw - (280px + (32px*4)) )/3);
+    
     background-color: var(--white);
     border-radius: 16px;
     padding: 16px 32px;

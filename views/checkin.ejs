@@ -10,89 +10,100 @@
 <link rel="stylesheet" href="../public/style/checkin.css">
 
 <body>
-    <div class="container">
+    <link rel="stylesheet" href="./checkin.css">
+
+    <body onload="loadDate()">
+        <div class="container">
 
 
-        <div _ class="check_text">
-            <h4>Today's Action</h4>
-        </div>
-        <hr>
-
-        <div class="check-info">
-            <div class="current">
-                <label>Current Date</label><br>
-                <span>17/3/2023</span>
+            <div _ class="check_text">
+                <h4>Today's Action</h4>
             </div>
-            <div class="current">
-                <label>Current Time</label><br>
-                <span>10:19:12 AM</span>
-            </div>
-        </div>
+            <hr>
 
-        <div class="check-inout">
-            <div class="btn-checkin" id="checkin">
-                <a href="#" onclick="checkIn(this.value)">
+            <div class="check-info">
+                <div class="current">
+                    <label>Current Date</label><br>
+                    <<<<<<< HEAD <span>17/3/2023</span>
+                </div>
+                <div class="current">
+                    <label>Current Time</label><br>
+                    <span>10:19:12 AM</span> =======
+                    <span id="Date"></span>
+                </div>
+                <div class="current">
+                    <label>Current Time</label><br>
+                    <span id="Time"></span> >>>>>>> master
+                </div>
+            </div>
+
+            <div class="check-inout">
+                <div class="btn-checkin" id="checkin">
+                    <<<<<<< HEAD <a href="#" onclick="checkIn(this.value)">
+                        =======
+                        <a href="#" onclick="checkIn()">
+>>>>>>> master
                     <img src="./checkin_imgs/check-in.svg">
                     <span>Check In</span>
                 </a>
 
-            </div>
-            <div class="btn-brakein" id="brakein">
-                <a href="#" onclick="brakeIn()">
-                    <img src="./checkin_imgs/break-in.svg">
-                    <span>Break In</span>
-                </a>
+                </div>
+                <div class="btn-brakein" id="brakein">
+                    <a href="#" onclick="brakeIn()">
+                        <img src="./checkin_imgs/break-in.svg">
+                        <span>Break In</span>
+                    </a>
+                </div>
+
+
+                <div class="btn-checkout" id="checkout">
+                    <a href="#" onclick="checkOut()">
+                        <img src="./checkin_imgs/check-out.svg">
+                        <span>Check Out</span>
+                    </a>
+                </div>
+
+                <div class="btn-brakeout" id="brakeout">
+                    <a href="#" onclick="brakeOut()">
+                        <img src="./checkin_imgs/break-out.svg">
+                        <span>Break Out</span>
+                    </a>
+                </div>
             </div>
 
 
-            <div class="btn-checkout" id="checkout">
-                <a href="#" onclick="checkOut()">
-                    <img src="./checkin_imgs/check-out.svg">
-                    <span>Check Out</span>
-                </a>
-            </div>
+            <div class="custom-attendance ng-star-inserted ">
+                <div class="attendace ">
+                    <div class="check_text ">
+                        <h4>Attendance</h4>
+                    </div>
+                    <hr>
+                    <div id="green">
 
-            <div class="btn-brakeout" id="brakeout">
-                <a href="#" onclick="brakeOut()">
-                    <img src="./checkin_imgs/break-out.svg">
-                    <span>Break Out</span>
-                </a>
+                    </div>
+                    <div id="orange"></div>
+
+                    <div id="yellow">
+
+                    </div>
+
+                    <div id="red">
+
+                    </div>
+
+                    <div class="break-wrap ">
+
+                    </div>
+
+                </div>
             </div>
         </div>
 
-
-        <div class="custom-attendance ng-star-inserted ">
-            <div class="attendace ">
-                <div class="check_text ">
-                    <h4>Attendance</h4>
-                </div>
-                <hr>
-                <div id="green">
-
-                </div>
-                <div id="orange"></div>
-
-                <div id="yellow">
-
-                </div>
-
-                <div id="red">
-
-                </div>
-
-                <div class="break-wrap ">
-
-                </div>
-
-            </div>
         </div>
-    </div>
+        </div>
 
-    </div>
-    </div>
-
-    <script src="./checkin.js"></script>
-</body>
+        <script src="./checkin.js"></script>
+    </body>
 
 
 </html>

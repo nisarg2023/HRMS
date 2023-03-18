@@ -11,10 +11,17 @@ body {
 }
 
 .container {
+<<<<<<< HEAD
     margin: 0 auto;
     max-width: 1170px;
     padding: 16px;
     width: 300px;
+=======
+    max-width: 1170px;
+    margin: auto;
+    padding: 16px;
+    width: 250px;
+>>>>>>> master
     text-align: left;
     background-color: white;
 }

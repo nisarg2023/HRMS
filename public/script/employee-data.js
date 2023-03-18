@@ -30,6 +30,24 @@ let btn_done = document.querySelector(".btn_done");
 let modal_wrapper = document.querySelector(".modal_wrapper");
 let shadow = document.querySelector(".shadow");
 
+async function fetch_state() {
+    const stateValue = document.getElementById('state').value;
+    // console.log(stateValue)
+    const ans = await  fetch(`/get-city-data?stateValue=${stateValue}`);
+    const data = await ans.json();
+    // console.log(data[1].city_name);
+
+    var citycombo = document.getElementById('city');
+    citycombo.innerHTML = '';
+
+    for (var i = 0; i < data.length; i++) {
+        const option = document.createElement('option');
+        option.value = data[i].city_name;
+        option.text = data[i].city_name;
+        citycombo.appendChild(option);
+    }
+
+};
 
 function checkBasicDetails(){
     let fname=document.querySelector("#fname").value;
@@ -171,7 +189,7 @@ addEducation.addEventListener("click", function(){
     let college=document.querySelector("#college");
 
     let display_added_education=document.querySelector(".display_added_education");
-	let hidden_value=document.getElementById("hidden_edu");
+	const hidden_value=document.getElementById("hidden_edu");
 
     let edu={};
     let id=all_education.length+1;
@@ -193,19 +211,29 @@ addEducation.addEventListener("click", function(){
     display_added_education.appendChild(div);
 
     let set_delete_btn=document.querySelectorAll(".delete-btn");
+    hidden_value.value=JSON.stringify(all_education);
+    // below comment does not delete this is for delete functionally
 
-    set_delete_btn.forEach(function(btn){
-        btn.addEventListener("click", function(){
-            btn.closest(".added-education").remove();
-            all_education.splice(Number(btn.getAttribute("data-id"))-1, 1);
-			// console.log(Number(btn.getAttribute("data-id")));
-			hidden_value.spice(Number(btn.getAttribute("data-id")),1);
+    // const entries = Object.values(hidden_value.value);
+    // console.log(entries);
+    // console.log(typeof(entries));
+
+    // set_delete_btn.forEach(function(btn){
+    //     btn.addEventListener("click", function(){
+    //         btn.closest(".added-education").remove();
+    //         all_education.splice(Number(btn.getAttribute("data-id"))-1, 1);
+	// 		console.log(Number(btn.getAttribute("data-id")));
+
+    //        const arr1= JSON.parse(`${hidden_value.value}`);
+    //        const entries = Object.entries(arr1);
+          
+    //        console.log(typeof(entries));
+	// 		hidden_value=entries.spice(Number(btn.getAttribute("data-id")),1);
             
-        })
-    })
-	hidden_value.value=JSON.stringify(all_education);
-	console.log(hidden_value);
-	// console.log(all_education);
+    //     })
+    // })
+    console.log(hidden_value.value);
+	
     
     course.value="";
     passing_Year.value="";

@@ -89,16 +89,19 @@
 
                             <div class="input_wrap">
                                 <label class="text-label">state</label>
-                                <select name="state" id="state">
+                                <select name="state" id="state" onchange="fetch_state()">
                                     <option value="" selected>Select state</option>
-                                    <option value="Gujarat" selected>Gujarat</option>
+                                     <% for(let i=0;i<stateName.length;i++){%>
+                                         <option value="<%=stateName[i].state_name%>"><%=stateName[i].state_name%></option>
+                                         <%}%>
                                 </select>
                             </div>
+                           
                             <div class="input_wrap">
                                 <label class="text-label">city</label>
-                                <select name="city" id="city">
-                                    <option value="" selected>Select city</option>
-                                    <option value="Nadiad" selected>Nadiad</option>
+                                <select name="city" id="city" >
+                                    <option value="" selected disabled >Select city</option>
+                                   
                                 </select>
                             </div>
                         </div>
@@ -132,7 +135,7 @@
                                     class="input" id="college">
                             </div>
                             <div class="input_wrap">
-                                <input type="hidden" name="hidden_value" id="hidden_edu" value="">
+                                <input type="hidden" name="moreEdu_data" id="hidden_edu" value="">
                             </div>
                             <div class="input_wrap">
                                 <div class="add-education">add +</div>

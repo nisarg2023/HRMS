@@ -20,6 +20,7 @@ router.get('/activate',activationController.activate);
 
 router.get('/get-employee-data',employeedataController.getEmployeedata);
 router.post('/post-employee-data',employeedataController.postEmployeedata);
+router.get('/get-city-data',employeedataController.getCitydata);
 
 
 

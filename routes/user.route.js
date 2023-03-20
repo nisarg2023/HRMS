@@ -4,11 +4,11 @@ const router=express.Router();
 const loginController=require('../controllers/login.controller');
 const registrationController = require('../controllers/registration.controller')
 const activationController=require('../controllers/activation.controller');
-const employeeController=require('../controllers/employee-data.controller');
+// const employeeController=require('../controllers/employee-data.controller');
 const userEmail = require('../controllers/get-all-user-email.controller');
 //const dashboardController=require('../controllers/dashboard.controller');
-// const employeeController=require('../controllers/employee-data.controller');
-const employeedataController=require('../controllers/employee-data.controller')
+const employeedataController=require('../controllers/employee-data.controller');
+
 const {auth} = require('../middleware/auth')
 
 

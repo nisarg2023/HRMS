@@ -15,7 +15,7 @@
 <body>
     <div class="wrapper">
         <h2 style="text-align: center;margin-bottom: 20px;">Employee Information</h2>
-        <form action="/post-employee-data" method="post" >
+        <form action="/post-employee-data" method="post"  enctype = "multipart/form-data" >
             <div class="header">
                 <ul>
                     <li class="active form_1_progessbar">
@@ -194,6 +194,10 @@
                             <div class="input_wrap">
                                 <label for="company">Aadhar Card</label>
                                 <input type="file" name="aadhar_card" class="input" id="resume">
+                            </div>
+                            <div class="input_wrap">
+                                <label for="company">Profile Photo</label>
+                                <input type="file" name="profile_photo" class="input" id="resume">
                             </div>
 
                         </div>

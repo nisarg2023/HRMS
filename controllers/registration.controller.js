@@ -11,17 +11,31 @@ const getRegistration = (req,res)=>{
 const postRegistration=async(req,res)=>{
     
     try{
-        
-        let {user_email,user_password}=req.body;
-        
-        var hashPassword = await bcrypt.hash(user_password,10);//(Data , salt)
+
         
 
-        var sql = `insert into hrms_employee(email,password) values('${user_email}','${hashPassword}')`;
+        
+        const{email,password} = req.body;
+        console.log(req.body.email)
+
+        var sql1 = (`select * from  hrms_employee where email = '${user_email}'`)
+        var result1 = await query(sql1)
+        console.log(result)
+
+        if(result1.length>0){
+            res.send("exists")
+        }
+        else{
+            res.send("ok")
+            var hashPass = await bcrypt.hash(password,10);//(Data , salt)
+        console.log("hash"+hashPass);
+
+        var sql = `insert into hrms_employee(email,password) values('${email}','${hashPass}')`;
         var result =  await query(sql);
-        mailer.sendMail(user_email)
-
+        mailer.sendMail(email)
         res.redirect("/get-login")
+        }
+
     }
     catch (error) {
         console.error(error);

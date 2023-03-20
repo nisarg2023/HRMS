@@ -34,7 +34,7 @@ const postEmployeedata = async (req, res) => {
 
         //     For Eduction Data
         let data = req.body
-        // console.log(data);
+        console.log(data);
 
         let moreEdudata = req.body.moreEdu_data;
         // console.log(moreEdudata);
@@ -51,7 +51,7 @@ const postEmployeedata = async (req, res) => {
 
         // for education
         var education_euery = `insert into education (fk_emp_id,course_name,passing_year,marks,college_school) values 
-        (1,'${course}','${data.passing_year}','${data.percentage}','${data.college}');`
+        (1,'${data.course}','${data.passing_year}','${data.percentage}','${data.college}');`
 
         if (data.course) {
 
@@ -64,21 +64,23 @@ const postEmployeedata = async (req, res) => {
             let moreEdudata1 = JSON.parse(`${moreEdudata}`);
             console.log(moreEdudata1.length);
             console.log(moreEdudata1);
-            if (moreEdudata1 > 0) {
-                if (moreEdudata1.length > 1) {
-                    for (i = 0; i < moreEdudata1; i++) {
+            if (moreEdudata1) {
+                if (moreEdudata1.length == 1) {
+                    
+                    
+                    var education_euery = `insert into education (fk_emp_id,course_name,passing_year,marks,college_school) values 
+                    (1,'${moreEdudata1.course}','${moreEdudata1.passing_year}','${moreEdudata1.percentage}','${moreEdudata1.college}');`
+                    var education_info = await query(education_euery);
+                    
+                }
+                else {
+                    for (i = 0; i < moreEdudata1.length; i++) {
+                        console.log("skfiksghfishfgisghfgihsiufghsiukfgh");
+
                         var education_euery = `insert into education (fk_emp_id,course_name,passing_year,marks,college_school) values 
                         (1,'${moreEdudata1[i].course}','${moreEdudata1[i].passing_year}','${moreEdudata1[i].percentage}','${moreEdudata1[i].college}');`
                         var education_info = await query(education_euery);
                     }
-
-
-                }
-                else {
-                    var education_euery = `insert into education (fk_emp_id,course_name,passing_year,marks,college_school) values 
-                    (1,'${moreEdudata1.course}','${moreEdudata1.passing_year}','${moreEdudata1.percentage}','${moreEdudata1.college}');`
-                    var education_info = await query(education_euery);
-
                 }
 
             }

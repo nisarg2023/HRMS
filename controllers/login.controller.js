@@ -21,7 +21,6 @@ const postLogin = async (req, res) => {
             return res.send("user not found")
         }
 
-
         const data = result[0].password;
       
         var match = await bcrypt.compare(user_password, data);
@@ -40,7 +39,6 @@ const postLogin = async (req, res) => {
                 res.redirect('/get-activate');
             }
            
-
         }
         else {
             return res.send("wrong password!")

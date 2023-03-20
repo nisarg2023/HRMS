@@ -1,70 +1,4 @@
-<<<<<<< HEAD
-<aside>
-    <div class="top">
-        <div class="logo">
-            <img src="/images/logo1.jpeg" alt="">
-        </div>
-    </div>
-    <div class="side-bar">
-        <a href="" class="x">
-            <div class="left">
-                <span class="material-icons-sharp">grid_view</span>
-            </div>
-            <div class="right">
-                <h3>Dashboard</h3>
-            </div>
-        </a>
-        <a href="" class="x">
-            <div class="left">
-                <span class="material-icons-sharp">sync</span>
-            </div>
-            <div class="right">
-                <h3>Hotline</h3>
-            </div>
-        </a>
-        <a href="" class="x">
-            <div class="left">
-                <span class="material-icons-sharp">person</span>
-            </div>
-            <div class="right">
-                <h3>Attendance</h3>
-            </div>
-        </a>
-        <a href="" class="x">
-            <div class="left">
-                <span class="material-icons-sharp">directions_walk</span>
-            </div>
-            <div class="right">
-                <h3>Leaves</h3>
-            </div>
-        </a>
-        <a href="" class="x">
-            <div class="left">
-                <span class="material-icons-sharp">policy</span>
-            </div>
-            <div class="right">
-                <h3>Company Policy</h3>
-            </div>
-        </a>
-        <a href="" class="x">
-            <div class="left">
-                <span class="material-icons-sharp">groups</span>
-            </div>
-            <div class="right">
-                <h3>Sensation</h3>
-            </div>
-        </a>
-        <a href="" class="x">
-            <div class="left">
-                <span class="material-icons-sharp">logout</span>
-            </div>
-            <div class="right">
-                <h3>Logout</h3>
-            </div>
-        </a>
-    </div>
-</aside>
-=======
+
 <div class="side-container">
     <div class="logo-container flex justify-center">
         <img src="../images/hrms.png" alt="company logo" class="company-logo">
@@ -84,13 +18,14 @@
 
     <div class="profile-container flex flex-row item-center">
         <div class="profile-image-container">
-            <img class="employee-profile-image" src="../images/sagar.jpg" alt="employee profile picture">
+            <img class="employee-profile-image" src="../images/admin.jpeg" alt="employee profile picture">
         </div>
         <div class="employee-name">
-            <p class="emp-name">Sagar Khatri</p>
-            <p class="emp-role">Developer</p>
+            <% show.forEach(sql=>{%>
+            <p class="emp-name"><%=sql.first_name%></p>
+            <p class="emp-role"><%=sql.last_name%></p>
+            <% })%>
         </div>
     </div>
     </div>
 </div>
->>>>>>> 562d9bdf6cbf3e37d234d2ad13eb761caa1743ef

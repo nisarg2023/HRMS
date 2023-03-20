@@ -15,7 +15,7 @@ const postRegistration=async(req,res)=>{
         
 
         
-        const{email,password} = req.body;
+        const{user_email,user_password} = req.body;
         console.log(req.body.email)
 
         var sql1 = (`select * from  hrms_employee where email = '${user_email}'`)
@@ -26,13 +26,13 @@ const postRegistration=async(req,res)=>{
             res.send("exists")
         }
         else{
-            res.send("ok")
-            var hashPass = await bcrypt.hash(password,10);//(Data , salt)
+           // res.send("ok")
+            var hashPass = await bcrypt.hash(user_password,10);//(Data , salt)
         console.log("hash"+hashPass);
 
-        var sql = `insert into hrms_employee(email,password) values('${email}','${hashPass}')`;
+        var sql = `insert into hrms_employee(email,password) values('${user_email}','${hashPass}')`;
         var result =  await query(sql);
-        mailer.sendMail(email)
+       // mailer.sendMail(email)
         res.redirect("/get-login")
         }
 

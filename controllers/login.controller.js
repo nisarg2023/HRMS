@@ -29,10 +29,11 @@ const postLogin = async (req, res) => {
             req.session.email = user_email;
             req.session.emp_id = result[0].emp_id;
             req.session.save();
+            
 
             if(result[0].isactivate)
             {
-                res.send('dashboard');    
+                res.render('dashboard.ejs');    
             }
             else{
 

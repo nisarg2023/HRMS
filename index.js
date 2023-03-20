@@ -46,11 +46,12 @@ app.use("/deshbord/",deshbord);
 // })
 
 // HEADER-UI
-app.get("/dashboard", function(req,res){
-    res.render('dashboard.ejs')
-})
+// app.get("/dashboard", function(req,res){
+//     res.render('dashboard.ejs')
+// })
 
-app.listen(8000, () => {
+
+app.listen(8001, () => {
     console.log("Server is running on port 8000");
 
 })

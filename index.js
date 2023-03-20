@@ -11,6 +11,7 @@ const query =  util.promisify(conn.query).bind(conn)
 
 
 
+
 //require routes
 const userRoutes = require('./routes/user.route');
 const employeeForm = require('./routes/employee-form.route');
@@ -37,6 +38,11 @@ app.set('view engine', 'ejs');
 app.use("/",userRoutes);
 app.use("/employee/",employeeForm);
 app.use("/deshbord/",deshbord);
+
+// HEADER-UI
+// app.get("/dashboard", function(req,res){
+//     res.render('dashboard.ejs')
+// })
 
 app.listen(8000, () => {
     console.log("Server is running on port 8000");

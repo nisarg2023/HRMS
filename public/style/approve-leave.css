@@ -1,0 +1,22 @@
+table,th,tr,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.approve-leave{
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 8px;
+    padding-block: 4px;
+    width: 100px;
+    background-color: rgb(34, 116, 9);
+}
+.reject-leave{
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 8px;
+    padding-block: 4px;
+    width: 100px;
+    background-color: rgb(160, 13, 13);
+}

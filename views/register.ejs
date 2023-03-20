@@ -18,22 +18,22 @@
 
         <div class="registration form">
             <header>Signup</header>
-            <form action="/registration" method="post">
-                <input type="text" placeholder="Enter your email" name="user_email" id="email" onkeyup="emailCorrect()"> <small id="erroremail"></small>
-                <input type="password" placeholder="Create a password" name="user_password" id="Password" onkeyup="passwordError()">
-                <small id="passtype"></small> <br><small id="passno"></small>
-                <input type="password" placeholder="Confirm your password" onkeyup="confirmPassword()" id="Cpassword">
-                <small id="passvalid"></small>
-                <input type="submit" class="button" value="Submit">
+            <form action="/post-registration" method="post">
+                <input type="text" placeholder="Enter your email" name="user_email" id="email" onchange="emailCorrect()"> <small id="emailErr">*</small>
+                <input type="password" placeholder="Create a password" name="user_password" id="Password" onchange="passwordError()">
+                <small id="passwordErr">*</small> 
+                <input type="password" placeholder="Confirm your password" onchange="confirmPassword()" id="Cpassword">
+                <small id="passvalid">*</small>
+                <input type="submit" id="submit_btn" class="button" value="Submit">
             </form>
             <div class="signup">
                 <span class="signup">Already have an account?
-                <a  href="#">Login</a>
+                <a  href="/get-login">Login</a>
                 </span>
             </div>
         </div>
     </div>
-    <script src="../routes/register.js"></script>
+    <script src="../script/register.js"></script>
 </body>
 
 </html>

@@ -15,216 +15,229 @@
 <body>
     <div class="wrapper">
         <h2 style="text-align: center;margin-bottom: 20px;">Employee Information</h2>
-        <div class="header">
-            <ul>
-                <li class="active form_1_progessbar">
-                    <div>
-                        <p>1</p>
-                        <span class="navigate-label">basic info</span>
-                    </div>
-                </li>
-                <li class="form_2_progessbar">
-                    <div>
-                        <p>2</p>
-                        <span class="navigate-label">education</span>
-                    </div>
-                </li>
-                <li class="form_3_progessbar">
-                    <div>
-                        <p>3</p>
-                        <span class="navigate-label">Experience</span>
-                    </div>
-                </li>
-                <li class="form_4_progessbar">
-                    <div>
-                        <p>4</p>
-                        <span class="navigate-label">documents</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="form_wrap">
-            <div class="form_1 data_info">
-                <h2>Basic Info</h2>
-                <form>
-                    <div class="form_container">
-                        <div class="input_wrap">
-                            <label class="text-label" for="fname">first name</label>
-                            <input type="text" placeholder="e.g, John" name="fname" class="input" id="fname">
+        <form action="/post-employee-data" method="post" >
+            <div class="header">
+                <ul>
+                    <li class="active form_1_progessbar">
+                        <div>
+                            <p>1</p>
+                            <span class="navigate-label">basic info</span>
                         </div>
-                        <div class="input_wrap">
-                            <label class="text-label" for="lname">last name</label>
-                            <input type="text" name="lname" placeholder="e.g, Doe" class="input" id="lname">
+                    </li>
+                    <li class="form_2_progessbar">
+                        <div>
+                            <p>2</p>
+                            <span class="navigate-label">education</span>
                         </div>
-                        <div class="input_wrap">
-                            <label class="text-label" for="dob">Birthdate</label>
-                            <input type="date" name="dob" class="input" id="dob">
+                    </li>
+                    <li class="form_3_progessbar">
+                        <div>
+                            <p>3</p>
+                            <span class="navigate-label">Experience</span>
                         </div>
-                        <div class="input_wrap">
-                            <label class="text-label" for="relationship">relationship</label>
-                            <select name="relationship" class="input" id="relationship">
-                                <option selected value="single">single</option>
-                                <option value="married">married</option>
-                            </select>
+                    </li>
+                    <li class="form_4_progessbar">
+                        <div>
+                            <p>4</p>
+                            <span class="navigate-label">documents</span>
                         </div>
-                        <div class="input_wrap">
-                            <label class="text-label" for="blood_group">Blood Group</label>
-                            <input type="text" placeholder="e.g, B+" name="blood_group" class="input" id="blood_group">
-                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="form_wrap">
+                <div class="form_1 data_info">
+                    <h2>Basic Info</h2>
+                    <section>
+                        <div class="form_container">
+                            <div class="input_wrap">
+                                <label class="text-label" for="fname">first name</label>
+                                <input type="text" placeholder="e.g, John" name="fname" class="input" id="fname">
+                            </div>
+                            <div class="input_wrap">
+                                <label class="text-label" for="lname">last name</label>
+                                <input type="text" name="lname" placeholder="e.g, Doe" class="input" id="lname">
+                            </div>
+                            <div class="input_wrap">
+                                <label class="text-label" for="dob">Birthdate</label>
+                                <input type="date" name="dob" class="input" id="dob">
+                            </div>
+                            <div class="input_wrap">
+                                <label class="text-label" for="relationship">relationship</label>
+                                <select name="relationship" class="input" id="relationship">
+                                    <option selected value="single">single</option>
+                                    <option value="married">married</option>
+                                </select>
+                            </div>
+                            <div class="input_wrap">
+                                <label class="text-label" for="blood_group">Blood Group</label>
+                                <input type="text" placeholder="e.g, B+" name="blood_group" class="input"
+                                    id="blood_group">
+                            </div>
 
-                        <div class="gender-panel">
-                            <label class="text-label" for="gender">Gender :</label>
-                            <div>
-                                <input type="radio" checked name="gender" class="input" id="male" value="male">
-                                <label for="male">male</label> &nbsp;&nbsp;
-                                <input type="radio" name="gender" class="input" id="female" value="female">
-                                <label for="female">female</label> &nbsp;&nbsp;
-                                <input type="radio" name="gender" class="input" id="other" value="other">
-                                <label for="other">other</label> 
+                            <div class="gender-panel">
+                                <label class="text-label" for="gender">Gender :</label>
+                                <div>
+                                    <input type="radio" checked name="gender" class="input" id="male" value="male">
+                                    <label for="male">male</label> &nbsp;&nbsp;
+                                    <input type="radio" name="gender" class="input" id="female" value="female">
+                                    <label for="female">female</label> &nbsp;&nbsp;
+                                    <input type="radio" name="gender" class="input" id="other" value="other">
+                                    <label for="other">other</label>
+                                </div>
+                            </div>
+
+
+                            <div class="input_wrap">
+                                <label class="text-label">state</label>
+                                <select name="state" id="state" onchange="fetch_state()">
+                                    <option value="" selected>Select state</option>
+                                     <% for(let i=0;i<stateName.length;i++){%>
+                                         <option value="<%=stateName[i].state_name%>"><%=stateName[i].state_name%></option>
+                                         <%}%>
+                                </select>
+                            </div>
+                           
+                            <div class="input_wrap">
+                                <label class="text-label">city</label>
+                                <select name="city" id="city" >
+                                    <option value="" selected disabled >Select city</option>
+                                   
+                                </select>
                             </div>
                         </div>
+                    </section>
+                </div>
+                <div class="form_2 data_info" style="display: none;">
+                    <h2>education</h2>
+                    <section>
+                        <div class="form_container">
+                            <div class="input_wrap">
+                                <label class="text-label">Course</label>
+                                <select name="course" id="course">
+                                    <option value="" selected disabled>Select course</option>
+                                    <option value="HSC">HSC</option>
+                                    <option value="SSC">SSC</option>
+                                </select>
+                            </div>
+                            <div class="input_wrap">
+                                <label for="Passing_Year">Passing Year</label>
+                                <input type="number" placeholder="e.g, 2023" name="passing_Year" class="input"
+                                    id="passing_Year">
+                            </div>
+                            <div class="input_wrap">
+                                <label for="percentage">Percentage</label>
+                                <input type="text" name="percentage" placeholder="e.g, 87.45" class="input"
+                                    id="percentage">
+                            </div>
+                            <div class="input_wrap">
+                                <label for="college">College</label>
+                                <input type="text" placeholder="e.g, PG department of Computer Science" name="college"
+                                    class="input" id="college">
+                            </div>
+                            <div class="input_wrap">
+                                <input type="hidden" name="moreEdu_data" id="hidden_edu" value="">
+                            </div>
+                            <div class="input_wrap">
+                                <div class="add-education">add +</div>
+                            </div>
+
+                            <div class="input_wrap display_added_education">
+
+                            </div>
 
 
-                        <div class="input_wrap">
-                            <label class="text-label">state</label>
-                            <select name="state" id="state">
-                                <option value="" selected>Select state</option>
-                                <option value="Gujarat" selected>Gujarat</option>
-                            </select>
-                        </div>
-                        <div class="input_wrap">
-                            <label class="text-label">city</label>
-                            <select name="city" id="city">
-                                <option value="" selected>Select city</option>
-                                <option value="Nadiad" selected>Nadiad</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="form_2 data_info" style="display: none;">
-                <h2>education</h2>
-                <form>
-                    <div class="form_container">
-                        <div class="input_wrap">
-                            <label class="text-label">Course</label>
-                            <select name="course" id="course">
-                                <option value="" selected disabled>Select course</option>
-                                <option value="HSC" >HSC</option>
-                                <option value="SSC" >SSC</option>
-                            </select>
-                        </div>
-                        <div class="input_wrap">
-                            <label for="Passing_Year">Passing Year</label>
-                            <input type="number" placeholder="e.g, 2023" name="passing_Year" class="input" id="passing_Year">
-                        </div>
-                        <div class="input_wrap">
-                            <label for="percentage">Percentage</label>
-                            <input type="text" name="percentage" placeholder="e.g, 87.45" class="input" id="percentage">
-                        </div>
-                        <div class="input_wrap">
-                            <label for="college">College</label>
-                            <input type="text" placeholder="e.g, PG department of Computer Science" name="college" class="input" id="college">
-                        </div>
 
-                        <div class="input_wrap">
-                            <div class="add-education">add +</div>
                         </div>
-                        
-                        <div class="input_wrap display_added_education">
-                            
+                    </section>
+                </div>
+                <div class="form_3 data_info" style="display: none;">
+                    <h2>Experience</h2>
+                    <section>
+                        <div class="form_container">
+                            <div class="input_wrap">
+                                <label for="company_name">Company name</label>
+                                <input type="text" name="company_name" placeholder="e.g, abc company" class="input"
+                                    id="company_name">
+                            </div>
+                            <div class="input_wrap">
+                                <label class="text-label" for="start_date">Start date</label>
+                                <input type="date" name="start_date" class="input" id="start_date">
+                            </div>
+                            <div class="input_wrap">
+                                <label class="text-label" for="end_date">End date</label>
+                                <input type="date" name="end_date" class="input" id="end_date">
+                            </div>
+                            <div class="input_wrap">
+                                <label for="designation">Designation</label>
+                                <input type="text" name="designation" placeholder="e.g, Web Designer" class="input"
+                                    id="designation">
+                            </div>
                         </div>
+                    </section>
+                </div>
+                <div class="form_4 data_info" style="display: none;">
+                    <h2>documents</h2>
+                    <section>
+                        <div class="form_container">
+                            <div class="input_wrap">
+                                <label for="company">Resume</label>
+                                <input type="file" name="resume" class="input" id="resume">
+                            </div>
+                            <div class="input_wrap">
+                                <label for="company">Bank Cheque</label>
+                                <input type="file" name="bank_detail" class="input" id="resume">
+                            </div>
+                            <div class="input_wrap">
+                                <label for="company">PAN Card</label>
+                                <input type="file" name="pan_card" class="input" id="resume">
+                            </div>
+                            <div class="input_wrap">
+                                <label for="company">Aadhar Card</label>
+                                <input type="file" name="aadhar_card" class="input" id="resume">
+                            </div>
 
-                        
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="btns_wrap">
+                <div class="common_btns form_1_btns">
+                    <a type="button" class="btn_next">Next <span class="icon"><ion-icon
+                                name="arrow-forward-sharp"></ion-icon></span></a>
+                </div>
+                <div class="common_btns form_2_btns" style="display: none;">
+                    <a type="button" class="btn_back"><span class="icon"><ion-icon
+                                name="arrow-back-sharp"></ion-icon></span>Back</a>
+                    <a type="button" class="btn_next">Next <span class="icon"><ion-icon
+                                name="arrow-forward-sharp"></ion-icon></span></a>
+                </div>
+                <div class="common_btns form_3_btns" style="display: none;">
+                    <a type="button" class="btn_back"><span class="icon"><ion-icon
+                                name="arrow-back-sharp"></ion-icon></span>Back</a>
+                    <a type="button" class="btn_next">Next <span class="icon"><ion-icon
+                                name="arrow-forward-sharp"></ion-icon></span></a>
 
-                    </div>
-                </form>
+                </div>
+                <div class="common_btns form_4_btns" style="display: none;">
+                    <a type="button" class="btn_back"><span class="icon"><ion-icon
+                                name="arrow-back-sharp"></ion-icon></span>Back</a>
+
+                    <input type="submit" value="Submit" class="btn_done" onclick="submitBtn()">
+                </div>
+
             </div>
-            <div class="form_3 data_info" style="display: none;">
-                <h2>Experience</h2>
-                <form>
-                    <div class="form_container">
-                        <div class="input_wrap">
-                            <label for="company_name">Company name</label>
-                            <input type="text" name="company_name" placeholder="e.g, abc company" class="input" id="company_name">
-                        </div>
-                        <div class="input_wrap">
-                            <label class="text-label" for="start_date">Start date</label>
-                            <input type="date" name="start_date" class="input" id="start_date">
-                        </div>
-                        <div class="input_wrap">
-                            <label class="text-label" for="end_date">End date</label>
-                            <input type="date" name="end_date" class="input" id="end_date">
-                        </div>
-                        <div class="input_wrap">
-                            <label for="designation">Designation</label>
-                            <input type="text" name="designation" placeholder="e.g, Web Designer" class="input" id="designation">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="form_4 data_info" style="display: none;">
-                <h2>documents</h2>
-                <form>
-                    <div class="form_container">
-                        <div class="input_wrap">
-                            <label for="company">Resume</label>
-                            <input type="file" name="resume" class="input" id="resume">
-                        </div>
-                        <div class="input_wrap">
-                            <label for="company">Bank Cheque</label>
-                            <input type="file" name="resume" class="input" id="resume">
-                        </div>
-                        <div class="input_wrap">
-                            <label for="company">PAN Card</label>
-                            <input type="file" name="resume" class="input" id="resume">
-                        </div>
-                        <div class="input_wrap">
-                            <label for="company">Aathar Card</label>
-                            <input type="file" name="resume" class="input" id="resume">
-                        </div>
-                        
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="btns_wrap">
-            <div class="common_btns form_1_btns">
-                <a type="button" class="btn_next">Next <span class="icon"><ion-icon
-                            name="arrow-forward-sharp"></ion-icon></span></a>
-            </div>
-            <div class="common_btns form_2_btns" style="display: none;">
-                <a type="button" class="btn_back"><span class="icon"><ion-icon
-                            name="arrow-back-sharp"></ion-icon></span>Back</a>
-                <a type="button" class="btn_next">Next <span class="icon"><ion-icon
-                            name="arrow-forward-sharp"></ion-icon></span></a>
-            </div>
-            <div class="common_btns form_3_btns" style="display: none;">
-                <a type="button" class="btn_back"><span class="icon"><ion-icon
-                    name="arrow-back-sharp"></ion-icon></span>Back</a>
-        <a type="button" class="btn_next">Next <span class="icon"><ion-icon
-                    name="arrow-forward-sharp"></ion-icon></span></a>
-                
-            </div>
-            <div class="common_btns form_4_btns" style="display: none;">
-                <a type="button" class="btn_back"><span class="icon"><ion-icon
-                            name="arrow-back-sharp"></ion-icon></span>Back</a>
-                <a type="button" class="btn_done">Save</a>
-            </div>
-            
-        </div>
+        </form>
     </div>
 
-    <div class="modal_wrapper">
-        <div class="shadow"></div>
-        <div class="success_wrap">
-            <span class="modal_icon"><ion-icon name="checkmark-sharp"></ion-icon></span>
-            <p>You have successfully completed the process.</p>
-        </div>
-    </div>
+
 
 
     <script src="./script/employee-data.js"></script>
+    <script>
+        function submitBtn() {
+            console.log("e")
+        }
+    </script>
 </body>
 
 </html>

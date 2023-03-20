@@ -90,3 +90,7 @@ body {
 .signup a:hover {
     text-decoration: underline;
 }
+
+small{
+    color: red;
+}

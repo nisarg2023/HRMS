@@ -2,7 +2,7 @@ const conn = require('../config/dbConnect');
 const util =  require('util');
 const query =  util.promisify(conn.query).bind(conn)
 // to render an activation page
-const activation = async (req,res)=>{
+const getActivate = async (req,res)=>{
     try{
         // used for testing purpose replace it with the tocken and get email based on that.
         let email = req.body.email;
@@ -12,7 +12,6 @@ const activation = async (req,res)=>{
             redirect('/')
         }
         else{
-            console.log('activation2',email)
             res.render('activation',{email});
         }
     }
@@ -24,16 +23,16 @@ const activation = async (req,res)=>{
 }
 
 // called through fetch to update value in database
-const activate = async(req,res)=>{
+const postActivate = async(req,res)=>{
     try{
-        let email = req.query.email;
+        let email = req.session.email;;
         let activate = await query(`update hrms_employee set isactivate = 1 where email = '${email}'`)
-        // res.redirect('/')
-        res.send("activate")
+       
+        res.send("dashboard")
     }
     catch(error){
         console.log('error in active action fucntion' ,error)
     }
 }
 
-module.exports = {activation,activate}
+module.exports = {getActivate,postActivate}

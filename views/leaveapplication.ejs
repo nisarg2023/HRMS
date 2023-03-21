@@ -7,7 +7,10 @@
     <title>Leave Application</title>
     <link rel="stylesheet" href="/style/leave-application.css">
     <link rel="stylesheet" href="/style/dashboard.css">
-
+    <script
+    src="https://kit.fontawesome.com/2d11fdd863.js"
+    crossorigin="anonymous"
+    ></script>
 </head>
 <body>
    <div class="leave-application-wrapper flex">
@@ -19,7 +22,47 @@
         <div class="dashboard-left">
             <%- include('components/header.ejs',{name:"Leave Application"}) %>
             
-            <div class="leave-application-container flex">
+            <div class="leave-application-container flex flex-col">
+                <div class="leave-cards flex flex-row">
+                    <div class="leave-card-col">
+                        <div class="leave-card-data leave-card-1">
+                            <p><b>Casual Leaves</b></p>
+                            <div class="flex leave-card-remain">
+                                <p>Total- 6</p>
+                                <p>Used- <%= leavesObject.cLeave %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leave-card-col">
+                        <div class="leave-card-data leave-card-2">
+                            <p><b>Sick Leaves</b></p>
+                            <div class="flex leave-card-remain">
+                                <p>Total- 4</p>
+                                <p>Used- <%= leavesObject.sLeave %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leave-card-col">
+                        <div class="leave-card-data leave-card-3">
+                            <p><b>Paid Leaves</b></p>
+                            <div class="flex leave-card-remain">
+                                <p>Total- 6</p>
+                                <p>Used- <%= leavesObject.pLeave %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leave-card-col">
+                        <div class="leave-card-data leave-card-4">
+                            <p><b>Unplanned Leaves</b></p>
+                            <div class="flex leave-card-remain">
+                                <p>Total- 4</p>
+                                <p>Used- <%= leavesObject.upLeave %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 <form action="/deshbord/leave" method="POST">
                     <div class="leave-application-form-container flex flex-col">
                         <div class="leave-application-top flex">
@@ -32,11 +75,22 @@
                                 <label for="leave_type">Leave Type</label>
         
                                 <select name="leave_type">
+
                                     <option value="none" disabled selected hidden>Type of Leave</option>
-                                    <option value="CL">CL</option>
-                                    <option value="PL">PL</option>
-                                    <option value="SL">SL</option>
+                                    <%if(leavesObject.cLeave < 6 ){ %>
+                                        <option value="CL">CL</option>
+                                    <% }  %>
+
+                                    <% if(leavesObject.pLeave < 6 ){%>
+                                        <option value="PL">PL</option>
+                                    <% }  %>
+
+                                    <% if(leavesObject.sLeave < 4){%>
+                                        <option value="SL">SL</option>
+                                    <% }  %>
+
                                     <option value="UPL">UPL</option>
+                                   
                                 </select>
                             </div>
 
@@ -57,7 +111,7 @@
                         <div>
                             <div class="leave-reason-container">
                                 <label for="leave_reason">Leave Reason</label>
-                                <textarea name="leave_reason" cols="20" rows="10"></textarea>
+                                <textarea name="leave_reason" class="leave-reason-text-box" cols="20" rows="10"></textarea>
                             </div>
                         </div>
                        
@@ -82,6 +136,7 @@
                         <tr>
                             <td><%= data.leave_date.toJSON('dd-mm-yyyy').slice(0,10)%></td>
                             <td><%= data.leave_type%></td>
+                            
                             <% if(data.is_halfday == 0){%>
                                 <td>Full Day</td>
                             <% }else {%>

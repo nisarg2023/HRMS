@@ -5,7 +5,28 @@ const query =  util.promisify(conn.query).bind(conn)
 
 const getLeaveapplication = async (req,res)=>{
     const result = await query(`select * from leave_application where fk_emp_id = ${req.session.emp_id}`)
-    res.render('leaveapplication', {result})
+
+    var leavesObject = {
+        sLeave: 0,
+        cLeave: 0,
+        pLeave: 0,
+        upLeave: 0,
+    }
+    for(x of result){
+        if(x.leave_type == 'SL'){
+            leavesObject.sLeave+=1;
+        }
+        else if(x.leave_type == 'CL'){
+            leavesObject.cLeave+=1;
+        }
+        else if(x.leave_type == 'PL'){
+            leavesObject.pLeave+=1;
+        }
+        else if(x.leave_type == 'UPL'){
+            leavesObject.upLeave+=1;
+        }
+    }
+    res.render('leaveapplication', {result,leavesObject})
 }
 const postLeaveapplication = async(req,res)=>{
     res.redirect('/deshbord/leave')

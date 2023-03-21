@@ -32,7 +32,16 @@ const postLogin = async (req, res) => {
 
             if(result[0].isactivate)
             {
-                res.send('dashboard');    
+                const basicinfo = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${result[0].emp_id};`)
+                if(basicinfo.length == 0)
+                {
+                    res.redirect("/get-employee-data");
+                } 
+                else{
+                    
+                    res.redirect('/deshbord');    
+
+                }
             }
             else{
 

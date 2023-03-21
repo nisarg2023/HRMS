@@ -30,6 +30,7 @@ saveUninitialized:true,
 secret:"red"}));
 
 app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + ''));
 app.set('view engine', 'ejs');
 
 

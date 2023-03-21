@@ -97,8 +97,11 @@
 
             <div class="uses">
                 <div class="row">
-                    <%for(var i=0;i<10;i++){%>
-                   <%- include('components/hoteline-user-card.ejs')%>
+                    <%for(var i=0;i<allUsers.length;i++){%>
+                   <%- include('components/hoteline-user-card.ejs',{
+                    "first_name":allUsers[i].first_name,
+                    "last_name":allUsers[i].last_name,
+                    profile_photo:profilePhotos[0].profile_photo})%>
                    <%}%>
                 </div>
             </div>

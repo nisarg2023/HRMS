@@ -43,6 +43,7 @@
 
     height: 5rem;
     width: 5rem;
+    border-radius: 50%;
 }
 
 .detail h4 {
@@ -107,4 +108,4 @@
     font-weight: 600;
     padding-top: .5rem;
     
-}
+    }

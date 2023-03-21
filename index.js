@@ -44,7 +44,7 @@ app.use("/deshbord/",deshbord);
 //     res.render('dashboard.ejs')
 // })
 
-app.listen(8000, () => {
+app.listen(8001, () => {
     console.log("Server is running on port 8000");
 
 })

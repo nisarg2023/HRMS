@@ -16,7 +16,7 @@ var storage = multer.diskStorage({
         cb(null, `./uploads/${files.fieldname}/`);
     },
     filename: function (req, files, cb,) {
-        console.log(files)
+        // console.log(files)
 
         cb(null, files.originalname.split(".")[0] + Date.now() + ".jpg");
     }
@@ -59,6 +59,8 @@ const postEmployeedata = async (req, res) => {
         //     For Eduction Data
         let data = req.body
         console.log(data);
+        console.log("fkshshvikshk",fname);
+
 
         let moreEdudata = req.body.moreEdu_data;
         // console.log(moreEdudata);
@@ -118,13 +120,14 @@ const postEmployeedata = async (req, res) => {
         // for addv images 
         var path = []
         upload(req, res, function (err) {
+            
 
             if (err instanceof multer.MulterError) {
                 console.log(err)
             } else if (err) {
                 console.log(err)
             }
-            console.log(req.files)
+            // console.log(req.files)
             var key = Object.keys(req.files)
 
             var i = 0;
@@ -137,12 +140,7 @@ const postEmployeedata = async (req, res) => {
             var document_info = query(document_query);
             
             res.redirect('deshbord');
-           
-
-        });
-
-
-
+           });
 
     }
     catch (err) {

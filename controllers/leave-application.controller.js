@@ -30,8 +30,14 @@ const getLeaveapplication = async (req,res)=>{
 }
 const postLeaveapplication = async(req,res)=>{
     res.redirect('/deshbord/leave')
+    // if(req.body.leave_type === "" || req.body.leave_date === "" || req.body.leave_reason === ""){
+    //     return;
+    // }
+    // else{
+        let result = await query(`insert into leave_application(fk_emp_id, leave_date,leave_reason,leave_type,is_halfday) values('${req.session.emp_id}','${req.body.leave_date}','${req.body.leave_reason}','${req.body.leave_type}','${req.body.is_half}')`)
+    // }
 
-    let result = await query(`insert into leave_application(fk_emp_id, leave_date,leave_reason,leave_type,is_halfday) values('${req.session.emp_id}','${req.body.leave_date}','${req.body.leave_reason}','${req.body.leave_type}','${req.body.is_half}')`)
 }
+
 
 module.exports = {getLeaveapplication,postLeaveapplication}

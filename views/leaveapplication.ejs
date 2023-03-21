@@ -63,20 +63,20 @@
                 </div>
 
 
-                <form action="/deshbord/leave" method="POST">
+                <form action="/deshbord/leave" method="POST" onsubmit="return validateLeave()">
                     <div class="leave-application-form-container flex flex-col">
                         <div class="leave-application-top flex">
                             <div class="leave-date-container flex flex-col">
                                 <label for="leave_date">Leave Date</label>
-                                <input type="date" name="leave_date" />
+                                <input type="date" name="leave_date" id="leave-date"/>
                             </div>
         
                             <div class="leave-type-container flex flex-col">
                                 <label for="leave_type">Leave Type</label>
         
-                                <select name="leave_type">
+                                <select name="leave_type" id="leave-type">
 
-                                    <option value="none" disabled selected hidden>Type of Leave</option>
+                                    <option value="" disabled selected hidden>Type of Leave</option>
                                     <%if(leavesObject.cLeave < 6 ){ %>
                                         <option value="CL">CL</option>
                                     <% }  %>
@@ -100,7 +100,7 @@
                                         <label for="">Half Day</label>
                                     </div>
                                    <div>
-                                        <input type="radio" name="is_half" value="0">
+                                        <input type="radio" name="is_half" value="0" checked>
                                         <label for="">Full Day</label>
                                    </div>
                                 </div>
@@ -111,7 +111,7 @@
                         <div>
                             <div class="leave-reason-container">
                                 <label for="leave_reason">Leave Reason</label>
-                                <textarea name="leave_reason" class="leave-reason-text-box" cols="20" rows="10"></textarea>
+                                <textarea name="leave_reason" class="leave-reason-text-box" id="leave-reason-text-box" cols="20" rows="10"></textarea>
                             </div>
                         </div>
                        
@@ -159,5 +159,19 @@
 
         </div>
    </div>
+
+   <script>
+    let validateLeave = ()=>{
+        let leaveReason = document.getElementById('leave-reason-text-box').value
+        let leaveType = document.getElementById('leave-type').value
+        let leaveDate = document.getElementById('leave-date').value
+
+        if(leaveReason === "" || leaveDate === "" || leaveType === ""){
+            return false
+        }
+
+    }
+   </script>
+
 </body>
 </html>

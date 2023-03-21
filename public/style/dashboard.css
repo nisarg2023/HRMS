@@ -59,7 +59,7 @@ width: 80%;
 
 .side-container{
 padding: 32px;
-position: fixed;
+/* position: fixed; */
 height: 100vh;
 background-color: var(--white);
 left:0;

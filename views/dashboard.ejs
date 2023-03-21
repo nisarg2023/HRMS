@@ -6,13 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/2d11fdd863.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style/dashboard.css">
-    <link rel="stylesheet" href="style/checkin.css">
-    <link rel="stylesheet" href="../style/record-your-attendance.css">
-    <link rel="stylesheet" href="../style/add-your-comment.css">
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="stylesheet" href="/style/checkin.css">
+    <link rel="stylesheet" href="/style/record-your-attendance.css">
+    <link rel="stylesheet" href="/style/add-your-comment.css">
+    <link rel="stylesheet" href="/style/birthday.css">
+    <link rel="stylesheet" href="/style/holiday.css">
     <script src="script/checkin.js"></script>
     <title>HRMS- Dashboard</title>
 </head>
+
 <body>
     <div class="dashboard-wrapper flex flex-row">
         <div class="dashboard-right">
@@ -21,28 +24,40 @@
         </div>
         <div class="dashboard-left">
             <%- include('components/header.ejs',{name:"Dashboard"}) %>
-        <div class="dashboard-data-container flex flex-row">
-            <div class="col_3">
-                <%- include('components/record-your-attendance.ejs') %>`
-               
-            </div>
-      
+                <div class="dashboard-data-container flex flex-row">
+                    <div class="col_3">
+                        <%- include('components/record-your-attendance.ejs') %>`
 
-        <div class="col_3">
-           <%- include("components/add-your-comment.ejs") %>
-        </div>
-            
-            <div class="col_3">
-              <%- include("components/checkin")%>
-            
-            </div>
-           
+                    </div>
 
-            
-        </div>
-       
+
+                    <div class="col_3">
+                        <%- include("components/add-your-comment.ejs") %>
+                    </div>
+
+                    <div class="col_3">
+                        <%- include("components/checkin")%>
+
+                    </div>
+                 
+
+                    <div class="col_3">
+                        <%- include('components/birthday.ejs') %>`
+                    
+                    </div>
+                    
+                    
+                    <div class="col_3">
+                        <%- include("components/holiday.ejs") %>
+                    </div>
+
+
+
+                </div>
+
         </div>
     </div>
 
 </body>
-</html> 
+
+</html>

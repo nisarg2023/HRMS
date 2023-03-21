@@ -1,7 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkin&checkout</title>
+</head>
+<link rel="stylesheet" href="../public/style/checkin.css">
 
-   
-        <div class="card">
+<body>
+    <link rel="stylesheet" href="./checkin.css">
+
+    <body onload="loadDate()">
+        <div class="container">
 
 
             <div _ class="check_text">
@@ -14,10 +26,14 @@
                     <label>Current Date</label><br>
                     <span>17/3/2023</span>
                 </div>
-                
                 <div class="current">
                     <label>Current Time</label><br>
-                    <span id="Time"></span> 
+                    <span>10:19:12 AM</span>
+                    <span id="Date"></span>
+                </div>
+                <div class="current">
+                    <label>Current Time</label><br>
+                    <span id="Time"></span> >>>>>>> master
                 </div>
             </div>
 
@@ -27,14 +43,14 @@
 
                     <a href="#" onclick="checkIn()">
 
-                        <img src="/images/check-in.svg">
+                        <img src="./checkin_imgs/check-in.svg">
                         <span>Check In</span>
                     </a>
 
                 </div>
                 <div class="btn-brakein" id="brakein">
                     <a href="#" onclick="brakeIn()">
-                        <img src="/images/break-in.svg">
+                        <img src="./checkin_imgs/break-in.svg">
                         <span>Break In</span>
                     </a>
                 </div>
@@ -42,14 +58,14 @@
 
                 <div class="btn-checkout" id="checkout">
                     <a href="#" onclick="checkOut()">
-                        <img src="/images/check-out.svg">
+                        <img src="./checkin_imgs/check-out.svg">
                         <span>Check Out</span>
                     </a>
                 </div>
 
                 <div class="btn-brakeout" id="brakeout">
                     <a href="#" onclick="brakeOut()">
-                        <img src="/images/break-out.svg">
+                        <img src="./checkin_imgs/break-out.svg">
                         <span>Break Out</span>
                     </a>
                 </div>
@@ -86,7 +102,8 @@
         </div>
         </div>
 
-      
-    
+        <script src="../public/script/checkin.js"></script>
+    </body>
 
 
+</html>

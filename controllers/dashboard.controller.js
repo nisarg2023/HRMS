@@ -58,4 +58,4 @@ const getAttendance = async (req,res)=>{
     
 }
 
-module.exports = {getDashboard,getHotlines,getAttendance}
+module.exports = { getDashboard, getHotlines, getAttendance }

@@ -39,7 +39,7 @@ const postLogin = async (req, res) => {
                 } 
                 else{
                     
-                    res.redirect('/deshbord');    
+                    res.redirect('/dashbord');    
 
                 }
             }

@@ -34,8 +34,10 @@ const getUserProfilePhoto = async(fields="*",id="")=>{
 }
 
 const getDashboard = async(req,res)=>{
-    const userInfo = await getUserBasicinfo(req.session.emp_id)
-    res.render('dashboard',{"first_name": userInfo[0].first_name})
+    const userInfo = await getUserBasicinfo(req.session.emp_id);
+    const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
+    
+    res.render('dashboard',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo})
   
 }
 
@@ -43,14 +45,16 @@ const getHotlines = async(req,res)=>{
     const userInfo = await getUserBasicinfo(req.session.emp_id)
     const allUsers = await getUserBasicinfo();
     const profilePhotos =  await getUserProfilePhoto(["profile_photo"]);
+    const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
+
     console.log(profilePhotos)
-    res.render('hotline',{"first_name": userInfo[0].first_name,allUsers,profilePhotos});
+    res.render('hotline',{"first_name": userInfo[0].first_name,allUsers,profilePhotos,"profilePhoto":profilePhoto[0].profile_photo});
 }
 
 const getAttendance = async (req,res)=>{
-    const userInfo = await getUserBasicinfo(req.session.emp_id)
-    
-    res.render('attendance',{"first_name": userInfo[0].first_name});
+    const userInfo = await getUserBasicinfo(req.session.emp_id);
+    const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
+    res.render('attendance',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo});
     
 }
 

@@ -1,0 +1,101 @@
+.leave-application-container{
+    padding: 16px 32px;
+    color: var(--secondary-text-color);
+    font-weight: 600;
+}
+input, select{
+    color: var(--secondary-text-color);
+    font-size: 16px;
+}
+
+textarea{
+    width: 100%;
+    resize: none;
+    border-radius: 8px;
+}
+.leave-date-container{
+    width: 150px;
+}
+.leave-type-container{
+    width: 150px;
+}
+form{
+    width: 100%;
+}
+label{
+    margin-bottom: 3px;
+}
+
+.leave-application-form-container{
+    margin-top: 16px;
+    gap: 40px;
+    padding: 16px 32px;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow:  1px 1px 3px #000000ef;
+}
+.leave-application-top{
+    justify-content: space-between;
+    
+}
+.leave-application-submit-btn-container{
+
+    display: flex;
+    justify-content: center;
+}
+#leave-submit-btn{
+    border: none;
+    padding: 10px 18px;border-radius: 8px;
+    background-color: var(--primary-text-color);
+    font-weight: 700;
+    color: var(--white);
+}
+#leave-submit-btn:hover{
+    border: 2px solid var(--primary-text-color);
+    color : var(--primary-text-color);
+    background-color: var(--white);
+}
+.ishalf{
+    align-items: center;
+    gap: 30px;
+}
+
+.applied-leave-container{
+    padding: 16px 32px;
+}
+table{
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 1px 1px 3px  #111111;
+    padding-block: 20px;
+}
+
+tr{
+    border: 1px solid var(--secondary-text-color);
+}
+
+td,th{
+    padding: 10px;
+    text-align: center;
+}
+.status-pending{
+    display: inline-block;
+    padding-block: 8px;
+    width: 100px;
+    border-radius: 8px;
+    background-color: rgb(255, 182, 23);
+}
+.status-approved{
+    display: inline-block;
+    padding-block: 8px;
+    width: 100px;
+    border-radius: 8px;
+    background-color: rgb(34, 116, 9);
+}
+.status-rejected{
+    display: inline-block;
+    padding-block: 8px;
+    width: 100px;
+    border-radius: 8px;
+    background-color: rgb(160, 13, 13);
+}

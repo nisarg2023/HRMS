@@ -7,6 +7,8 @@
     <script src="https://kit.fontawesome.com/2d11fdd863.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style/dashboard.css">
     <link rel="stylesheet" href="style/checkin.css">
+    <link rel="stylesheet" href="../style/record-your-attendance.css">
+    <link rel="stylesheet" href="../style/add-your-comment.css">
     <script src="script/checkin.js"></script>
     <title>HRMS- Dashboard</title>
 </head>
@@ -20,45 +22,13 @@
             <%- include('components/header.ejs',{name:"Dashboard"}) %>
         <div class="dashboard-data-container flex flex-row">
             <div class="col_3">
-            <div class="dashboard-attendance-card flex">
-                <div class="dashboard-attendance-time-container flex">
-                    <div>
-                        <p class="dashboard-attendance-head">Current Date</p>
-                        <p class="dashboard-attendance-text">99/99/9999</p>
-                    </div>
-                    <div>
-                        <p class="dashboard-attendance-head">Current Time</p>
-                        <p class="dashboard-attendance-text">99:99:9999</p>
-                    </div>
-                </div>
-                <div class="dashboard-attendance-btn-container">
-                    <p class="check-in dashboard-attendance-btn">Check In</p>
-                    <p class="break-in dashboard-attendance-btn">Break In</p>
-                    <p class="break-out dashboard-attendance-btn">Break Out</p>
-                    <p class="check-out dashboard-attendance-btn">Check Out</p>
-                </div>
+                <%- include('components/record-your-attendance.ejs') %>`
+               
             </div>
-        </div>
+      
 
         <div class="col_3">
-            <div class="dashboard-attendance-card flex">
-                <div class="dashboard-attendance-time-container flex">
-                    <div>
-                        <p class="dashboard-attendance-head">Current Date</p>
-                        <p class="dashboard-attendance-text">99/99/9999</p>
-                    </div>
-                    <div>
-                        <p class="dashboard-attendance-head">Current Time</p>
-                        <p class="dashboard-attendance-text">99:99:9999</p>
-                    </div>
-                </div>
-                <div class="dashboard-attendance-btn-container">
-                    <p class="check-in dashboard-attendance-btn">Check In</p>
-                    <p class="break-in dashboard-attendance-btn">Break In</p>
-                    <p class="break-out dashboard-attendance-btn">Break Out</p>
-                    <p class="check-out dashboard-attendance-btn">Check Out</p>
-                </div>
-            </div>
+           <%- include("components/add-your-comment.ejs") %>
         </div>
             
             <div class="col_3">

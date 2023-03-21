@@ -6,6 +6,7 @@ const leaveApprove = require('../controllers/leave-approve.controller')
 
 router.get('/',deshbord.getDashboard);
 router.get('/get-hotline',deshbord.getHotlines);
+router.get('/get-attendance',deshbord.getAttendance);
 
 router.get('/leave',leaveApplication.getLeaveapplication)
 router.post('/leave',leaveApplication.postLeaveapplication)

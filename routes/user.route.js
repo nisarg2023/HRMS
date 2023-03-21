@@ -1,25 +1,39 @@
 const express = require('express');
-const router=express.Router();
+const router = express.Router();
 
-const loginController=require('../controllers/login.controller');
+const loginController = require('../controllers/login.controller');
 const registrationController = require('../controllers/registration.controller')
-const activationController=require('../controllers/activation.controller');
-const employeeController=require('../controllers/employee-data.controller');
-const {auth} = require('../middleware/auth')
+const activationController = require('../controllers/activation.controller');
+const employeeController = require('../controllers/employee-data.controller');
+const userEmail = require('../controllers/get-all-user-email.controller');
+const checkin = require("../controllers/checkin.controler");
+//const dashboardController=require('../controllers/dashboard.controller');
+// const employeeController=require('../controllers/employee-data.controller');
+const employeedataController = require('../controllers/employee-data.controller')
+const { auth } = require('../middleware/auth')
 
 
-router.get('/get-login',loginController.getLogin);
-router.post('/post-login',loginController.postLogin);
-router.get('/get-registration',registrationController.getRegistration);
-router.post('/post-registration',registrationController.postRegistration);
+router.get('/get-login', loginController.getLogin);
+router.post('/post-login', loginController.postLogin);
+router.get('/get-registration', registrationController.getRegistration);
+router.post('/post-registration', registrationController.postRegistration);
 
-router.get('/activation',activationController.activation);
-router.get('/activate',activationController.activate);
+router.get('/get-activate', activationController.getActivate);
+router.post('/post-activate', activationController.postActivate);
 
-
-router.get('/employee-data',employeeController);
-
+//router.get('/employee-data',employeeController);
 
 
+router.get('/get-allUsersEmail', userEmail.getAllUsersEmail);
 
-module.exports=router;
+//router.get('/dashboard', dashboardController )
+router.get('/get-employee-data', employeedataController.getEmployeedata);
+router.post('/post-employee-data', employeedataController.postEmployeedata);
+router.get('/get-city-data', employeedataController.getCitydata);
+router.post('/checkin', checkin.get_checkin);
+router.post('/brakein', checkin.get_brakein);
+router.post('/brakeout', checkin.get_brakeout);
+router.post('/checkout1', checkin.get_checkout);
+
+
+module.exports = router;

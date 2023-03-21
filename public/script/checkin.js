@@ -18,7 +18,6 @@ const checkIn = async() => {
     // 
 
 
-
     document.getElementById("checkin").classList.toggle("btn-checkin1");
     document.getElementById("brakein").classList.toggle("btn-brakein1");
     document.getElementById("checkout").classList.toggle("btn-checkout1");

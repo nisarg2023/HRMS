@@ -36,13 +36,16 @@ html {
 }
 
 .container {
-    display: grid;
-    width: 96%;
+    width: 1170px;
     margin: 0 auto;
-
-    gap: 1.8rem;
-    grid-template-columns: 14rem auto 23rem;
+    padding: 0 16px;
+    border-left: 2px solid sienna;
+    border-right: 2px solid sienna;
+    display: flex;
+    flex-wrap: wrap;
 }
+
+
 
 body {
     width: 100vw;
@@ -80,6 +83,7 @@ aside .logo img {
 }
 
 aside .sidebar {
+    
     display: flex;
     flex-direction: column;
     height: 86vh;
@@ -97,8 +101,8 @@ aside h3 {
     display: flex;
     align-items: center;
     gap: 1rem;
-    position: relative;
-    margin-left: 2rem;
+    /* position: relative; */
+    /* margin-left: 2rem; */
     height: 3.7rem;
 }
 
@@ -117,26 +121,50 @@ aside .sidebar a:last-child {
 /* ===============MAIN==================== */
 
 main {
+    width: 60%;
     margin-top: 1.4rem;
-}
-
-main .insights {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.6rem;
-}
-
-main .insights>div {
-    background: #fff;
-    padding: 2.8rem;
-    border-radius: 1rem;
-    margin-top: 1rem;
-    box-shadow: 0 1rem 2rem;
-
+    border: 2px solid rgb(22, 8, 3);
+    height: 10%;
 }
 
 .main-left {
-    padding: 20px;
+    display: flex;
+}
+
+.insights {
+    /* margin: 0.16px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around; */
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+    border: 2px solid orangered; */
+    gap: 1.6rem;
+    border: 2px solid orangered;
+        
+}
+
+.insights>div {
+
+    margin: 0.16px;  
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    background: #fff;
+    padding: 2.8rem;
+    border-radius: 1rem;
+    margin-top: 3rem;
+    gap: 2rem;
+    box-shadow: 0 1rem 2rem;
+}
+
+.card {
+    
+    border: 2px solid rgb(177, 171, 171);   
+    float: left;    
 }
 
 .card h2 {
@@ -151,7 +179,7 @@ h2:after {
 
 .end {
     display: flex;
-    margin-top: 2rem;
+    margin-left: 35rem;
 }
 
 .last {
@@ -211,11 +239,11 @@ h2:after {
 .ins {
     margin: auto;
     margin: 1rem;
-    margin-top: 3rem;
+    margin-top: 6rem;
     border: 1px solid red;
     border-radius: 1rem;
     padding: 2rem;
-    height: 85%;
+
 }
 
 main .ins>div {

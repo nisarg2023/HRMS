@@ -30,6 +30,24 @@ let btn_done = document.querySelector(".btn_done");
 let modal_wrapper = document.querySelector(".modal_wrapper");
 let shadow = document.querySelector(".shadow");
 
+async function fetch_state() {
+    const stateValue = document.getElementById('state').value;
+    // console.log(stateValue)
+    const ans = await  fetch(`/get-city-data?stateValue=${stateValue}`);
+    const data = await ans.json();
+    // console.log(data[1].city_name);
+
+    var citycombo = document.getElementById('city');
+    citycombo.innerHTML = '';
+
+    for (var i = 0; i < data.length; i++) {
+        const option = document.createElement('option');
+        option.value = data[i].city_name;
+        option.text = data[i].city_name;
+        citycombo.appendChild(option);
+    }
+
+};
 
 function checkBasicDetails(){
     let fname=document.querySelector("#fname").value;
@@ -47,9 +65,9 @@ function checkBasicDetails(){
 
 form_1_next_btn.addEventListener("click", function(){
     
-    if(!checkBasicDetails()){
-        return false;
-    }
+    // if(!checkBasicDetails()){
+    //     return false;
+    // }
 
 	form_1.style.display = "none";
 	form_2.style.display = "block";
@@ -112,56 +130,56 @@ form_4_back_btn.addEventListener("click", function(){
     
 });
 
-btn_done.addEventListener("click", function(){
+// btn_done.addEventListener("click", function(){
 
 
 
-	modal_wrapper.classList.add("active");
-});
+// 	modal_wrapper.classList.add("active");
+// });
 
-shadow.addEventListener("click", function(){
+// shadow.addEventListener("click", function(){
 
-    let basic_info={};
+//     let basic_info={};
 
-    basic_info.fname=document.querySelector("#fname").value;
-    basic_info.lname=document.querySelector("#lname").value;
-    basic_info.relationship_status=document.querySelector("#relationship").value;
-    basic_info.blood_group=document.querySelector("#blood_group").value;
-    basic_info.dob=document.querySelector("#dob").value;
+//     basic_info.fname=document.querySelector("#fname").value;
+//     basic_info.lname=document.querySelector("#lname").value;
+//     basic_info.relationship_status=document.querySelector("#relationship").value;
+//     basic_info.blood_group=document.querySelector("#blood_group").value;
+//     basic_info.dob=document.querySelector("#dob").value;
     
-    let male=document.querySelector("#male").checked;
-    let female=document.querySelector("#female").checked;
+//     let male=document.querySelector("#male").checked;
+//     let female=document.querySelector("#female").checked;
 
-    if(male==true){
-        basic_info.gender="male";
-    }else if(female==true){
-        basic_info.gender="female";
-    }else{
-        basic_info.gender="other";
-    }
+//     if(male==true){
+//         basic_info.gender="male";
+//     }else if(female==true){
+//         basic_info.gender="female";
+//     }else{
+//         basic_info.gender="other";
+//     }
 
-    basic_info.state=document.querySelector("#state").value;
-    basic_info.city=document.querySelector("#city").value;
+//     basic_info.state=document.querySelector("#state").value;
+//     basic_info.city=document.querySelector("#city").value;
 
-    //adding basic information
-    form_data.basic_info=basic_info;
-    form_data.education=all_education;
+//     //adding basic information
+//     form_data.basic_info=basic_info;
+//     form_data.education=all_education;
 
-    let exp={}
+//     let exp={}
 
-    exp.company_name=document.querySelector("#company_name").value;
-    exp.start_date=document.querySelector("#start_date").value;    
-    exp.end_date=document.querySelector("#end_date").value;    
-    exp.designation=document.querySelector("#designation").value;    
+//     exp.company_name=document.querySelector("#company_name").value;
+//     exp.start_date=document.querySelector("#start_date").value;    
+//     exp.end_date=document.querySelector("#end_date").value;    
+//     exp.designation=document.querySelector("#designation").value;    
     
-    //adding experience
-    form_data.experience=exp;
+//     //adding experience
+//     form_data.experience=exp;
 
-    console.log(form_data);
+//     console.log(form_data);
     
 
-	modal_wrapper.classList.remove("active");
-});
+// 	modal_wrapper.classList.remove("active");
+// });
 
 addEducation.addEventListener("click", function(){
 
@@ -171,6 +189,7 @@ addEducation.addEventListener("click", function(){
     let college=document.querySelector("#college");
 
     let display_added_education=document.querySelector(".display_added_education");
+	const hidden_value=document.getElementById("hidden_edu");
 
     let edu={};
     let id=all_education.length+1;
@@ -179,8 +198,11 @@ addEducation.addEventListener("click", function(){
     edu.passing_Year=passing_Year.value;
     edu.percentage=percentage.value;
     edu.college=college.value;
-
+	// console.log(edu);
+	
+	
     all_education.push(edu);
+	// hidden_value.value=all_education;
 
     let div=document.createElement("div");
     div.classList.add("added-education");
@@ -189,17 +211,36 @@ addEducation.addEventListener("click", function(){
     display_added_education.appendChild(div);
 
     let set_delete_btn=document.querySelectorAll(".delete-btn");
+    hidden_value.value=JSON.stringify(all_education);
+    // below comment does not delete this is for delete functionally
 
-    set_delete_btn.forEach(function(btn){
-        btn.addEventListener("click", function(){
-            btn.closest(".added-education").remove();
-            all_education.splice(Number(btn.getAttribute("data-id"))-1, 1);
+    // const entries = Object.values(hidden_value.value);
+    // console.log(entries);
+    // console.log(typeof(entries));
+
+    // set_delete_btn.forEach(function(btn){
+    //     btn.addEventListener("click", function(){
+    //         btn.closest(".added-education").remove();
+    //         all_education.splice(Number(btn.getAttribute("data-id"))-1, 1);
+	// 		console.log(Number(btn.getAttribute("data-id")));
+
+    //        const arr1= JSON.parse(`${hidden_value.value}`);
+    //        const entries = Object.entries(arr1);
+          
+    //        console.log(typeof(entries));
+	// 		hidden_value=entries.spice(Number(btn.getAttribute("data-id")),1);
             
-        })
-    })
+    //     })
+    // })
+    console.log(hidden_value.value);
+	
     
     course.value="";
     passing_Year.value="";
     percentage.value="";
     college.value="";
 })
+
+function submitBtn(){
+    console.log("helloo")
+}

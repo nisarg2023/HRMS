@@ -9,15 +9,16 @@
 </head>
 <body>
     <div class="activation-wrapper flex justify-center item-center">
+        <form action="/post-activate" method="post">
         <div class="activation-container flex item-center flex-col">
             <h1 class="">You Need To activate Your Account to use it.</h1>
-            <p class="active-btn" onclick="active(`<%= email%>`)" href="/activate">Active</p>
+            <input  type="submit" class="active-btn"  value="Active">
+
         </div>
+    </form>
     </div>
     <script>
-        function active(email){
-            fetch(`/activate?email=${email}`)
-        }
+        
     </script>
 </body>
 </html>

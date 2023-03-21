@@ -1,0 +1,24 @@
+.your_comment{
+    background-color: white;
+    padding: 1rem;
+}
+
+.input{
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+.textbox input{
+    padding: .8rem;
+    border: 1px solid rgba(0,0,0,.3);
+    border-radius: 10px ;
+    font-size: 14px;
+    
+}   
+
+button{
+    background-color: #00b04b;
+    color: #fff;
+    padding: .8rem;
+    border-radius: 10px;
+}

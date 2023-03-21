@@ -1,339 +1,110 @@
-body {
-    margin: 0px;
-
-}
-
-* {
-    box-sizing: border-box;
-}
-
-
-/* .container {
-    width: 1170px;
-    margin: 0 auto;
-    padding: 0 16px;
-    border-left: 2px solid sienna;
-    border-right: 2px solid sienna;
-    flex-wrap: wrap; */
-
-
-.dash-left {
-    margin-left: 2rem;
-    color: gray;
-}
-
-.sec1 {
-    border: 1px solid #fff;
-    margin-top: 3rem;
-}
-
-main {
-
-    margin-top: 1.4rem;
-    /* border: 2px solid rgb(22, 8, 3); */
-    height: 10%;
-}
-
-.main-left {
-    display: flex;
-}
-
-.end {
-    display: flex;
-    margin-left: 63rem;
-}
-
-.last {
-    gap: 1rem;
-    text-align: right;
-
-    display: flex;
-}
-
-.photo img {
-    margin-right: 2rem;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-}
-
-
-.column1 {
-
-    background-color: rgb(177, 250, 116);
-    border-radius: 1rem;
-    margin: 1rem;
-    gap: 1rem;
-
-    display: flex;
-    padding: 15px;
-}
-
-.column1 img {
-    height: 2.5rem;
-    width: 2.5rem;
-    margin-top: 11px;
-    margin-left: 1rem;
-    border-radius: 6rem;
-}
-
-.column2 {
-    
-   
-    background-color: rgb(147, 124, 250);
-    border-radius: 1rem;
-    margin: 1rem;
-    gap: 1rem;
-   
-    display: flex;
-    padding: 15px;
-}
-
-.column2 img {
-    height: 2.5rem;
-    width: 2.5rem;
-    margin-top: 11px;
-    margin-left: 1rem;
-    border-radius: 6rem;
-}
-
-.column3 {
-   
-    
-    background-color: rgb(253, 215, 89);
-    border-radius: 1rem;
-    margin: 1rem;
-    gap: 1rem;
-   
-    display: flex;
-    padding: 15px;
-}
-
-.column3 img {
-    height: 2.5rem;
-    width: 2.5rem;
-    margin-top: 11px;
-    margin-left: 1rem;
-    border-radius: 6rem;
-}
-
-.column4 {
-    
-    
-    background-color: rgb(161, 163, 159);
-    border-radius: 1rem;
-    margin: 1rem;
-    gap: 1rem;
-    
-    display: flex;
-    padding: 15px;
-}
-
-.column4 img {
-    height: 2.5rem;
-    width: 2.5rem;
-    margin-top: 11px;
-    margin-left: 1rem;
-    border-radius: 6rem;
-}
-
-.column5 {
-    
-   
-    background-color: rgb(230, 74, 82);
-    border-radius: 1rem;
-    margin: 1rem;
-    gap: 1rem;
-    
-    display: flex;
-    padding: 15px;
-}
-
-.column5 img {
-    height: 2.5rem;
-    width: 2.5rem;
-    margin-top: 11px;
-    margin-left: 1rem;
-    border-radius: 6rem;
-}
-
-.row1:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.sub1 {
-    padding: 30px;
-    border: 2px solid rgb(177, 171, 171);
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 29px 0px;
-    border-radius: 10px;
-}
-
-.search input[type=text] {
-    width: 300px;
-    height: 25px;
-    border-radius: 25px;
-    border: none;
-    border: 2px solid black;
-    padding: 14px;
-}
-
-.search {
-    float: left;
+.hotline{
+    background-color: white;
+    padding: 1rem;
     width: 100%;
-    margin-left: 70%;
 }
 
-.search button {
-    background-color: #0074D9;
-    color: #f2f2f2;
-    padding: 5px 10px;
-    border-radius: 3rem;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-/* Create four equal columns that floats next to each other */
-.column {
-    width: calc(100%/5);
-    padding: 1rem;
-
-
-    height: 300px;
-    margin: 1rem;
-    /* border: 1px solid brown; */
-    box-shadow: rgba(102, 102, 104, 0.2) 0px 2px 29px 0px;
-    border-radius: 30px;
-
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.column img {
-    height: 3rem;
-    width: 3rem;
-    margin-left: 85px;
-    margin-top: 20px;
-
-}
-
-.subcard1 {
-    background-color: rgb(219, 217, 215);
-    border-radius: 2rem;
-    padding: 25px;
-} 
-.row1 {
-    justify-content: space-around;
+.row{
     display: flex;
-}
-
-.row {
-    /* border: 2px solid rgb(241, 26, 62); */
     flex-wrap: wrap;
-    display: flex;
+   
+}
+.col_5{
+    width: calc(100%/5);
+    padding: .5rem;
 }
 
-.col_4 {
-    width: calc(100%/3);
-    padding: 1rem;
+.col_4{
+    width: calc(100%/4);
+    padding: .5rem;
 }
-
-.card {
-    border: 1px solid rgb(180, 178, 178);
-
-    padding: 1.5rem;
-
-    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+.user_card{
+    padding: .5rem;
     border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.uses{
+    margin-top: 2rem;
+}
+.user_card span{
+    background-color: rgba(178, 224, 107, 0.336);
+    color: green;
+    border-radius: 5px;
+    border: 1px solid green;
+    padding: 5px;
 }
 
-.empl img {
-    height: 3rem;
-    width: 3rem;
-}
-
-.emmtop {
+.user_image{
     display: flex;
+    justify-content: center;
+}
+.user_image img{
 
-    justify-content: space-between;
-    font-size: large;
+    height: 5rem;
+    width: 5rem;
 }
 
-.emp-status label {
-    color: rgb(5, 214, 5);
-    border: 1px solid rgb(5, 214, 5);
-
-
+.detail h4 {
+   text-align: center;
+   margin-top: 1rem;
 }
 
-.place {
-    color: grey;
-    font-size: 25px;
-}
-
-.empl {
+.detail p {
     text-align: center;
-}
-
-.emp-info {
-    text-align: center;
-    margin: 0;
-    line-height: 10px;
-}
-
-.emp-info span {
-    color: grey;
-    font-size: small;
-}
-
-.two-part p {
-    margin: 0;
-    line-height: 1.5rem;
-}
-
-.emp-infoul {
-    background-color: rgb(221, 238, 253);
-    border-radius: .5rem;
+ }
+ .info{
+    margin-top: 1rem;
+    background-color: #f1f5f9;
+    border-radius: 10px;
     padding: 1rem;
-    margin-top: 0.5rem;
-}
+ }
+ .info p{
+    font-size: 14px;
+    
+ }
 
-ul {
-    list-style: none;
-    padding-left: 0px;
-}
-
-li span {
-    margin-left: 1rem;
-}
-
-.l1 {
-    margin-top: 0.5rem;
-
-}
-
-.l1 i {
-    margin-right: 8px;
-}
-
-.two-part {
-
-    /* border: 2px solid rgb(3, 116, 18); */
-
+ .info p i{
+        margin-right: .3rem;
+    
+ }
+.top{
     display: flex;
     justify-content: space-between;
+    margin-bottom:2rem ;
+    font-size: 12px;
+}
+.top label{
+    color: gray;
+
+}
+.staus{
+    display: flex;
+    justify-content: flex-end;
+
+
 }
 
-.two-part span {
-    color: gray;
+.box{
+    background-color: brown;
+    border-radius: 10px;
+    padding: 1rem ;
+    color: white;
+    display: flex;
+}
+.logo{
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+.text label{
+    font-size: 16px;
+    font-weight: 400;
+    padding-bottom: .5rem;
+}
+.text p{
+    font-size: 18px;
+    font-weight: 600;
+    padding-top: .5rem;
+    
 }

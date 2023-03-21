@@ -1,0 +1,171 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave application </title>
+</head>
+<body>
+    <form action="/deshbord/leave" method="POST">
+        <label for="leave_date">Leave Date</label>
+        <input type="date" name="leave_date" />
+        <br>
+
+        <label for="leave_type">Leave Type</label>
+        <select name="leave_type">
+            <option value="none" disabled selected hidden>Type of Leave</option>
+            <option value="CL">CL</option>
+            <option value="PL">PL</option>
+            <option value="SL">SL</option>
+            <option value="UPL">UPL</option>
+        </select>
+        <br>
+
+        <label for="leave_reason">Leave Reason</label>
+        <textarea name="leave_reason" cols="20" rows="10"></textarea>
+        <br>
+        <label for="is_half">Half Day</label>
+        <input type="radio" name="is_half" value="1">
+        <label for="">Yes</label>
+        <input type="radio" name="is_half" value="0">
+        <label for="">No</label>
+
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div class="reqested-leaves-container">
+        <table>
+            <tr>
+                <th>Application Leave Date</th>
+                <th>Leave Status</th>
+            </tr>
+            <% result.forEach((data)=>{ %>
+            <tr>
+                    <td><%= data.leave_date.toJSON('dd-mm-yyyy').slice(0,10)%></td>
+                    <% if(data.is_cto_approved == 0){%>
+                    <td>Pending</td>
+                    <% } else if(data.is_cto_approved == 1){  %>
+                    <td>Approved</td>
+                    <% } else {%>
+                    <td>Rejected</td>
+                    <% } %>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+
+
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Application</title>
+    <link rel="stylesheet" href="/style/leave-application.css">
+    <link rel="stylesheet" href="/style/dashboard.css">
+
+</head>
+<body>
+   <div class="leave-application-wrapper flex">
+
+        <div class="dashboard-right">
+            <%- include('components/sidebar.ejs') %>
+
+        </div>
+        <div class="dashboard-left">
+            <%- include('components/header.ejs',{name:"Leave Application"}) %>
+            
+            <div class="leave-application-container flex">
+                <form action="/deshbord/leave" method="POST">
+                    <div class="leave-application-form-container flex flex-col">
+                        <div class="leave-application-top flex">
+                            <div class="leave-date-container flex flex-col">
+                                <label for="leave_date">Leave Date</label>
+                                <input type="date" name="leave_date" />
+                            </div>
+        
+                            <div class="leave-type-container flex flex-col">
+                                <label for="leave_type">Leave Type</label>
+        
+                                <select name="leave_type">
+                                    <option value="none" disabled selected hidden>Type of Leave</option>
+                                    <option value="CL">CL</option>
+                                    <option value="PL">PL</option>
+                                    <option value="SL">SL</option>
+                                    <option value="UPL">UPL</option>
+                                </select>
+                            </div>
+
+                            <div class="ishalf flex">
+                                    <div>
+                                        <input type="radio" name="is_half" value="1">
+                                        <label for="">Half Day</label>
+                                    </div>
+                                   <div>
+                                        <input type="radio" name="is_half" value="0">
+                                        <label for="">Full Day</label>
+                                   </div>
+                                </div>
+                        </div>
+                        
+                       
+
+                        <div>
+                            <div class="leave-reason-container">
+                                <label for="leave_reason">Leave Reason</label>
+                                <textarea name="leave_reason" cols="20" rows="10"></textarea>
+                            </div>
+                        </div>
+                       
+                        <div class="leave-application-submit-btn-container">
+                            <input id="leave-submit-btn" type="submit" value="Apply">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="applied-leave-container">
+                <table>
+                    <tr>
+                        <th>Leave Date</th>
+                        <th>Leave Type</th>
+                        <th>Half Or Full</th>
+                        <th>Leave Status</th>
+                        <th>Leave Reason</th>
+                    </tr>
+                    <% result.forEach((data)=>{ %>
+                        <tr>
+                            <td><%= data.leave_date.toJSON('dd-mm-yyyy').slice(0,10)%></td>
+                            <td><%= data.leave_type%></td>
+                            <% if(data.is_halfday == 0){%>
+                                <td>Full Day</td>
+                            <% }else {%>
+                                <td>Half Day</td>
+                            <% } %>
+                            
+                            <% if(data.is_cto_approved == 0){%>
+                                <td><span class="status-pending">Pending</span></td>
+                            <% } else if(data.is_cto_approved == 1){  %>
+                                <td ><span class="status-approved">Approved</span></td>
+                            <% } else {%>
+                                <td><span class="status-rejected">Rejected</span></td>
+                            <% } %>
+
+                            <td><%= data.leave_reason%></td>
+                        </tr>
+                    <% })%>
+                </table>
+            </div>
+
+        </div>
+   </div>
+</body>
+</html>

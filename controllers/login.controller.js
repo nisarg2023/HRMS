@@ -11,22 +11,15 @@ const getLogin = (req, res) => {
 const postLogin = async (req, res) => {
    
     try {
-        let email = req.body.email;
-        let pass = req.body.password;
-        console.log(email)
-        var verifyUser = `select * from hrms_employee where email = '${email}'`;
+        let {user_email,user_password} = req.body;
+        console.log(user_email, user_password)
+        
+        var sql = `select emp_id,email,isactivate,isdelete,password from hrms_employee where email = '${user_email}'`;
+        var result = await query(sql)
 
-
-        var result = await query(verifyUser)
-        console.log("result",result);
-
-
-
-
-
-        if (result.length == 0) {
-            return res.send("user not found")
-        }
+        // if (result.length == 0) {
+        //     return res.send("user not found")
+        // }
 
         const data = result[0].password;
       

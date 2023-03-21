@@ -30,6 +30,13 @@ router.get('/get-employee-data',employeedataController.getEmployeedata);
 router.post('/post-employee-data',employeedataController.postEmployeedata);
 router.get('/get-city-data',employeedataController.getCitydata);
 
+router.get('/get-employee-basicinfo',employeedataController.getEmployeeBasicInfo);
+router.get('/get-employee-edit',employeedataController.getEmployeeEdit);
+router.post('/post-employee-edit',employeedataController.postEmployeeEdit);
+
+
+
+
 
 
 

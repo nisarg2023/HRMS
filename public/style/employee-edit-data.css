@@ -1,0 +1,10 @@
+#optionbar{
+    display: flex;
+    text-transform: capitalize;
+}
+.optionbar{
+    margin: 0px 10px;
+}
+#optionbar{
+    border: 2px solid black;
+}

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/employee-edit-data.css">
+</head>
+<body>
+    <form action="/post-employee-edit" method="post">
+        <input type="hidden" name="id" value="<%= basic_info[0].basic_info_id %>">
+
+        <div id="optionbar">
+            <div class="optionbar" id="Basic_info">Basic info</div>
+            <div class="optionbar" id="Education_info">Education info</div>
+            <div class="optionbar" id="Work_Experince">Work Experince</div>
+        </div>
+
+        <fieldset id="table1" style="display: block;">
+            <h1>Basic Details</h1>
+            <div class="form-group">
+                <div class="table">
+                    <label for="fname">First Name:</label>
+                    <input type="text" id="fname" name="first_name" value="<%=basic_info[0].first_name%>" />
+                    <label for="lname">Last Name:</label>
+                    <input type="text" id="lname" name="last_name" value="<%=basic_info[0].last_name%>" />
+                    <% if(basic_info[0].gender=='female' ) {%>
+                        <input type="radio" id="male" name="gender" value="male" />
+                            Male
+                            <input type="radio" id="female" name="gender" value="female" checked />
+                            Female
+                            <input type="radio" id="other" name="gender" value="other" />
+                            Other
+                    <%}%>
+                    <% if(basic_info[0].gender=='male' ) {%>
+                        Gender:
+                            <input type="radio" id="male" name="gender" value="male" checked />
+                            Male
+                            <input type="radio" id="female" name="gender" value="female" />
+                            Female
+                            <input type="radio" id="other" name="gender" value="other" />
+                            Other
+                    <%}%>
+                    <% if(basic_info[0].gender=='other' ) {%>
+                        Gender:
+                            <input type="radio" id="male" name="gender" value="male" />
+                            Male
+                            <input type="radio" id="female" name="gender" value="female" />
+                            Female
+                            <input type="radio" id="other" name="gender" value="other" checked />
+                            Other
+                    <%}%>
+                            <label for="dob">Date ofBirth:</label>
+                            <input type="date" id="birth_date" name="birth_date" value="<%=basic_info[0].birth_date%>" />
+                            <label for="status">Relationship</label>
+                            <select name="relationship" id="status">
+                                    <%if(basic_info[0].relationship=='married') {%>
+                                        <option value="married" selected>married</option>
+                                        <option value="unmarried">unmarried</option>
+                                    <%} else if (basic_info[0].relationship=='unmarried') { %>
+                                        <option value="married" >married</option>
+                                        <option value="unmarried" selected>unmarried</option>
+                                    <%}%>  
+                            </select>
+                            <label for="designation">Desigation:</label>
+                            <input type="text" id="blood_group" name="blood_group"value="<%=basic_info[0].blood_group%>" />
+                            <label for="state">State:</label>
+                        <select name="state" id="stateName">
+                            <option hidden disabled selected value>
+                                select state
+                            </option>
+                            <% for(let i=0; i < stateName.length; i++) {%>
+                                <option value="<%= stateName[i].state_name %>" <% if(stateName[i].state_name==basic_info[0].state) { %>
+                                    selected <% } %> >
+                                        <%= stateName[i].state_name %>
+                                </option>
+                                <% } %>
+                        </select>
+                        <label for="city">City:</label>
+                        <select name="city" id="city">
+                            <option hidden disabled selected value>
+                                <%=basic_info[0].city%>
+                            </option>
+                        </select>
+                </div>
+            </div>
+        </fieldset>
+    
+            
+            <fieldset id="table2" style="display: none;">
+                <h1>Education Info</h1>
+                    <div class="form-group">
+                        <%for(i=0;i<education.length;i++){%>
+                            <div class="education">
+                                <div id="education" class="education">
+                                    <div class="education-item">
+                                        <label for="status">Course</label>
+                                        <select name="course_name" id="status">
+                                            <%if(education[0].course_name=='HSC') {%>
+                                                <option value="HSC" selected>HSC</option>
+                                                <option value="SSC">SSC</option>
+                                            <%} else if (education[0].course_name=='SSC') { %>
+                                                <option value="HSC" >HSC</option>
+                                                <option value="SSC" selected>SSC</option>
+                                            <%}%>
+                                            </select>
+                                            Passing Year:
+                                            <input type="text" name="passing_year" value="<%=education[i].passing_year%>" />
+                                            percentage:
+                                            <input type="text" name="marks" value="<%=education[i].marks%>" />
+                                            College:
+                                            <input type="text" name="college_school" class="board" value="<%=education[i].college_school%>" />
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <%}%>
+                    <button type="button" id="add-education-button">+</button>
+            </fieldset>
+
+            <fieldset id="table3" style="display: none;">
+                <h1>Work Experience</h1>
+                <div class="form-group">
+                <%for(i=0;i<work.length;i++){%>
+                    <div id="experience">
+                        <div id="experience-details">
+                            Comapany Name:
+                            <input type="text" id="company_name" name="company_name" value="<%=work[i].company_name%>" />
+                            From
+                            <input type="date" id="start-date" name="start_date" value="<%=work[i].start_date%>" />
+                            To:
+                            <input type="date" id="end-date" name="end_date" value="<%=work[i].end_date%>" />
+                            Designation:
+                            <input type="text" name="designation" value="<%=work[i].designation%>" />
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+                
+            </fieldset>
+                <input type="submit" class="btn" value="submit">
+        </form>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const stateSelect = document.getElementById('stateName');
+        const citySelect = document.getElementById('city');
+        stateSelect.addEventListener('change', () => {
+            const stateId = stateSelect.value;
+            console.log(stateId)
+            fetch(`/get-city-data?stateValue=${stateId}`)
+                .then((response) => {return response.json()})
+                .then((cityData) => {
+                    console.log(cityData)
+                    citySelect.innerHTML = '';
+                    cityData.forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city.city_name;
+                        option.text = city.city_name;
+                        citySelect.add(option);
+                    });
+                });
+        });
+    });
+
+
+    const educationDetails = document.getElementById("education");
+    const addEducationButton = document.getElementById("add-education-button");
+    addEducationButton.addEventListener("click", function () {
+        const educationItem = document.createElement("div");
+        educationItem.classList.add("education-item");
+        educationItem.innerHTML = `
+    <tr>
+        <td>
+            <label for="status">Course</label>
+            <select name="course_name" id="status">
+                <%if(education[0].course_name=='HSC') {%>
+                    <option value="HSC" selected>HSC</option>
+                    <option value="SSC">SSC</option>
+                <%} else if (education[0].course_name=='SSC') { %>
+                    <option value="HSC" >HSC</option>
+                    <option value="SSC" selected>SSC</option>
+                <%}%>  
+            </select>
+        </td>
+        <td>
+            Passing Year:
+            <input type="text" name="passing_year" class="passing_year" />
+        </td>
+        <td>
+            percentage:
+            <input type="text" name="marks" />
+        </td>
+        <td>
+            College:
+            <input type="text" name="college_school" />
+        </td>        
+    </tr>
+    </br>
+  `;
+        educationDetails.appendChild(educationItem);
+    });
+
+    let Basic_info = document.getElementById('Basic_info');
+    let conatct = document.getElementById('Education_info');
+    let Work_Experince = document.getElementById('Work_Experince');
+    let social = document.getElementById('social');
+    let table1 = document.getElementById('table1');
+    let table2 = document.getElementById('table2');
+    let table3 = document.getElementById('table3');
+
+    Basic_info.addEventListener('click',(req,res)=>{
+        Basic_info.style.fontWeight = '600';
+        Education_info.style.fontWeight = '100';
+        Work_Experince.style.fontWeight = '100';
+
+        Basic_info.style.borderWidth = '2px 2px 2px 0px'
+        Education_info.style.borderBottom = 'none';
+        Work_Experince.style.borderBottom = 'none'
+        if(table1.style.display == "none"){
+            table1.style.display = "block"
+            table2.style.display = "none"
+            table3.style.display = "none"
+        }
+        
+    })
+    Education_info.addEventListener('click',(req,res)=>{
+        Basic_info.style.fontWeight = '100';
+        Education_info.style.fontWeight = '600';
+        Work_Experince.style.fontWeight = '100';
+
+        Basic_info.style.borderBottom = 'none';
+        Education_info.style.borderBottom = '1px 1px 1px 0px solid red'
+        Work_Experince.style.borderBottom = 'none'
+        
+        if(table2.style.display == "none"){
+            table1.style.display = "none"
+            table2.style.display = "block"
+            table3.style.display = "none"
+        }
+    })
+    Work_Experince.addEventListener("click",(req,res)=>{
+        Basic_info.style.fontWeight = '100';
+        Education_info.style.fontWeight = '100';
+        Work_Experince.style.fontWeight = '600';
+
+        Basic_info.style.borderBottom = 'none';
+        Education_info.style.borderBottom = 'none';
+        Work_Experince.style.borderBottom = '1px 1px 1px 0px solid red'
+        
+
+        if(table3.style.display == "none"){
+            table1.style.display = "none"
+        table2.style.display = "none"
+        table3.style.display = "block"
+        }
+       
+    })
+
+</script>
+</html>

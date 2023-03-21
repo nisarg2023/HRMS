@@ -18,6 +18,8 @@ const checkIn = async() => {
     // 
 
 
+
+
     document.getElementById("checkin").classList.toggle("btn-checkin1");
     document.getElementById("brakein").classList.toggle("btn-brakein1");
     document.getElementById("checkout").classList.toggle("btn-checkout1");
@@ -115,9 +117,6 @@ const checkOut = async() => {
 
     })
 
-    let data = await res.json();
-
-
     // 
 
     if (confirm("Do you really want to checkout") == true) {
@@ -130,39 +129,19 @@ const checkOut = async() => {
     } else {
         return false
     }
-
 }
 
 //
 
+
+
 const loadDate = () => {
+    setInterval(() => {
+        time = new Date();
+        let t = time.toLocaleTimeString();
 
-    let currentdate = document.getElementById("Date");
-    let currenttime = document.getElementById("Time");
-    const date = new Date().toLocaleTimeString;
-    let hours = date.getHours();
-    let minuts = date.getMinutes();
-    let second = date.getSeconds();
-    let day = date.getDate();
-    let month = date.getMonth();
-    let year = date.getFullYear();
+        document.getElementById("Time").innerHTML = t;
 
-    if (second < 10) {
-        second = "0" + second
-    }
-    if (minuts < 10) {
-        minuts = "0" + minuts
-    }
-    if (hours < 10) {
-        hours = "0" + hours
-    }
-    if (month < 10) {
-        month = "0" + month
-    }
-    if (day < 10) {
-        day = "0" + day
-    }
-    currenttime.innerHTML = `${hours}:${minuts}:${second}`;
-    currentdate.innerHTML = `${day}/${month}/${year}`;
+    }, 1000);
 
 }

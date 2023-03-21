@@ -1,11 +1,15 @@
-const getDashboard = (req,res)=>{
+const getDashboard = (req, res) => {
     res.render('dashboard')
-    //res.send("hello");
+        //res.send("hello");
 
 }
 
-const getHotlines = (req,res)=>{
+const getHotlines = (req, res) => {
     res.render('hotline');
 }
 
-module.exports = {getDashboard,getHotlines}
+const getAttendance = (req, res) => {
+    res.render('attendance');
+}
+
+module.exports = { getDashboard, getHotlines, getAttendance }

@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+<<<<<<< HEAD
 body {
     background-color: aliceblue;
 }
 
 .card_check {
+=======
+
+
+
+
+.card_check {
+   
+    
+>>>>>>> 44389960cdf49a9acb0a6bcca99fc77f5fbed21a
     padding: 16px;
     /* width: 300px; */
     text-align: left;

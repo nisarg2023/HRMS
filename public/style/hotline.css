@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     margin: 0px;
 
@@ -336,4 +337,115 @@ li span {
 
 .two-part span {
     color: gray;
+=======
+.hotline{
+    background-color: white;
+    padding: 1rem;
+    width: 100%;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+.col_5{
+    width: calc(100%/5);
+    padding: .5rem;
+}
+
+.col_4{
+    width: calc(100%/4);
+    padding: .5rem;
+}
+.user_card{
+    padding: .5rem;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.uses{
+    margin-top: 2rem;
+}
+.user_card span{
+    background-color: rgba(178, 224, 107, 0.336);
+    color: green;
+    border-radius: 5px;
+    border: 1px solid green;
+    padding: 5px;
+}
+
+.user_image{
+    display: flex;
+    justify-content: center;
+}
+.user_image img{
+
+    height: 5rem;
+    width: 5rem;
+}
+
+.detail h4 {
+   text-align: center;
+   margin-top: 1rem;
+}
+
+.detail p {
+    text-align: center;
+ }
+ .info{
+    margin-top: 1rem;
+    background-color: #f1f5f9;
+    border-radius: 10px;
+    padding: 1rem;
+ }
+ .info p{
+    font-size: 14px;
+    
+ }
+
+ .info p i{
+        margin-right: .3rem;
+    
+ }
+.top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:2rem ;
+    font-size: 12px;
+}
+.top label{
+    color: gray;
+
+}
+.staus{
+    display: flex;
+    justify-content: flex-end;
+
+
+}
+
+.box{
+    background-color: brown;
+    border-radius: 10px;
+    padding: 1rem ;
+    color: white;
+    display: flex;
+}
+.logo{
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+.text label{
+    font-size: 16px;
+    font-weight: 400;
+    padding-bottom: .5rem;
+}
+.text p{
+    font-size: 18px;
+    font-weight: 600;
+    padding-top: .5rem;
+    
+>>>>>>> 44389960cdf49a9acb0a6bcca99fc77f5fbed21a
 }

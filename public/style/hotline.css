@@ -59,10 +59,24 @@
     border-radius: 10px;
     padding: 1rem;
  }
+ .info p{
+    font-size: 14px;
+    
+ }
+
+ .info p i{
+        margin-right: .3rem;
+    
+ }
 .top{
     display: flex;
     justify-content: space-between;
     margin-bottom:2rem ;
+    font-size: 12px;
+}
+.top label{
+    color: gray;
+
 }
 .staus{
     display: flex;

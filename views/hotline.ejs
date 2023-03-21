@@ -1,30 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/2d11fdd863.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../style/dashboard.css">
-    
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/2d11fdd863.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../style/dashboard.css" />
+    <link rel="stylesheet" href="../style/hotline.css" type="text/css" />
+
+
     <title>HRMS- Dashboard</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="dashboard-wrapper flex flex-row">
-        <div class="dashboard-right">
-            <%- include('components/sidebar.ejs') %>
+      <div class="dashboard-right">
+        <%- include('components/sidebar.ejs') %>
+      </div>
+      <div class="dashboard-left">
+        <%- include('components/header.ejs',{name:"Hotline"}) %>
 
-        </div>
-        <div class="dashboard-left">
-            <%- include('components/header.ejs',{name:"Hotline"}) %>
-       
-            <div class="dashboard-data-container flex flex-row">
-                <%- include('components/all-employee.ejs')%>
+        <div class="dashboard-data-container flex flex-row">
+          <div class="hotline">
+            <div class="hotline_top">
+              <div class="row">
+                <div class="col_5">
+                
+                    <div class="box">
+                    <div class="logo">
+                        <i class="fa-solid fa-users fa-2x"></i>
+                    </div>
+                    <div class="text">
+                      <label>Online</label>
+                      <p>291</p>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col_5">
+                    <div class="box">
+                      <div class="logo">
+                        <i class="fa-solid fa-users fa-2x"></i>
+                      </div>
+                      <div class="text">
+                        <label>Online</label>
+                        <p>291</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col_5">
+                    <div class="box">
+                      <div class="logo">
+                        <i class="fa-solid fa-users fa-2x"></i>
+                      </div>
+                      <div class="text">
+                        <label>Online</label>
+                        <p>291</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col_5">
+                    <div class="box">
+                      <div class="logo">
+                        <i class="fa-solid fa-users fa-2x"></i>
+                      </div>
+                      <div class="text">
+                        <label>Online</label>
+                        <p>291</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col_5">
+                    <div class="box">
+                      <div class="logo">
+                        <i class="fa-solid fa-users fa-2x"></i>
+                      </div>
+                      <div class="text">
+                        <label>Online</label>
+                        <p>291</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+              </div>
             </div>
-        </div>
-        
-    </div>
 
-</body>
+
+            <div class="uses">
+                <div class="row">
+                    <%for(var i=0;i<10;i++){%>
+                   <%- include('components/hoteline-user-card.ejs')%>
+                   <%}%>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

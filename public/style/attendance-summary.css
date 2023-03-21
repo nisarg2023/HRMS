@@ -1,0 +1,54 @@
+.attendance-summary
+{
+    background-color: white;
+    padding: 1rem;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.col_7{
+    width: calc(100%/7);
+    padding: .5rem;
+}
+
+.box{
+    background-color: brown;
+    border-radius: 10px;
+    padding: 1rem .5rem;
+    color: white;
+}
+.box label{
+    font-size: 14px;
+}
+
+.box p{
+    font-size: 16px;
+    margin-top: .5rem;
+}
+
+table{
+    border: 1px solid #c8ced3;
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 10px;
+  
+    border-collapse: separate;
+    border-spacing: 0;
+}
+th{
+    
+    color: white;
+    border: none;
+}
+
+td{
+    text-align: center;
+    padding: .5rem;
+    border-bottom: 1px solid #c8ced3;
+}
+
+tr{
+}

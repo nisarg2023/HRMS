@@ -12,6 +12,7 @@ const employeedataController=require('../controllers/employee-data.controller')
 const {auth} = require('../middleware/auth')
 
 
+
 router.get('/get-login',loginController.getLogin);
 router.post('/post-login',loginController.postLogin);
 router.get('/get-registration',registrationController.getRegistration);
@@ -32,5 +33,9 @@ router.get('/get-city-data',employeedataController.getCitydata);
 
 
 
+//sanisinh
+const profileController = require('../controllers/profile-controller')
+router.get('/userProfile',profileController.userRenderGet)
 
-module.exports=router;
+
+module.exports=router;  

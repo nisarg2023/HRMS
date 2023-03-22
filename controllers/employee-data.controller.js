@@ -148,7 +148,7 @@ const postEmployeedata = async (req, res) => {
         (1,'${path[0]}','${path[1]}','${path[2]}','${path[3]}','${path[4]}');`
             var document_info = query(document_query);
             
-            res.redirect('deshbord');
+            res.redirect('dashbord');
            });
 
     }

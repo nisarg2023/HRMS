@@ -34,5 +34,14 @@ router.post('/brakein', checkin.get_brakein);
 router.post('/brakeout', checkin.get_brakeout);
 router.post('/checkout', checkin.get_checkout);
 
+router.get('/get-employee-basicinfo',employeedataController.getEmployeeBasicInfo);
+router.get('/get-employee-edit',employeedataController.getEmployeeEdit);
+router.post('/post-employee-edit',employeedataController.postEmployeeEdit);
+
+
+
+
+
+
 
 module.exports = router;

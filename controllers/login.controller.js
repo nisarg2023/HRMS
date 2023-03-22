@@ -35,11 +35,10 @@ const postLogin = async (req, res) => {
                 const basicinfo = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${result[0].emp_id};`)
                 if(basicinfo.length == 0)
                 {
-                    res.redirect("/get-employee-data");
+                    res.redirect("/employee/get-employee-data");
                 } 
                 else{
-                    
-                    res.redirect('/dashbord');    
+                    res.redirect('dashbord');    
 
                 }
             }
@@ -59,4 +58,10 @@ const postLogin = async (req, res) => {
     }
 }
 
-module.exports = { postLogin, getLogin };
+const getLogout = (req,res)=>{
+    req.session.destroy()
+    res.clearCookie("sessionid");
+    res.redirect('get-login')
+}
+
+module.exports = { postLogin, getLogin,getLogout };

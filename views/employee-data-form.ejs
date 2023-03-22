@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HRMS</title>
-    <link rel="stylesheet" href="./style/employee-data.css">
+    <link rel="stylesheet" href="/style/employee-data.css">
 </head>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -15,9 +15,9 @@
 <body>
     <div class="wrapper">
         <h2 style="text-align: center;margin-bottom: 20px;">Employee Information</h2>
-        <form action="/post-employee-data" method="post" >
+        <form action="/employee/post-employee-data" method="post" enctype="multipart/form-data" >
             <div class="header">
-                <ul>    
+                <ul>
                     <li class="active form_1_progessbar">
                         <div>
                             <p>1</p>
@@ -70,9 +70,8 @@
                             </div>
                             <div class="input_wrap">
                                 <label class="text-label" for="blood_group">Blood Group</label>
-                               <input type="text" placeholder="e.g, B+" name="blood_group" class="input" id="blood_group">
-                                  
-                                    <input type="text" placeholder="e.g, B+" name="blood_group" class="input" id="blood_group">
+                                <input type="text" placeholder="e.g, B+" name="blood_group" class="input"
+                                    id="blood_group">
                             </div>
 
                             <div class="gender-panel">
@@ -90,186 +89,61 @@
 
                             <div class="input_wrap">
                                 <label class="text-label">state</label>
-                                <select name="state" id="state">
-                                    <option value="" selected>Select state</option>
-                                    <option value="Gujarat" selected>Gujarat</option>
-                                    </select>
-                            </div>
-                            <div class="input_wrap">
-                                <label class="text-label">city</label>
-                                <select name="city" id="city">
-                                <option value="" selected>Select city</option>
-                                <option value="Nadiad" selected>Nadiad</option>
-                            </select>
-                            </div>
-                        </div>
-        </form>
-        </div>
-        <div class="form_2 data_info" style="display: none;">
-            <h2>education</h2>
-            <form>
-                <div class="form_container">
-                    <div class="input_wrap">
-                        <label class="text-label">Course</label>
-                        <select name="course" id="course">
-                                <option value="" selected disabled>Select course</option>
-                                <option value="HSC" >HSC</option>
-                                <option value="SSC" >SSC</option>
-                            </select>
-                    </div>
-                    <div class="input_wrap">
-                        <label for="Passing_Year">Passing Year</label>
-                        <input type="number" placeholder="e.g, 2023" name="passing_Year" class="input" id="passing_Year">
-                    </div>
-                    <div class="input_wrap">
-                        <label for="percentage">Percentage</label>
-                        <input type="text" name="percentage" placeholder="e.g, 87.45" class="input" id="percentage">
-                    </div>
-                    <div class="input_wrap">
-                        <label for="college">College</label>
-                        <input type="text" placeholder="e.g, PG department of Computer Science" name="college" class="input" id="college">
-                    </div>
-
-                    <div class="input_wrap">
-                        <div class="add-education">add +</div>
-                    </div>
-
-                    <div class="input_wrap display_added_education">
-
-                    </div>
-
-
-
-                </div>
-                </section>
-        </div>
-        <div class="form_3 data_info" style="display: none;">
-            <h2>Experience</h2>
-            <section>
-                <div class="form_container">
-                    <div class="input_wrap">
-                        <label for="company_name">Company name</label>
-                        <input type="text" name="company_name" placeholder="e.g, abc company" class="input" id="company_name">
-                    </div>
-                    <div class="input_wrap">
-                        <label class="text-label" for="start_date">Start date</label>
-                        <input type="date" name="start_date" class="input" id="start_date">
-                    </div>
-                    <div class="input_wrap">
-                        <label class="text-label" for="end_date">End date</label>
-                        <input type="date" name="end_date" class="input" id="end_date">
-                    </div>
-                    <div class="input_wrap">
-                        <label for="designation">Designation</label>
-                        <input type="text" name="designation" placeholder="e.g, Web Designer" class="input" id="designation">
-                    </div>
-                </div>
-        </div>
-        </form>
-        </div>
-        <div class="form_4 data_info" style="display: none;">
-            <h2>documents</h2>
-            <form>
-                <div class="form_container">
-                    <div class="input_wrap">
-                        <label for="company">Resume</label>
-                        <input type="file" name="resume" class="input" id="resume">
-                    </div>
-                    <div class="input_wrap">
-                        <label for="company">Bank Cheque</label>
-                        <input type="file" name="resume" class="input" id="resume">
-                    </div>
-                    <div class="input_wrap">
-                        <label for="company">PAN Card</label>
-                        <input type="file" name="resume" class="input" id="resume">
-                    </div>
-                    <div class="input_wrap">
-                        <label for="company">Aathar Card</label>
-                        <input type="file" name="resume" class="input" id="resume">
-                    </div>
-
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="btns_wrap">
-        <div class="common_btns form_1_btns">
-            <a type="button" class="btn_next">Next <span class="icon"><ion-icon
-                            name="arrow-forward-sharp"></ion-icon></span></a>
-        </div>
-        <div class="common_btns form_2_btns" style="display: none;">
-            <a type="button" class="btn_back"><span class="icon"><ion-icon
-                            name="arrow-back-sharp"></ion-icon></span>Back</a>
-            <a type="button" class="btn_next">Next <span class="icon"><ion-icon
-                            name="arrow-forward-sharp"></ion-icon></span></a>
-        </div>
-        <div class="common_btns form_3_btns" style="display: none;">
-            <a type="button" class="btn_back"><span class="icon"><ion-icon
-                    name="arrow-back-sharp"></ion-icon></span>Back</a>
-            <a type="button" class="btn_next">Next <span class="icon"><ion-icon
-                    name="arrow-forward-sharp"></ion-icon></span></a>
-
-        </div>
-        <div class="common_btns form_4_btns" style="display: none;">
-            <a type="button" class="btn_back"><span class="icon"><ion-icon
-                            name="arrow-back-sharp"></ion-icon></span>Back</a>
-            <a type="button" class="btn_done">Save</a>
-        </div>
-
-    </div>
-   
-    <select name="state" id="state" onchange="fetch_state()">
+                                <select name="state" id="state" onchange="fetch_state()">
                                     <option value="" selected>Select state</option>
                                      <% for(let i=0;i<stateName.length;i++){%>
                                          <option value="<%=stateName[i].state_name%>"><%=stateName[i].state_name%></option>
                                          <%}%>
                                 </select>
-    </div>
-
-    <div class="input_wrap">
-        <label class="text-label">city</label>
-        <select name="city" id="city">
+                            </div>
+                           
+                            <div class="input_wrap">
+                                <label class="text-label">city</label>
+                                <select name="city" id="city" >
                                     <option value="" selected disabled >Select city</option>
                                    
                                 </select>
-    </div>
-    </div>
-    </section>
-    </div>
-    <div class="form_2 data_info" style="display: none;">
-        <h2>education</h2>
-        <section>
-            <div class="form_container">
-                <div class="input_wrap">
-                    <label class="text-label">Course</label>
-                    <select name="course" id="course">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="form_2 data_info" style="display: none;">
+                    <h2>education</h2>
+                    <section>
+                        <div class="form_container">
+                            <div class="input_wrap">
+                                <label class="text-label">Course</label>
+                                <select name="course" id="course">
                                     <option value="" selected disabled>Select course</option>
                                     <option value="HSC">HSC</option>
                                     <option value="SSC">SSC</option>
                                 </select>
-                </div>
-                <div class="input_wrap">
-                    <label for="Passing_Year">Passing Year</label>
-                    <input type="number" placeholder="e.g, 2023" name="passing_Year" class="input" id="passing_Year">
-                </div>
-                <div class="input_wrap">
-                    <label for="percentage">Percentage</label>
-                    <input type="text" name="percentage" placeholder="e.g, 87.45" class="input" id="percentage">
-                </div>
-                <div class="input_wrap">
-                    <label for="college">College</label>
-                    <input type="text" placeholder="e.g, PG department of Computer Science" name="college" class="input" id="college">
-                </div>
-                <div class="input_wrap">
-                    <input type="hidden" name="moreEdu_data" id="hidden_edu" value="">
-                </div>
-                <div class="input_wrap">
-                    <div class="add-education">add +</div>
-                </div>
+                            </div>
+                            <div class="input_wrap">
+                                <label for="Passing_Year">Passing Year</label>
+                                <input type="number" placeholder="e.g, 2023" name="passing_Year" class="input"
+                                    id="passing_Year">
+                            </div>
+                            <div class="input_wrap">
+                                <label for="percentage">Percentage</label>
+                                <input type="text" name="percentage" placeholder="e.g, 87.45" class="input"
+                                    id="percentage">
+                            </div>
+                            <div class="input_wrap">
+                                <label for="college">College</label>
+                                <input type="text" placeholder="e.g, PG department of Computer Science" name="college"
+                                    class="input" id="college">
+                            </div>
+                            <div class="input_wrap">
+                                <input type="hidden" name="moreEdu_data" id="hidden_edu" value="">
+                            </div>
+                            <div class="input_wrap">
+                                <div class="add-education">add +</div>
+                            </div>
 
-                <div class="input_wrap display_added_education">
+                            <div class="input_wrap display_added_education">
 
-                </div>
+                            </div>
 
 
 
@@ -321,47 +195,48 @@
                                 <label for="company">Aadhar Card</label>
                                 <input type="file" name="aadhar_card" class="input" id="resume">
                             </div>
+                            <div class="input_wrap">
+                                <label for="company">Profile Photo</label>
+                                <input type="file" name="profile_photo" class="input" id="resume">
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="btns_wrap">
+                <div class="common_btns form_1_btns">
+                    <a type="button" class="btn_next">Next <span class="icon"><ion-icon
+                                name="arrow-forward-sharp"></ion-icon></span></a>
+                </div>
+                <div class="common_btns form_2_btns" style="display: none;">
+                    <a type="button" class="btn_back"><span class="icon"><ion-icon
+                                name="arrow-back-sharp"></ion-icon></span>Back</a>
+                    <a type="button" class="btn_next">Next <span class="icon"><ion-icon
+                                name="arrow-forward-sharp"></ion-icon></span></a>
+                </div>
+                <div class="common_btns form_3_btns" style="display: none;">
+                    <a type="button" class="btn_back"><span class="icon"><ion-icon
+                                name="arrow-back-sharp"></ion-icon></span>Back</a>
+                    <a type="button" class="btn_next">Next <span class="icon"><ion-icon
+                                name="arrow-forward-sharp"></ion-icon></span></a>
+
+                </div>
+                <div class="common_btns form_4_btns" style="display: none;">
+                    <a type="button" class="btn_back"><span class="icon"><ion-icon
+                                name="arrow-back-sharp"></ion-icon></span>Back</a>
+
+                    <input type="submit" value="Submit" class="btn_done" onclick="submitBtn()">
+                </div>
 
             </div>
-        </section>
-    </div>
-    </div>
-    <div class="btns_wrap">
-        <div class="common_btns form_1_btns">
-            <a type="button" class="btn_next">Next <span class="icon"><ion-icon
-                                name="arrow-forward-sharp"></ion-icon></span></a>
-        </div>
-        <div class="common_btns form_2_btns" style="display: none;">
-            <a type="button" class="btn_back"><span class="icon"><ion-icon
-                                name="arrow-back-sharp"></ion-icon></span>Back</a>
-            <a type="button" class="btn_next">Next <span class="icon"><ion-icon
-                                name="arrow-forward-sharp"></ion-icon></span></a>
-        </div>
-        <div class="common_btns form_3_btns" style="display: none;">
-            <a type="button" class="btn_back"><span class="icon"><ion-icon
-                                name="arrow-back-sharp"></ion-icon></span>Back</a>
-            <a type="button" class="btn_next">Next <span class="icon"><ion-icon
-                                name="arrow-forward-sharp"></ion-icon></span></a>
-
-        </div>
-        <div class="common_btns form_4_btns" style="display: none;">
-            <a type="button" class="btn_back"><span class="icon"><ion-icon
-                                name="arrow-back-sharp"></ion-icon></span>Back</a>
-
-            <input type="submit" value="Submit" class="btn_done" onclick="submitBtn()">
-        </div>
-
-    </div>
-    </form>
-   
+        </form>
     </div>
 
 
 
 
-
-
-    <script src="./script/employee-data.js"></script>
+    <script src="/script/employee-data.js"></script>
     <script>
         function submitBtn() {
             console.log("e")

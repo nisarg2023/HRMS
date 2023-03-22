@@ -6,13 +6,27 @@
 input, select{
     color: var(--secondary-text-color);
     font-size: 16px;
+    border: 1px solid rgba(131, 131, 131, 0.445);
+    padding: 6px 12px;
+    border-radius: 5px;
+    background-color: var(--white);
 }
 
-textarea{
+
+.leave-reason-text-box{
+    margin-top: 10px;
     width: 100%;
     resize: none;
     border-radius: 8px;
+    outline-style: none;
+    font-size: 15px;
+    padding: 10px;
+    border: 1px solid rgba(131, 131, 131, 0.445);
 }
+input:hover,select:hover,textarea:hover{
+    border: 1px solid rgb(128, 9, 247);
+}
+
 .leave-date-container{
     width: 150px;
 }
@@ -27,12 +41,13 @@ label{
 }
 
 .leave-application-form-container{
-    margin-top: 16px;
+    margin-top: 32px;
     gap: 40px;
     padding: 16px 32px;
     border-radius: 10px;
+    /* background-color: var(--white); */
     width: 100%;
-    box-shadow:  1px 1px 3px #000000ef;
+    box-shadow:  0px 0px 5px #000000a2;
 }
 .leave-application-top{
     justify-content: space-between;
@@ -98,4 +113,42 @@ td,th{
     width: 100px;
     border-radius: 8px;
     background-color: rgb(160, 13, 13);
+}
+/* .leave-card{
+} */
+.leave-cards{
+    background-color: rgb(0, 0, 0);
+    border-radius: 8px;
+}
+.leave-card-col{
+    width: calc(100%/4);
+    padding: 16px;
+}
+
+.leave-card-data{
+    padding: 10px;
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    box-shadow: 1px 1px 6px #0000005d;
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    
+}
+
+.leave-card-1{
+    background-color: rgb(0, 114, 0);
+}
+.leave-card-2{
+    background-color: rgb(224, 157, 13);
+}
+.leave-card-3{
+    background-color: rgb(180, 1, 1);
+}
+.leave-card-4{
+    background-color: rgb(3, 153, 223);
+}
+.leave-card-remain{
+   column-gap: 20px;
 }

@@ -8,8 +8,8 @@ router.get('/', deshbord.getDashboard);
 router.get('/get-hotline', deshbord.getHotlines);
 router.get('/get-attendance', deshbord.getAttendance);
 
-router.get('/leave', leaveApplication.getLeaveapplication)
-router.post('/leave', leaveApplication.postLeaveapplication)
+router.get('/get-leave', leaveApplication.getLeaveapplication)
+router.post('/post-leave', leaveApplication.postLeaveapplication)
 
 router.get('/approveleave', leaveApprove.getApproveLeave)
 router.get('/post-approveleave', leaveApprove.postApproveLeave)

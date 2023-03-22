@@ -1,66 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leave application </title>
-</head>
-<body>
-    <form action="/deshbord/leave" method="POST">
-        <label for="leave_date">Leave Date</label>
-        <input type="date" name="leave_date" />
-        <br>
-
-        <label for="leave_type">Leave Type</label>
-        <select name="leave_type">
-            <option value="none" disabled selected hidden>Type of Leave</option>
-            <option value="CL">CL</option>
-            <option value="PL">PL</option>
-            <option value="SL">SL</option>
-            <option value="UPL">UPL</option>
-        </select>
-        <br>
-
-        <label for="leave_reason">Leave Reason</label>
-        <textarea name="leave_reason" cols="20" rows="10"></textarea>
-        <br>
-        <label for="is_half">Half Day</label>
-        <input type="radio" name="is_half" value="1">
-        <label for="">Yes</label>
-        <input type="radio" name="is_half" value="0">
-        <label for="">No</label>
-
-        <br>
-        <input type="submit" value="Submit">
-    </form>
-
-    <div class="reqested-leaves-container">
-        <table>
-            <tr>
-                <th>Application Leave Date</th>
-                <th>Leave Status</th>
-            </tr>
-            <% result.forEach((data)=>{ %>
-            <tr>
-                    <td><%= data.leave_date.toJSON('dd-mm-yyyy').slice(0,10)%></td>
-                    <% if(data.is_cto_approved == 0){%>
-                    <td>Pending</td>
-                    <% } else if(data.is_cto_approved == 1){  %>
-                    <td>Approved</td>
-                    <% } else {%>
-                    <td>Rejected</td>
-                    <% } %>
-            </tr>
-            <% }) %>
-        </table>
-    </div>
-
-
-
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +7,10 @@
     <title>Leave Application</title>
     <link rel="stylesheet" href="/style/leave-application.css">
     <link rel="stylesheet" href="/style/dashboard.css">
-
+    <script
+    src="https://kit.fontawesome.com/2d11fdd863.js"
+    crossorigin="anonymous"
+    ></script>
 </head>
 <body>
    <div class="leave-application-wrapper flex">
@@ -82,24 +22,75 @@
         <div class="dashboard-left">
             <%- include('components/header.ejs',{name:"Leave Application"}) %>
             
-            <div class="leave-application-container flex">
-                <form action="/deshbord/leave" method="POST">
+            <div class="leave-application-container flex flex-col">
+                <div class="leave-cards flex flex-row">
+                    <div class="leave-card-col">
+                        <div class="leave-card-data leave-card-1">
+                            <p><b>Casual Leaves</b></p>
+                            <div class="flex leave-card-remain">
+                                <p>Total- 6</p>
+                                <p>Used- <%= leavesObject.cLeave %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leave-card-col">
+                        <div class="leave-card-data leave-card-2">
+                            <p><b>Sick Leaves</b></p>
+                            <div class="flex leave-card-remain">
+                                <p>Total- 4</p>
+                                <p>Used- <%= leavesObject.sLeave %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leave-card-col">
+                        <div class="leave-card-data leave-card-3">
+                            <p><b>Paid Leaves</b></p>
+                            <div class="flex leave-card-remain">
+                                <p>Total- 6</p>
+                                <p>Used- <%= leavesObject.pLeave %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leave-card-col">
+                        <div class="leave-card-data leave-card-4">
+                            <p><b>Unplanned Leaves</b></p>
+                            <div class="flex leave-card-remain">
+                                <p>Total- 4</p>
+                                <p>Used- <%= leavesObject.upLeave %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <form action="/dashbord/post-leave" method="POST" onsubmit="return validateLeave()">
                     <div class="leave-application-form-container flex flex-col">
                         <div class="leave-application-top flex">
                             <div class="leave-date-container flex flex-col">
                                 <label for="leave_date">Leave Date</label>
-                                <input type="date" name="leave_date" />
+                                <input type="date" name="leave_date" id="leave-date"/>
                             </div>
         
                             <div class="leave-type-container flex flex-col">
                                 <label for="leave_type">Leave Type</label>
         
-                                <select name="leave_type">
-                                    <option value="none" disabled selected hidden>Type of Leave</option>
-                                    <option value="CL">CL</option>
-                                    <option value="PL">PL</option>
-                                    <option value="SL">SL</option>
+                                <select name="leave_type" id="leave-type">
+
+                                    <option value="" disabled selected hidden>Type of Leave</option>
+                                    <%if(leavesObject.cLeave < 6 ){ %>
+                                        <option value="CL">CL</option>
+                                    <% }  %>
+
+                                    <% if(leavesObject.pLeave < 6 ){%>
+                                        <option value="PL">PL</option>
+                                    <% }  %>
+
+                                    <% if(leavesObject.sLeave < 4){%>
+                                        <option value="SL">SL</option>
+                                    <% }  %>
+
                                     <option value="UPL">UPL</option>
+                                   
                                 </select>
                             </div>
 
@@ -109,7 +100,7 @@
                                         <label for="">Half Day</label>
                                     </div>
                                    <div>
-                                        <input type="radio" name="is_half" value="0">
+                                        <input type="radio" name="is_half" value="0" checked>
                                         <label for="">Full Day</label>
                                    </div>
                                 </div>
@@ -120,7 +111,7 @@
                         <div>
                             <div class="leave-reason-container">
                                 <label for="leave_reason">Leave Reason</label>
-                                <textarea name="leave_reason" cols="20" rows="10"></textarea>
+                                <textarea name="leave_reason" class="leave-reason-text-box" id="leave-reason-text-box" cols="20" rows="10"></textarea>
                             </div>
                         </div>
                        
@@ -145,6 +136,7 @@
                         <tr>
                             <td><%= data.leave_date.toJSON('dd-mm-yyyy').slice(0,10)%></td>
                             <td><%= data.leave_type%></td>
+                            
                             <% if(data.is_halfday == 0){%>
                                 <td>Full Day</td>
                             <% }else {%>
@@ -167,5 +159,19 @@
 
         </div>
    </div>
+
+   <script>
+    let validateLeave = ()=>{
+        let leaveReason = document.getElementById('leave-reason-text-box').value
+        let leaveType = document.getElementById('leave-type').value
+        let leaveDate = document.getElementById('leave-date').value
+
+        if(leaveReason === "" || leaveDate === "" || leaveType === ""){
+            return false
+        }
+
+    }
+   </script>
+
 </body>
 </html>

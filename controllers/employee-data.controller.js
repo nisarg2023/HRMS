@@ -122,8 +122,7 @@ const postEmployeedata = async (req, res) => {
 
             var experience_info = await query(experience_query)
         };
-
-            res.redirect('dashbord');
+            res.redirect('../dashbord');
 
 
         });

@@ -11,7 +11,7 @@ const getUserBasicinfo = async(id="")=>{
         return data;
     }
     else{
-
+        
     const data = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${id};`)
     return data;
     }
@@ -36,7 +36,7 @@ const getUserProfilePhoto = async(fields="*",id="")=>{
 const getDashboard = async(req,res)=>{
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
-    
+    console.log("session : ",req.session);
     res.render('dashboard',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo})
   
 }

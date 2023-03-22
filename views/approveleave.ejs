@@ -52,11 +52,11 @@
 
    <script>
     function approve(id,field,val){
-        fetch(`http://localhost:8000/deshbord/post-approveleave?leaveId=${id}&field=${field}&val=${val}`)
+        fetch(`http://localhost:8000/dashbord/post-approveleave?leaveId=${id}&field=${field}&val=${val}`)
         location.reload()
     }
     function reject(id,field,val){
-        fetch(`http://localhost:8000/deshbord/post-approveleave?leaveId=${id}&field=${field}&val=${val}`)
+        fetch(`http://localhost:8000/dashbord/post-approveleave?leaveId=${id}&field=${field}&val=${val}`)
         location.reload()
     }
    </script>

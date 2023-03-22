@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const conn = require('./config/dbConnect');
 const util =  require('util');
-const query =  util.promisify(conn.query).bind(conn)
+const query =  util.promisify(conn.query).bind(conn);
 
 
 
@@ -16,6 +16,7 @@ const query =  util.promisify(conn.query).bind(conn)
 const userRoutes = require('./routes/user.route');
 const employeeForm = require('./routes/employee-form.route');
 const dashbord = require('./routes/dashbord.route');
+const {auth } = require('./middleware/auth');
 
 
 //set up middlewares
@@ -37,8 +38,8 @@ app.set('view engine', 'ejs');
 //define routes
 
 app.use("/",userRoutes);
-app.use("/employee/",employeeForm);
-app.use("/dashbord/",dashbord);
+app.use("/employee/",auth,employeeForm);
+app.use("/dashbord/",auth,dashbord);
 
 // HEADER-UI
 // app.get("/dashboard", function(req,res){

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HRMS</title>
-    <link rel="stylesheet" href="./style/employee-data.css">
+    <link rel="stylesheet" href="/style/employee-data.css">
 </head>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -15,7 +15,7 @@
 <body>
     <div class="wrapper">
         <h2 style="text-align: center;margin-bottom: 20px;">Employee Information</h2>
-        <form action="/post-employee-data" method="post" >
+        <form action="/employee/post-employee-data" method="post" enctype="multipart/form-data" >
             <div class="header">
                 <ul>
                     <li class="active form_1_progessbar">
@@ -195,6 +195,10 @@
                                 <label for="company">Aadhar Card</label>
                                 <input type="file" name="aadhar_card" class="input" id="resume">
                             </div>
+                            <div class="input_wrap">
+                                <label for="company">Profile Photo</label>
+                                <input type="file" name="profile_photo" class="input" id="resume">
+                            </div>
 
                         </div>
                     </section>
@@ -232,7 +236,7 @@
 
 
 
-    <script src="./script/employee-data.js"></script>
+    <script src="/script/employee-data.js"></script>
     <script>
         function submitBtn() {
             console.log("e")

@@ -1,0 +1,72 @@
+.container1 {
+    width: 700px;
+    margin: auto;
+    padding: 0 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+.img_refress {
+    width: 40px;
+    height: 40px;
+}
+
+.refresh input {
+    padding: 10px;
+    border: 1px solid aliceblue;
+}
+
+.emplloyee_activity {
+    display: flex;
+    background-color: white;
+    padding: 16px;
+}
+
+.text_activity {
+    width: 50%;
+    margin-top: 0;
+}
+
+.text_activity h5 {
+    font-weight: 500;
+    font-size: 25px;
+    color: black;
+}
+
+.refresh {
+    width: 50%;
+}
+
+.refresh a {
+    background-color: black;
+}
+
+.activity_time {
+    color: gray;
+}
+
+.brake__out {
+    color: rgba(231, 189, 0, 0.925);
+}
+
+.activity_user {
+    width: auto;
+    margin-top: 10px;
+}
+
+.activity_detailes::-webkit-scrollbar {
+    width: 1em;
+}
+
+.activity_detailes::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.activity_detailes::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+.activity_detailes {
+    height: 200px;
+}

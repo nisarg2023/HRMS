@@ -33,7 +33,7 @@ let shadow = document.querySelector(".shadow");
 async function fetch_state() {
     const stateValue = document.getElementById('state').value;
     // console.log(stateValue)
-    const ans = await  fetch(`/get-city-data?stateValue=${stateValue}`);
+    const ans = await  fetch(`/employee/get-city-data?stateValue=${stateValue}`);
     const data = await ans.json();
     // console.log(data[1].city_name);
 

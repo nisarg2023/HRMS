@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 
-
-
-.card_check {
-   
-    
+.card {
     padding: 16px;
     /* width: 300px; */
     text-align: left;

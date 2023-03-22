@@ -8,3 +8,122 @@
 #optionbar{
     border: 2px solid black;
 }
+#table1{
+    display: flex;
+}
+
+.col1{
+    border: 2px solid black;
+    display: flex;
+    width: 100%;
+}
+#table2{
+    border: 3px solid red;
+}
+#table3{
+    border: 3px solid rgb(27, 27, 63);
+}
+.form3{
+    display: flex;
+}
+/* .thirdone{
+    border: 2px solid black;
+    margin: 20px;
+} */
+
+
+.form3col1{
+    width: 50%;
+    margin: 20px;
+    /* border: 2px solid black; */
+}
+.form3col2{
+    /* border: 2px solid black; */
+    width: 50%;
+    margin: 20px;
+
+}
+.form3col1 div{
+    margin: 20px;
+    }
+.form3col2 div{
+margin: 20px;
+}
+.mainhedar{
+    border: 2px solid rgb(38, 38, 78);
+    margin: 20px;
+    background-color: rgb(38, 38, 78);
+    color: white;
+}
+.mainhedar p{
+    margin: 20px;
+}
+
+
+
+
+
+
+.form2col1{
+    display: flex;
+    /* border: 2px solid black; */
+    /* width: 200%; */
+
+}
+.form2col2{
+    display: flex;
+    /* border:2px solid rgb(0, 0, 0) */
+}
+.form2col1 div{
+    margin: 20px;
+    margin-left:100px;
+}
+.form2col2 div{
+    margin: 20px;
+    margin-left:100px;
+}
+/* #table2 p{
+    margin: 20px;
+
+} */
+button {
+    background-color:rgb(38, 38, 78);
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100%;
+    background-color:rgb(38, 38, 78);
+    cursor: pointer;
+  }
+  
+input[type=text],input[type=date]{
+    width: 100%;
+
+}
+.first{
+    display: flex;
+    border: 2px solid black;
+}
+.basicinfo{
+    /* border: 2px solid red; */
+    /* margin: 100px; */
+    width: 20%;
+}
+.formgroup{
+    /* border: 2px solid blue; */
+    /* margin: 50px; */
+    width: 80%;
+    display: flex;
+}
+.formgroup div{
+    margin: 20px;
+}
+.basicinfo div{
+    margin: 50px;
+}

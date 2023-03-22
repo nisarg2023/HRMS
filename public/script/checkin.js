@@ -146,3 +146,17 @@ const loadDate = () => {
     }, 1000);
 
 }
+
+// for comment
+ async function addComment(){
+    var comment = document.getElementById('comment').value;
+    // console.log(comment);
+        const ans = await  fetch(`http://localhost:8000/deshbord/get-comment?comment=${comment}`);
+        const data = await ans.json();
+        console.log(data);
+        
+        const comment1=comment.value='';
+
+    
+};
+    

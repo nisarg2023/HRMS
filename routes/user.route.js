@@ -12,6 +12,7 @@ const employeedataController = require('../controllers/employee-data.controller'
 const { auth } = require('../middleware/auth')
 
 
+router.get('/', loginController.redirectLogin);
 router.get('/get-login', loginController.getLogin);
 router.post('/post-login', loginController.postLogin);
 router.get('/get-registration', registrationController.getRegistration);

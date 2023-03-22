@@ -32,7 +32,7 @@ const postLogin = async (req, res) => {
 
             if(result[0].isactivate)
             {
-                const basicinfo = await query(`SELECT basic_info_id,first_name FROM basic_info where fk_emp_id = ${result[0].emp_id};`)
+                const basicinfo = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${result[0].emp_id};`)
                 if(basicinfo.length == 0)
                 {
                     res.redirect("/employee/get-employee-data");

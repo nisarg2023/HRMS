@@ -3,15 +3,15 @@ const router = express.Router();
 
 const loginController = require('../controllers/login.controller');
 const registrationController = require('../controllers/registration.controller')
-const activationController=require('../controllers/activation.controller');
-
+const activationController = require('../controllers/activation.controller');
+const attendance_summary = require("../controllers/attendance.summary.controller")
 const employeeController = require('../controllers/employee-data.controller');
 const userEmail = require('../controllers/get-all-user-email.controller');
 const checkin = require("../controllers/checkin.controler");
 const employeedataController = require('../controllers/employee-data.controller')
 const { auth } = require('../middleware/auth')
 
-
+router.get('/attendance_summary', attendance_summary.attendancy_summary)
 router.get('/get-login', loginController.getLogin);
 router.post('/post-login', loginController.postLogin);
 router.get('/get-registration', registrationController.getRegistration);

@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 
 const getAllUsersEmail = async(req,res)=>{
 
-    const allUsersEmail = await query('SELECT email FROM hrms.hrms_employee;')
+    const allUsersEmail = await query('SELECT email FROM hrms_employee;')
     res.json(allUsersEmail.map(x=>x.email));
 
 }

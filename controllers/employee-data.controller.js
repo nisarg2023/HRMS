@@ -137,4 +137,3 @@ const postEmployeedata = async (req, res) => {
 }
 
 module.exports = { getEmployeedata, postEmployeedata, getCitydata };
-

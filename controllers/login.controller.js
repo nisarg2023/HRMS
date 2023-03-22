@@ -8,6 +8,12 @@ const getLogin = (req, res) => {
     res.render('login')
 }
 
+
+const redirectLogin = (req, res) => {
+   
+    res.redirect('/get-login')
+}
+
 const postLogin = async (req, res) => {
    
     try {
@@ -64,4 +70,4 @@ const getLogout = (req,res)=>{
     res.redirect('get-login')
 }
 
-module.exports = { postLogin, getLogin,getLogout };
+module.exports = { postLogin, getLogin,getLogout,redirectLogin };

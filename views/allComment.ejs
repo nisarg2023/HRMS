@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Comment</title>
+    <style>
+        .other {
+            color: black;
+        }
+
+        .selected {
+            color: red;
+        }
+
+        tr {
+            padding-top: 5px;
+        }
+
+        table,
+        td {
+            border: 2px solid rgb(187, 92, 55);
+            border-collapse: collapse;
+            
+
+
+        }
+        td{
+            padding: 0 1rem;
+        }
+        table{
+            margin: 0 auto;
+        }
+
+        body {
+            text-align: center;
+            background-color: rgb(245, 182, 245);
+            background: linear-gradient(-45deg, #f0987e, #c3c485, #83c1d8, #a4ddcf);
+            font-family: serif;
+        }
+        h1{
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Comment Record </h1>
+    <table>
+        <tr>
+            <td>Comment Id </td>
+            <td> Emp ID </td>
+            <td> Emp Name</td>
+            <td> Time </td>
+            <td> Date </td>
+            <td> Comment </td>
+            <td> Status </td>
+            <td> Read </td>
+
+        </tr>
+        <% for(var i=0;i<c.length;i++) {%>
+        <tr>
+            <td><%=c[i].emp_comment_id%></td>
+            <td><%=c[i].fk_emp_id%></td>
+            <td><%=c[i].first_name%></td>
+            <td><%=c[i].comment_time.toJSON('yyyy-mm-dd').slice(0,15)%></td>
+            <td><%=c[i].comment_date%></td>
+            <td><%=c[i].comment%></td>
+            <td><%=c[i].comment_status%></td>
+
+            <td> <a href="http://localhost:8000/dashbord/commentId?commentId=<%=c[i].emp_comment_id%>&comment=<%=c[i].comment%>" onclick="readComment(this.id)" id="<%=c[i].emp_comment_id%>"> Click </a></td>
+        </tr>
+        <%}%>
+    </table>
+    <script>
+       async function readComment(id){
+            console.log(id);
+            const ans = await fetch(`http://localhost:8000/deshbord/comment-id?commentId=${id}`);
+        }
+    </script>
+</body>
+</html>

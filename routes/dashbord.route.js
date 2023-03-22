@@ -14,5 +14,10 @@ router.post('/post-leave', leaveApplication.postLeaveapplication)
 router.get('/approveleave', leaveApprove.getApproveLeave)
 router.get('/post-approveleave', leaveApprove.postApproveLeave)
 
+router.get('/get-comment', deshbord.getComment);
+router.get('/allComment', deshbord.getCommentData);
+router.get('/commentId', deshbord.getCommentId);
+
+
 
 module.exports = router;

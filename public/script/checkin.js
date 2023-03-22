@@ -1,3 +1,21 @@
+// for comment 
+async function addComment(){
+    alert("aseficgaswifghaswfvuaswg")
+    var comment = document.getElementById('comment').value;
+            fetch(`http://localhost:8000/dashbord/get-comment?comment=${comment}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                
+            }).then((res)=>{
+            }).then((res)=>{
+                console.log(res);
+                var comment = document.getElementById('comment').value="";
+                
+            });
+        
+}
 const checkIn = async() => {
 
     let res = await fetch("/checkin", {

@@ -57,5 +57,41 @@ const getAttendance = async (req,res)=>{
     res.render('attendance',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo});
     
 }
+const getComment = async (req,res)=>{
+    const userInfo = await getUserBasicinfo(req.session.emp_id);
+    var comment = req.query.comment;
+    console.log(userInfo);
+    console.log(userInfo[0].basic_info_id);
+    var commentQuery = `insert into employee_comment (fk_emp_id,comment) values (${userInfo[0].basic_info_id},'${comment}');`
+    var commentData=await query(commentQuery);
+    res.json({message:true});
+}
+const getCommentId = async (req,res)=>{
+    var commentId= req.query.commentId;
+    var comment= req.query.comment;
+    console.log(comment);
+    if(commentId){
 
-module.exports = { getDashboard, getHotlines, getAttendance }
+        console.log(commentId);
+        var idQuery=`update employee_comment  set comment_status="1" where emp_comment_id="${commentId}";`
+        var idData= await query(idQuery);
+    }
+    else{
+        res.json()
+    }
+}
+const getCommentData = async (req,res)=>{
+    const userInfo = await getUserBasicinfo(req.session.emp_id);
+    console.log(userInfo[0].first_name);
+
+    var allCommentQuery=`select employee_comment.emp_comment_id,employee_comment.fk_emp_id,basic_info.first_name,employee_comment.comment_time,
+    employee_comment.comment_date,employee_comment.comment,employee_comment.comment_status from employee_comment left join basic_info 
+    on employee_comment.fk_emp_id=basic_info.fk_emp_id order by employee_comment.emp_comment_id ;`
+    var allCommentData= await query(allCommentQuery);
+    console.log(allCommentData);
+    res.render('allComment',{c:allCommentData,name:userInfo[0].first_name});
+    // console.log(allCommentData);
+    // <%=c[i].date.toJSON('yyyy-mm-dd').slice(0,15)%>
+}
+
+module.exports = { getDashboard, getHotlines, getAttendance,getComment ,getCommentId,getCommentData}

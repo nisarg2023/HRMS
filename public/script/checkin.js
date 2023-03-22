@@ -15,7 +15,7 @@ const checkIn = async() => {
 
     console.log(data);
 
-    // 
+    
 
 
 
@@ -32,6 +32,7 @@ const checkIn = async() => {
 
 
 }
+
 const brakeOut = async() => {
 
 
@@ -106,7 +107,7 @@ const brakeIn = async() => {
 }
 const checkOut = async() => {
 
-    let res = await fetch("/checkout1", {
+    let res = await fetch("/checkout", {
         method: "post",
         headers: {
             "Content-Type": 'application/json'

@@ -32,7 +32,7 @@ router.get('/get-allUsersEmail', userEmail.getAllUsersEmail);
 router.post('/checkin', checkin.get_checkin);
 router.post('/brakein', checkin.get_brakein);
 router.post('/brakeout', checkin.get_brakeout);
-router.post('/checkout1', checkin.get_checkout);
+router.post('/checkout', checkin.get_checkout);
 
 
 module.exports = router;

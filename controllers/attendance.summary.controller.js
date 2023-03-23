@@ -7,6 +7,7 @@ const moment = require("moment");
 const attendancy_summary = async(req, res) => {
     let info_id = 1;
     // let total_time = [];
+    let totalworkinhours = 0;
     let braketime = 0;
     let alltime_work_hours = 0;
     let total_brake = [];
@@ -49,7 +50,8 @@ const attendancy_summary = async(req, res) => {
 
 
         }
-
+        totalworkinhours += braketime;
+        console.log("in", totalworkinhours);
         let total_brake_ = moment.duration(braketime);
 
         let m = total_brake_.minutes();
@@ -63,13 +65,38 @@ const attendancy_summary = async(req, res) => {
 
     }
 
+    totalworkinhours += alltime_work_hours;
+    console.log("***", alltime_work_hours - totalworkinhours);
+    let q = moment.duration(totalworkinhours);
+
+    let ho = q.hours();
+    let all_stafing_hours = ho;
+    let execute = totalworkinhours - alltime_work_hours;
+
+    let todasd = moment.duration(execute);
+    let dif_mins = moment.duration(totalworkinhours);
+
+    let gg = todasd.minutes();
+    let minuts = dif_mins.minutes();
+
+    console.log("min*565*", gg, minuts);
+
+    let productiveratio = (((minuts - gg) / minuts) * 100);
+    console.log();
+
+
+    console.log("minus", productiveratio);
+
+
+
 
     let totlchecktime = moment.duration(alltime_work_hours);
-    let m = totlchecktime.minutes();
+
     let h = totlchecktime.hours();
-    let all_work_hours = h + ":" + m;
+    let all_work_hours = h;
     console.log("brakes", total_brake);
-    res.render("attendance-summary.ejs", { data1, total_brake, total_workhours, all_work_hours })
+
+    res.render("attendance-summary.ejs", { data1, total_brake, total_workhours, all_work_hours, all_stafing_hours, productiveratio })
 }
 
 module.exports = { attendancy_summary }

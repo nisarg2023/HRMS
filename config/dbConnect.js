@@ -1,14 +1,14 @@
-const mysql =  require('mysql2')
+const mysql = require('mysql2')
 
 let conn = mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"root",
+    host: "localhost",
+    user: "root",
+    password: "root",
     database: "hrms"
 })
 
-conn.connect((err)=>{
-    if(err) throw err;
+conn.connect((err) => {
+    if (err) throw err;
     console.log("Connected with MySql")
 })
 

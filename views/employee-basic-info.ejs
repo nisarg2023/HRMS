@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .table1 , tr , td {
+        border: 2px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="basicdata">
+        <table class="table1">
+            <tr>
+                <td>basic_info_id</td>
+                <td>first_name</td>
+                <td>last_name</td>
+                <td>birth_date</td>
+                <td>relationship</td>
+                <td>blood_group</td>
+                <td>gender</td>
+                <td>city</td>
+                <td>state</td>
+                <td>Actions</td>
+            </tr>
+                <%for(let i=0; i<basic_details.length; i++) {%>
+            <tr>
+                <td><%=basic_details[i].basic_info_id%></td>
+                <td><%=basic_details[i].first_name%></td>
+                <td><%=basic_details[i].last_name%></td>
+                <td><%=basic_details[i].birth_date%></td>
+                <td><%=basic_details[i].relationship%></td>
+                <td><%=basic_details[i].blood_group%></td>
+                <td><%=basic_details[i].gender%></td>
+                <td><%=basic_details[i].city%></td>
+                <td><%=basic_details[i].state%></td>
+                <td><a href="get-employee-edit?id=<%=basic_details[i].basic_info_id%>">Edit</a></td>
+            </tr>
+            <%}%>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
+
+

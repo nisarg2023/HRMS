@@ -26,6 +26,7 @@
                 <div class="dashboard-data-container flex flex-row">
                     <div class="hotline">
                         <div class="hotline_top">
+                            
                             <div class="row">
                                 <div class="col_5">
 
@@ -99,7 +100,8 @@
                    <%- include('components/hoteline-user-card.ejs',{
                     "first_name":allUsers[i].first_name,
                     "last_name":allUsers[i].last_name,
-                    profile_photo:profilePhotos[i].profile_photo})%>
+                    profile_photo:profilePhotos[i].profile_photo,
+                    "email":emails[i].email})%>
                    <%}%>
                 </div>
         </div>

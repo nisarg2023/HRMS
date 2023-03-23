@@ -34,7 +34,7 @@
                         <div class="first">
                         <div class="basicinfo">
                             <div>Photos</div>
-                            <div><img src="/public/images/admin.jpeg" alt="Error"></div>
+                            <div><img src="/images/admin.jpeg" alt="Error"></div>
                             <div><a href="#">Remove</a></div>
                         </div>
                         <div class="formgroup">
@@ -190,13 +190,13 @@
                                         </div>
                                         <div>
                                             <p>From :</p>
-                                            <input type="date" id="start-date" name="start_date" value="<%=work[i].start_date%>" />
+                                            <input type="date" id="start-date" name="start_date" value="<%=work[i].start_date.toJSON('dd-mm-yyyy').slice(0,10)%>" />
                                         </div>
                                     </div>
                                     <div class="form3col2">
                                         <div>
                                             <p>To :</p> 
-                                            <input type="date" id="end-date" name="end_date" value="<%=work[i].end_date%>" />
+                                            <input type="date" id="end-date" name="end_date" value="<%=work[i].end_date.toJSON('dd-mm-yyyy').slice(0,10)%>" />
                                         </div>
                                         <div>
                                             <p>Designation :</p>

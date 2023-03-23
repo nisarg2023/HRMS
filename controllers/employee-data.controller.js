@@ -212,7 +212,7 @@ const getEmployeeEdit = async (req,res)=>{
         let stateName = await query(state_query);
 
         //basicInfo
-        basic_info = await query(`select * from basic_info where basic_info_id = ${id}`)
+        basic_info = await query(`select * from basic_info where fk_emp_id = ${req.session.emp_id}`)
         console.log("basic_info",basic_info)
         let stateId = basic_info[0].state;
         console.log("st" , stateId)
@@ -223,12 +223,12 @@ const getEmployeeEdit = async (req,res)=>{
         console.log(basic_info[0].relationship)
 
         //courseData
-        education = await query(`select * from education where education_id = ${id}`)
+        education = await query(`select * from education where fk_emp_id = ${req.session.emp_id}`)
     console.log("hfghdfghfghfghfgh");
         console.log(education)
 
         //workExperince
-        work = await query(`select * from expreience where expreience_id = ${id}`)
+        work = await query(`select * from expreience where fk_emp_id = ${req.session.emp_id}`)
         console.log(work)
 
         const userInfo = await getUserBasicinfo(req.session.emp_id);
@@ -301,7 +301,7 @@ const postEmployeeEdit = async(req,res)=>{
             console.log("expsql1",expSql1)
             }
           }
-    res.send("done")
+    res.redirect('/dashbord')
 }
 
 module.exports = { getEmployeedata, postEmployeedata, getCitydata,getEmployeeBasicInfo,getEmployeeEdit,postEmployeeEdit };

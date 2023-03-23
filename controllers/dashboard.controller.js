@@ -1,53 +1,47 @@
 const conn = require('../config/dbConnect');
-const util =  require('util');
-const query =  util.promisify(conn.query).bind(conn)
+const util = require('util');
+const query = util.promisify(conn.query).bind(conn)
 
-const getUserBasicinfo = async(id="")=>{
+const getUserBasicinfo = async(id = "") => {
 
-    if(id=="")
-    {
+    if (id == "") {
 
-        const data = await query(`SELECT * FROM basic_info `)
+        const data = await query(`SELECT * FROM hrms.basic_info `)
         return data;
-    }
-    else{
-        
-    const data = await query(`SELECT basic_info_id,first_name FROM basic_info where fk_emp_id = ${id};`)
-    return data;
+    } else {
+
+        const data = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${id};`)
+        return data;
     }
 
 }
 
-const getEmail = async(fields="*",id="")=>{
+const getEmail = async(fields = "*", id = "") => {
 
-    if(id=="")
-    {
+    if (id == "") {
         const data = await query(`SELECT ${fields.toString()} FROM hrms_employee;`)
         return data;
-    }
-    else{
+    } else {
         const data = await query(`SELECT ${fields.toString()} FROM hrms_employee where emp_id=${id};`)
         return data;
     }
-    
-}
-
-const getUserProfilePhoto = async(fields="*",id="")=>{
-
-    if(id=="")
-    {
-        data = await query(`SELECT ${fields.toString()}  FROM document;`)
-        return data;
-    }
-    else{
-        data = await query(`SELECT ${fields.toString()} FROM document where fk_emp_id=${id}`);
-        return data;
-    }
-
 
 }
 
-const getDashboard = async(req,res)=>{
+const getUserProfilePhoto = async(fields = "*", id = "") => {
+
+    if (id == "") {
+        data = await query(`SELECT ${fields.toString()}  FROM hrms.document;`)
+        return data;
+    } else {
+        data = await query(`SELECT ${fields.toString()} FROM hrms.document where fk_emp_id=${id}`);
+        return data;
+    }
+
+
+}
+
+const getDashboard = async(req, res) => {
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
     var commentSql=`select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`
@@ -58,21 +52,16 @@ const getDashboard = async(req,res)=>{
 
 
 
-const getHotlines = async(req,res)=>{
+const getHotlines = async(req, res) => {
     const userInfo = await getUserBasicinfo(req.session.emp_id)
     const allUsers = await getUserBasicinfo();
-    const profilePhotos =  await getUserProfilePhoto(["profile_photo"]);
+    const profilePhotos = await getUserProfilePhoto(["profile_photo"]);
     const emails = await getEmail(["email"])
-    const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
-    res.render('hotline',{"first_name": userInfo[0].first_name,allUsers,profilePhotos,"profilePhoto":profilePhoto[0].profile_photo,emails});
+    const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
+    res.render('hotline', { "first_name": userInfo[0].first_name, allUsers, profilePhotos, "profilePhoto": profilePhoto[0].profile_photo, emails });
 }
 
-const getAttendance = async (req,res)=>{
-    const userInfo = await getUserBasicinfo(req.session.emp_id);
-    const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
-    res.render('attendance',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo});
-    
-}
+
 
 const getComment = async (req,res)=>{
     const userInfo = await getUserBasicinfo(req.session.emp_id);
@@ -129,4 +118,4 @@ const getDataProfile= async(req,res)=>{
 
 }
 
-module.exports = {getDashboard,getHotlines,getAttendance,getComment,getCommentData,getCommentId,getDataProfile,updateCommentCard}
+module.exports = {getDashboard,getHotlines,getComment,getCommentData,getCommentId,getDataProfile,updateCommentCard}

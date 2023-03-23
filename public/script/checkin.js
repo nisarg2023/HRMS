@@ -1,4 +1,4 @@
-const checkIn = async() => {
+const checkIn = async () => {
 
     let res = await fetch("/checkin", {
         method: "post",
@@ -15,7 +15,7 @@ const checkIn = async() => {
 
     console.log(data);
 
-    
+
 
 
 
@@ -33,7 +33,7 @@ const checkIn = async() => {
 
 }
 
-const brakeOut = async() => {
+const brakeOut = async () => {
 
 
     let res = await fetch("/brakeout", {
@@ -67,7 +67,7 @@ const brakeOut = async() => {
 
 
 
-const brakeIn = async() => {
+const brakeIn = async () => {
 
     let res = await fetch("/brakein", {
         method: "post",
@@ -105,7 +105,7 @@ const brakeIn = async() => {
 
 
 }
-const checkOut = async() => {
+const checkOut = async () => {
 
     let res = await fetch("/checkout", {
         method: "post",
@@ -136,7 +136,7 @@ const checkOut = async() => {
 
 
 
-const loadDate = () => {
+const handelPageLoad = () => {
     setInterval(() => {
         time = new Date();
         let t = time.toLocaleTimeString();
@@ -145,18 +145,92 @@ const loadDate = () => {
 
     }, 1000);
 
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+
+    let currentDate = `${year}-${(month > 9) ? (month) : ("0" + month)}-${(day > 9) ? (day) : ("0" + day)}`;
+
+    let emp_id = document.getElementById("emp_id").value;
+
+    fetch(`/dashbord/getBrakeInfo?emp_id=${emp_id}&date=${currentDate}`)
+        .then(res => res.json())
+        .then((data) => {
+            for (x of data) {
+
+                // console.log(x)
+                if(x.brakein_time)
+                {
+                    document.getElementById("brakein").classList.toggle("btn-brakein1");
+                    document.getElementById("checkout").classList.toggle("btn-checkout1");
+                    document.getElementById("brakeout").classList.toggle("btn-brakeout1");
+
+                    document.getElementById("orange").innerHTML += `  <div class="check-orange">
+                    <span ><label > Break In :</label> ${x.brakein_time}</span>
+                    </div>`;
+                }
+
+                if (x.brakeout_time) {
+                    document.getElementById("brakein").classList.toggle("btn-brakein1");
+                    document.getElementById("checkout").classList.toggle("btn-checkout1");
+                    document.getElementById("brakeout").classList.toggle("btn-brakeout1");
+
+                    document.getElementById("yellow").innerHTML += `  <div class="check-yellow">
+                    <span ><label >Break Out :</label> ${x.brakeout_time}</span>
+                    </div>`
+                }
+
+
+            }
+        })
+
+    fetch(`/dashbord/getCkeckInOutInfo?emp_id=${emp_id}&date=${currentDate}`)
+        .then(res => res.json())
+        .then((data) => {
+            console.log(data[0].checkin_time);
+
+
+            if (data[0].checkin_time) {
+                    document.getElementById("green").innerHTML += ` <div class="check-green">
+                        <span ><label>Checked In :</label>${data[0].checkin_time}  </span>
+                        </div>`;
+                        document.getElementById("checkin").classList.toggle("btn-checkin1");
+                        document.getElementById("brakein").classList.toggle("btn-brakein1");
+                        document.getElementById("checkout").classList.toggle("btn-checkout1");
+
+            }
+
+            if (data[0].checkout_time) {
+
+                document.getElementsByClassName("check-inout")[0].style.display = "none";
+                document.getElementsByClassName("check-inout")[0].innerHTML = "none";
+            
+                document.getElementById("red").innerHTML += `  <div class="check-red">
+                    <span ><label > Check Out :</label>${data[0].checkout_time}</span>
+                    </div>`;
+            }
+        
+         
+        })
+
+
+
 }
 
 // for comment
- async function addComment(){
+async function addComment() {
     var comment = document.getElementById('comment').value;
     // console.log(comment);
-        const ans = await  fetch(`http://localhost:8000/deshbord/get-comment?comment=${comment}`);
-        const data = await ans.json();
-        console.log(data);
-        
-        const comment1=comment.value='';
+    const ans = await fetch(`http://localhost:8000/deshbord/get-comment?comment=${comment}`);
+    const data = await ans.json();
+    console.log(data);
 
-    
+    const comment1 = comment.value = '';
+
+
 };
-    
+
+

@@ -25,10 +25,6 @@ router.get('/get-logout', loginController.getLogout);
 
 router.get('/get-allUsersEmail', userEmail.getAllUsersEmail);
 
-//router.get('/dashboard', dashboardController )
-// router.get('/get-employee-data', auth,employeedataController.getEmployeedata);
-// router.post('/post-employee-data', auth, employeedataController.postEmployeedata);
-// router.get('/get-city-data', employeedataController.getCitydata);
 router.get('/get-allUsersEmail', userEmail.getAllUsersEmail);
 router.post('/checkin', checkin.get_checkin);
 router.post('/brakein', checkin.get_brakein);

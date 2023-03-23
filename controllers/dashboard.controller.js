@@ -12,7 +12,7 @@ const getUserBasicinfo = async(id="")=>{
     }
     else{
         
-    const data = await query(`SELECT basic_info_id,first_name FROM basic_info where fk_emp_id = ${id};`)
+    const data = await query(`SELECT basic_info_id,fk_emp_id,first_name FROM basic_info where fk_emp_id = ${id};`)
     return data;
     }
 
@@ -51,7 +51,7 @@ const getDashboard = async(req,res)=>{
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
     console.log("session : ",req.session);
-    res.render('dashboard',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo})
+    res.render('dashboard',{"first_name": userInfo[0].first_name,"emp_id":userInfo[0].fk_emp_id,"profilePhoto":profilePhoto[0].profile_photo})
   
 }
 
@@ -72,6 +72,7 @@ const getAttendance = async (req,res)=>{
     res.render('attendance',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo});
     
 }
+
 const getComment = async (req,res)=>{
     var comment = req.query.comment;
     // console.log("hwifhwhfifgiuwgfijkgwsfuigtwufgswjfswjfgweikfgsdu");

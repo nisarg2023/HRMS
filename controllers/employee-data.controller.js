@@ -128,6 +128,8 @@ const postEmployeedata = async (req, res) => {
             var experience_query = `insert into expreience (fk_emp_id,company_name,start_date,end_date,designation) values 
         (1,'${data.company_name}','${data.start_date}','${data.end_date}','${data.designation}');`
 
+        console.log(experience_query);
+
             var experience_info = await query(experience_query)
         };
 
@@ -171,6 +173,7 @@ const getEmployeeEdit = async (req,res)=>{
 
         //courseData
         education = await query(`select * from education where education_id = ${id}`)
+    console.log("hfghdfghfghfghfgh");
         console.log(education)
 
         //workExperince

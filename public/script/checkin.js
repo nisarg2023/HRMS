@@ -1,21 +1,3 @@
-// for comment 
-async function addComment(){
-    alert("aseficgaswifghaswfvuaswg")
-    var comment = document.getElementById('comment').value;
-            fetch(`http://localhost:8000/dashbord/get-comment?comment=${comment}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                
-            }).then((res)=>{
-            }).then((res)=>{
-                console.log(res);
-                var comment = document.getElementById('comment').value="";
-                
-            });
-        
-}
 const checkIn = async() => {
 
     let res = await fetch("/checkin", {
@@ -165,16 +147,41 @@ const loadDate = () => {
 
 }
 
-// for comment
- async function addComment(){
-    var comment = document.getElementById('comment').value;
-    // console.log(comment);
-        const ans = await  fetch(`http://localhost:8000/deshbord/get-comment?comment=${comment}`);
-        const data = await ans.json();
-        console.log(data);
-        
-        const comment1=comment.value='';
+// for comment 
+let commentContainer = document.getElementById('commment-container')
+async function addComment(){
 
+    var comment = document.getElementById('comment').value;
+            fetch(`http://localhost:8000/dashbord/get-comment?comment=${comment}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                
+            }).then((res)=>{
+            }).then((res)=>{
+                console.log(res);
+                var comment = document.getElementById('comment').value="";
+                
+            });
+            await updateCommentCard()
+            commentContainer.innerHTML += `<p>${comment}</p>`
+
+}
+
+
+const updateCommentCard = async () =>{
+    // let commentContainer = document.getElementById('commment-container')
+    commentContainer.innerHTML = ''
+    await fetch(`http://localhost:8000/dashbord/updateCommentCard`)
+    .then(res =>res.json())
+    .then(data=>{
+        data.forEach( (singleComment) =>{
+            console.log(singleComment.comment)
+        commentContainer.innerHTML += `<p>${singleComment.comment}</p>`
+        })
+      })
     
-};
-    
+}
+
+

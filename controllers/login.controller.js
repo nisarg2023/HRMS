@@ -36,7 +36,7 @@ const postLogin = async (req, res) => {
         const data = result[0].password;
       
         var match = await bcrypt.compare(user_password, data);
-        console.log("match", match);
+        
         if (match) {
             req.session.email = user_email;
             req.session.emp_id = result[0].emp_id;

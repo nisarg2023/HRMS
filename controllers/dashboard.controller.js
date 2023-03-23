@@ -36,9 +36,13 @@ const getUserProfilePhoto = async(fields="*",id="")=>{
 const getDashboard = async(req,res)=>{
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
+    var commentSql=`select comment from employee_comment where comment_status='0' and fk_emp_id='${userInfo[0].basic_info_id},' ;`
+    // console.log(commentSql);
+    var commentData= await query(commentSql)
+    console.log(commentData[0].comment);
     console.log("session : ",req.session);
-    res.render('dashboard',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo})
-  
+    res.render('dashboard',{commentData,"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo})
+    // <%- include("components/add-your-comment.ejs") %>
 }
 
 const getHotlines = async(req,res)=>{

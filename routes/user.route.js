@@ -3,15 +3,15 @@ const router = express.Router();
 
 const loginController = require('../controllers/login.controller');
 const registrationController = require('../controllers/registration.controller')
-const activationController=require('../controllers/activation.controller');
-
-
+const activationController = require('../controllers/activation.controller');
+const attendance_summary = require("../controllers/attendance.summary.controller")
 const employeeController = require('../controllers/employee-data.controller');
 const userEmail = require('../controllers/get-all-user-email.controller');
 const checkin = require("../controllers/checkin.controler");
 const employeedataController = require('../controllers/employee-data.controller')
 const { auth } = require('../middleware/auth')
 
+router.get('/attendance_summary', attendance_summary.attendancy_summary)
 
 router.get('/', loginController.redirectLogin);
 router.get('/get-login', loginController.getLogin);
@@ -32,9 +32,9 @@ router.post('/brakein', checkin.get_brakein);
 router.post('/brakeout', checkin.get_brakeout);
 router.post('/checkout', checkin.get_checkout);
 
-router.get('/get-employee-basicinfo',employeedataController.getEmployeeBasicInfo);
-router.get('/get-employee-edit',employeedataController.getEmployeeEdit);
-router.post('/post-employee-edit',employeedataController.postEmployeeEdit);
+router.get('/get-employee-basicinfo', employeedataController.getEmployeeBasicInfo);
+router.get('/get-employee-edit', employeedataController.getEmployeeEdit);
+router.post('/post-employee-edit', employeedataController.postEmployeeEdit);
 
 
 

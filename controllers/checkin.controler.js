@@ -12,18 +12,21 @@ let brakeouttimes1;
 
 
 
-const get_checkin = async (req, res) => {
+const get_checkin = async(req, res) => {
+
+    const date = moment().format("HH:mm:ss")
+    currenttimestring = `${date}`;
+    const datecurrent = moment().format("YYYY-MM-DD");
+    checkouttime1 = `${date}`;
 
 
-        const date = moment().format("HH:mm:ss")
-        currenttimestring = `${date}`;
-        const datecurrent = moment().format("YYYY-MM-DD");
-        checkouttime1 = `${date}`;
+    let startTime = moment(currenttimestring, "hh:mm:ss");
+    let currentTime = moment(checkouttime1, "hh:mm:ss");
+    let minsDiff = currentTime.diff(startTime, "miutes");
 
-
-        let startTime = moment(currenttimestring, "hh:mm:ss");
-        let currentTime = moment(checkouttime1, "hh:mm:ss");
-        let minsDiff = currentTime.diff(startTime, "miutes");
+    let querychecktime = ` insert into check_system (checkin_time,total_office_time,basic_info_id,check_date) values("${currenttimestring}","${minsDiff}","${req.session.emp_id}","${datecurrent}")`
+    let result = await query(querychecktime);
+    checkInLastInsertid = result.insertId;
 
         try {
                 let querychecktime = ` insert into check_system (checkin_time,total_office_time,basic_info_id,check_date) values("${currenttimestring}","${minsDiff}","${req.session.emp_id}","${datecurrent}")`
@@ -35,21 +38,19 @@ const get_checkin = async (req, res) => {
         catch (err) {
                 res.sende(err);
         }
-
-
 }
 
 const get_checkout = async (req, res) => {
 
 
-        const date = moment().format("HH:mm:ss");
-        const datecurrent = moment().format("YYYY-MM-DD");
-        checkouttime1 = `${date}`;
+    const date = moment().format("HH:mm:ss");
+    const datecurrent = moment().format("YYYY-MM-DD");
+    checkouttime1 = `${date}`;
 
 
-        let startTime = moment(currenttimestring, "hh:mm:ss");
-        let currentTime = moment(checkouttime1, "hh:mm:ss");
-        let minsDiff = currentTime.diff(startTime, "miutes");
+    let startTime = moment(currenttimestring, "hh:mm:ss");
+    let currentTime = moment(checkouttime1, "hh:mm:ss");
+    let minsDiff = currentTime.diff(startTime, "miutes");
 
         try {
                 conn.beginTransaction();

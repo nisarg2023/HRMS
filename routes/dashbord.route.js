@@ -5,9 +5,12 @@ const leaveApplication = require('../controllers/leave-application.controller')
 const leaveApprove = require('../controllers/leave-approve.controller')
 const employeeLog = require('../controllers/employeeLog.controller')
 
+const attendanceSummary = require('../controllers/attendance.summary.controller')
+
 router.get('/', dashboard.getDashboard);
 router.get('/get-hotline', dashboard.getHotlines);
-router.get('/get-attendance', dashboard.getAttendance);
+// router.get('/get-attendance', dashboard.getAttendance);
+router.get('/get-attendance', attendanceSummary.attendancy_summary);
 
 router.get('/get-leave', leaveApplication.getLeaveapplication)
 router.post('/post-leave', leaveApplication.postLeaveapplication)

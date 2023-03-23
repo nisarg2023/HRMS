@@ -148,12 +148,14 @@ const loadDate = () => {
 }
 
 // for comment 
-let commentContainer = document.getElementById('commment-container')
-async function addComment(){
+const addCommentBtn = document.getElementById('add-comment-btn');
+let commentContainer = document.getElementById('comment-container')
 
+
+async function addComment(){
     var comment = document.getElementById('comment').value;
-            fetch(`http://localhost:8000/dashbord/get-comment?comment=${comment}`, {
-                method: "GET",
+    fetch(`http://localhost:8000/dashbord/get-comment?comment=${comment}`, {
+        method: "GET",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -167,21 +169,34 @@ async function addComment(){
             await updateCommentCard()
             commentContainer.innerHTML += `<p>${comment}</p>`
 
+            addCommentBtn.disabled = true
+            addCommentBtn.style.opacity = 0.7
+            
 }
-
-
+        
+        
 const updateCommentCard = async () =>{
-    // let commentContainer = document.getElementById('commment-container')
     commentContainer.innerHTML = ''
     await fetch(`http://localhost:8000/dashbord/updateCommentCard`)
     .then(res =>res.json())
     .then(data=>{
         data.forEach( (singleComment) =>{
-            console.log(singleComment.comment)
+            console.log(singleComment)
         commentContainer.innerHTML += `<p>${singleComment.comment}</p>`
         })
-      })
-    
+    })
 }
 
+let comment = document.getElementById('comment');
+const validateComment = () =>{
+    console.log(comment.value)
+    if(comment.value === ""){
+        addCommentBtn.disabled = true
+        addCommentBtn.style.opacity = 0.7
+    }
+    if(comment.value != ""){
+        addCommentBtn.disabled = false
+        addCommentBtn.style.opacity = 1
+    }
+}
 

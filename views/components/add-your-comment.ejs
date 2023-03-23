@@ -5,25 +5,18 @@
     <hr>
     <div class="input">
         <div class="textbox">
-            <input type="text" name="comment" id="comment" placeholder="Type here..">
+            <input type="text" name="comment" id="comment" placeholder="Type here.." oninput="validateComment()" >
         </div>
         <div class="button">
-            <button onclick="addComment()">Comment</button>
+            <button id="add-comment-btn" onclick="addComment()" disabled>Comment</button>
         </div>
     </div>
     <div>
-        <!-- <div class="comment">
-            <%for(i=0;i<commentData.length;i++){%>
-
-                <p> <%-commentData[i].comment%></p>
-            <%}%>
-        </div> -->
-        <div id="commment-container">
+        <div id="comment-container">
             <%for(i=0;i<commentData.length;i++){%>
 
                 <p> <%-commentData[i].comment%></p>
             <%}%>
         </div>
     </div>
-<!-- </form> -->
 </div>

@@ -110,7 +110,7 @@ const getCommentData = async (req,res)=>{
 }
 
 const updateCommentCard = async (req,res)=>{
-    console.log("Hello")
+    // console.log("Hello")
     var commentSql=`select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`
     var commentData= await query(commentSql)
     res.json(commentData)

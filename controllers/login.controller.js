@@ -56,7 +56,7 @@ const postLogin = async (req, res) => {
             }
             else{
 
-                res.redirect('/get-activate');
+                res.redirect('/get-activate');  
             }
            
         }

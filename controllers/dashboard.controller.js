@@ -12,7 +12,7 @@ const getUserBasicinfo = async(id="")=>{
     }
     else{
         
-    const data = await query(`SELECT basic_info_id,fk_emp_id,first_name FROM basic_info where fk_emp_id = ${id};`)
+    const data = await query(`SELECT basic_info_id,first_name FROM basic_info where fk_emp_id = ${id};`)
     return data;
     }
 
@@ -117,5 +117,16 @@ const updateCommentCard = async (req,res)=>{
 } 
 
 
+const getDataProfile= async(req,res)=>{
+    const userInfo = await getUserBasicinfo(req.session.emp_id)
+    const allUsers = await getUserBasicinfo();
+    const profilePhotos =  await getUserProfilePhoto(["profile_photo"]);
+    const emails = await getEmail(["email"])
+    const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
+    console.log(emails);
+    res.render('viewProfile',{"first_name": userInfo[0].first_name,dataset: userInfo[0],allUsers,profilePhotos,"profilePhoto":profilePhoto[0].profile_photo,emails});
 
-module.exports = { getDashboard, getHotlines, getAttendance,getComment ,getCommentId,getCommentData,updateCommentCard}
+
+}
+
+module.exports = {getDashboard,getHotlines,getAttendance,getComment,getCommentData,getCommentId,getDataProfile,updateCommentCard}

@@ -301,5 +301,5 @@ const postEmployeeEdit = async(req,res)=>{
     res.send("done")
 }
 
-module.exports = { getEmployeedata, postEmployeedata, getCitydata,getEmployeeBasicInfo,getEmployeeEdit,postEmployeeEdit  };
+module.exports = { getEmployeedata, postEmployeedata, getCitydata,getEmployeeBasicInfo,getEmployeeEdit,postEmployeeEdit };
 

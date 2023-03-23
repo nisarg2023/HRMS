@@ -39,12 +39,5 @@ router.post('/post-employee-edit',employeedataController.postEmployeeEdit);
 
 
 
-
-
-//sanisinh
-const profileController = require('../controllers/profile-controller')
-router.get('/userProfile',profileController.userRenderGet)
-
-
 module.exports=router;  
 

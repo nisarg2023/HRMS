@@ -26,5 +26,8 @@ router.get('/updateCommentCard', dashboard.updateCommentCard);
 router.get('/getBrakeInfo', employeeLog.getBrakeInfo)
 router.get('/getCkeckInOutInfo', employeeLog.getCkeckInOutInfo)
 
+router.get('/viewProfile',dashboard.getDataProfile)
+
+
 
 module.exports = router;

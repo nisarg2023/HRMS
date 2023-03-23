@@ -183,8 +183,10 @@ const postEmployeedata = async (req, res) => {
             res.redirect('dashbord');
            });
 
+        console.log(experience_query);
 
-    }
+            var experience_info = await query(experience_query)
+        }
     catch (err) {
         res.send(" postEmployeedata", err);
         conn.rollback()
@@ -222,6 +224,7 @@ const getEmployeeEdit = async (req,res)=>{
 
         //courseData
         education = await query(`select * from education where education_id = ${id}`)
+    console.log("hfghdfghfghfghfgh");
         console.log(education)
 
         //workExperince

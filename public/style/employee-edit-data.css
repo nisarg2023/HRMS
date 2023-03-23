@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+*{
+    font-family: 'Delicious Handrawn', cursive;
+}
 #optionbar{
     display: flex;
     text-transform: capitalize;
@@ -6,22 +10,24 @@
     margin: 0px 10px;
 }
 #optionbar{
-    border: 2px solid black;
+    border: 1px solid black;
 }
 #table1{
     display: flex;
+    border: 1px solid black;
+
 }
 
 .col1{
-    border: 2px solid black;
+    border: 1px solid black;
     display: flex;
     width: 100%;
 }
 #table2{
-    border: 3px solid red;
+    border: 1px solid rgb(0, 0, 0);
 }
 #table3{
-    border: 3px solid rgb(27, 27, 63);
+    border: 1px solid rgb(27, 27, 63);
 }
 .form3{
     display: flex;
@@ -82,10 +88,7 @@ margin: 20px;
     margin: 20px;
     margin-left:100px;
 }
-/* #table2 p{
-    margin: 20px;
 
-} */
 button {
     background-color:rgb(38, 38, 78);
     border: none;
@@ -102,22 +105,17 @@ button {
     cursor: pointer;
   }
   
-input[type=text],input[type=date]{
-    width: 100%;
 
-}
 .first{
     display: flex;
-    border: 2px solid black;
+    /* border: 1px solid black; */
 }
 .basicinfo{
-    /* border: 2px solid red; */
-    /* margin: 100px; */
+   
     width: 20%;
 }
 .formgroup{
-    /* border: 2px solid blue; */
-    /* margin: 50px; */
+    
     width: 80%;
     display: flex;
 }
@@ -126,4 +124,71 @@ input[type=text],input[type=date]{
 }
 .basicinfo div{
     margin: 50px;
+}
+select, option {
+    width: 180px;
+}
+input[type=text],[type=date]{
+    padding: 10px;
+    background-color: rgb(248, 244, 240);
+    border-radius: 10px;
+    width: 100%;
+}
+select , option{
+    padding: 10px;
+    background-color: rgb(248, 244, 240);
+    border-radius: 10px;
+    width: 100%;
+    width: 180px;
+
+}
+option {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.button {
+    background-color: #222344;/* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .button1 {
+    /* background-color: white; 
+    color: black;  */
+    border: 2px solid #222344;
+  }
+  
+  .button1:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .sbt{
+    margin-top: 15px;
+  }
+  a{
+    background-color: #222344;; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+a:hover{
+    background-color: #fc0404;
+    color: white;
 }

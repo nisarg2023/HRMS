@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/style/dashboard.css">
     <link rel="stylesheet" href="/style/employee-edit-data.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
 </head>
 <body>
     <div class="dashboard-wrapper flex flex-row">
@@ -20,7 +21,6 @@
             <form action="/post-employee-edit" method="post">
                 <input type="hidden" name="id" value="<%= basic_info[0].basic_info_id %>">
                     <div>
-                        
                         <div id="optionbar">
                             <div class="optionbar" id="Basic_info">Basic info</div>
                             <div class="optionbar" id="Education_info">Education info</div>
@@ -29,7 +29,7 @@
                     </div>
                     <div id="table1" style="display: none;">
                         <div class="mainhedar">
-                            <p>Education Info</p>
+                            <p>Basic Info</p>
                          </div>
                         <div class="first">
                         <div class="basicinfo">
@@ -207,7 +207,9 @@
                                 </div>
                             </div>
                         </div>
-                <input type="submit" class="btn" value="submit">
+                    <div class="sbt"  align="center">    
+                        <input type="submit" class="button button1" value="submit">
+                    </div>
         </form>
     </div>
     </div>
@@ -242,6 +244,7 @@
         const educationItem = document.createElement("div");
         educationItem.classList.add("education-item");
         educationItem.innerHTML = `
+        <div class="form2col1">
         <div>
             <p>Course</p>
             <select name="course_name" id="status">
@@ -258,6 +261,8 @@
             <p>Passing Year :</p>
             <input type="text" name="passing_year" class="passing_year" />
         </div>
+    </div>
+    <div class="form2col2">
         <div>
             <p>percentage :</p>
             <input type="text" name="marks" />
@@ -266,6 +271,8 @@
             <p>College :</p>
             <input type="text" name="college_school" />       
         </div>
+    </div>
+
   `;
         educationDetails.appendChild(educationItem);
     });

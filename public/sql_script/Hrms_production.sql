@@ -113,6 +113,21 @@ CREATE TABLE `city_master` (
 	PRIMARY KEY (`city_id`)
 );
 
+
+create table leave_application(
+	leave_id int not null auto_increment primary key,
+    fk_emp_id int not null,
+    leave_date date NOT NULL,
+    leave_reason varchar(100),
+    is_halfday int default 0,
+    is_cto_approved int default 0,	
+    is_hr_approved int default 0,
+    foreign key (fk_emp_id) references hrms_employee(emp_id),
+    created_date timestamp default current_timestamp not null
+);
+
+alter table leave_application add column leave_type varchar(10);
+
 ALTER TABLE `basic_info` ADD CONSTRAINT `basic_info_fk0` FOREIGN KEY (`fk_emp_id`) REFERENCES `hrms_employee`(`emp_id`);
 
 

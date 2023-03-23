@@ -13,6 +13,7 @@ const employeedataController = require('../controllers/employee-data.controller'
 const { auth } = require('../middleware/auth')
 
 
+router.get('/', loginController.redirectLogin);
 router.get('/get-login', loginController.getLogin);
 router.post('/post-login', loginController.postLogin);
 router.get('/get-registration', registrationController.getRegistration);
@@ -33,11 +34,13 @@ router.get('/get-allUsersEmail', userEmail.getAllUsersEmail);
 router.post('/checkin', checkin.get_checkin);
 router.post('/brakein', checkin.get_brakein);
 router.post('/brakeout', checkin.get_brakeout);
-router.post('/checkout1', checkin.get_checkout);
+router.post('/checkout', checkin.get_checkout);
 
-//sanisinh
-const profileController = require('../controllers/profile-controller')
-router.get('/userProfile',profileController.userRenderGet)
+router.get('/get-employee-basicinfo',employeedataController.getEmployeeBasicInfo);
+router.get('/get-employee-edit',employeedataController.getEmployeeEdit);
+router.post('/post-employee-edit',employeedataController.postEmployeeEdit);
+
+
 
 
 module.exports=router;  

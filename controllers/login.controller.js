@@ -4,8 +4,20 @@ const query =  util.promisify(conn.query).bind(conn)
 const bcrypt = require('bcryptjs');
 
 const getLogin = (req, res) => {
+    if(req.cookies.sessionid && req.session.emp_id)
+    {
+        res.redirect('/dashbord')
+    }
+    else{
+        res.render('login')
+
+    }
+}
+
+
+const redirectLogin = (req, res) => {
    
-    res.render('login')
+    res.redirect('/get-login')
 }
 
 const postLogin = async (req, res) => {
@@ -18,7 +30,7 @@ const postLogin = async (req, res) => {
         var result = await query(sql)
 
         if (result.length == 0) {
-            return res.send("user not found")
+            return res.render("login",{"err":"Wrong email or password"})
         }
 
         const data = result[0].password;
@@ -49,7 +61,7 @@ const postLogin = async (req, res) => {
            
         }
         else {
-            return res.send("wrong password!")
+            return res.render("login",{"err":"Wrong email or password"})
         }
 
     }
@@ -64,4 +76,4 @@ const getLogout = (req,res)=>{
     res.redirect('get-login')
 }
 
-module.exports = { postLogin, getLogin,getLogout };
+module.exports = { postLogin, getLogin,getLogout,redirectLogin };

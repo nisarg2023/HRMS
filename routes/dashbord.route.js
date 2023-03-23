@@ -14,5 +14,8 @@ router.post('/post-leave', leaveApplication.postLeaveapplication)
 router.get('/approveleave', leaveApprove.getApproveLeave)
 router.get('/post-approveleave', leaveApprove.postApproveLeave)
 
+router.get('/viewProfile',deshbord.getDataProfile)
+
+
 
 module.exports = router;

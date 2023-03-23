@@ -62,13 +62,13 @@
         <tr>
             <td><%=c[i].emp_comment_id%></td>
             <td><%=c[i].fk_emp_id%></td>
-            <td><%=c[i].fk_emp_id%></td>
-            <td><%=c[i].time.toJSON('yyyy-mm-dd').slice(11,23)%></td>
-            <td><%=c[i].date.toJSON('yyyy-mm-dd').slice(0,15)%></td>
+            <td><%=c[i].first_name%></td>
+            <td><%=c[i].comment_time.toJSON('yyyy-mm-dd').slice(0,15)%></td>
+            <td><%=c[i].comment_date%></td>
             <td><%=c[i].comment%></td>
             <td><%=c[i].comment_status%></td>
 
-            <td> <a href="http://localhost:8000/deshbord/comment-id?commentId=<%=c[i].emp_comment_id%>" onclick="readComment(this.id)" id="<%=c[i].emp_comment_id%>"> Click </a></td>
+            <td> <a href="http://localhost:8000/dashbord/commentId?commentId=<%=c[i].emp_comment_id%>&comment=<%=c[i].comment%>" onclick="readComment(this.id)" id="<%=c[i].emp_comment_id%>"> Click </a></td>
         </tr>
         <%}%>
     </table>

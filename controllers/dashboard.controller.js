@@ -50,9 +50,10 @@ const getUserProfilePhoto = async(fields="*",id="")=>{
 const getDashboard = async(req,res)=>{
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
-    console.log("session : ",req.session);
-    res.render('dashboard',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo})
-  
+    var commentSql=`select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`
+    var commentData= await query(commentSql)
+    res.render('dashboard',{commentData,"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo,"emp_id":req.session.emp_id})
+    // <%- include("components/add-your-comment.ejs") %>
 }
 
 
@@ -72,34 +73,60 @@ const getAttendance = async (req,res)=>{
     res.render('attendance',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo});
     
 }
+
 const getComment = async (req,res)=>{
+    const userInfo = await getUserBasicinfo(req.session.emp_id);
     var comment = req.query.comment;
-    // console.log("hwifhwhfifgiuwgfijkgwsfuigtwufgswjfswjfgweikfgsdu");
-    // res.send("Your Comment ")
-    console.log(comment);
-    var commentQuery = `insert into employee_comment (fk_emp_id,comment) values (1,'${comment}');`
+    var commentQuery = `insert into employee_comment (fk_emp_id,comment) values (${req.session.emp_id},'${comment}');`
     var commentData=await query(commentQuery);
-    res.json();
-    // console.log(commentData);
+    res.json({message:true});
 }
+
+// to update the status of comment of read or not
 const getCommentId = async (req,res)=>{
     var commentId= req.query.commentId;
+    var comment= req.query.comment;
     if(commentId){
 
-        console.log(commentId);
         var idQuery=`update employee_comment  set comment_status="1" where emp_comment_id="${commentId}";`
         var idData= await query(idQuery);
+        res.redirect('allComment')
     }
     else{
-        res.send("Could not read comment")
+        res.json()
     }
 }
+//  allcomment page 
 const getCommentData = async (req,res)=>{
-    var allCommentQuery=`select * from employee_comment;`
+    const userInfo = await getUserBasicinfo(req.session.emp_id);
+
+    var allCommentQuery=`select employee_comment.emp_comment_id,employee_comment.fk_emp_id,basic_info.first_name,employee_comment.comment_time,
+    employee_comment.comment_date,employee_comment.comment,employee_comment.comment_status from employee_comment left join basic_info 
+    on employee_comment.fk_emp_id=basic_info.fk_emp_id order by employee_comment.emp_comment_id ;`
     var allCommentData= await query(allCommentQuery);
-    res.render('allComment',{c:allCommentData});
-    // console.log(allCommentData);
+
+    res.render('allComment',{c:allCommentData,name:userInfo[0].first_name});
+    
 }
 
+const updateCommentCard = async (req,res)=>{
+    // console.log("Hello")
+    var commentSql=`select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`
+    var commentData= await query(commentSql)
+    res.json(commentData)
+} 
 
-module.exports = {getDashboard,getHotlines,getAttendance,getComment,getCommentData,getCommentId}
+
+const getDataProfile= async(req,res)=>{
+    const userInfo = await getUserBasicinfo(req.session.emp_id)
+    const allUsers = await getUserBasicinfo();
+    const profilePhotos =  await getUserProfilePhoto(["profile_photo"]);
+    const emails = await getEmail(["email"])
+    const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
+    console.log(emails);
+    res.render('viewProfile',{"first_name": userInfo[0].first_name,dataset: userInfo[0],allUsers,profilePhotos,"profilePhoto":profilePhoto[0].profile_photo,emails});
+
+
+}
+
+module.exports = {getDashboard,getHotlines,getAttendance,getComment,getCommentData,getCommentId,getDataProfile,updateCommentCard}

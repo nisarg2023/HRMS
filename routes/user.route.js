@@ -5,6 +5,7 @@ const loginController = require('../controllers/login.controller');
 const registrationController = require('../controllers/registration.controller')
 const activationController=require('../controllers/activation.controller');
 
+
 const employeeController = require('../controllers/employee-data.controller');
 const userEmail = require('../controllers/get-all-user-email.controller');
 const checkin = require("../controllers/checkin.controler");
@@ -40,5 +41,10 @@ router.post('/post-employee-edit',employeedataController.postEmployeeEdit);
 
 
 
+//sanisinh
+const profileController = require('../controllers/profile-controller')
+router.get('/userProfile',profileController.userRenderGet)
 
-module.exports = router;
+
+module.exports=router;  
+

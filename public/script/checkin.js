@@ -220,17 +220,56 @@ const handelPageLoad = () => {
 
 }
 
-// for comment
-async function addComment() {
+// for comment 
+const addCommentBtn = document.getElementById('add-comment-btn');
+let commentContainer = document.getElementById('comment-container')
+
+
+async function addComment(){
     var comment = document.getElementById('comment').value;
-    // console.log(comment);
-    const ans = await fetch(`http://localhost:8000/deshbord/get-comment?comment=${comment}`);
-    const data = await ans.json();
-    console.log(data);
+    fetch(`http://localhost:8000/dashbord/get-comment?comment=${comment}`, {
+        method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                
+            }).then((res)=>{
+            }).then((res)=>{
+                console.log(res);
+                var comment = document.getElementById('comment').value="";
+                
+            });
+            await updateCommentCard()
+            commentContainer.innerHTML += `<p>${comment}</p>`
 
-    const comment1 = comment.value = '';
+            addCommentBtn.disabled = true
+            addCommentBtn.style.opacity = 0.7
+            
+}
+        
+        
+const updateCommentCard = async () =>{
+    commentContainer.innerHTML = ''
+    await fetch(`http://localhost:8000/dashbord/updateCommentCard`)
+    .then(res =>res.json())
+    .then(data=>{
+        data.forEach( (singleComment) =>{
+            console.log(singleComment)
+        commentContainer.innerHTML += `<p>${singleComment.comment}</p>`
+        })
+    })
+}
 
-
-};
-
+let comment = document.getElementById('comment');
+const validateComment = () =>{
+    console.log(comment.value)
+    if(comment.value === ""){
+        addCommentBtn.disabled = true
+        addCommentBtn.style.opacity = 0.7
+    }
+    if(comment.value != ""){
+        addCommentBtn.disabled = false
+        addCommentBtn.style.opacity = 1
+    }
+}
 

@@ -3,7 +3,9 @@
         <div class="col_7">
             <div class="box">
                 <label> Days</label>
-                <p>15</p>
+                <p>
+                    <%=data1.length  %>
+                </p>
             </div>
         </div>
 
@@ -40,7 +42,9 @@
         <div class="col_7">
             <div class="box">
                 <label> Total worked</label>
-                <p>122 hrs 10 mins</p>
+                <p>
+                    <%=all_work_hours  %>
+                </p>
             </div>
         </div>
 
@@ -63,27 +67,30 @@
                 <th>Break time </th>
                 <th>Working Hours </th>
 
-            </tr>
 
-            <% for(i=0;i<data.length;i++) {%>
+            </tr>
+            <% for(i=0;i<data1.length;i++) {%>
                 <tr>
                     <td>
-                        <%=data[i].check_date %>
+                        <%=data1[i].date %>
                     </td>
                     <td>
-                        <%=data[i].checkin_time %>
+                        <%=data1[i].checkin_time %>
                     </td>
                     <td>
-                        <%=data[i].checkout_time %>
+                        <%=data1[i].checkout_time %>
                     </td>
-
-                    <td><span><%=data[i].total_office_time %> </span><progress id="file" value="32" max="100"></progress></td>
-
                     <td>
-
+                        <%= total_brake[i]  %>
                     </td>
-                </tr>
-                <%} %>
+
+                    <td><span><%=total_workhours[i] %> </span><progress id="file" value="32" max="100"></progress></td>
+
+
+                    <%} %>
+
+
+
 
         </table>
     </div>

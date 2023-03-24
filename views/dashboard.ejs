@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="/style/checkin.css">
     <link rel="stylesheet" href="/style/record-your-attendance.css">
     <link rel="stylesheet" href="/style/add-your-comment.css">
+    <link rel="stylesheet" href="/style/today'sEmployeeActivities.css">
     <script src="/script/sidebar.js"></script>
+
     
     
     <title>HRMS- Dashboard</title>
@@ -38,6 +40,9 @@
               <%- include("components/checkin")%>
             
             </div>
+            <div class="col_3_merge">
+                <%- include("components/today'sEmployeeActivities")%>
+            </div>
            
 
             
@@ -49,4 +54,5 @@
     
 </body>
 <script src="/script/checkin.js"></script>
+<script src="/script/today'sEmployeeActivities.js"></script>
 </html> 

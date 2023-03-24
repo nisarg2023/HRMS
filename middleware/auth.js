@@ -7,7 +7,8 @@ const auth = (req,res,next)=>{
         next()
     }
     else{
-        res.redirect("/get-login")
+       //next()
+       res.redirect("/get-login")
     }
 
 }

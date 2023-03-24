@@ -24,10 +24,6 @@ const get_checkin = async(req, res) => {
     let currentTime = moment(checkouttime1, "hh:mm:ss");
     let minsDiff = currentTime.diff(startTime, "miutes");
 
-    let querychecktime = ` insert into check_system (checkin_time,total_office_time,basic_info_id,check_date) values("${currenttimestring}","${minsDiff}","${req.session.emp_id}","${datecurrent}")`
-    let result = await query(querychecktime);
-    checkInLastInsertid = result.insertId;
-
         try {
                 let querychecktime = ` insert into check_system (checkin_time,total_office_time,basic_info_id,check_date) values("${currenttimestring}","${minsDiff}","${req.session.emp_id}","${datecurrent}")`
                 let result = await query(querychecktime);

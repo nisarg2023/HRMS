@@ -1,53 +1,57 @@
-<div class = "attendance-summary">
+<div class="attendance-summary">
     <div class="row">
         <div class="col_7">
             <div class="box">
-            <label > Days</label>
-            <p>15</p>
+                <label> Days</label>
+                <p>
+                    <%=data1.length  %>
+                </p>
             </div>
         </div>
 
         <div class="col_7">
             <div class="box">
-            <label > Late</label>
-            <p>0% (0 Days)</p>
+                <label> Late</label>
+                <p>0% (0 Days)</p>
             </div>
         </div>
 
         <div class="col_7">
             <div class="box">
-            <label > Absent</label>
-            <p>0% (0 Days) </p>
+                <label> Absent</label>
+                <p>0% (0 Days) </p>
             </div>
         </div>
 
         <div class="col_7">
             <div class="box">
-            <label > Half Days</label>
-            <p>0</p>
+                <label> Half Days</label>
+                <p>0</p>
             </div>
         </div>
 
-        
+
 
         <div class="col_7">
             <div class="box">
-            <label > Total Office</label>
-            <p>153 hrs  </p>
-            </div>
-        </div>
-
-        <div class="col_7">
-            <div class="box">
-            <label > Total worked</label>
-            <p>122 hrs 10 mins</p>
+                <label> Total Office</label>
+                <p>153 hrs </p>
             </div>
         </div>
 
         <div class="col_7">
             <div class="box">
-            <label > Productivity Ratio</label>
-            <p>90.49%</p>
+                <label> Total worked</label>
+                <p>
+                    <%=all_work_hours  %>
+                </p>
+            </div>
+        </div>
+
+        <div class="col_7">
+            <div class="box">
+                <label> Productivity Ratio</label>
+                <p>90.49%</p>
             </div>
         </div>
 
@@ -57,43 +61,37 @@
     <div class="table">
         <table>
             <tr style="background-color: #002f4b;">
-                <th>Date	</th>
-                <th>Entry Time	</th>
-                <th>Exit time	</th>
-                <th>Break time	</th>
-                <th>Working Hours	</th>
+                <th>Date </th>
+                <th>Entry Time </th>
+                <th>Exit time </th>
+                <th>Break time </th>
+                <th>Working Hours </th>
+
 
             </tr>
+            <% for(i=0;i<data1.length;i++) {%>
+                <tr>
+                    <td>
+                        <%=data1[i].check_date %>
+                    </td>
+                    <td>
+                        <%=data1[i].checkin_time %>
+                    </td>
+                    <td>
+                        <%=data1[i].checkout_time %>
+                    </td>
+                    <td>
+                        <%= total_brake[i]  %>
+                    </td>
 
-            <tr>
-                <td>20-03-2023</td>
-                <td>09:13 AM </td>
-                <td>-</td>
-                <td>00:37</td>
-                <td><progress id="file" value="32" max="100"> 32% </progress></td>
-
-            </tr>
-
-            <tr>
-                <td>20-03-2023</td>
-                <td>09:13 AM </td>
-                <td>-</td>
-                <td>00:37</td>
-                <td>-</td>
-
-            </tr>
+                    <td><span><%=total_workhours[i] %> </span><progress id="file" value="32" max="100"></progress></td>
 
 
-            <tr>
-                <td>20-03-2023</td>
-                <td>09:13 AM </td>
-                <td>-</td>
-                <td>00:37</td>
-                <td>-</td>
+                    <%} %>
 
-            </tr>
+
+
+
         </table>
     </div>
 </div>
-
-

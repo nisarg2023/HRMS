@@ -230,6 +230,13 @@ box-shadow:0px 1px 1px #000000;
     left: 250px;
     
 }
-/* .hide{
-    display: block !important;
-} */
+#comment-container > p{
+    margin-top: 4px;
+    padding: 8px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+}
+
+#add-comment-btn{
+    opacity: 0.7;
+}

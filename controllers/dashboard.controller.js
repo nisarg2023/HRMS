@@ -47,6 +47,7 @@ const getUserProfilePhoto = async(fields="*",id="")=>{
 
 }
 
+
 const getDashboard = async(req,res)=>{
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
@@ -105,11 +106,13 @@ const getDataProfile= async(req,res)=>{
     const userInfo = await getUserBasicinfo(req.session.emp_id)
     const allUsers = await getUserBasicinfo();
     const profilePhotos =  await getUserProfilePhoto(["profile_photo"]);
-    const emails = await getEmail(["email"])
+    const email = req.session.email;
     const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
-    console.log(emails);
-    res.render('viewProfile',{"first_name": userInfo[0].first_name,dataset: userInfo[0],allUsers,profilePhotos,"profilePhoto":profilePhoto[0].profile_photo,emails});
+    const e_id = req.session.emp_id;
+    const document_query = await query(`select * from document where fk_emp_id = "${e_id}"`);
 
+    res.render('viewProfile',{"first_name": userInfo[0].first_name,dataset: userInfo[0],allUsers,profilePhotos,"profilePhoto":profilePhoto[0].profile_photo,email,document:document_query});
+    
 
 }
 

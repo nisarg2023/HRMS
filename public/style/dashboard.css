@@ -12,6 +12,12 @@
     --white: #ffffff;
     --black: #000000;
     --bg-color:#f1f5f9;
+    --green: #008000;
+    --green-hover: #005f00;
+    --blue-head: #040464;
+    --red: #ff0000;
+    --red-hover: #a10000;
+
 }
 body{
     font-family: 'Lato', sans-serif;

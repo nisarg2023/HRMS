@@ -6,11 +6,11 @@ const getUserBasicinfo = async(id = "") => {
 
     if (id == "") {
 
-        const data = await query(`SELECT * FROM hrms.basic_info `)
+        const data = await query(`SELECT * FROM basic_info `)
         return data;
     } else {
 
-        const data = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${id};`)
+        const data = await query(`SELECT basic_info_id,first_name FROM basic_info where fk_emp_id = ${id};`)
         return data;
     }
 
@@ -31,10 +31,10 @@ const getEmail = async(fields = "*", id = "") => {
 const getUserProfilePhoto = async(fields = "*", id = "") => {
 
     if (id == "") {
-        data = await query(`SELECT ${fields.toString()}  FROM hrms.document;`)
+        data = await query(`SELECT ${fields.toString()}  FROM document;`)
         return data;
     } else {
-        data = await query(`SELECT ${fields.toString()} FROM hrms.document where fk_emp_id=${id}`);
+        data = await query(`SELECT ${fields.toString()} FROM document where fk_emp_id=${id}`);
         return data;
     }
 
@@ -71,32 +71,6 @@ const getComment = async (req,res)=>{
     res.json({message:true});
 }
 
-// to update the status of comment of read or not
-const getCommentId = async (req,res)=>{
-    var commentId= req.query.commentId;
-    var comment= req.query.comment;
-    if(commentId){
-
-        var idQuery=`update employee_comment  set comment_status="1" where emp_comment_id="${commentId}";`
-        var idData= await query(idQuery);
-        res.redirect('allComment')
-    }
-    else{
-        res.json()
-    }
-}
-//  allcomment page 
-const getCommentData = async (req,res)=>{
-    const userInfo = await getUserBasicinfo(req.session.emp_id);
-
-    var allCommentQuery=`select employee_comment.emp_comment_id,employee_comment.fk_emp_id,basic_info.first_name,employee_comment.comment_time,
-    employee_comment.comment_date,employee_comment.comment,employee_comment.comment_status from employee_comment left join basic_info 
-    on employee_comment.fk_emp_id=basic_info.fk_emp_id order by employee_comment.emp_comment_id ;`
-    var allCommentData= await query(allCommentQuery);
-
-    res.render('allComment',{c:allCommentData,name:userInfo[0].first_name});
-    
-}
 
 const updateCommentCard = async (req,res)=>{
     // console.log("Hello")
@@ -104,7 +78,6 @@ const updateCommentCard = async (req,res)=>{
     var commentData= await query(commentSql)
     res.json(commentData)
 } 
-
 
 const getDataProfile= async(req,res)=>{
     const userInfo = await getUserBasicinfo(req.session.emp_id)
@@ -118,4 +91,4 @@ const getDataProfile= async(req,res)=>{
 
 }
 
-module.exports = {getDashboard,getHotlines,getComment,getCommentData,getCommentId,getDataProfile,updateCommentCard}
+module.exports = {getDashboard,getHotlines,getComment,getDataProfile,updateCommentCard}

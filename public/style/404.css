@@ -4,7 +4,24 @@
 }
 
 .pnf-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
     height: 100vh;
-    background: url(/images/404.gif);
-    background-size: cover; 
+
+    background-repeat: no-repeat;
+}
+.pnf-btn{
+    position: absolute;
+    background-color: #2270e4;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    bottom: 50px;
+}
+.pnf-btn:hover{
+    background-color: #195abd;
 }

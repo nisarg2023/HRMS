@@ -41,12 +41,7 @@ const getUserProfilePhoto = async(fields = "*", id = "") => {
 
 }
 
-<<<<<<< HEAD
-
-const getDashboard = async(req,res)=>{
-=======
 const getDashboard = async(req, res) => {
->>>>>>> 2da892ec15dea046e1f3126ccbb30a5bae0c052d
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
     var commentSql=`select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`

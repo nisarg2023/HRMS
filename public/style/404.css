@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.pnf-wrapper{
+    height: 100vh;
+    background: url(/images/404.gif);
+    background-size: cover; 
+}

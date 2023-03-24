@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="stylesheet" href="/style/employee-edit-data.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+</head>
+<body>
+    <div class="dashboard-wrapper flex flex-row">
+        <div class="dashboard-right">
+            <%- include('components/sidebar.ejs') %>
+        </div>
+        <div class="dashboard-left">
+            <%- include('components/header.ejs',{name:"Dashboard"}) %>
+        <div class="dashboard-data-container ">
+
+            <form action="/post-employee-edit" method="post">
+                <input type="hidden" name="id" value="<%= basic_info[0].basic_info_id %>">
+                    <div>
+                        <div id="optionbar">
+                            <div class="optionbar" id="Basic_info">Basic info</div>
+                            <div class="optionbar" id="Education_info">Education info</div>
+                            <div class="optionbar" id="Work_Experince">Work Experince</div>
+                        </div>
+                    </div>
+                    <div id="table1" style="display: none;">
+                        <div class="mainhedar">
+                            <p>Basic Info</p>
+                         </div>
+                        <div class="first">
+                        <div class="basicinfo">
+                            <div>Photos</div>
+                            <div><img src="/images/admin.jpeg" alt="Error"></div>
+                            <div><a href="#">Remove</a></div>
+                        </div>
+                        <div class="formgroup">
+                        <div>
+                            <div>
+                                <p>First Name:</p>
+                                <input type="text" id="fname" name="first_name" value="<%=basic_info[0].first_name%>" />
+                            </div>
+                            <div>
+                                <p>Last Name:</p>
+                                <input type="text" id="lname" name="last_name" value="<%=basic_info[0].last_name%>" />
+                            </div>
+                            <div>
+                                <% if(basic_info[0].gender=='female' ) {%>
+                                    <p> Gender:</p>
+                                    <input type="radio" id="male" name="gender" value="male" />
+                                    <span>Male</span>
+                                    <input type="radio" id="female" name="gender" value="female" checked />
+                                    <span> Female</span>
+                                    <input type="radio" id="other" name="gender" value="other" />
+                                    <span> Other</span>
+                                <%}%>
+                            </div>
+                            <div>
+                                <% if(basic_info[0].gender=='male' ) {%>
+                                    <p> Gender:</p>
+                                    <input type="radio" id="male" name="gender" value="male" checked />
+                                    <span>Male</span>
+                                    <input type="radio" id="female" name="gender" value="female"  />
+                                    <span> Female</span>
+                                    <input type="radio" id="other" name="gender" value="other" />
+                                    <span> Other</span>
+                                <%}%>
+                            </div>
+                            <div>
+                                <% if(basic_info[0].gender=='other' ) {%>
+                                    <p> Gender:</p>
+                                    <input type="radio" id="male" name="gender" value="male"  />
+                                    <span>Male</span>
+                                    <input type="radio" id="female" name="gender" value="female"  />
+                                    <span> Female</span>
+                                    <input type="radio" id="other" name="gender" value="other" checked/>
+                                    <span> Other</span>
+                                <%}%>
+                            </div>
+                            <div>
+                                <p>Date of Birth :</p>
+                                <input type="date" id="birth_date" name="birth_date" value="<%=basic_info[0].birth_date%>" />
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>Relationship :</p>
+                                <select name="relationship" id="status">
+                                    <%if(basic_info[0].relationship=='married') {%>
+                                        <option value="married" selected>married</option>
+                                        <option value="unmarried">unmarried</option>
+                                    <%} else if (basic_info[0].relationship=='unmarried') { %>
+                                        <option value="married" >married</option>
+                                        <option value="unmarried" selected>unmarried</option>
+                                    <%}%>  
+                                </select>
+                            </div>
+                            <div>
+                                <p>Desigation :</p>
+                                <input type="text" id="blood_group" name="blood_group"value="<%=basic_info[0].blood_group%>" />
+                            </div>
+                            <div>
+                                <p>State :</p>
+                                <select name="state" id="stateName">
+                                        <!-- <option hidden disabled selected value>
+                                            select state
+                                        </option> -->
+                                        <% for(let i=0; i < stateName.length; i++) {%>
+                                            <option value="<%= stateName[i].state_name %>" 
+                                                <% if(stateName[i].state_name==basic_info[0].state) { %>
+                                                selected <% } %> ><%= stateName[i].state_name %>
+                                            </option>
+                                            <% } %>
+                                </select>
+                            </div>
+                            <div>
+                                <p>City :</p>
+                                <select name="city" id="city">
+                                    <option hidden disabled selected value>
+                                        <%=basic_info[0].city%>
+                                    </option>
+                                </select>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                                   
+                        <div id="table2" style="display: none;">
+                        <div class="mainhedar">
+                           <p>Education Info</p>
+                        </div>
+                           <div class="form2">
+                               <div class="form-group">
+                                <div id="education" class="block">
+                                    <div class="education-item">
+                                   <%for(i=0;i<education.length;i++){%>
+                                <div class="form2col1">
+                                    <div>
+                                        <p>Course</p>
+                                        <select name="course_name" id="status">
+                                            <%if(education[0].course_name=='HSC') {%>
+                                                <option value="HSC" selected>HSC</option>
+                                                <option value="SSC">SSC</option>
+                                            <%} else if (education[0].course_name=='SSC') { %>
+                                                <option value="HSC" >HSC</option>
+                                                <option value="SSC" selected>SSC</option>
+                                            <%}%>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <p>Passing Year :</p>
+                                        <input type="text" name="passing_year" value="<%=education[i].passing_year%>" />
+                                    </div>
+                                </div>
+                                <div class="form2col2">
+                                    <div>
+                                        <p>percentage :</p>
+                                        <input type="text" name="marks" value="<%=education[i].marks%>" />
+                                    </div>
+                                    <div>
+                                        <p>College :</p>
+                                        <input type="text" name="college_school" class="board" value="<%=education[i].college_school%>" />
+                                    </div>
+                                </div>
+                                    <%}%>
+                                </div>
+                                </div>
+
+                               </div>
+                            </div>   
+                            <button type="button" id="add-education-button">+</button>
+                        </div>
+           
+                        <div id="table3" style="display: none;">
+                           
+                            <div class="thirdone">
+                                <div class="mainhedar">
+                                    <p>Work Experience</p>
+                                </div>
+                                <div class="form3">
+                                    <%for(i=0;i<work.length;i++){%>
+                                    <div class="form3col1">
+                                        <div>
+                                            <p>Comapany Name :</p>
+                                            <input type="text" id="company_name" name="company_name" value="<%=work[i].company_name%>" />
+                                        </div>
+                                        <div>
+                                            <p>From :</p>
+                                            <input type="date" id="start-date" name="start_date" value="<%=work[i].start_date.toJSON('dd-mm-yyyy').slice(0,10)%>" />
+                                        </div>
+                                    </div>
+                                    <div class="form3col2">
+                                        <div>
+                                            <p>To :</p> 
+                                            <input type="date" id="end-date" name="end_date" value="<%=work[i].end_date.toJSON('dd-mm-yyyy').slice(0,10)%>" />
+                                        </div>
+                                        <div>
+                                            <p>Designation :</p>
+                                            <input type="text" name="designation" value="<%=work[i].designation%>" />
+                                        </div>
+                                    </div>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="sbt"  align="center">    
+                        <input type="submit" class="button button1" value="submit">
+                    </div>
+        </form>
+    </div>
+    </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const stateSelect = document.getElementById('stateName');
+        const citySelect = document.getElementById('city');
+        stateSelect.addEventListener('change', () => {
+            const stateId = stateSelect.value;
+            console.log(stateId)
+            fetch(`/get-city-data?stateValue=${stateId}`)
+                .then((response) => {return response.json()})
+                .then((cityData) => {
+                    console.log(cityData)
+                    citySelect.innerHTML = '';
+                    cityData.forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city.city_name;
+                        option.text = city.city_name;
+                        citySelect.add(option);
+                    });
+                });
+        });
+    });
+
+
+    const educationDetails = document.getElementById("education");
+    const addEducationButton = document.getElementById("add-education-button");
+    addEducationButton.addEventListener("click", function () {
+        const educationItem = document.createElement("div");
+        educationItem.classList.add("education-item");
+        educationItem.innerHTML = `
+        <div class="form2col1">
+        <div>
+            <p>Course</p>
+            <select name="course_name" id="status">
+                <%if(education[0].course_name=='HSC') {%>
+                    <option value="HSC" selected>HSC</option>
+                    <option value="SSC">SSC</option>
+                <%} else if (education[0].course_name=='SSC') { %>
+                    <option value="HSC" >HSC</option>
+                    <option value="SSC" selected>SSC</option>
+                <%}%>  
+            </select>
+        </div>
+        <div>
+            <p>Passing Year :</p>
+            <input type="text" name="passing_year" class="passing_year" />
+        </div>
+    </div>
+    <div class="form2col2">
+        <div>
+            <p>percentage :</p>
+            <input type="text" name="marks" />
+        </div>
+        <div>
+            <p>College :</p>
+            <input type="text" name="college_school" />       
+        </div>
+    </div>
+
+  `;
+        educationDetails.appendChild(educationItem);
+    });
+
+    let Basic_info = document.getElementById('Basic_info');
+    let conatct = document.getElementById('Education_info');
+    let Work_Experince = document.getElementById('Work_Experince');
+    let social = document.getElementById('social');
+    let table1 = document.getElementById('table1');
+    let table2 = document.getElementById('table2');
+    let table3 = document.getElementById('table3');
+
+    Basic_info.addEventListener('click',(req,res)=>{
+        Basic_info.style.fontWeight = '600';
+        Education_info.style.fontWeight = '100';
+        Work_Experince.style.fontWeight = '100';
+
+        Basic_info.style.borderWidth = '2px 2px 2px 0px'
+        Education_info.style.borderBottom = 'none';
+        Work_Experince.style.borderBottom = 'none'
+        if(table1.style.display == "none"){
+            table1.style.display = "block"
+            table2.style.display = "none"
+            table3.style.display = "none"
+        }
+        
+    })
+    Education_info.addEventListener('click',(req,res)=>{
+        Basic_info.style.fontWeight = '100';
+        Education_info.style.fontWeight = '600';
+        Work_Experince.style.fontWeight = '100';
+
+        Basic_info.style.borderBottom = 'none';
+        Education_info.style.borderBottom = '1px 1px 1px 0px solid red'
+        Work_Experince.style.borderBottom = 'none'
+        
+        if(table2.style.display == "none"){
+            table1.style.display = "none"
+            table2.style.display = "block"
+            table3.style.display = "none"
+        }
+    })
+    Work_Experince.addEventListener("click",(req,res)=>{
+        Basic_info.style.fontWeight = '100';
+        Education_info.style.fontWeight = '100';
+        Work_Experince.style.fontWeight = '600';
+
+        Basic_info.style.borderBottom = 'none';
+        Education_info.style.borderBottom = 'none';
+        Work_Experince.style.borderBottom = '1px 1px 1px 0px solid red'
+        
+
+        if(table3.style.display == "none"){
+            table1.style.display = "none"
+        table2.style.display = "none"
+        table3.style.display = "block"
+        }
+       
+    })
+
+</script>
+</html>

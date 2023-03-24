@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box;
+}
+
+
+
+.main-body {
+    padding: 30px;
+    background: #e6ecf5;
+    height: 100%;
+
+}
+.profile-page{
+
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.profile{
+    width: 250px;
+}
+
+.btn {
+    width: 100%;
+    color: #ffffff;
+    background-color: #0059b2;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 21px;
+    border-radius: 10px;
+    transition: .5s;
+    cursor: pointer;
+    padding: 8px 20px;
+    display: inline-block;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.profile-pic{
+    border: 1px solid #e6ecf5;
+    border-bottom: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;   
+}
+
+.assign-tag{
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.tag{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 100px;
+}
+
+.bi-emoji-smile{
+    font-size: 30px;
+}
+
+.profile-maincard{
+    padding: 0 0 0 20px;
+    width: calc(100% - 250px);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.card{
+    width: calc(100% / 2 - 30px);
+    margin: 0 15px 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    border-radius: 10px;
+    background-color: #e6ecf5;
+    padding: 20px;
+}
+
+.single-row{
+    font-size: 14px;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.left-part{
+    font-weight: 500;
+    padding-right: 10px;
+}
+
+.right-part{
+    width: calc(100% / 2);
+}

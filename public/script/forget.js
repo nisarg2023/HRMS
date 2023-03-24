@@ -43,10 +43,6 @@ const passwordError = () => {
     }
 }
 
-
-
-
-
 const changBtnStatus = () => {
     let passvalid = document.getElementById("passvalid").innerHTML;
     let passwordErr = document.getElementById("passwordErr").innerHTML;
@@ -62,6 +58,7 @@ const changBtnStatus = () => {
         submit_btn.style="opacity: 0.5"
     }
 }
+
 const emailCorrect2 = () => {
     
     let regex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;

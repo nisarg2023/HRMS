@@ -4,8 +4,20 @@ const query =  util.promisify(conn.query).bind(conn)
 const bcrypt = require('bcryptjs');
 
 const getLogin = (req, res) => {
+    if(req.cookies.sessionid && req.session.emp_id)
+    {
+        res.redirect('/dashbord')
+    }
+    else{
+        res.render('login')
+
+    }
+}
+
+
+const redirectLogin = (req, res) => {
    
-    res.render('login')
+    res.redirect('/get-login')
 }
 
 const postLogin = async (req, res) => {
@@ -18,13 +30,13 @@ const postLogin = async (req, res) => {
         var result = await query(sql)
 
         if (result.length == 0) {
-            return res.send("user not found")
+            return res.render("login",{"err":"Wrong email or password"})
         }
 
         const data = result[0].password;
       
         var match = await bcrypt.compare(user_password, data);
-        console.log("match", match);
+        
         if (match) {
             req.session.email = user_email;
             req.session.emp_id = result[0].emp_id;
@@ -32,7 +44,7 @@ const postLogin = async (req, res) => {
 
             if(result[0].isactivate)
             {
-                const basicinfo = await query(`SELECT basic_info_id,first_name FROM basic_info where fk_emp_id = ${result[0].emp_id};`)
+                const basicinfo = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${result[0].emp_id};`)
                 if(basicinfo.length == 0)
                 {
                     res.redirect("/employee/get-employee-data");
@@ -44,12 +56,12 @@ const postLogin = async (req, res) => {
             }
             else{
 
-                res.redirect('/get-activate');
+                res.redirect('/get-activate');  
             }
            
         }
         else {
-            return res.send("wrong password!")
+            return res.render("login",{"err":"Wrong email or password"})
         }
 
     }
@@ -64,4 +76,4 @@ const getLogout = (req,res)=>{
     res.redirect('get-login')
 }
 
-module.exports = { postLogin, getLogin,getLogout };
+module.exports = { postLogin, getLogin,getLogout,redirectLogin };

@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+*{
+    font-family: 'Delicious Handrawn', cursive;
+}
+#optionbar{
+    display: flex;
+    text-transform: capitalize;
+}
+.optionbar{
+    margin: 0px 10px;
+}
+#optionbar{
+    border: 1px solid black;
+}
+#table1{
+    display: flex;
+    border: 1px solid black;
+
+}
+
+.col1{
+    border: 1px solid black;
+    display: flex;
+    width: 100%;
+}
+#table2{
+    border: 1px solid rgb(0, 0, 0);
+}
+#table3{
+    border: 1px solid rgb(27, 27, 63);
+}
+.form3{
+    display: flex;
+}
+/* .thirdone{
+    border: 2px solid black;
+    margin: 20px;
+} */
+
+
+.form3col1{
+    width: 50%;
+    margin: 20px;
+    /* border: 2px solid black; */
+}
+.form3col2{
+    /* border: 2px solid black; */
+    width: 50%;
+    margin: 20px;
+
+}
+.form3col1 div{
+    margin: 20px;
+    }
+.form3col2 div{
+margin: 20px;
+}
+.mainhedar{
+    border: 2px solid rgb(38, 38, 78);
+    margin: 20px;
+    background-color: rgb(38, 38, 78);
+    color: white;
+}
+.mainhedar p{
+    margin: 20px;
+}
+
+
+
+
+
+
+.form2col1{
+    display: flex;
+    /* border: 2px solid black; */
+    /* width: 200%; */
+
+}
+.form2col2{
+    display: flex;
+    /* border:2px solid rgb(0, 0, 0) */
+}
+.form2col1 div{
+    margin: 20px;
+    margin-left:100px;
+}
+.form2col2 div{
+    margin: 20px;
+    margin-left:100px;
+}
+
+button {
+    background-color:rgb(38, 38, 78);
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100%;
+    background-color:rgb(38, 38, 78);
+    cursor: pointer;
+  }
+  
+
+.first{
+    display: flex;
+    /* border: 1px solid black; */
+}
+.basicinfo{
+   
+    width: 20%;
+}
+.formgroup{
+    
+    width: 80%;
+    display: flex;
+}
+.formgroup div{
+    margin: 20px;
+}
+.basicinfo div{
+    margin: 50px;
+}
+select, option {
+    width: 180px;
+}
+input[type=text],[type=date]{
+    padding: 10px;
+    background-color: rgb(248, 244, 240);
+    border-radius: 10px;
+    width: 100%;
+}
+select , option{
+    padding: 10px;
+    background-color: rgb(248, 244, 240);
+    border-radius: 10px;
+    width: 100%;
+    width: 180px;
+
+}
+option {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.button {
+    background-color: #222344;/* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .button1 {
+    /* background-color: white; 
+    color: black;  */
+    border: 2px solid #222344;
+  }
+  
+  .button1:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .sbt{
+    margin-top: 15px;
+  }
+  a{
+    background-color: #222344;; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+a:hover{
+    background-color: #fc0404;
+    color: white;
+}

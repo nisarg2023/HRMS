@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="/style/checkin.css">
     <link rel="stylesheet" href="/style/record-your-attendance.css">
     <link rel="stylesheet" href="/style/add-your-comment.css">
+    <script src="/script/sidebar.js"></script>
+    
     
     <title>HRMS- Dashboard</title>
 </head>
-<body>
+<body onload="handelPageLoad()">
+    <input type="hidden" value="<%=emp_id%>" id="emp_id" >
     <div class="dashboard-wrapper flex flex-row">
         <div class="dashboard-right">
             <%- include('components/sidebar.ejs') %>
@@ -43,7 +46,7 @@
         </div>
     </div>
 
+    
 </body>
-
 <script src="/script/checkin.js"></script>
 </html> 

@@ -35,7 +35,8 @@
       </nav>
     </div>
 
-    <div class="profile-container flex flex-row item-center">
+    <div class="profile-container flex flex-row item-center" id="profile-container" onclick="openMenu()">
+
       <div class="profile-image-container">
         <img
           class="employee-profile-image"
@@ -43,10 +44,22 @@
           alt="employee profile picture"
         />
       </div>
-      <div class="employee-name">
+      <div class="employee-name" >
         <p class="emp-name"><%=first_name%></p>
         <p class="emp-role">Developer</p>
+      </div>
+
+    </div>
+
+    <div class="user-profile-edit" id="user-profile-edit" style="display: none;">
+      <div class="userprofile-option-container flex flex-col">
+        <p class="emp-name"><%=first_name%></p>
+        <a class="profile-edit-btn" href="../get-employee-edit">Edit Profile</a>
+        <a class="profile-edit-btn" href="/dashbord/viewProfile">View Profile</a>
+        <a class="profile-edit-btn" href="../get-logout">Logout</a>
       </div>
     </div>
   </div>
 </div>
+
+<script src="/script/sidebar.js"></script>

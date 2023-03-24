@@ -18,7 +18,17 @@ const postEmail =async (req,res)=>{
     var {user_email,user_password}=req.body;
     console.log(user_email);
     console.log(user_password);
-    let activate = await query(`update hrms_employee set isactivate = 0 where email = '${user_email}'`)
-    // res.redirect('/get-login')
+    var hashPass = await bcrypt.hash(user_password,10);
+        console.log("hash"+hashPass);
+
+    if(user_email){
+
+        var updateQuery=` update hrms_employee set password="${hashPass}" where email="${user_email}";`
+        var updateData= await query(updateQuery); 
+        res.redirect('/get-login')
+    }else{
+        res.send(" Your password cannot change !.......")
+    }
+   
 }
 module.exports = { forgetPassword,checkEmail,postEmail };

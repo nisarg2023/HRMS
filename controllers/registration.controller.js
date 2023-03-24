@@ -14,7 +14,6 @@ const postRegistration=async(req,res)=>{
 
         
         const{user_email,user_password} = req.body;
-        console.log(req.body.email)
 
         var sql1 = (`select * from  hrms_employee where email = '${user_email}'`)
         var result1 = await query(sql1)
@@ -28,9 +27,9 @@ const postRegistration=async(req,res)=>{
             var hashPass = await bcrypt.hash(user_password,10);//(Data , salt)
         console.log("hash"+hashPass);
 
-        var sql=`insert into hrms_employee(email,password) values('${user_email}','${hashPass}')`;
+        var sql = `insert into hrms_employee(email,password) values('${user_email}','${hashPass}')`;
         var result =  await query(sql);
-       // mailer.sendMail(email)
+        mailer.sendMail(user_email)
         res.redirect("/get-login")
         }
 

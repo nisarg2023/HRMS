@@ -37,10 +37,8 @@ const get_checkin = async(req, res) => {
     } catch (err) {
         res.sende(err);
     }
-
-
-
 }
+
 const get_checkout = async(req, res) => {
 
 
@@ -116,4 +114,4 @@ const get_brakeout = async(req, res) => {
     }
 }
 
-module.exports = { get_checkin, get_checkout, get_brakeout, get_brakein };
+module.exports = { get_checkin, get_checkout, get_brakeout, get_brakein }

@@ -34,12 +34,14 @@ app.use(express.static(__dirname + '/public'))
 app.use(express.static(__dirname + ''));
 app.set('view engine', 'ejs');
 
-
+const pageNotFound = require('./controllers/404.controller')
 //define routes
 
 app.use("/",userRoutes);
 app.use("/employee/",auth,employeeForm);
 app.use("/dashbord/",auth,dashbord);
+
+app.use("/*",pageNotFound);
 
 // HEADER-UI
 // app.get("/dashboard", function(req,res){

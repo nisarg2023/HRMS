@@ -2,18 +2,18 @@ const conn = require('../config/dbConnect');
 const util = require('util');
 const query = util.promisify(conn.query).bind(conn);
 const moment = require("moment");
+// const {getUserBasicinfo,getUserProfilePhoto} = require('./dashboard.controller')
 
 
 const attendancy_summary = async(req, res) => {
-    let info_id = 1;
-    // let total_time = [];
-    let totalworkinhours = 0;
+    console.log("Heloo fromm att")
+        // let total_time = [];
     let braketime = 0;
     let alltime_work_hours = 0;
     let total_brake = [];
     let total_workhours = [];
 
-    let querychecktime = `SELECT * FROM hrms.check_system where basic_info_id = ${info_id}`;
+    let querychecktime = `SELECT * FROM check_system where basic_info_id = ${req.session.emp_id}`;
 
 
     let data1 = await query(querychecktime);
@@ -37,7 +37,7 @@ const attendancy_summary = async(req, res) => {
 
     for (let i = 0; i < data1.length; i++) {
 
-        let querybraketime = `select total_brake_time from  hrms.brake_system where date ="${data1[i].date}";`
+        let querybraketime = `select total_brake_time from brake_system where brake_date ="${data1[i].check_date}";`
 
 
         let data2 = await query(querybraketime);
@@ -50,8 +50,7 @@ const attendancy_summary = async(req, res) => {
 
 
         }
-        totalworkinhours += braketime;
-        console.log("in", totalworkinhours);
+
         let total_brake_ = moment.duration(braketime);
 
         let m = total_brake_.minutes();
@@ -65,38 +64,46 @@ const attendancy_summary = async(req, res) => {
 
     }
 
-    totalworkinhours += alltime_work_hours;
-    console.log("***", alltime_work_hours - totalworkinhours);
-    let q = moment.duration(totalworkinhours);
 
-    let ho = q.hours();
-    let all_stafing_hours = ho;
-    let execute = totalworkinhours - alltime_work_hours;
+    const getUserBasicinfo = async(id = "") => {
 
-    let todasd = moment.duration(execute);
-    let dif_mins = moment.duration(totalworkinhours);
+        if (id == "") {
 
-    let gg = todasd.minutes();
-    let minuts = dif_mins.minutes();
+            const data = await query(`SELECT * FROM hrms.basic_info `)
+            return data;
+        } else {
 
-    console.log("min*565*", gg, minuts);
+            const data = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${id};`)
+            return data;
+        }
 
-    let productiveratio = (((minuts - gg) / minuts) * 100);
-    console.log();
+    }
+
+    const getUserProfilePhoto = async(fields = "*", id = "") => {
+
+        if (id == "") {
+            const data = await query(`SELECT ${fields.toString()}  FROM hrms.document;`)
+            return data;
+        } else {
+            const data = await query(`SELECT ${fields.toString()} FROM hrms.document where fk_emp_id=${id}`);
+            return data;
+        }
 
 
-    console.log("minus", productiveratio);
+    }
 
 
+
+    const userInfo = await getUserBasicinfo(req.session.emp_id);
+    const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
 
 
     let totlchecktime = moment.duration(alltime_work_hours);
-
+    let m = totlchecktime.minutes();
     let h = totlchecktime.hours();
-    let all_work_hours = h;
+    let all_work_hours = h + ":" + m;
     console.log("brakes", total_brake);
-
-    res.render("attendance-summary.ejs", { data1, total_brake, total_workhours, all_work_hours, all_stafing_hours, productiveratio })
+    res.render("attendance", { data1, total_brake, total_workhours, all_work_hours, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo })
 }
 
 module.exports = { attendancy_summary }

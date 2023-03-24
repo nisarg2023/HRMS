@@ -61,12 +61,7 @@ const getHotlines = async(req, res) => {
     res.render('hotline', { "first_name": userInfo[0].first_name, allUsers, profilePhotos, "profilePhoto": profilePhoto[0].profile_photo, emails });
 }
 
-const getAttendance = async(req, res) => {
-    const userInfo = await getUserBasicinfo(req.session.emp_id);
-    const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
-    res.render('attendance', { "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo });
 
-}
 
 const getComment = async(req, res) => {
     const userInfo = await getUserBasicinfo(req.session.emp_id);
@@ -122,4 +117,4 @@ const getDataProfile = async(req, res) => {
 
 }
 
-module.exports = { getDashboard, getHotlines, getAttendance, getComment, getCommentData, getCommentId, getDataProfile, updateCommentCard }
+module.exports = { getDashboard, getHotlines, getComment, getCommentData, getCommentId, getDataProfile, updateCommentCard }

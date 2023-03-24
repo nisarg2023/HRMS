@@ -43,49 +43,12 @@ const passwordError = () => {
     }
 }
 
-
-
-const emailCorrect = () => {
-    
-    let regex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
-
-    let email = document.getElementById('email').value;
-    let emailErr = document.getElementById("emailErr");
-
-    fetch('http://localhost:8000/get-allUsersEmail')
-    .then(res=>res.json())
-    .then((emails) => {
-        if(emails.includes(email))
-        {
-            emailErr.innerHTML = 'user already exists';    
-        }
-        else{
-            emailErr.innerHTML = '';    
-        }
-
-    })
-
-    if (email == "" || !regex.test(email)) {
-        
-        emailErr.innerHTML = 'Email is invalid';
-        emailErr.style.color = 'red';
-            submit_btn.disabled=true;
-            submit_btn.style="opacity: 0.5"
-            return false;
-        
-    } else {
-        emailErr.innerHTML = '';
-        changBtnStatus()
-       
-    }
-}
-
 const changBtnStatus = () => {
     let passvalid = document.getElementById("passvalid").innerHTML;
     let passwordErr = document.getElementById("passwordErr").innerHTML;
-    let emailErr = document.getElementById("emailErr").innerHTML;
+    
    
-    if(passvalid=="" && passwordErr=="" &&emailErr=="")
+    if(passvalid=="" && passwordErr=="")
     {
         submit_btn.disabled=false;
         submit_btn.style="opacity: 1"
@@ -95,4 +58,34 @@ const changBtnStatus = () => {
         submit_btn.style="opacity: 0.5"
     }
 }
-  
+
+const emailCorrect2 = () => {
+    
+    let regex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+
+    let email = document.getElementById('email').value;
+    let emailErr = document.getElementById("emailErr");
+    
+
+    fetch('http://localhost:8000/all-email')
+    .then(res=>res.json())
+    .then((emails) => {
+        if(!emails.includes(email))
+        {
+            emailErr.innerHTML = 'user not register'; 
+            emailErr.style.color = 'red';
+            submit_btn.disabled=true;
+            submit_btn.style="opacity: 0.5"
+            return false;   
+        }
+        else{
+            emailErr.innerHTML = ''; 
+            submit_btn.disabled=false;
+        submit_btn.style="opacity: 1"   
+        }
+
+    })
+} 
+
+
+

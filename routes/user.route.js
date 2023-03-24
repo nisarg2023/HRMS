@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const loginController = require('../controllers/login.controller');
+const forgetController = require('../controllers/forget.controller');
 const registrationController = require('../controllers/registration.controller')
 const activationController = require('../controllers/activation.controller');
 const attendance_summary = require("../controllers/attendance.summary.controller")
@@ -22,6 +23,10 @@ router.get('/get-activate', activationController.getActivate);
 router.post('/post-activate', activationController.postActivate);
 router.get('/get-logout', loginController.getLogout);
 //router.get('/employee-data',employeeController);
+
+router.get('/forget-password',forgetController.forgetPassword);
+router.get('/all-email',forgetController.checkEmail);
+router.post('/post-email',forgetController.postEmail);
 
 
 router.get('/get-allUsersEmail', userEmail.getAllUsersEmail);

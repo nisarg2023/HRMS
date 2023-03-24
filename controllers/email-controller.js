@@ -1,20 +1,20 @@
 const nodemailer = require("nodemailer");
 
-const sendMail = async(email) =>{
+const sendMail = async(email) => {
 
     let transporter = nodemailer.createTransport({
         host: "smtp.ethereal.email",
         port: 587,
         auth: {
-          user: "concepcion.lindgren@ethereal.email",
-          pass: "uB8uqBE7QUfaXAc68f", 
+            user: "alia21@ethereal.email",
+            pass: "hsXAYR5Z1t7gAdVGMN",
         },
     })
-        let mailInfo ={
-            from: '"HRMS" <concepcion.lindgren@ethereal.email>' ,
-            to: email,
-            subject: 'Welcome to HRMS',
-            html:`<div>
+    let mailInfo = {
+        from: '"HRMS" <concepcion.lindgren@ethereal.email>',
+        to: email,
+        subject: 'Welcome to HRMS',
+        html: `<div>
                    <h2>Welcome to the HRMS this is the guide to use this system.<h2>
 
                    <p>Here is the Fucntionality of the hrms system</p>
@@ -27,15 +27,14 @@ const sendMail = async(email) =>{
                    <li>Leave application<li>
                    </ul>
                   </div>`
-            }
-           
-        transporter.sendMail(mailInfo, function(error, info){
-          if (error) {
+    }
+
+    transporter.sendMail(mailInfo, function(error, info) {
+        if (error) {
             console.log(error);
-          } 
-          else {
+        } else {
             console.log('Email sent successfully');
-          }
-        })   
+        }
+    })
 }
-module.exports= {sendMail}
+module.exports = { sendMail }

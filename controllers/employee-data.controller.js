@@ -95,7 +95,7 @@ const postEmployeedata = async (req, res) => {
         //     For Eduction Data
         let data = req.body
         console.log(data);
-        console.log("fkshshvikshk",fname);
+        // console.log("fkshshvikshk",fname);
 
 
             })

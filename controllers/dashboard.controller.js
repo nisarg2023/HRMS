@@ -91,7 +91,7 @@ const getCommentData = async (req,res)=>{
 
     var allCommentQuery=`select employee_comment.emp_comment_id,employee_comment.fk_emp_id,basic_info.first_name,employee_comment.comment_time,
     employee_comment.comment_date,employee_comment.comment,employee_comment.comment_status from employee_comment left join basic_info 
-    on employee_comment.fk_emp_id=basic_info.fk_emp_id order by employee_comment.emp_comment_id ;`
+    on employee_comment.fk_emp_id=basic_info.fk_emp_id order by employee_comment.emp_comment_id  desc;`
     var allCommentData= await query(allCommentQuery);
 
     res.render('allComment',{c:allCommentData,name:userInfo[0].first_name});

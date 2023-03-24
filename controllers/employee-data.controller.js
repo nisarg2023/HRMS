@@ -23,14 +23,13 @@ var storage = multer.diskStorage({
 });
 
 
-const getUserProfilePhoto = async(fields="*",id="")=>{
+const getUserProfilePhoto = async (fields = "*", id = "") => {
 
-    if(id=="")
-    {
+    if (id == "") {
         data = await query(`SELECT ${fields.toString()}  FROM document;`)
         return data;
     }
-    else{
+    else {
         data = await query(`SELECT ${fields.toString()} FROM document where fk_emp_id=${id}`);
         return data;
     }
@@ -38,18 +37,17 @@ const getUserProfilePhoto = async(fields="*",id="")=>{
 
 }
 
-const getUserBasicinfo = async(id="")=>{
+const getUserBasicinfo = async (id = "") => {
 
-    if(id=="")
-    {
+    if (id == "") {
 
         const data = await query(`SELECT * FROM basic_info `)
         return data;
     }
-    else{
-        
-    const data = await query(`SELECT basic_info_id,first_name FROM basic_info where fk_emp_id = ${id};`)
-    return data;
+    else {
+
+        const data = await query(`SELECT basic_info_id,first_name FROM basic_info where fk_emp_id = ${id};`)
+        return data;
     }
 
 }
@@ -92,20 +90,15 @@ const postEmployeedata = async (req, res) => {
 
             console.log(req.session.emp_id);
 
-        //     For Eduction Data
-        let data = req.body
-        console.log(data);
-        console.log("fkshshvikshk",fname);
-
-
-            })
-            var document_query = `insert into document (fk_emp_id,resume,bank_detail,pan_card,aadhar_card,profile_photo) values ('${req.session.emp_id}','${path[0]}','${path[1]}','${path[2]}','${path[3]}','${path[4]}');`
-            var document_info = await query(document_query);
-
-
             //     For Eduction Data
             let data = req.body
+            console.log(data);
 
+
+
+
+            var document_query = `insert into document (fk_emp_id,resume,bank_detail,pan_card,aadhar_card,profile_photo) values ('${req.session.emp_id}','${path[0]}','${path[1]}','${path[2]}','${path[3]}','${path[4]}');`
+            var document_info = await query(document_query);
 
             let moreEdudata = req.body.moreEdu_data;
 
@@ -115,13 +108,13 @@ const postEmployeedata = async (req, res) => {
             // for basic info
 
             var basic_info_query = `insert into basic_info (fk_emp_id,first_name,last_name,birth_date,relationship,blood_group,
-            gender,city,state) values ('${req.session.emp_id}','${data.fname}','${data.lname}','${data.dob}','${data.relationship}','${data.blood_group}',
-            '${data.gender}','${data.city}','${data.state}');`
+            gender,city,state,phone_number) values ('${req.session.emp_id}','${data.fname}','${data.lname}','${data.dob}','${data.relationship}','${data.blood_group}',
+            '${data.gender}','${data.city}','${data.state}','${data.phone_number}');`
             var basic_info = await query(basic_info_query);
 
             // for education
             var education_euery = `insert into education (fk_emp_id,course_name,passing_year,marks,college_school) values 
-        ('${req.session.emp_id}','${data.course}','${data.passing_year}','${data.percentage}','${data.college}');`
+            ('${req.session.emp_id}','${data.course}','${data.passing_year}','${data.percentage}','${data.college}');`
 
             if (data.course) {
 
@@ -157,152 +150,127 @@ const postEmployeedata = async (req, res) => {
             };
             conn.commit()
             res.redirect('../dashbord');
+        })
 
-        // for addv images 
-        var path = []
-        upload(req, res, function (err) {
-            
 
-            if (err instanceof multer.MulterError) {
-                console.log(err)
-            } else if (err) {
-                console.log(err)
-            }
-            // console.log(req.files)
-            var key = Object.keys(req.files)
 
-            var i = 0;
-            for (x of key) {
-                path.push(req.files[x][i].path)
 
-            }
-            var document_query = `insert into document (fk_emp_id,resume,bank_detail,pan_card,aadhar_card,profile_photo) values 
-        (1,'${path[0]}','${path[1]}','${path[2]}','${path[3]}','${path[4]}');`
-            var document_info = query(document_query);
-            
-            res.redirect('dashbord');
-           });
-
-        console.log(experience_query);
-
-            var experience_info = await query(experience_query)
-        }
+    }
     catch (err) {
-        res.send(" postEmployeedata", err);
+        res.send(toString(" postEmployeedata", err));
         conn.rollback()
-
     }
 }
 
 //Get EmployeeBasic Data From DataBase
-const getEmployeeBasicInfo = async (req, res) =>{
+const getEmployeeBasicInfo = async (req, res) => {
     basic = `select basic_info_id,first_name,last_name,birth_date,relationship,blood_group,gender,city,state from basic_info;`
     var basic_details = await query(basic);
     console.log(basic_details)
-    res.render("employee-basic-info.ejs",{basic_details})
+    res.render("employee-basic-info.ejs", { basic_details })
 }
 
 
 //Get Particular employee data from  ID
-const getEmployeeEdit = async (req,res)=>{
-  let id = req.query.id;
-  console.log(id)
+const getEmployeeEdit = async (req, res) => {
+    let id = req.query.id;
+    console.log(id)
 
-        state_query = `select state_name from state_master;`
-        let stateName = await query(state_query);
+    state_query = `select state_name from state_master;`
+    let stateName = await query(state_query);
 
-        //basicInfo
-        basic_info = await query(`select * from basic_info where fk_emp_id = ${req.session.emp_id}`)
-        console.log("basic_info",basic_info)
-        let stateId = basic_info[0].state;
-        console.log("st" , stateId)
+    //basicInfo
+    basic_info = await query(`select * from basic_info where fk_emp_id = ${req.session.emp_id}`)
+    console.log("basic_info", basic_info)
+    let stateId = basic_info[0].state;
+    console.log("st", stateId)
 
-        //stateValue
-        state_data = await query(`select * from state_master where state_name = '${stateId}'`)
-        console.log(state_data[0].state_name)
-        console.log(basic_info[0].relationship)
+    //stateValue
+    state_data = await query(`select * from state_master where state_name = '${stateId}'`)
+    console.log(state_data[0].state_name)
+    console.log(basic_info[0].relationship)
 
-        //courseData
-        education = await query(`select * from education where fk_emp_id = ${req.session.emp_id}`)
+    //courseData
+    education = await query(`select * from education where fk_emp_id = ${req.session.emp_id}`)
     console.log("hfghdfghfghfghfgh");
-        console.log(education)
+    console.log(education)
 
-        //workExperince
-        work = await query(`select * from expreience where fk_emp_id = ${req.session.emp_id}`)
-        console.log(work)
+    //workExperince
+    work = await query(`select * from expreience where fk_emp_id = ${req.session.emp_id}`)
+    console.log(work)
 
-        const userInfo = await getUserBasicinfo(req.session.emp_id);
-        const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
+    const userInfo = await getUserBasicinfo(req.session.emp_id);
+    const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
 
-    res.render("employee-edit-data.ejs",{stateName,basic_info,stateid:state_data[0].state_name,work,education,"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo})
+    res.render("employee-edit-data.ejs", { stateName, basic_info, stateid: state_data[0].state_name, work, education, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo })
 }
 
 //Edit EmployeeData 
-const postEmployeeEdit = async(req,res)=>{
-        let data = req.body;
-        console.log("reletionship",req.body.relationship)
-        console.log(data)
-        let state = req.body.state;
-        let city = req.body.city;
-        console.log("state",state)
-        console.log("city",city)
-        let id = data.id;
-        console.log("ID = " + id);
+const postEmployeeEdit = async (req, res) => {
+    let data = req.body;
+    console.log("reletionship", req.body.relationship)
+    console.log(data)
+    let state = req.body.state;
+    let city = req.body.city;
+    console.log("state", state)
+    console.log("city", city)
+    let id = data.id;
+    console.log("ID = " + id);
 
-        //update basic_info
-        let basicSql = `update basic_info set first_name ="${data.first_name}", last_name = "${data.last_name}",gender = "${data.gender}",birth_date = "${data.birth_date}",relationship = "${data.relationship}",blood_group="${data.blood_group}",city="${data.city}",state="${data.state}" where basic_info_id = ${id}`;
-        let basicsql1 = await query(basicSql)
+    //update basic_info
+    let basicSql = `update basic_info set first_name ="${data.first_name}", last_name = "${data.last_name}",gender = "${data.gender}",birth_date = "${data.birth_date}",relationship = "${data.relationship}",blood_group="${data.blood_group}",city="${data.city}",state="${data.state}" where basic_info_id = ${id}`;
+    let basicsql1 = await query(basicSql)
 
-        //update education
-        const course_name = req.body.course_name;
-        const passing_year = req.body.passing_year;
-        const marks = req.body.marks;
-        const college_school = req.body.college_school;
-        console.log("course_name"+course_name);
-        console.log("college_school"+college_school);
-        console.log("passing_year"+passing_year);
-        console.log("marks"+marks);
+    //update education
+    const course_name = req.body.course_name;
+    const passing_year = req.body.passing_year;
+    const marks = req.body.marks;
+    const college_school = req.body.college_school;
+    console.log("course_name" + course_name);
+    console.log("college_school" + college_school);
+    console.log("passing_year" + passing_year);
+    console.log("marks" + marks);
 
-        applicantId = id;
+    applicantId = id;
 
-          if (typeof (course_name, passing_year, marks, college_school) == "string") {
+    if (typeof (course_name, passing_year, marks, college_school) == "string") {
+        let expSql = `update education set education_id='${applicantId}',course_name='${course_name}',passing_year='${passing_year}',marks='${marks}',college_school='${college_school}' where education_id=${id}`;
+        let expSql1 = await query(expSql)
+        console.log("expsql1", expSql1)
+
+    } else {
+        for (i = 0; i < course_name.length; i++) {
             let expSql = `update education set education_id='${applicantId}',course_name='${course_name}',passing_year='${passing_year}',marks='${marks}',college_school='${college_school}' where education_id=${id}`;
             let expSql1 = await query(expSql)
-            console.log("expsql1",expSql1)
-
-          } else {
-            for (i = 0; i < course_name.length; i++) {
-                let expSql = `update education set education_id='${applicantId}',course_name='${course_name}',passing_year='${passing_year}',marks='${marks}',college_school='${college_school}' where education_id=${id}`;
-                let expSql1 = await query(expSql)
-            console.log("expsql1",expSql1)
-            }
-          }
+            console.log("expsql1", expSql1)
+        }
+    }
 
 
 
-        //update work experince
-        let c_name = req.body.company_name;
-        let desig = req.body.designation;
-        let start = req.body.start_date;
-        let end = req.body.end_date;
-        console.log(c_name);
-        console.log(desig);
-        console.log(start);
-        console.log(end);
-        if (typeof (c_name, desig, start, end) == "string") {
+    //update work experince
+    let c_name = req.body.company_name;
+    let desig = req.body.designation;
+    let start = req.body.start_date;
+    let end = req.body.end_date;
+    console.log(c_name);
+    console.log(desig);
+    console.log(start);
+    console.log(end);
+    if (typeof (c_name, desig, start, end) == "string") {
+        let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${id}`;
+        let expSql1 = await query(expSql)
+        console.log("expsql1", expSql1)
+
+    } else {
+        for (i = 0; i < c_name.length; i++) {
             let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${id}`;
             let expSql1 = await query(expSql)
-            console.log("expsql1",expSql1)
-
-          } else {
-            for (i = 0; i < c_name.length; i++) {
-            let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${id}`;
-            let expSql1 = await query(expSql)
-            console.log("expsql1",expSql1)
-            }
-          }
+            console.log("expsql1", expSql1)
+        }
+    }
     res.redirect('/dashbord')
 }
 
-module.exports = { getEmployeedata, postEmployeedata, getCitydata,getEmployeeBasicInfo,getEmployeeEdit,postEmployeeEdit };
+module.exports = { getEmployeedata, postEmployeedata, getCitydata, getEmployeeBasicInfo, getEmployeeEdit, postEmployeeEdit };
 

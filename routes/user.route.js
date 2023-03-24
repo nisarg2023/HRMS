@@ -24,9 +24,9 @@ router.post('/post-activate', activationController.postActivate);
 router.get('/get-logout', loginController.getLogout);
 //router.get('/employee-data',employeeController);
 
-router.get('/forget-password',forgetController.forgetPassword);
-router.get('/all-email',forgetController.checkEmail);
-router.post('/post-email',forgetController.postEmail);
+router.get('/forget-password', forgetController.forgetPassword);
+router.get('/all-email', forgetController.checkEmail);
+router.post('/post-email', forgetController.postEmail);
 
 
 router.get('/get-allUsersEmail', userEmail.getAllUsersEmail);

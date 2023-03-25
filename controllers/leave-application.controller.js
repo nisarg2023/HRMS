@@ -47,17 +47,37 @@ const getLeaveapplication = async (req,res)=>{
         }
 
         for(x of result){
-            if(x.leave_type == 'SL'){
-                leavesObject.sLeave+=1;
+            if(x.leave_type == 'SL' && x.is_hr_approved === 1){
+                if(x.is_halfday === 1){
+                    leavesObject.sLeave+=0.5;
+                }
+                else if(x.is_halfday == 0){
+                    leavesObject.sLeave+=1;
+                }
             }
-            else if(x.leave_type == 'CL'){
-                leavesObject.cLeave+=1;
+            else if(x.leave_type == 'CL' && x.is_hr_approved === 1){
+                if(x.is_halfday == 1){
+                    leavesObject.cLeave+=0.5;
+                }
+                else if(x.is_halfday == 0){
+                    leavesObject.cLeave+=1;
+                }
             }
-            else if(x.leave_type == 'PL'){
-                leavesObject.pLeave+=1;
+            else if(x.leave_type == 'PL' && x.is_hr_approved === 1){
+                if(x.is_halfday == 1){
+                    leavesObject.pLeave+=0.5;
+                }
+                else if(x.is_halfday == 0){
+                    leavesObject.pLeave+=1;
+                }
             }
-            else if(x.leave_type == 'UPL'){
-                leavesObject.upLeave+=1;
+            else if(x.leave_type == 'UPL' && x.is_hr_approved === 1){
+                if(x.is_halfday == 1){
+                    leavesObject.upLeave+=0.5;
+                }
+                else if(x.is_halfday == 0){
+                    leavesObject.upLeave+=1;
+                }
             }
         }
         const userInfo = await getUserBasicinfo(req.session.emp_id);
@@ -65,7 +85,7 @@ const getLeaveapplication = async (req,res)=>{
         res.render('leaveapplication',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo,result,leavesObject});
     }
     catch(error){
-        res.redirect('/dashbord/leave')
+        res.redirect('/dashbord')
     }
 }
 const postLeaveapplication = async(req,res)=>{
@@ -75,7 +95,7 @@ const postLeaveapplication = async(req,res)=>{
 
     }
     catch(error){
-        res.redirect('/dashbord/leave')
+        res.redirect('/dashbord')
     }
 }
 

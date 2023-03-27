@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRMS- Admin Leave</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="stylesheet" href="/style/adminDashboard.css">
+    <link rel="stylesheet" href="/style/adminLeaveApllication.css">
+    <script src="https://kit.fontawesome.com/2d11fdd863.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="dashboard-wrapper flex flex-row">
+        <div class="dashboard-right">
+            <%- include('components/adminSidebar.ejs') %>
+        </div>
+        <div class="dashboard-left">
+            <%- include('components/header.ejs',{name:"Admin Dashboard", link:"Employee"}) %>
+            <div class="dashboard-data-container admin-dashboard-data-container flex flex-row">
+                <div class="admin-leave-table-container">
+                    <table class="admin-leave-table">
+                        <thead>
+                            <tr class="admin-leave-table-head-tr">
+                                <th class="admin-leave-table-tr-th">Employee Id</th>
+                                <th class="admin-leave-table-tr-th">Employee Name</th>
+                                <th class="admin-leave-table-tr-th">Leave Date</th>
+                                <th class="admin-leave-table-tr-th admin-leave-table-tr-th-textarea">Leave_reason</th>
+                                <th class="admin-leave-table-tr-th">CTO Approved</th>
+                                <th class="admin-leave-table-tr-th">HR Approved</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% result.forEach((data)=>{ %>
+                                <tr class="admin-leave-table-body-tr">
+                                    <td><%=data.fk_emp_id %></td>
+                                    <td><%=data.first_name %> <%=data.last_name %></td>
+                                    <td><%=data.leave_date.toJSON('dd-mm-yyyy').slice(0,10) %></td>
+                                    <td><%=data.leave_reason %></td>
+                                    <% if(data.is_cto_approved=="0"){ %>
+                                        <td>
+                                            <p class="approve-leave" onclick="approve(`<%=data.leave_id %>`,'is_cto_approved','1')">&#10004;</p>
+                                            <p class="reject-leave" onclick="reject(`<%=data.leave_id %>`,'is_cto_approved','2')">&#10008;</p>
+                                        </td>
+                                        <% } else if(data.is_cto_approved=="1") { %>
+                                            <td class="approved">&#10004;</td>
+                                        <% } else {%>
+                                            <td class="rejected">&#10008;</td>
+                                        <% } %>
+                            
+                                    <% if(data.is_hr_approved=="0"){ %>
+                                        <td>
+                                            <p class="approve-leave"  onclick="approve(`<%=data.leave_id %>`,'is_hr_approved','1')">&#10004;</p>
+                                            <p class="reject-leave"  onclick="reject(`<%=data.leave_id %>`,'is_hr_approved','2')">&#10008;</p>
+                                        </td>
+                                    <% } else if(data.is_hr_approved==1) { %>
+                                        <td class="approved">&#10004;</td>
+                                        
+                                    <% } else {%>
+                                            <td class="rejected">&#10008;</td>
+                                    <% } %>
+                                </tr>
+                                <% }) %>                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        function approve(id,field,val){
+            fetch(`../post-approveleave?leaveId=${id}&field=${field}&val=${val}`)
+            location.reload()
+        }
+        function reject(id,field,val){
+            fetch(`../post-approveleave?leaveId=${id}&field=${field}&val=${val}`)
+            location.reload()
+        }
+    </script>
+
+<!-- 
+<table>
+    <tr>
+        <th>Leave Id Id</th>
+        <th>Employee Id</th>
+        <th>Leave Date</th>
+        <th>Leave_reason</th>
+        <th>Is CTO Approved</th>
+        <th>Is HR Approved</th>
+    </tr>
+    <% result.forEach((data)=>{ %>
+    <tr>
+        <td><%=data.leave_id %></td>
+        <td><%=data.fk_emp_id %></td>
+        <td><%=data.leave_date.toJSON('dd-mm-yyyy').slice(0,10) %></td>
+        <td><%=data.leave_reason %></td>
+        <% if(data.is_cto_approved=="0"){ %>
+            <td>
+                <p class="approve-leave" onclick="approve(`<%=data.leave_id %>`,'is_cto_approved','1')">Approve It</p>
+                <p class="reject-leave" onclick="reject(`<%=data.leave_id %>`,'is_cto_approved','2')">Reject It</p>
+            </td>
+            <% } else if(data.is_cto_approved=="1") { %>
+                <td>Approved</td>
+            <% } else {%>
+                <td>Rejected</td>
+            <% } %>
+
+        <% if(data.is_hr_approved=="0"){ %>
+            <td>
+                <p class="approve-leave"  onclick="approve(`<%=data.leave_id %>`,'is_hr_approved','1')">Approve It</p>
+                <p class="reject-leave"  onclick="reject(`<%=data.leave_id %>`,'is_hr_approved','2')">Reject It</p>
+            </td>
+        <% } else if(data.is_hr_approved==1) { %>
+            <td>Approved</td>
+            
+        <% } else {%>
+                <td>Rejected</td>
+        <% } %>
+    </tr>
+    <% }) %>
+   </table> -->
+</body>
+</html>

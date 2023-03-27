@@ -12,6 +12,12 @@
     --white: #ffffff;
     --black: #000000;
     --bg-color:#f1f5f9;
+    --green: #008000;
+    --green-hover: #005f00;
+    --blue-head: #040464;
+    --red: #ff0000;
+    --red-hover: #a10000;
+
 }
 body{
     font-family: 'Lato', sans-serif;
@@ -52,9 +58,11 @@ li{
 }
 .dashboard-right{
     width: 20%;
+    position: fixed;
 }
 .dashboard-left{
     width: 80%;
+    margin-left: 20%;
 }
 
 .side-container{
@@ -131,6 +139,9 @@ box-shadow:0px 1px 1px #000000;
 .header-wrapper{
     /* width:calc(100vw - 280px); */
     box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.219);
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color);
 }
 
 .header-nav-title{
@@ -154,15 +165,19 @@ box-shadow:0px 1px 1px #000000;
     width: calc(100%/3);
     padding: 1rem;
 }
-.dashboard-attendance-card{
+.col_3_merge{
+    width: calc((100%/3)*2);
+    padding: 1rem;
+}
+.dashboard-card{
     
     background-color: var(--white);
-    border-radius: 16px;
-    padding: 16px 32px;
-    justify-content: space-between;
-    row-gap: 32px;
-    flex-wrap: wrap;
+    padding: 1rem;
     box-shadow: 1px 1px 3px #0000007e;
+}
+.card_heading{
+    font-size: 25px;
+    color: rgb(44, 39, 39);
 }
 
 .dashboard-attendance-head{

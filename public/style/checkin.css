@@ -8,11 +8,6 @@
     background-color: white;
 }
 
-.check_text {
-    font-weight: 300;
-    font-size: 25px;
-    color: rgb(44, 39, 39);
-}
 
 .check-info {
     display: flex;

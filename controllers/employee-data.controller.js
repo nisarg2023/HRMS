@@ -92,19 +92,16 @@ const postEmployeedata = async (req, res) => {
 
             console.log(req.session.emp_id);
 
-        //     For Eduction Data
-        let data = req.body
-        console.log(data);
-        console.log("fkshshvikshk",fname);
+        
+            let data = req.body
+            console.log(data);
 
-
-            })
             var document_query = `insert into document (fk_emp_id,resume,bank_detail,pan_card,aadhar_card,profile_photo) values ('${req.session.emp_id}','${path[0]}','${path[1]}','${path[2]}','${path[3]}','${path[4]}');`
             var document_info = await query(document_query);
 
 
             //     For Eduction Data
-            let data = req.body
+            
 
 
             let moreEdudata = req.body.moreEdu_data;
@@ -155,37 +152,16 @@ const postEmployeedata = async (req, res) => {
 
                 var experience_info = await query(experience_query)
             };
+            var experience_info = await query(experience_query)
             conn.commit()
             res.redirect('../dashbord');
 
-        // for addv images 
-        var path = []
-        upload(req, res, function (err) {
+
+
+            })
             
+     
 
-            if (err instanceof multer.MulterError) {
-                console.log(err)
-            } else if (err) {
-                console.log(err)
-            }
-            // console.log(req.files)
-            var key = Object.keys(req.files)
-
-            var i = 0;
-            for (x of key) {
-                path.push(req.files[x][i].path)
-
-            }
-            var document_query = `insert into document (fk_emp_id,resume,bank_detail,pan_card,aadhar_card,profile_photo) values 
-        (1,'${path[0]}','${path[1]}','${path[2]}','${path[3]}','${path[4]}');`
-            var document_info = query(document_query);
-            
-            res.redirect('dashbord');
-           });
-
-        console.log(experience_query);
-
-            var experience_info = await query(experience_query)
         }
     catch (err) {
         res.send(" postEmployeedata", err);

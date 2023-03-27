@@ -10,6 +10,9 @@ const attendancy_summary = async(req, res) => {
         // let total_time = [];
     let braketime = 0;
     let alltime_work_hours = 0;
+    let totalworkinhours = 0;
+    let ratio;
+    let totalratio = [];
     let total_brake = [];
     let total_workhours = [];
 
@@ -28,8 +31,8 @@ const attendancy_summary = async(req, res) => {
         let m = totlchecktime.minutes();
         let h = totlchecktime.hours();
         let work_hours = h + ":" + m;
-
-
+        ratio = m;
+        totalratio.push(ratio)
         total_workhours.push(work_hours);
 
 
@@ -50,7 +53,7 @@ const attendancy_summary = async(req, res) => {
 
 
         }
-
+        totalworkinhours += braketime;
         let total_brake_ = moment.duration(braketime);
 
         let m = total_brake_.minutes();
@@ -97,13 +100,24 @@ const attendancy_summary = async(req, res) => {
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
 
+    totalworkinhours += alltime_work_hours;
+    let q = moment.duration(totalworkinhours);
 
+    let ho = q.hours();
+    let all_stafing_hours = ho;
+    let execute = totalworkinhours - alltime_work_hours;
+
+    let todasd = moment.duration(execute);
+    let dif_mins = moment.duration(totalworkinhours);
+
+    let gg = todasd.minutes();
+    let minuts = dif_mins.minutes();
     let totlchecktime = moment.duration(alltime_work_hours);
     let m = totlchecktime.minutes();
     let h = totlchecktime.hours();
-    let all_work_hours = h + ":" + m;
+    let all_work_hours = h;
     console.log("brakes", total_brake);
-    res.render("attendance", { data1, total_brake, total_workhours, all_work_hours, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo })
+    res.render("attendance", { data1, total_brake, total_workhours, all_work_hours, all_stafing_hours, productiveratio, totalratio, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo })
 }
 
 module.exports = { attendancy_summary }

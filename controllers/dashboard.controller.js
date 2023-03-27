@@ -71,11 +71,11 @@ const getAllEmployeesLog = async (currentDate) => {
 
 const getDashboard = async(req, res) => {
     const userInfo = await getUserBasicinfo(req.session.emp_id);
-    const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
-    var commentSql=`select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`
-    var commentData= await query(commentSql)
-    res.render('dashboard',{commentData,"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo,"emp_id":req.session.emp_id})
-    // <%- include("components/add-your-comment.ejs") %>
+    const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
+    var commentSql = `select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`
+    var commentData = await query(commentSql)
+    res.render('dashboard', { commentData, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo, "emp_id": req.session.emp_id })
+        // <%- include("components/add-your-comment.ejs") %>
 }
 
 
@@ -103,30 +103,31 @@ const getHotlines = async(req, res) => {
 
 
 
-const getComment = async (req,res)=>{
+const getComment = async(req, res) => {
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     var comment = req.query.comment;
     var commentQuery = `insert into employee_comment (fk_emp_id,comment) values (${req.session.emp_id},'${comment}');`
-    var commentData=await query(commentQuery);
-    res.json({message:true});
+    var commentData = await query(commentQuery);
+    res.json({ message: true });
 }
 
 
-const updateCommentCard = async (req,res)=>{
+const updateCommentCard = async(req, res) => {
     // console.log("Hello")
-    var commentSql=`select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`
-    var commentData= await query(commentSql)
+    var commentSql = `select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`
+    var commentData = await query(commentSql)
     res.json(commentData)
-} 
+}
 
-const getDataProfile= async(req,res)=>{
+
+const getDataProfile = async(req, res) => {
     const userInfo = await getUserBasicinfo(req.session.emp_id)
     const allUsers = await getUserBasicinfo();
-    const profilePhotos =  await getUserProfilePhoto(["profile_photo"]);
+    const profilePhotos = await getUserProfilePhoto(["profile_photo"]);
     const emails = await getEmail(["email"])
-    const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
+    const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
     console.log(emails);
-    res.render('viewProfile',{"first_name": userInfo[0].first_name,dataset: userInfo[0],allUsers,profilePhotos,"profilePhoto":profilePhoto[0].profile_photo,emails});
+    res.render('viewProfile', { "first_name": userInfo[0].first_name, dataset: userInfo[0], allUsers, profilePhotos, "profilePhoto": profilePhoto[0].profile_photo, emails });
 
 
 }

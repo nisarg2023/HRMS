@@ -73,6 +73,21 @@ body {
     transition: 0.4s;
 }
 
+.codem {
+    background-color: #6B59D3;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 1.7rem;
+    cursor: pointer;
+    transition: 0.4s;
+    color: white;
+}
+
+.codem:hover {
+    background-color: gray;
+}
+
 .form input.button:hover {
     background: #6B59D3;
 }
@@ -91,6 +106,10 @@ body {
     text-decoration: underline;
 }
 
-small{
+small {
     color: red;
+}
+
+.confirm_btn {
+    display: flex;
 }

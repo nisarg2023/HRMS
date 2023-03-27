@@ -1,32 +1,28 @@
 const conn = require('../config/dbConnect');
 const util = require('util')
-const query =  util.promisify(conn.query).bind(conn);
+const query = util.promisify(conn.query).bind(conn);
 
 
-const getUserBasicinfo = async(id="")=>{
+const getUserBasicinfo = async(id = "") => {
 
-    if(id=="")
-    {
+    if (id == "") {
 
         const data = await query(`SELECT * FROM hrms.basic_info `)
         return data;
-    }
-    else{
+    } else {
 
-    const data = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${id};`)
-    return data;
+        const data = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${id};`)
+        return data;
     }
 
 }
 
-const getUserProfilePhoto = async(fields="*",id="")=>{
+const getUserProfilePhoto = async(fields = "*", id = "") => {
 
-    if(id=="")
-    {
+    if (id == "") {
         data = await query(`SELECT ${fields.toString()}  FROM hrms.document;`)
         return data;
-    }
-    else{
+    } else {
         data = await query(`SELECT ${fields.toString()} FROM hrms.document where fk_emp_id=${id}`);
         return data;
     }
@@ -35,8 +31,8 @@ const getUserProfilePhoto = async(fields="*",id="")=>{
 }
 
 
-const getLeaveapplication = async (req,res)=>{
-    try{
+const getLeaveapplication = async(req, res) => {
+    try {
         const result = await query(`select * from leave_application where fk_emp_id = ${req.session.emp_id}`)
 
         var leavesObject = {
@@ -88,8 +84,8 @@ const getLeaveapplication = async (req,res)=>{
         res.redirect('/dashbord')
     }
 }
-const postLeaveapplication = async(req,res)=>{
-    try{
+const postLeaveapplication = async(req, res) => {
+    try {
         let result = await query(`insert into leave_application(fk_emp_id, leave_date,leave_reason,leave_type,is_halfday) values('${req.session.emp_id}','${req.body.leave_date}','${req.body.leave_reason}','${req.body.leave_type}','${req.body.is_half}')`)
         res.redirect('/dashbord/get-leave')
 
@@ -100,4 +96,4 @@ const postLeaveapplication = async(req,res)=>{
 }
 
 
-module.exports = {getLeaveapplication,postLeaveapplication}
+module.exports = { getLeaveapplication, postLeaveapplication }

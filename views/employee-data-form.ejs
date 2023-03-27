@@ -73,6 +73,11 @@
                                 <input type="text" placeholder="e.g, B+" name="blood_group" class="input"
                                     id="blood_group">
                             </div>
+                            <div class="input_wrap">
+                                <p id="errorPhonenumber"></p>
+                                <label class="text-label" for="phone_number">phone_number</label>
+                                <input type="number" onchange="showErrorNumber()" name="phone_number" class="input" id="phone_number" length="10">
+                            </div>
 
                             <div class="gender-panel">
                                 <label class="text-label" for="gender">Gender :</label>
@@ -238,9 +243,7 @@
 
     <script src="/script/employee-data.js"></script>
     <script>
-        function submitBtn() {
-            console.log("e")
-        }
+      
     </script>
 </body>
 

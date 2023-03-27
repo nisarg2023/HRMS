@@ -53,14 +53,30 @@ function checkBasicDetails(){
     let fname=document.querySelector("#fname").value;
     let lname=document.querySelector("#lname").value;
     let blood=document.querySelector("#blood_group").value;
+    let phone_number=document.querySelector("#phone_number").value;
     let dob=document.querySelector("#dob").value;
     let state=document.querySelector("#state").value;
     let city=document.querySelector("#city").value;
+    let showError=document.querySelector("#errorPhonenumber");
 
-    if(fname.trim()=="" || lname.trim()=="" || blood.trim()=="" || dob.trim()=="" || state.trim()=="" || city.trim()=="" ){
+
+    if(fname.trim()=="" || lname.trim()=="" || blood.trim()=="" || dob.trim()=="" || state.trim()=="" || city.trim()=="" ||phone_number.trim=="" ){
         return false;
     }
+   
     return true;
+}
+function showErrorNumber(){
+    let showError=document.querySelector("#errorPhonenumber");
+    let phone_number=document.querySelector("#phone_number").value;
+    console.log(phone_number);
+    if(phone_number.length!=10){
+        showError.innerText="Phone Number must 10 digits!."
+        showError.style.color="red"
+    }
+    else{
+        showError.innerText="";
+    }
 }
 
 form_1_next_btn.addEventListener("click", function(){

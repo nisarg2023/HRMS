@@ -145,7 +145,7 @@ const getOnlineEmployeeLogs = async (req,res)=>{
     let currentDate = `${year}-${(month > 9) ? (month) : ("0" + month)}-${(day > 9) ? (day) : ("0" + day)}`;
 
 
-    const OnlineEmployeeData = await query(`select first_name,last_name,profile_photo,email from basic_info inner join document on basic_info.fk_emp_id = document.fk_emp_id 
+    const OnlineEmployeeData = await query(`select first_name,last_name,profile_photo,email,phone_number from basic_info inner join document on basic_info.fk_emp_id = document.fk_emp_id 
     inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  
     in (select basic_info_id from check_system where check_date = '${currentDate}' 
     and checkout_time is null 
@@ -169,7 +169,7 @@ const getBreakEmployeeLogs = async (req,res)=>{
 
     console.log(currentDate)
 
-    const BreakEmployeeData = await query(`select first_name,last_name,profile_photo,email from basic_info inner join document on basic_info.fk_emp_id = document.fk_emp_id 
+    const BreakEmployeeData = await query(`select first_name,last_name,profile_photo,email,phone_number from basic_info inner join document on basic_info.fk_emp_id = document.fk_emp_id 
     inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  
     in 
     (select brake_system.basic_info_id from check_system join brake_system
@@ -191,7 +191,7 @@ const getOfflineEmployeeLogs = async (req,res)=>{
     let currentDate = `${year}-${(month > 9) ? (month) : ("0" + month)}-${(day > 9) ? (day) : ("0" + day)}`;
 
 
-    const OfflineEmployeeData = await query(`select first_name,last_name,profile_photo,email from basic_info inner join document on basic_info.fk_emp_id = document.fk_emp_id 
+    const OfflineEmployeeData = await query(`select first_name,last_name,profile_photo,email,phone_number from basic_info inner join document on basic_info.fk_emp_id = document.fk_emp_id 
     inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  
     not in (select basic_info_id from check_system where check_date = '${currentDate}' 
     and checkout_time is null 
@@ -214,7 +214,7 @@ const getLeaveEmployeeData = async (req, res) =>{
 
 
     const LeaveEmployeeData = await query(`
-    select first_name,last_name,profile_photo,email from basic_info inner join document 
+    select first_name,last_name,profile_photo,email,phone_number from basic_info inner join document 
     on basic_info.fk_emp_id = document.fk_emp_id 
         inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  
         in (select fk_emp_id from leave_application where is_hr_approved = 1 and leave_date = '${currentDate}' and

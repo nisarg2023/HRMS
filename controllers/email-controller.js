@@ -1,6 +1,32 @@
 const nodemailer = require("nodemailer");
+let email1;
+const conn = require('../config/dbConnect');
+const util = require('util');
+const query = util.promisify(conn.query).bind(conn)
+
+let OTP;
+const postCode = async(req, res) => {
+    OTP = Math.floor(Math.random() * 10000);
+
+    email1 = req.body.email;
+
+
+    let query1 = `update hrms_employee set code="${OTP}" where email="${email}" `;
+    var updateData = await query(query1);
+
+    console.log(email1);
+    res.json({ OTP });
+
+    OTP = "";
+
+}
+
+
+
+
 
 const sendMail = async(email) => {
+    // let testAccount = await nodemailer.createTestAccount();
 
     let transporter = nodemailer.createTransport({
         host: "smtp.ethereal.email",
@@ -12,22 +38,35 @@ const sendMail = async(email) => {
     })
     let mailInfo = {
         from: '"HRMS" <concepcion.lindgren@ethereal.email>',
-        to: email,
+        to: email1,
         subject: 'Welcome to HRMS',
-        html: `<div>
-                   <h2>Welcome to the HRMS this is the guide to use this system.<h2>
+        html: `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+        <div style="margin:50px auto;width:70%;padding:20px 0">
+        <div style="border-bottom:1px solid
+        #EEE
+        ">
+        <a href="" style="font-size:1.4em;color:
+        #00466A
+        ;text-decoration:none;font-weight:600">Your Brand</a>
+        </div>
+        <p style="font-size:1.1em">Hi,</p>
+        <p>Thank you for choosing Your Brand. Use the following OTP to complete your Sign Up procedures. OTP is valid for 5 minutes</p>
+        <h2 style="background:
+        #00466A
+        ;margin: 0 auto;width: max-content;padding: 0 10px;color:
+        #FFF
+        ;border-radius: 4px;">${OTP}</h2>
+        <p style="font-size:0.9em;">Regards,<br />EsparkBiz</p>
+        <hr style="border:none;border-top:1px solid
+        #EEE
+        " />
+        </div>
+        </div>`
 
-                   <p>Here is the Fucntionality of the hrms system</p>
-                   <ul>
-                   <li>Check in<li>
-                   <li>Check out<li>
-                   <li>Break in<li>
-                   <li>Break out<li>
-                   <li>Attendance of all the employees<li>
-                   <li>Leave application<li>
-                   </ul>
-                  </div>`
+
+
     }
+
 
     transporter.sendMail(mailInfo, function(error, info) {
         if (error) {
@@ -37,4 +76,6 @@ const sendMail = async(email) => {
         }
     })
 }
-module.exports = { sendMail }
+sendMail(email1);
+
+module.exports = { postCode };

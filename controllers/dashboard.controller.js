@@ -6,7 +6,7 @@ const getUserBasicinfo = async(id = "") => {
 
     if (id == "") {
 
-        const data = await query(`SELECT * FROM hrms.basic_info `)
+        const data = await query(`SELECT * FROM hrms.basic_info `);
         return data;
     } else {
 

@@ -1,0 +1,55 @@
+<div class="side-container">
+  <div class="logo-container flex justify-center">
+    <img src="/images/hrms.png" alt="company logo" class="company-logo" />
+  </div>
+  <div class="navbar-container flex">
+    <div class="nav-container">
+      <nav class="main-nav">
+        <ul class="flex flex-col nav-link-ul">
+          <li class="nav-links">
+            <a class="flex nav-link-a" href="#"><i class="fa-solid fa-house-chimney"></i> Dashboard</a>
+          </li>
+          <li class="nav-links">
+            <a class="flex nav-link-a" href="#"><i class="fa-solid fa-user"></i> Employees Data</a>
+          </li>
+          <li class="nav-links">
+            <a class="flex nav-link-a" href="/admin/dashboard/comments"><i class="fa-solid fa-clock"></i> Comments</a>
+          </li>
+          <li class="nav-links">
+            <a class="flex nav-link-a" href="/admin/dashboard/approveleave"><i class="fa-solid fa-shuttle-space"></i> Leave Application</a>
+          </li>
+          <li class="nav-links">
+            <a class="flex nav-link-a" href="#"><i class="fa-solid fa-comments"></i> Announcements</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="profile-container flex flex-row item-center" id="profile-container" onclick="openMenu()">
+
+      <div class="profile-image-container">
+        <img class="employee-profile-image" src='/<%= profilePhoto%>' alt="employee profile picture" />
+      </div>
+      <div class="employee-name">
+        <p class="emp-name">
+          <%=first_name%>
+        </p>
+        <p class="emp-role">Developer</p>
+      </div>
+
+    </div>
+
+    <div class="user-profile-edit" id="user-profile-edit" style="display: none;">
+      <div class="userprofile-option-container flex flex-col">
+        <p class="emp-name">
+          <%=first_name%>
+        </p>
+        <a class="profile-edit-btn" href="../get-employee-edit">Edit Profile</a>
+        <a class="profile-edit-btn" href="/dashbord/viewProfile">View Profile</a>
+        <a class="profile-edit-btn" href="../get-logout">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/script/sidebar.js"></script>

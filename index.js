@@ -16,6 +16,7 @@ const query = util.promisify(conn.query).bind(conn);
 const userRoutes = require('./routes/user.route');
 const employeeForm = require('./routes/employee-form.route');
 const dashbord = require('./routes/dashbord.route');
+const admin = require('./routes/adminDashboard.route');
 const { auth } = require('./middleware/auth');
 
 
@@ -41,6 +42,7 @@ const pageNotFound = require('./controllers/404.controller')
 app.use("/", userRoutes);
 app.use("/employee/", auth, employeeForm);
 app.use("/dashbord/", auth, dashbord);
+app.use("/admin/", auth, admin);
 
 app.use("/*", pageNotFound);
 

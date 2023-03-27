@@ -189,7 +189,7 @@ const handelPageLoad = () => {
     fetch(`/dashbord/getCkeckInOutInfo?emp_id=${emp_id}&date=${currentDate}`)
         .then(res => res.json())
         .then((data) => {
-            console.log(data[0].checkin_time);
+            
 
 
             if (data[0].checkin_time) {

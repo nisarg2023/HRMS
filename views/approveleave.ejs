@@ -9,56 +9,8 @@
 
 </head>
 <body>
-   <table>
-    <tr>
-        <th>Leave Id Id</th>
-        <th>Employee Id</th>
-        <th>Leave Date</th>
-        <th>Leave_reason</th>
-        <th>Is CTO Approved</th>
-        <th>Is HR Approved</th>
-    </tr>
-    <% result.forEach((data)=>{ %>
-    <tr>
-        <td><%=data.leave_id %></td>
-        <td><%=data.fk_emp_id %></td>
-        <td><%=data.leave_date.toJSON('dd-mm-yyyy').slice(0,10) %></td>
-        <td><%=data.leave_reason %></td>
-        <% if(data.is_cto_approved=="0"){ %>
-            <td>
-                <p class="approve-leave" onclick="approve(`<%=data.leave_id %>`,'is_cto_approved','1')">Approve It</p>
-                <p class="reject-leave" onclick="reject(`<%=data.leave_id %>`,'is_cto_approved','2')">Reject It</p>
-            </td>
-            <% } else if(data.is_cto_approved=="1") { %>
-                <td>Approved</td>
-            <% } else {%>
-                <td>Rejected</td>
-            <% } %>
+  
 
-        <% if(data.is_hr_approved=="0"){ %>
-            <td>
-                <p class="approve-leave"  onclick="approve(`<%=data.leave_id %>`,'is_hr_approved','1')">Approve It</p>
-                <p class="reject-leave"  onclick="reject(`<%=data.leave_id %>`,'is_hr_approved','2')">Reject It</p>
-            </td>
-        <% } else if(data.is_hr_approved==1) { %>
-            <td>Approved</td>
-            
-        <% } else {%>
-                <td>Rejected</td>
-        <% } %>
-    </tr>
-    <% }) %>
-   </table>
-
-   <script>
-    function approve(id,field,val){
-        fetch(`http://localhost:8000/dashbord/post-approveleave?leaveId=${id}&field=${field}&val=${val}`)
-        location.reload()
-    }
-    function reject(id,field,val){
-        fetch(`http://localhost:8000/dashbord/post-approveleave?leaveId=${id}&field=${field}&val=${val}`)
-        location.reload()
-    }
-   </script>
+  
 </body>
 </html>

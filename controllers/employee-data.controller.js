@@ -94,7 +94,6 @@ const postEmployeedata = async (req, res) => {
 
         
             let data = req.body
-            console.log(data);
 
             var document_query = `insert into document (fk_emp_id,resume,bank_detail,pan_card,aadhar_card,profile_photo) values ('${req.session.emp_id}','${path[0]}','${path[1]}','${path[2]}','${path[3]}','${path[4]}');`
             var document_info = await query(document_query);

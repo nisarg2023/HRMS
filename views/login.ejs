@@ -21,7 +21,7 @@
             <form action="/post-login" method="post">
                 <input type="text" placeholder="Enter your email" name="user_email" onclick="removeText()" >
                 <input type="password" placeholder="Enter your password" name="user_password" id="Password">
-                <i class="fa-solid fa-eye" id="togglePassword"></i>
+                <i class="fa-solid fa-eye" id="togglePassword" onmousemove="eye(this.id)" onmouseout="eyeout(this.id)"></i>
                 <%if(locals.err){%>
                     <p style="color:red;" id="showError"><%=err%></p>
                 <%}%>
@@ -36,7 +36,7 @@
         </div>
 
     </div>
-    <script src="../script/forget.js"></script>
+    <script src="../script/register.js"></script>
 
 
 </body>

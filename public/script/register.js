@@ -95,24 +95,24 @@ const changBtnStatus = () => {
         submit_btn.style="opacity: 0.5"
     }
 }
-const togglePassword = document.querySelector("#togglePassword");
-togglePassword.addEventListener("mouseover", function () {
-    const x = document.getElementById("Password")
-    if (x.type === "password") {
-        x.type = "text";
-        togglePassword.classList="fa-sharp fa-solid fa-eye-slash"
-        
-    } else {
-        x.type = "password";
-    }
-});
-togglePassword.addEventListener("mouseout", function () {
-    const x = document.getElementById("Password")
-    if (x.type === "text") {
-        x.type = "password";
-        togglePassword.classList="fa-solid fa-eye"
-    } else {
-        x.type = "text";
-    }
-});
+
   
+function eye(togglePassword){
+        const x = document.getElementById("Password")
+        if (x.type === "password") {
+            x.type = "text";
+            togglePassword.classList="fa-sharp fa-solid fa-eye-slash"
+            
+        } else {
+            x.type = "password";
+        };
+}
+function eyeout(togglePassword){
+     const x = document.getElementById("Password")
+        if (x.type === "text") {
+            x.type = "password";
+            togglePassword.classList="fa-solid fa-eye"
+        } else {
+            x.type = "text";
+        }
+}

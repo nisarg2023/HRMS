@@ -41,6 +41,34 @@ const getUserProfilePhoto = async(fields = "*", id = "") => {
 
 }
 
+const getAllEmployeesLog = async (currentDate) => {
+
+    try{
+        const data =[];
+        const checkInfo = await query(`select fk_emp_id,first_name,last_name, checkin_time,checkout_time from basic_info join check_system on basic_info.fk_emp_id
+        = check_system.basic_info_id where check_date= '${currentDate}'`)
+         data.push(checkInfo)
+
+        const brakeInfo  = await query(`select fk_emp_id,first_name,last_name, brakein_time,brakeout_time from basic_info join brake_system on basic_info.fk_emp_id
+        = brake_system.basic_info_id where brake_date= '${currentDate}'`)
+         
+        data.push(brakeInfo)
+        return data;
+
+
+        
+
+    }
+    catch(err){
+        console.log(err);
+        return 0;
+    }
+
+}
+
+
+
+
 const getDashboard = async(req, res) => {
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
@@ -57,8 +85,20 @@ const getHotlines = async(req, res) => {
     const allUsers = await getUserBasicinfo();
     const profilePhotos = await getUserProfilePhoto(["profile_photo"]);
     const emails = await getEmail(["email"])
+
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+
+    let currentDate = `${year}-${(month > 9) ? (month) : ("0" + month)}-${(day > 9) ? (day) : ("0" + day)}`;
+
+    const allEmployeesLog = await getAllEmployeesLog(currentDate);
+    console.log(allEmployeesLog)
     const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
-    res.render('hotline', { "first_name": userInfo[0].first_name, allUsers, profilePhotos, "profilePhoto": profilePhoto[0].profile_photo, emails });
+    res.render('hotline', { "first_name": userInfo[0].first_name, allUsers, profilePhotos, "profilePhoto": profilePhoto[0].profile_photo, emails,allEmployeesLog });
 }
 
 
@@ -91,4 +131,98 @@ const getDataProfile= async(req,res)=>{
 
 }
 
-module.exports = {getDashboard,getHotlines,getComment,getDataProfile,updateCommentCard}
+
+const getOnlineEmployeeLogs = async (req,res)=>{
+
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+
+    let currentDate = `${year}-${(month > 9) ? (month) : ("0" + month)}-${(day > 9) ? (day) : ("0" + day)}`;
+
+
+    const OnlineEmployeeData = await query(`select first_name,last_name,profile_photo,email from basic_info inner join document on basic_info.fk_emp_id = document.fk_emp_id 
+    inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  
+    in (select basic_info_id from check_system where check_date = '${currentDate}' 
+    and checkout_time is null 
+    and basic_info_id not in(select brake_system.basic_info_id 
+    from check_system join brake_system on brake_system.basic_info_id = check_system.basic_info_id 
+    where checkout_time is null and brake_system.brakeout_time is null and check_system.check_date = '${currentDate}'));`)
+
+    res.json(OnlineEmployeeData)
+}
+
+const getBreakEmployeeLogs = async (req,res)=>{
+
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+
+    let currentDate = `${year}-${(month > 9) ? (month) : ("0" + month)}-${(day > 9) ? (day) : ("0" + day)}`;
+
+    console.log(currentDate)
+
+    const BreakEmployeeData = await query(`select first_name,last_name,profile_photo,email from basic_info inner join document on basic_info.fk_emp_id = document.fk_emp_id 
+    inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  
+    in 
+    (select brake_system.basic_info_id from check_system join brake_system
+     on brake_system.basic_info_id = check_system.basic_info_id 
+     where checkout_time is null and brake_system.brakeout_time is null and check_system.check_date = '${currentDate}')`)
+
+    res.json(BreakEmployeeData)
+}
+
+const getOfflineEmployeeLogs = async (req,res)=>{
+
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+
+    let currentDate = `${year}-${(month > 9) ? (month) : ("0" + month)}-${(day > 9) ? (day) : ("0" + day)}`;
+
+
+    const OfflineEmployeeData = await query(`select first_name,last_name,profile_photo,email from basic_info inner join document on basic_info.fk_emp_id = document.fk_emp_id 
+    inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  
+    not in (select basic_info_id from check_system where check_date = '${currentDate}' 
+    and checkout_time is null 
+    and basic_info_id not in(select brake_system.basic_info_id 
+    from check_system join brake_system on brake_system.basic_info_id = check_system.basic_info_id 
+    where checkout_time is null and brake_system.brakeout_time is null and check_system.check_date = '${currentDate}'));`)
+
+    res.json(OfflineEmployeeData)
+}
+
+const getLeaveEmployeeData = async (req, res) =>{
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+
+    let currentDate = `${year}-${(month > 9) ? (month) : ("0" + month)}-${(day > 9) ? (day) : ("0" + day)}`;
+
+
+    const LeaveEmployeeData = await query(`
+    select first_name,last_name,profile_photo,email from basic_info inner join document 
+    on basic_info.fk_emp_id = document.fk_emp_id 
+        inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  
+        in (select fk_emp_id from leave_application where is_hr_approved = 1 and leave_date = '${currentDate}' and
+    fk_emp_id not in (select basic_info_id from check_system where check_date = '${currentDate}'));`)
+
+    res.json(LeaveEmployeeData)
+}
+
+
+
+
+module.exports = {getDashboard,getHotlines,getComment,getDataProfile,updateCommentCard, getOnlineEmployeeLogs,getBreakEmployeeLogs,getOfflineEmployeeLogs, getLeaveEmployeeData}

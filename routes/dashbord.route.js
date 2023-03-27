@@ -27,7 +27,10 @@ router.get('/getCkeckInOutInfo', employeeLog.getCkeckInOutInfo)
 router.get('/viewProfile',dashboard.getDataProfile)
 
 router.get('/allEmployeesLog',employeeLog.getAllEmployeesLog);
-
+router.get('/onlineEmployeeData',dashboard.getOnlineEmployeeLogs);
+router.get('/breakEmployeeData',dashboard.getBreakEmployeeLogs);
+router.get('/offlineEmployeeData',dashboard.getOfflineEmployeeLogs);
+router.get('/leaveEmployeeData',dashboard.getLeaveEmployeeData);
 
 
 module.exports = router;

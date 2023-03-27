@@ -37,6 +37,7 @@ const checkEmail = async(req, res) => {
 
 const postEmail = async(req, res) => {
     var { user_email, user_password } = req.body;
+    console.log("body",req.body)
     console.log(user_email);
     console.log(user_password);
     var hashPass = await bcrypt.hash(user_password, 10);

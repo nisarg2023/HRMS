@@ -185,7 +185,7 @@ const getEmployeeEdit = async (req,res)=>{
 
         state_query = `select state_name from state_master;`
         let stateName = await query(state_query);
-
+        userProfilePhoto = await query(`select profile_photo from document where fk_emp_id = ${req.session.emp_id}`)
         //basicInfo
         basic_info = await query(`select * from basic_info where fk_emp_id = ${req.session.emp_id}`)
         console.log("basic_info",basic_info)

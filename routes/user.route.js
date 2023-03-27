@@ -28,9 +28,9 @@ router.get('/get-logout', loginController.getLogout);
 
 router.get('/forget-password', forgetController.forgetPassword);
 router.get('/all-email', forgetController.checkEmail);
-router.post('/post-email', forgetController.postEmail);
+router.post('/reset-password', forgetController.postEmail);
 router.post('/getcode', emailcontroller.postCode);
-router.post('/post-changepassword', forgetController.updatePassword);
+router.get('/verifyOtp', forgetController.updatePassword);
 
 router.get('/get-allUsersEmail', userEmail.getAllUsersEmail);
 

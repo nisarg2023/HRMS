@@ -25,6 +25,27 @@ const getCode = async () => {
 
 }
 
+const verifyOtp = async () => {
+    let user_email = document.getElementById('email1')
+    let otp = document.getElementById('getcodem').value
+    let resetPassword = document.getElementById('reset-password')
+    let beforeVerify = document.getElementById('before-verify')
+    await fetch(`/verifyOtp?userEmail=${user_email.value}&otp=${otp}`)
+    .then(res=>res.json())
+    .then((data) => {
+        if(data.isVerified === true) {
+            resetPassword.style.display = 'block'
+            beforeVerify.style.display = 'none'
+            user_email.disabled = 
+            true
+        }
+        else{
+
+        }
+    })
+}
+
+
 const confirmPassword = () => {
 
     let password = document.getElementById("Password").value;

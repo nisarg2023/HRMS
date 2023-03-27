@@ -7,33 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Form </title>
-    
+
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-
+    <div class="area" >
+        <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+</div >
     <div class="container">
-
-        <div class="login form">
-            <header>Login</header>
+        <div class="login form" style="display: flex; flex-direction: column;">
+           <img src="../images/hrms.png" alt="company logo" class="company-logo" style="align-self: center;"  width="200px" />
+            <h2>Login</h2>
             <form action="/post-login" method="post">
                 <input type="text" placeholder="Enter your email" name="user_email" onclick="removeText()" >
                 <input type="password" placeholder="Enter your password" name="user_password" id="Password">
-                <i class="fa-solid fa-eye" id="togglePassword" onmousemove="eye(this.id)" onmouseout="eyeout(this.id)"></i>
+                <i class="fa-solid fa-eye" id="togglePassword" onclick="eye(this.id)" onclick="eyeout(this.id)"></i>
                 <%if(locals.err){%>
-                    <p style="color:red;" id="showError">
-                        <%=err%>
-                    </p>
-                    <%}%>
-                        <a href="/forget-password">Forgot password?</a>
-                        <input type="submit" class="button" value="submit">
+                <p style="color: red;"><%=err%></p>
+                <%}%>
+                <a href="/forget-password">Forgot password?</a>
+                <input type="submit" class="button" value="submit">
             </form>
             <div class="signup">
                 <span class="signup">Don't have an account?
-                 <a href="/get-registration" for="check">Signup</a>
-                    </span>
+                    <a href="/get-registration" for="check">Signup</a>
+                </span>
             </div>
         </div>
 

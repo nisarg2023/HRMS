@@ -67,7 +67,8 @@ li{
 
 .side-container{
 padding: 32px;
-/* position: fixed; */
+position: sticky;
+top: 0;
 height: 100vh;
 background-color: var(--white);
 left:0;
@@ -127,7 +128,7 @@ box-shadow:0px 1px 1px #000000;
 .emp-name{
     font-size: 18px;
     font-weight: 900;
-    color: var(--primary-text-color);
+    color: white;
 }
 .emp-role{
     font-size: 14px;

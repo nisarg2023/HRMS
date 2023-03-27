@@ -29,7 +29,6 @@ const postRegistration=async(req,res)=>{
 
         var sql = `insert into hrms_employee(email,password) values('${user_email}','${hashPass}')`;
         var result =  await query(sql);
-        mailer.sendMail(user_email)
         res.redirect("/get-login")
         }
 

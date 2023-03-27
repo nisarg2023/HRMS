@@ -35,4 +35,16 @@ const postActivate = async(req,res)=>{
     }
 }
 
-module.exports = {getActivate,postActivate}
+const postForgetActivate = async(req,res)=>{
+    try{
+        let email = req.session.email;
+        let activate = await query(`update hrms_employee set isactivate = 1 where email = '${email}'`)
+       
+        res.redirect('/employee/get-employee-data');    
+    }
+    catch(error){
+        console.log('error in active action fucntion' ,error)
+    }
+}
+
+module.exports = {getActivate,postActivate,postForgetActivate}

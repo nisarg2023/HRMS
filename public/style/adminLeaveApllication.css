@@ -35,7 +35,7 @@ table tr:first-child th:last-child {
 }
 
 .admin-leave-table-tr-th-textarea{
-    width: calc(2*(100%/7));
+    width: calc(2*(100%/6));
 }
 
 .admin-leave-table-body-tr{

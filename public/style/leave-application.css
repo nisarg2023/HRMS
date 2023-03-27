@@ -1,7 +1,8 @@
 .leave-application-container{
-    padding: 16px 32px;
     color: var(--secondary-text-color);
     font-weight: 600;
+    /* background-color: white; */
+    margin: 16px;
 }
 input, select{
     color: var(--secondary-text-color);
@@ -12,7 +13,12 @@ input, select{
     background-color: var(--white);
 }
 
+hr{
+    height: 1px;
+    background-color: #c7c7c7;
+    
 
+}
 .leave-reason-text-box{
     margin-top: 10px;
     width: 100%;
@@ -39,15 +45,29 @@ form{
 label{
     margin-bottom: 3px;
 }
+.leave-form-container{
+    padding: 16px;
+    margin-top: 16px;
+    background-color: white;
+}
+
+.leave-form-header{
+    text-align: center;
+    color: var(--white);
+    padding: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: var(--blue-head);
+}
 
 .leave-application-form-container{
-    margin-top: 32px;
     gap: 40px;
-    padding: 16px 32px;
-    border-radius: 10px;
-    /* background-color: var(--white); */
+    padding: 32px 32px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 1px solid rgb(185, 185, 185);
+    background-color: var(--bg-color);
     width: 100%;
-    box-shadow:  0px 0px 5px #000000a2;
 }
 .leave-application-top{
     justify-content: space-between;
@@ -76,13 +96,18 @@ label{
 }
 
 .applied-leave-container{
-    padding: 16px 32px;
+    margin: 16px;
+    padding: 16px 16px;
+    background-color: white;
 }
 table{
     border-radius: 10px;
     width: 100%;
-    box-shadow: 1px 1px 3px  #111111;
+    /* box-shadow: 1px 1px 3px  #111111; */
+    background-color: var(--bg-color);
+    color: var(--secondary-text-color);
     padding-block: 20px;
+    border-collapse: collapse;
 }
 
 tr{
@@ -93,32 +118,34 @@ td,th{
     padding: 10px;
     text-align: center;
 }
-.status-pending{
+th{
+    color: var(--white);
+}
+
+.applied-leave-table-head-tr{
+    background-color: var(--blue-head);
+}
+.status{
+    color:var(--black);
     display: inline-block;
     padding-block: 8px;
     width: 100px;
     border-radius: 8px;
+}
+
+.status-pending{
     background-color: rgb(255, 182, 23);
 }
 .status-approved{
-    display: inline-block;
-    padding-block: 8px;
-    width: 100px;
-    border-radius: 8px;
+    
     background-color: rgb(34, 116, 9);
 }
 .status-rejected{
-    display: inline-block;
-    padding-block: 8px;
-    width: 100px;
-    border-radius: 8px;
     background-color: rgb(160, 13, 13);
 }
-/* .leave-card{
-} */
+
 .leave-cards{
-    background-color: rgb(0, 0, 0);
-    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
 }
 .leave-card-col{
     width: calc(100%/4);
@@ -128,12 +155,12 @@ td,th{
 .leave-card-data{
     padding: 10px;
     border-radius: 8px;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     font-weight: 500;
-    box-shadow: 1px 1px 6px #0000005d;
     display: flex;
     flex-direction: column;
     row-gap: 6px;
+    border: 2px solid black;
     
 }
 
@@ -152,3 +179,4 @@ td,th{
 .leave-card-remain{
    column-gap: 20px;
 }
+

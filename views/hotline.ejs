@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
+    
+    <head>
+        <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/2d11fdd863.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="../style/dashboard.css" />
+    
     <link rel="stylesheet" href="../style/hotline.css" type="text/css" />
 
 
@@ -30,7 +31,7 @@
                             <div class="row">
                                 <div class="col_5">
 
-                                    <div class="box">
+                                    <div class="box" onclick="renderOnline()">
                                         <div class="logo">
                                             <i class="fa-solid fa-users fa-2x"></i>
                                         </div>
@@ -43,49 +44,39 @@
 
 
                                 <div class="col_5">
-                                    <div class="box">
+                                    <div class="box" onclick="renderBreak()">
                                         <div class="logo">
                                             <i class="fa-solid fa-users fa-2x"></i>
                                         </div>
                                         <div class="text">
-                                            <label>Online</label>
+                                            <label>on Break</label>
                                             <p>291</p>
                                         </div>
                                     </div>
                                 </div>
 
 
+                               
+
                                 <div class="col_5">
-                                    <div class="box">
-                                        <div class="logo">
+                                    <div class="box" onclick="renderOffline()">
+                                        <div class="logo" >
                                             <i class="fa-solid fa-users fa-2x"></i>
                                         </div>
                                         <div class="text">
-                                            <label>Online</label>
+                                            <label>offline</label>
                                             <p>291</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col_5">
-                                    <div class="box">
+                                    <div class="box" onclick="renderOnLeave()">
                                         <div class="logo">
                                             <i class="fa-solid fa-users fa-2x"></i>
                                         </div>
                                         <div class="text">
-                                            <label>Online</label>
-                                            <p>291</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col_5">
-                                    <div class="box">
-                                        <div class="logo">
-                                            <i class="fa-solid fa-users fa-2x"></i>
-                                        </div>
-                                        <div class="text">
-                                            <label>Online</label>
+                                            <label>on Leave</label>
                                             <p>291</p>
                                         </div>
                                     </div>
@@ -95,16 +86,80 @@
 
 
             <div class="uses">
-                <div class="row">
-                    <%for(var i=0;i<allUsers.length;i++){%>
-                   <%- include('components/hoteline-user-card.ejs',{
-                    "first_name":allUsers[i].first_name,
-                    "last_name":allUsers[i].last_name,
-                    profile_photo:profilePhotos[i].profile_photo,
-                    "email":emails[i].email})%>
-                   <%}%>
+                <div class="row" id="row">
+                    
                 </div>
         </div>
     </div>
   </body>
+
+<script>
+    const renderOnline =  () =>{
+
+        let row = document.getElementById('row');
+            fetch(`/dashbord/onlineEmployeeData`)
+            .then(res=>res.json())
+            .then(onlinedata=>{
+                let div =  document.createElement('div');
+                let s = ``
+                onlinedata.forEach(data=>{
+                s += `<%- include('components/hoteline-user-card.ejs',{"first_name":'${data.first_name}',"last_name":'${data.last_name}',profile_photo:"${data.profile_photo}","email":"${data.email}","status":"online","phone_number": "${data.phone_number}" })%>`
+                })
+            row.innerHTML = s
+            
+        })
+    }
+    renderOnline()
+
+
+    const renderBreak =  () =>{
+
+let row = document.getElementById('row');
+    fetch(`/dashbord/breakEmployeeData`)
+    .then(res=>res.json())
+    .then(onBreakdata=>{
+        let div =  document.createElement('div');
+        let s = ``
+        onBreakdata.forEach(data=>{
+        s += `<%- include('components/hoteline-user-card.ejs',{"first_name":'${data.first_name}',"last_name":'${data.last_name}',profile_photo:"${data.profile_photo}","email":"${data.email}","status":"onBreak","phone_number": "${data.phone_number}" })%>`
+        })
+    row.innerHTML = s
+    
+})
+}
+
+const renderOffline =  () =>{
+
+let row = document.getElementById('row');
+    fetch(`/dashbord/offlineEmployeeData`)
+    .then(res=>res.json())
+    .then(offlinedata=>{
+        let div =  document.createElement('div');
+        let s = ``
+        offlinedata.forEach(data=>{
+        s += `<%- include('components/hoteline-user-card.ejs',{"first_name":'${data.first_name}',"last_name":'${data.last_name}',profile_photo:"${data.profile_photo}","email":"${data.email}","status":"offline","phone_number": "${data.phone_number}" })%>`
+        })
+    row.innerHTML = s
+    
+})
+}
+
+const renderOnLeave =  () =>{
+
+let row = document.getElementById('row');
+    fetch(`/dashbord/leaveEmployeeData`)
+    .then(res=>res.json())
+    .then(leavedata=>{
+        let div =  document.createElement('div');
+        let s = ``
+        leavedata.forEach(data=>{
+        s += `<%- include('components/hoteline-user-card.ejs',{"first_name":'${data.first_name}',"last_name":'${data.last_name}',profile_photo:"${data.profile_photo}","email":"${data.email}","status":"onLeave","phone_number": "${data.phone_number}"})%>`
+        })
+    row.innerHTML = s
+    
+})
+}
+
+</script>
+
 </html>

@@ -6,8 +6,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const conn = require('./config/dbConnect');
-const util =  require('util');
-const query =  util.promisify(conn.query).bind(conn);
+const util = require('util');
+const query = util.promisify(conn.query).bind(conn);
 
 
 
@@ -26,24 +26,25 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 app.use(session({
-    key:"sessionid",
-    resave:false,
-saveUninitialized:true,
-secret:"red"}));
+    key: "sessionid",
+    resave: false,
+    saveUninitialized: true,
+    secret: "red"
+}));
 
 app.use(express.static(__dirname + '/public'))
 app.use(express.static(__dirname + ''));
 app.set('view engine', 'ejs');
 
 const pageNotFound = require('./controllers/404.controller')
-//define routes
+    //define routes
 
 app.use("/",userRoutes);
 app.use("/employee/",auth,employeeForm);
 app.use("/dashbord/",auth,dashbord);
 app.use("/admin/",auth,admin);
 
-app.use("/*",pageNotFound);
+app.use("/*", pageNotFound);
 
 // HEADER-UI
 // app.get("/dashboard", function(req,res){

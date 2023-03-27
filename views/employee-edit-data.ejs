@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/style/dashboard.css">
     <link rel="stylesheet" href="/style/employee-edit-data.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="dashboard-wrapper flex flex-row">
@@ -22,20 +23,29 @@
                 <input type="hidden" name="id" value="<%= basic_info[0].basic_info_id %>">
                     <div>
                         <div id="optionbar">
-                            <div class="optionbar" id="Basic_info">Basic info</div>
-                            <div class="optionbar" id="Education_info">Education info</div>
-                            <div class="optionbar" id="Work_Experince">Work Experince</div>
+                            <div class="f">
+                                <i class="fa-solid fa-info"></i>
+                                <div class="optionbar" id="Basic_info">Basic info</div>
+                            </div>
+                            <div class="f">
+                                <i class="fa-solid fa-school"></i>
+                                <div class="optionbar" id="Education_info">Education info</div>
+                            </div>
+                            <div class="f">
+                                <i class="fa-solid fa-briefcase"></i>
+                                <div class="optionbar" id="Work_Experince">Work Experince</div>
+                            </div>
                         </div>
                     </div>
-                    <div id="table1" style="display: none;">
+                    <div id="table1" style="display: block;">
                         <div class="mainhedar">
                             <p>Basic Info</p>
                          </div>
                         <div class="first">
                         <div class="basicinfo">
-                            <div>Photos</div>
-                            <div><img src="/images/admin.jpeg" alt="Error"></div>
-                            <div><a href="#">Remove</a></div>
+                            <!-- <div>Photos</div> -->
+                            <div><img src="<%= profilePhoto%>" alt="Error" class="pro"></div>
+                            <div><a href="#" class="remove">Remove</a></div>
                         </div>
                         <div class="formgroup">
                         <div>
@@ -49,7 +59,7 @@
                             </div>
                             <div>
                                 <% if(basic_info[0].gender=='female' ) {%>
-                                    <p> Gender:</p>
+                                    <span> Gender :</span>
                                     <input type="radio" id="male" name="gender" value="male" />
                                     <span>Male</span>
                                     <input type="radio" id="female" name="gender" value="female" checked />
@@ -60,7 +70,7 @@
                             </div>
                             <div>
                                 <% if(basic_info[0].gender=='male' ) {%>
-                                    <p> Gender:</p>
+                                    <span> Gender :</span>
                                     <input type="radio" id="male" name="gender" value="male" checked />
                                     <span>Male</span>
                                     <input type="radio" id="female" name="gender" value="female"  />
@@ -71,7 +81,7 @@
                             </div>
                             <div>
                                 <% if(basic_info[0].gender=='other' ) {%>
-                                    <p> Gender:</p>
+                                    <span> Gender :</span>
                                     <input type="radio" id="male" name="gender" value="male"  />
                                     <span>Male</span>
                                     <input type="radio" id="female" name="gender" value="female"  />
@@ -99,7 +109,7 @@
                                 </select>
                             </div>
                             <div>
-                                <p>Desigation :</p>
+                                <p>Blood Group :</p>
                                 <input type="text" id="blood_group" name="blood_group"value="<%=basic_info[0].blood_group%>" />
                             </div>
                             <div>
@@ -284,6 +294,7 @@
     let table1 = document.getElementById('table1');
     let table2 = document.getElementById('table2');
     let table3 = document.getElementById('table3');
+    Basic_info.style.fontWeight = '600';
 
     Basic_info.addEventListener('click',(req,res)=>{
         Basic_info.style.fontWeight = '600';
@@ -302,6 +313,7 @@
     })
     Education_info.addEventListener('click',(req,res)=>{
         Basic_info.style.fontWeight = '100';
+        
         Education_info.style.fontWeight = '600';
         Work_Experince.style.fontWeight = '100';
 

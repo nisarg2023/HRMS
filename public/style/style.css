@@ -66,12 +66,44 @@
     cursor: pointer;
     transition: 0.4s;
 }
+.forgot-buttons{
+    display: block;
+    text-align: center;
+    width: 100%;
+    background-color: #6B59D3;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.4s;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+.code-input{
+    
+}
+.codem {
+    background-color: #6B59D3;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 1.7rem;
+    cursor: pointer;
+    transition: 0.4s;
+    color: white;
+}
+
+.codem:hover {
+    background-color: gray;
+}
 
 .form input.button:hover {
     background: #6B59D3;
 }
 
 .signup {
+    margin-top: 1rem;
     font-size: 17px;
     text-align: center;
 }
@@ -85,12 +117,13 @@
     text-decoration: underline;
 }
 
-small{
+small {
     color: red;
 }
 
-
-
+.confirm_btn {
+    display: flex;
+}
 
 .area{
     background: #6B59D3;  

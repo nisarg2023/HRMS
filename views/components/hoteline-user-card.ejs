@@ -1,11 +1,11 @@
 <div class="col_4">
     <div class="user_card">
-        <div class="staus">
-            <span>online</span>
+        <div class="staus <%=status%>">
+            <span><%=status%></span>
         </div>
 
         <div class="user_image">
-            <img src=' /<%=profile_photo.toString() %> 'alt="">
+            <img src=' /<%=profile_photo %> 'alt="">
         </div>
 
         <div class="detail">
@@ -28,7 +28,7 @@
             </div>
 
             <p> <i class="fa-sharp fa-solid fa-envelope"> </i><%=email%> </p>
-            <p><i class="fa-solid fa-phone"></i> Not available</p>
+            <p><i class="fa-solid fa-phone"></i><%=phone_number %></p>
         </div>
     </div>
 </div>

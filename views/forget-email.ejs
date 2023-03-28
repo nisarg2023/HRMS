@@ -42,7 +42,7 @@
             let emailErr = document.getElementById("emailErr");
 
 
-            fetch('http://localhost:8000/all-email')
+            fetch('/all-email')
                 .then(res => res.json())
                 .then((emails) => {
                     if (!emails.includes(email)) {

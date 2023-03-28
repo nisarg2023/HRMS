@@ -5,6 +5,12 @@ const query =  util.promisify(conn.query).bind(conn)
 // impoted controlllers
 const dashboardProfile = require('./dashboardprofile.controller')
 
+const adminDashboardRedirecting =  async (req,res) =>{
+    res.redirect('/admin/dashboard')
+}
+
+
+
 
 const adminDashboard = async (req,res)=>{
 
@@ -15,4 +21,8 @@ const adminDashboard = async (req,res)=>{
 
 }
 
-module.exports = {adminDashboard}
+
+
+
+
+module.exports = {adminDashboard,adminDashboardRedirecting}

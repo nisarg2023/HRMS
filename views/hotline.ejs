@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="text">
                                             <label>Online</label>
-                                            <p>291</p>
+                                            <p id="numberOfOnline"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="text">
                                             <label>on Break</label>
-                                            <p>291</p>
+                                            <p id="numberOfOnBreak"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                         </div>
                                         <div class="text">
                                             <label>offline</label>
-                                            <p>291</p>
+                                            <p id="numberOfOffiline"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="text">
                                             <label>on Leave</label>
-                                            <p>291</p>
+                                            <p id="numberOfOnLeave"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -94,39 +94,25 @@
   </body>
 
 <script>
-    const renderOnline =  () =>{
 
-        let row = document.getElementById('row');
-            fetch(`/dashbord/onlineEmployeeData`)
-            .then(res=>res.json())
-            .then(onlinedata=>{
-                let div =  document.createElement('div');
-                let s = ``
-                onlinedata.forEach(data=>{
-                s += `<%- include('components/hoteline-user-card.ejs',{"first_name":'${data.first_name}',"last_name":'${data.last_name}',profile_photo:"${data.profile_photo}","email":"${data.email}","status":"online","phone_number": "${data.phone_number}" })%>`
-                })
-            row.innerHTML = s
-            
-        })
-    }
-    renderOnline()
-
-
-    const renderBreak =  () =>{
+const renderBreak =  () =>{
 
 let row = document.getElementById('row');
     fetch(`/dashbord/breakEmployeeData`)
     .then(res=>res.json())
     .then(onBreakdata=>{
         let div =  document.createElement('div');
+        let numberOfOnBreak = document.getElementById('numberOfOnBreak');
         let s = ``
         onBreakdata.forEach(data=>{
         s += `<%- include('components/hoteline-user-card.ejs',{"first_name":'${data.first_name}',"last_name":'${data.last_name}',profile_photo:"${data.profile_photo}","email":"${data.email}","status":"onBreak","phone_number": "${data.phone_number}" })%>`
         })
+        numberOfOnBreak.innerText = onBreakdata.length;
     row.innerHTML = s
     
 })
 }
+renderBreak();
 
 const renderOffline =  () =>{
 
@@ -135,14 +121,17 @@ let row = document.getElementById('row');
     .then(res=>res.json())
     .then(offlinedata=>{
         let div =  document.createElement('div');
+        let numberOfOffiline = document.getElementById('numberOfOffiline');
         let s = ``
         offlinedata.forEach(data=>{
         s += `<%- include('components/hoteline-user-card.ejs',{"first_name":'${data.first_name}',"last_name":'${data.last_name}',profile_photo:"${data.profile_photo}","email":"${data.email}","status":"offline","phone_number": "${data.phone_number}" })%>`
         })
+        numberOfOffiline.innerText = offlinedata.length;
     row.innerHTML = s
     
 })
 }
+renderOffline();
 
 const renderOnLeave =  () =>{
 
@@ -151,14 +140,37 @@ let row = document.getElementById('row');
     .then(res=>res.json())
     .then(leavedata=>{
         let div =  document.createElement('div');
+        let numberOfOnLeave = document.getElementById('numberOfOnLeave');
         let s = ``
         leavedata.forEach(data=>{
         s += `<%- include('components/hoteline-user-card.ejs',{"first_name":'${data.first_name}',"last_name":'${data.last_name}',profile_photo:"${data.profile_photo}","email":"${data.email}","status":"onLeave","phone_number": "${data.phone_number}"})%>`
         })
+        numberOfOnLeave.innerText = leavedata.length;
     row.innerHTML = s
     
 })
 }
+renderOnLeave();
+
+const renderOnline =  () =>{
+
+let row = document.getElementById('row');
+    fetch(`/dashbord/onlineEmployeeData`)
+    .then(res=>res.json())
+    .then(onlinedata=>{
+        let div =  document.createElement('div');
+        let numberOfOnline = document.getElementById('numberOfOnline');
+       
+        let s = ``
+        onlinedata.forEach(data=>{
+        s += `<%- include('components/hoteline-user-card.ejs',{"first_name":'${data.first_name}',"last_name":'${data.last_name}',profile_photo:"${data.profile_photo}","email":"${data.email}","status":"online","phone_number": "${data.phone_number}" })%>`
+        })
+        numberOfOnline.innerText= onlinedata.length;
+    row.innerHTML = s
+    
+})
+}
+renderOnline();
 
 </script>
 

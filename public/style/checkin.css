@@ -5,7 +5,7 @@
     padding: 16px;
     /* width: 300px; */
     text-align: left;
-    background-color: white;
+    background-color: var(--white);
 }
 
 
@@ -26,9 +26,9 @@
 
 .btn-checkin {
     width: 45%;
-    color: white;
+    color: var(--white);
     margin: 5px;
-    background-color: green;
+    background-color: var(--green);
     border-radius: 5px;
     padding: 5px;
     pointer-events: auto;
@@ -38,7 +38,7 @@
     width: 45%;
     color: white;
     margin: 5px;
-    background-color: rgb(171, 223, 171);
+    background-color: var(--green-disable);
     border-radius: 5px;
     padding: 5px;
     pointer-events: none;
@@ -48,7 +48,7 @@
     width: 45%;
     color: white;
     margin: 5px;
-    background-color: rgb(255, 220, 156);
+    background-color: var(--orange-disable);
     border-radius: 5px;
     padding: 5px;
     pointer-events: none;
@@ -56,9 +56,9 @@
 
 .btn-brakein1 {
     width: 45%;
-    color: white;
+    color: var(--white);
     margin: 5px;
-    background-color: orange;
+    background-color: var(--orange);
     border-radius: 5px;
     padding: 5px;
     pointer-events: auto;
@@ -67,9 +67,9 @@
 .btn-checkout {
     width: 45%;
     display: flex;
-    color: white;
+    color: var(--white);
     margin: 5px;
-    background-color: rgb(221, 145, 145);
+    background-color: var(--red-disable);
     border-radius: 5px;
     padding: 5px;
     pointer-events: none;
@@ -78,9 +78,9 @@
 .btn-checkout1 {
     width: 45%;
     display: flex;
-    color: white;
+    color: var(--white);
     margin: 5px;
-    background-color: red;
+    background-color: var(--red);
     border-radius: 5px;
     padding: 5px;
     pointer-events: auto;
@@ -88,9 +88,9 @@
 
 .btn-brakeout {
     width: 45%;
-    color: white;
+    color: var(--white);
     margin: 5px;
-    background-color: rgb(206, 196, 144);
+    background-color: var(--yellow-disable);
     border-radius: 5px;
     padding: 5px;
     pointer-events: none;
@@ -98,9 +98,9 @@
 
 .btn-brakeout1 {
     width: 45%;
-    color: white;
+    color: var(--white);
     margin: 5px;
-    background-color: rgb(190, 167, 37);
+    background-color:var(--yellow);
     border-radius: 5px;
     padding: 5px;
     pointer-events: auto;
@@ -108,42 +108,42 @@
 
 .btn-checkin a {
     text-decoration: none;
-    color: white;
+    color: var(--white);
 }
 
 .btn-checkin1 a {
     text-decoration: none;
-    color: white;
+    color: var(--white);
 }
 
 .btn-brakeout a {
     text-decoration: none;
-    color: white;
+    color: var(--white);
 }
 
 .btn-brakeout1 a {
     text-decoration: none;
-    color: white;
+    color: var(--white);
 }
 
 .btn-brakein a {
     text-decoration: none;
-    color: white;
+    color: var(--white);
 }
 
 .btn-brakein1 a {
     text-decoration: none;
-    color: white;
+    color: var(--white);
 }
 
 .btn-checkout a {
     text-decoration: none;
-    color: white;
+    color: var(--white);
 }
 
 .btn-checkout1 a {
     text-decoration: none;
-    color: white;
+    color: var(--white);
 }
 
 .attendace {
@@ -151,43 +151,43 @@
 }
 
 .check-green {
-    background-color: green;
+    background-color: var(--green);
     padding: 5px;
     padding-left: 20px;
     border-radius: 8px;
     margin-top: 10px;
     text-align: left;
-    color: white;
+    color: var(--white);
 }
 
 .check-orange {
-    background-color: orange;
+    background-color: var(--orange);
     padding: 5px;
     padding-left: 20px;
     border-radius: 8px;
     margin-top: 10px;
     text-align: left;
-    color: white;
+    color: var(--white);
 }
 
 .check-red {
-    background-color: red;
+    background-color: var(--red);
     padding: 5px;
     padding-left: 20px;
     border-radius: 8px;
     margin-top: 10px;
     text-align: left;
-    color: white;
+    color: var(--white);
 }
 
 .check-yellow {
-    background-color: rgb(190, 167, 37);
+    background-color: var(--yellow);
     padding: 5px;
     padding-left: 20px;
     border-radius: 8px;
     margin-top: 10px;
     text-align: left;
-    color: white;
+    color: var(--white);
 }
 
 .btn_in {

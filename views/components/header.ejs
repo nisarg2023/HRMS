@@ -1,7 +1,9 @@
 <div class="header-wrapper">
-    <div class="header-nav-title " style="display: flex; justify-content: space-between;" >
+    <div class="header-nav-title item-center" style="display: flex; justify-content: space-between;" >
         <h2><%=name%></h2>
-        <a href="/get-logout">Logout</a>
+        <% if(locals.link){ %>
+            <a href="../../dashbord">Switch to Employee</a>
+        <% }%>
     </div>
 
 </div>

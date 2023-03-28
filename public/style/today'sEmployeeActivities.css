@@ -1,0 +1,33 @@
+.log_container{
+    margin-top: 1rem;
+}
+.employee_name{
+    color:#002f4b;
+    font-size: 18px;
+    padding: .2rem .5rem .2rem 0rem;
+
+}
+.today_logs{
+    
+    font-size: 16px;
+    font-weight: 700;
+    padding: .2rem .5rem;
+}
+
+.time{
+    color: rgba(0,47,75,.5);
+    font-size: 16px;
+    padding: .2rem .5rem;
+}
+.check_in{
+color:green;
+}
+.check_out{
+color: red;
+}
+.brake_in{
+color:orange;
+}
+.brake_out{
+    color:rgb(190, 167, 37);
+}

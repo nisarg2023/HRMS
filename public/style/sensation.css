@@ -1,0 +1,49 @@
+.contain{
+    display: flex;
+    flex-direction:column;
+    padding-left: 1rem;
+}
+.text-container{
+    padding-top: 1rem;
+}
+.emp-name{
+    display: inline-block;
+}
+.emp-comment{
+    display: inline-block;
+}
+.input-img{
+    display: inline-block;
+}
+.input-text{
+    display: inline-block;
+}
+.sensation-img{
+    width: 3rem;
+    height: 3rem;
+} 
+
+.form input {
+    height: 60px;
+    padding: 0 15px;
+    font-size: 17px;
+    margin-top: 15px;
+    border: 1px solid #251818;
+    border-radius: 6px;
+    outline: none;
+}
+
+.form input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.form input.button {
+
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+

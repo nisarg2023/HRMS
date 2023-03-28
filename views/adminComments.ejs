@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRMS- Admin Dashboard</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="stylesheet" href="/style/adminComments.css">
+    <script src="https://kit.fontawesome.com/2d11fdd863.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="dashboard-wrapper flex flex-row">
+        <div class="dashboard-right">
+            <%- include('components/adminSidebar.ejs') %>
+        </div>
+        <div class="dashboard-left">
+            <%- include('components/header.ejs',{name:"Admin Comments", link:"Employee"}) %>
+                <div class="dashboard-data-container flex flex-row">
+                    <div class="admin-comments-table-container">
+                        <table class="admin-comments-table">
+                            <tr class="admin-comments-table-head-tr">
+                                <th class="admin-comments-table-tr-th">Employee Id</th>
+                                <th class="admin-comments-table-tr-th">Employee Name</th>
+                                <th class="admin-comments-table-tr-th">Comments</th>
+                                <th class="admin-comments-table-tr-th">Date</th>
+                                <th class="admin-comments-table-tr-th">Status</th>
+                            </tr>
+
+                            <% commentsData.forEach((comment)=>{ %>
+                                <tr class="admin-comments-table-body-tr">
+                                    <td><%=comment.fk_emp_id%></td>
+                                    <td><%=comment.first_name%> <%=comment.last_name%></td>
+                                    <td><%=comment.comment%></td>
+                                    <td><%=comment.comment_date.toJSON('yyyy-mm-dd').slice(0,10)%></td>
+                        
+                                    <td> <a class="admin-comment-read-btn" href="commentId?commentId=<%=comment.emp_comment_id%>&comment=<%=comment.comment%>" onclick="readComment(this.id)" id="<%=comment.emp_comment_id%>"> Mark as Read </a></td>
+                                </tr>
+                            <% }) %>
+                        </table>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -62,70 +62,76 @@
                     </div>
                 </div>
 
+                <!-- <hr> -->
 
-                <form action="/dashbord/post-leave" method="POST" onsubmit="return validateLeave()">
-                    <div class="leave-application-form-container flex flex-col">
-                        <div class="leave-application-top flex">
-                            <div class="leave-date-container flex flex-col">
-                                <label for="leave_date">Leave Date</label>
-                                <input type="date" name="leave_date" id="leave-date"/>
-                            </div>
-        
-                            <div class="leave-type-container flex flex-col">
-                                <label for="leave_type">Leave Type</label>
-        
-                                <select name="leave_type" id="leave-type">
-
-                                    <option value="" disabled selected hidden>Type of Leave</option>
-                                    <%if(leavesObject.cLeave < 6 ){ %>
-                                        <option value="CL">CL</option>
-                                    <% }  %>
-
-                                    <% if(leavesObject.pLeave < 6 ){%>
-                                        <option value="PL">PL</option>
-                                    <% }  %>
-
-                                    <% if(leavesObject.sLeave < 4){%>
-                                        <option value="SL">SL</option>
-                                    <% }  %>
-
-                                    <option value="UPL">UPL</option>
-                                   
-                                </select>
-                            </div>
-
-                            <div class="ishalf flex">
-                                    <div>
-                                        <input type="radio" name="is_half" value="1">
-                                        <label for="">Half Day</label>
-                                    </div>
-                                   <div>
-                                        <input type="radio" name="is_half" value="0" checked>
-                                        <label for="">Full Day</label>
-                                   </div>
-                                </div>
-                        </div>
-                        
-                       
-
-                        <div>
-                            <div class="leave-reason-container">
-                                <label for="leave_reason">Leave Reason</label>
-                                <textarea name="leave_reason" class="leave-reason-text-box" id="leave-reason-text-box" cols="20" rows="10"></textarea>
-                            </div>
-                        </div>
-                       
-                        <div class="leave-application-submit-btn-container">
-                            <input id="leave-submit-btn" type="submit" value="Apply">
-                        </div>
+                <div class="leave-form-container">
+                    <div class="leave-form-header">
+                        <h2>Leave Application Form</h2>
                     </div>
-                </form>
+                    <form action="/dashbord/post-leave" method="POST" onsubmit="return validateLeave()">
+                        <div class="leave-application-form-container flex flex-col">
+                            <div class="leave-application-top flex">
+                                <div class="leave-date-container flex flex-col">
+                                    <label for="leave_date">Leave Date</label>
+                                    <input type="date" name="leave_date" id="leave-date"/>
+                                </div>
+            
+                                <div class="leave-type-container flex flex-col">
+                                    <label for="leave_type">Leave Type</label>
+            
+                                    <select name="leave_type" id="leave-type">
+
+                                        <option value="" disabled selected hidden>Type of Leave</option>
+                                        <%if(leavesObject.cLeave < 6 ){ %>
+                                            <option value="CL">CL</option>
+                                        <% }  %>
+
+                                        <% if(leavesObject.pLeave < 6 ){%>
+                                            <option value="PL">PL</option>
+                                        <% }  %>
+
+                                        <% if(leavesObject.sLeave < 4){%>
+                                            <option value="SL">SL</option>
+                                        <% }  %>
+
+                                        <option value="UPL">UPL</option>
+                                    
+                                    </select>
+                                </div>
+
+                                <div class="ishalf flex">
+                                        <div>
+                                            <input type="radio" name="is_half" value="1">
+                                            <label for="">Half Day</label>
+                                        </div>
+                                    <div>
+                                            <input type="radio" name="is_half" value="0" checked>
+                                            <label for="">Full Day</label>
+                                    </div>
+                                    </div>
+                            </div>
+                            
+                        
+
+                            <div>
+                                <div class="leave-reason-container">
+                                    <label for="leave_reason">Leave Reason</label>
+                                    <textarea name="leave_reason" class="leave-reason-text-box" id="leave-reason-text-box" cols="20" rows="10"></textarea>
+                                </div>
+                            </div>
+                        
+                            <div class="leave-application-submit-btn-container">
+                                <input id="leave-submit-btn" type="submit" value="Apply">
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
 
 
             <div class="applied-leave-container">
                 <table>
-                    <tr>
+                    <tr class="applied-leave-table-head-tr">
                         <th>Leave Date</th>
                         <th>Leave Type</th>
                         <th>Half Or Full</th>
@@ -144,11 +150,11 @@
                             <% } %>
                             
                             <% if(data.is_cto_approved == 0){%>
-                                <td><span class="status-pending">Pending</span></td>
+                                <td><span class="status status-pending">Pending</span></td>
                             <% } else if(data.is_cto_approved == 1){  %>
-                                <td ><span class="status-approved">Approved</span></td>
+                                <td ><span class="status status-approved">Approved</span></td>
                             <% } else {%>
-                                <td><span class="status-rejected">Rejected</span></td>
+                                <td><span class="status status-rejected">Rejected</span></td>
                             <% } %>
 
                             <td><%= data.leave_reason%></td>

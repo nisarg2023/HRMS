@@ -1,6 +1,6 @@
 const conn = require('../config/dbConnect');
 const util = require('util');
-const query = util.promisify(conn.query).bind(conn)
+const query = util.promisify(conn.query).bind(conn);
 
 const getUserBasicinfo = async(id = "") => {
 
@@ -71,35 +71,6 @@ const getComment = async(req, res) => {
     res.json({ message: true });
 }
 
-<<
-<< << < HEAD
-// to update the status of comment of read or not
-const getCommentId = async(req, res) => {
-        var commentId = req.query.commentId;
-        var comment = req.query.comment;
-        if (commentId) {
-
-            var idQuery = `update employee_comment  set comment_status="1" where emp_comment_id="${commentId}";`
-            var idData = await query(idQuery);
-            res.redirect('allComment')
-        } else {
-            res.json()
-        }
-    }
-    //  allcomment page 
-const getCommentData = async(req, res) => {
-        const userInfo = await getUserBasicinfo(req.session.emp_id);
-
-        var allCommentQuery = `select employee_comment.emp_comment_id,employee_comment.fk_emp_id,basic_info.first_name,employee_comment.comment_time,
-    employee_comment.comment_date,employee_comment.comment,employee_comment.comment_status from employee_comment left join basic_info 
-    on employee_comment.fk_emp_id=basic_info.fk_emp_id order by employee_comment.emp_comment_id ;`
-        var allCommentData = await query(allCommentQuery);
-
-        res.render('allComment', { c: allCommentData, name: userInfo[0].first_name });
-
-    } ===
-    === = >>>
-    >>> > aa5a00d90d25db3c75421a3138a035b8f7926c33
 
 const updateCommentCard = async(req, res) => {
     // console.log("Hello")
@@ -108,27 +79,16 @@ const updateCommentCard = async(req, res) => {
     res.json(commentData)
 }
 
-<<
-<< << < HEAD
-
-const getDataProfile = async(req, res) => { ===
-        === =
-        const getDataProfile = async(req, res) => { >>>
-            >>> > aa5a00d90d25db3c75421a3138a035b8f7926c33
-            const userInfo = await getUserBasicinfo(req.session.emp_id)
-            const allUsers = await getUserBasicinfo();
-            const profilePhotos = await getUserProfilePhoto(["profile_photo"]);
-            const emails = await getEmail(["email"])
-            const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
-            console.log(emails);
-            res.render('viewProfile', { "first_name": userInfo[0].first_name, dataset: userInfo[0], allUsers, profilePhotos, "profilePhoto": profilePhoto[0].profile_photo, emails });
+const getDataProfile = async(req, res) => {
+    const userInfo = await getUserBasicinfo(req.session.emp_id)
+    const allUsers = await getUserBasicinfo();
+    const profilePhotos = await getUserProfilePhoto(["profile_photo"]);
+    const emails = await getEmail(["email"]);
+    const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
+    console.log(emails);
+    res.render('viewProfile', { "first_name": userInfo[0].first_name, dataset: userInfo[0], allUsers, profilePhotos, "profilePhoto": profilePhoto[0].profile_photo, emails });
 
 
-        }
+}
 
-        <<
-        << << < HEAD
-        module.exports = { getDashboard, getHotlines, getComment, getCommentData, getCommentId, getDataProfile, updateCommentCard } ===
-            === =
-            module.exports = { getDashboard, getHotlines, getComment, getDataProfile, updateCommentCard } >>>
-            >>> > aa5a00d90d25db3c75421a3138a035b8f7926c33
+module.exports = { getDashboard, getHotlines, getComment, getDataProfile, updateCommentCard }

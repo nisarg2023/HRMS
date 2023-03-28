@@ -1,4 +1,4 @@
-var usersLog =[];
+var usersLog = [];
 const getAllEmployeesLogs = () => {
     const date = new Date();
 
@@ -62,20 +62,17 @@ const getAllEmployeesLogs = () => {
         });
 }
 
-const handelUsersLogSearch = (value)=>{
-    
+const handelUsersLogSearch = (value) => {
+
     let log_container = document.getElementById('log_container');
     let s = ""
-    
-    if(value=="")
-    {
+
+    if (value == "") {
         getAllEmployeesLogs();
     }
 
-    for (x of usersLog)
-    {
-        if(!x.first_name.search(value))
-        {
+    for (x of usersLog) {
+        if (!x.first_name.search(value)) {
             if (x.checkin_time) {
                 s += `<div class="flex">
         <div class="employee_name"><label>${x.first_name} ${x.last_name}</label> </div>

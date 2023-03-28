@@ -100,6 +100,8 @@ const attendancy_summary = async(req, res) => {
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
 
+
+
     totalworkinhours += alltime_work_hours;
     let q = moment.duration(totalworkinhours);
 
@@ -107,7 +109,6 @@ const attendancy_summary = async(req, res) => {
     let all_stafing_hours = ho;
     let execute = totalworkinhours - alltime_work_hours;
 
-    let todasd = moment.duration(execute);
     let dif_mins = moment.duration(totalworkinhours);
 
     let gg = todasd.minutes();

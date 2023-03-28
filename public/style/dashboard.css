@@ -1,114 +1,127 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lato&family=Oswald&display=swap');
-
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --primary-text-color: #4338ca;
-    --secondary-text-color:#4b5563;
+    --secondary-text-color: #4b5563;
     --white: #ffffff;
     --black: #000000;
-    --bg-color:#f1f5f9;
+    --bg-color: #f1f5f9;
     --green: #008000;
     --green-hover: #005f00;
     --blue-head: #040464;
     --red: #ff0000;
     --red-hover: #a10000;
-
 }
-body{
+
+body {
     font-family: 'Lato', sans-serif;
     background-color: var(--bg-color);
 }
 
-h1{
+h1 {
     font-size: 3rem;
 }
-a{
+
+a {
     text-decoration: none;
 }
-li{
+
+li {
     list-style: none;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
-.flex-row{
+.flex-row {
     flex-direction: row;
-    
 }
-.flex-col{
+
+.flex-col {
     flex-direction: column;
 }
-.justify-center{
+
+.justify-center {
     justify-content: center;
 }
-.item-center{
+
+.item-center {
     align-items: center;
 }
 
-.container{
+.container {
     margin: 0 auto;
     padding: 0 16px;
 }
-.dashboard-right{
+
+.dashboard-right {
     width: 20%;
     position: fixed;
 }
-.dashboard-left{
+
+.dashboard-left {
     width: 80%;
     margin-left: 20%;
 }
 
-.side-container{
-padding: 32px;
-/* position: fixed; */
-height: 100vh;
-background-color: var(--white);
-left:0;
-box-shadow:0px 1px 1px #000000;
+.side-container {
+    padding: 32px;
+    /* position: fixed; */
+    height: 100vh;
+    background-color: var(--white);
+    left: 0;
+    box-shadow: 0px 1px 1px #000000;
 }
-.company-logo{
+
+.company-logo {
     width: 150px;
 }
-.navbar-container{
+
+.navbar-container {
     height: 90%;
     flex-direction: column;
     justify-content: space-between;
 }
-.nav-container{
+
+.nav-container {
     margin-top: 60px;
 }
 
-.nav-link-ul{
+.nav-link-ul {
     row-gap: 15px;
 }
-.nav-links{
+
+.nav-links {
     font-weight: 500;
 }
-.nav-links>a{
+
+.nav-links>a {
     color: var(--primary-text-color);
     background-color: var(--bg-color);
     box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.26);
     transition: 0.2s ease;
     padding-left: 20px;
 }
-.nav-links>a:hover{
+
+.nav-links>a:hover {
     color: var(--white);
     background-color: var(--primary-text-color);
 }
-.nav-link-a{
+
+.nav-link-a {
     padding: 8px;
     border-radius: 8px;
     align-items: center;
     column-gap: 20px;
 }
-.profile-container{
+
+.profile-container {
     padding: 16px;
     bottom: 10px;
     border-radius: 12px;
@@ -118,24 +131,28 @@ box-shadow:0px 1px 1px #000000;
     cursor: pointer;
 }
 
-.employee-profile-image{
+.employee-profile-image {
     border-radius: 50% !important;
     border: 2px solid var(--primary-text-color);
     width: 60px !important;
-    height: 60px !important;  
+    height: 60px !important;
 }
-.emp-name{
+
+.emp-name {
     font-size: 18px;
     font-weight: 900;
     color: var(--primary-text-color);
 }
-.emp-role{
+
+.emp-role {
     font-size: 14px;
     color: var(--secondary-text-color);
 }
 
+
 /* header styling */
-.header-wrapper{
+
+.header-wrapper {
     /* width:calc(100vw - 280px); */
     box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.219);
     position: sticky;
@@ -143,7 +160,7 @@ box-shadow:0px 1px 1px #000000;
     background-color: var(--bg-color);
 }
 
-.header-nav-title{
+.header-nav-title {
     padding: 16px 32px;
     font-size: 1.2rem;
     color: var(--secondary-text-color)
@@ -151,54 +168,63 @@ box-shadow:0px 1px 1px #000000;
 
 
 /* component */
-.component-container{
+
+.component-container {
     display: flex;
 }
+
+
 /* dashboard data styling */
-.dashboard-data-container{
-   padding: 1rem;
+
+.dashboard-data-container {
+    padding: 1rem;
     flex-wrap: wrap;
 }
 
-.col_3{
+.col_3 {
     width: calc(100%/3);
     padding: 1rem;
 }
-.col_3_merge{
+
+.col_3_merge {
     width: calc((100%/3)*2);
     padding: 1rem;
 }
-.dashboard-card{
-    
+
+.dashboard-card {
     background-color: var(--white);
     padding: 1rem;
     box-shadow: 1px 1px 3px #0000007e;
 }
-.card_heading{
+
+.card_heading {
     font-size: 25px;
     color: rgb(44, 39, 39);
 }
 
-.dashboard-attendance-head{
+.dashboard-attendance-head {
     font-weight: 600;
     color: black;
 }
-.dashboard-attendance-text{
+
+.dashboard-attendance-text {
     color: var(--secondary-text-color);
 }
-.dashboard-attendance-time-container{
+
+.dashboard-attendance-time-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.dashboard-attendance-btn-container{
+.dashboard-attendance-btn-container {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     justify-content: space-between;
 }
-.dashboard-attendance-btn{
+
+.dashboard-attendance-btn {
     text-align: center;
     width: 100px;
     padding: 10px 0px;
@@ -206,29 +232,36 @@ box-shadow:0px 1px 1px #000000;
     cursor: pointer;
     transition: 0.3 ease;
 }
-.check-in{
+
+.check-in {
     background-color: green;
 }
-.break-in{
+
+.break-in {
     background-color: rgb(250, 160, 24);
 }
-.break-out{
+
+.break-out {
     background-color: rgb(250, 160, 24);
 }
-.check-out{
+
+.check-out {
     background-color: red;
 }
-.dashboard-attendance-btn:hover{
+
+.dashboard-attendance-btn:hover {
     opacity: 0.8;
 }
-.userprofile-option-container{
+
+.userprofile-option-container {
     background-color: #0d1e7e;
     box-shadow: 0px 0px 3px #000000;
     border-radius: 10px;
     padding: 8px;
     row-gap: 10px;
 }
-.profile-edit-btn{
+
+.profile-edit-btn {
     border-radius: 10px;
     padding: 10px;
     background-color: var(--white);
@@ -236,21 +269,21 @@ box-shadow:0px 1px 1px #000000;
     /* color: var(--primary-text-color); */
 }
 
-.user-profile-edit{
+.user-profile-edit {
     position: absolute;
     width: 210px;
     z-index: 2;
     bottom: 10px;
     left: 250px;
-    
 }
-#comment-container > p{
+
+#comment-container>p {
     margin-top: 4px;
     padding: 8px;
     background-color: var(--bg-color);
     border-radius: 8px;
 }
 
-#add-comment-btn{
+#add-comment-btn {
     opacity: 0.7;
 }

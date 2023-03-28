@@ -77,5 +77,3 @@ const sendMail = async(email) => {
     })
 }
 sendMail(email1);
-
-module.exports = { postCode };

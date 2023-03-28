@@ -1,4 +1,4 @@
-const checkIn = async () => {
+const checkIn = async() => {
 
     let res = await fetch("/checkin", {
         method: "post",
@@ -33,7 +33,7 @@ const checkIn = async () => {
 
 }
 
-const brakeOut = async () => {
+const brakeOut = async() => {
 
 
     let res = await fetch("/brakeout", {
@@ -67,7 +67,7 @@ const brakeOut = async () => {
 
 
 
-const brakeIn = async () => {
+const brakeIn = async() => {
 
     let res = await fetch("/brakein", {
         method: "post",
@@ -105,7 +105,7 @@ const brakeIn = async () => {
 
 
 }
-const checkOut = async () => {
+const checkOut = async() => {
 
     let res = await fetch("/checkout", {
         method: "post",
@@ -162,8 +162,7 @@ const handelPageLoad = () => {
             for (x of data) {
 
                 // console.log(x)
-                if(x.brakein_time)
-                {
+                if (x.brakein_time) {
                     document.getElementById("brakein").classList.toggle("btn-brakein1");
                     document.getElementById("checkout").classList.toggle("btn-checkout1");
                     document.getElementById("brakeout").classList.toggle("btn-brakeout1");
@@ -190,16 +189,16 @@ const handelPageLoad = () => {
     fetch(`/dashbord/getCkeckInOutInfo?emp_id=${emp_id}&date=${currentDate}`)
         .then(res => res.json())
         .then((data) => {
-            console.log(data[0].checkin_time);
+            
 
 
             if (data[0].checkin_time) {
-                    document.getElementById("green").innerHTML += ` <div class="check-green">
+                document.getElementById("green").innerHTML += ` <div class="check-green">
                         <span ><label>Checked In :</label>${data[0].checkin_time}  </span>
                         </div>`;
-                        document.getElementById("checkin").classList.toggle("btn-checkin1");
-                        document.getElementById("brakein").classList.toggle("btn-brakein1");
-                        document.getElementById("checkout").classList.toggle("btn-checkout1");
+                document.getElementById("checkin").classList.toggle("btn-checkin1");
+                document.getElementById("brakein").classList.toggle("btn-brakein1");
+                document.getElementById("checkout").classList.toggle("btn-checkout1");
 
             }
 
@@ -207,13 +206,13 @@ const handelPageLoad = () => {
 
                 document.getElementsByClassName("check-inout")[0].style.display = "none";
                 document.getElementsByClassName("check-inout")[0].innerHTML = "none";
-            
+
                 document.getElementById("red").innerHTML += `  <div class="check-red">
                     <span ><label > Check Out :</label>${data[0].checkout_time}</span>
                     </div>`;
             }
-        
-         
+
+
         })
 
 
@@ -225,51 +224,49 @@ const addCommentBtn = document.getElementById('add-comment-btn');
 let commentContainer = document.getElementById('comment-container')
 
 
-async function addComment(){
+async function addComment() {
     var comment = document.getElementById('comment').value;
-    fetch(`http://localhost:8000/dashbord/get-comment?comment=${comment}`, {
+    fetch(`/dashbord/get-comment?comment=${comment}`, {
         method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                
-            }).then((res)=>{
-            }).then((res)=>{
-                console.log(res);
-                var comment = document.getElementById('comment').value="";
-                
-            });
-            await updateCommentCard()
-            commentContainer.innerHTML += `<p>${comment}</p>`
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-            addCommentBtn.disabled = true
-            addCommentBtn.style.opacity = 0.7
-            
+    }).then((res) => {}).then((res) => {
+        console.log(res);
+        var comment = document.getElementById('comment').value = "";
+
+    });
+    await updateCommentCard()
+    // commentContainer.innerHTML += `<p>${comment}</p>`
+
+    addCommentBtn.disabled = true
+    addCommentBtn.style.opacity = 0.7
+
 }
-        
-        
-const updateCommentCard = async () =>{
+
+
+const updateCommentCard = async() => {
     commentContainer.innerHTML = ''
-    await fetch(`http://localhost:8000/dashbord/updateCommentCard`)
-    .then(res =>res.json())
-    .then(data=>{
-        data.forEach( (singleComment) =>{
-            console.log(singleComment)
-        commentContainer.innerHTML += `<p>${singleComment.comment}</p>`
+    await fetch(`/dashbord/updateCommentCard`)
+        .then(res => res.json())
+        .then(data => {
+            data.forEach((singleComment) => {
+                console.log(singleComment)
+                commentContainer.innerHTML += `<p>${singleComment.comment}</p>`
+            })
         })
-    })
 }
 
 let comment = document.getElementById('comment');
-const validateComment = () =>{
+const validateComment = () => {
     console.log(comment.value)
-    if(comment.value === ""){
+    if (comment.value === "") {
         addCommentBtn.disabled = true
-        addCommentBtn.style.opacity = 0.7
+        addCommentBtn.style.backgroundColor = "var(--green-disable)"
     }
-    if(comment.value != ""){
+    if (comment.value != "") {
         addCommentBtn.disabled = false
-        addCommentBtn.style.opacity = 1
+        addCommentBtn.style.backgroundColor = "var(--green)"
     }
 }
-

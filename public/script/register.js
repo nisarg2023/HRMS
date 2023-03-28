@@ -52,7 +52,7 @@ const emailCorrect = () => {
     let email = document.getElementById('email').value;
     let emailErr = document.getElementById("emailErr");
 
-    fetch('http://localhost:8000/get-allUsersEmail')
+    fetch('/get-allUsersEmail')
     .then(res=>res.json())
     .then((emails) => {
         if(emails.includes(email))
@@ -96,3 +96,23 @@ const changBtnStatus = () => {
     }
 }
 
+  
+function eye(togglePassword){
+        const x = document.getElementById("Password")
+        if (x.type === "password") {
+            x.type = "text";
+            togglePassword.classList="fa-sharp fa-solid fa-eye-slash"
+            
+        } else {
+            x.type = "password";
+        };
+}
+function eyeout(togglePassword){
+     const x = document.getElementById("Password")
+        if (x.type === "text") {
+            x.type = "password";
+            togglePassword.classList="fa-solid fa-eye"
+        } else {
+            x.type = "text";
+        }
+}

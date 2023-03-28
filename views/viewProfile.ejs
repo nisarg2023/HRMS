@@ -6,13 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/2d11fdd863.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/style/dashboard.css">
-    <link rel="stylesheet" href="/style/checkin.css">
-    <link rel="stylesheet" href="/style/record-your-attendance.css">
-    <link rel="stylesheet" href="/style/add-your-comment.css">
+    <link rel="stylesheet" href="../public/style/dashboard.css">
+    <link rel="stylesheet" href="../public/style/checkin.css">
+    <link rel="stylesheet" href="../public/style/record-your-attendance.css">
+    <link rel="stylesheet" href="../public/style/add-your-comment.css">
     <script src="/script/sidebar.js"></script>
+    <link rel="stylesheet" href="../style/hotline.css" type="text/css" />
     <link rel="stylesheet" href="/style/profile-page.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
     <title>User-Profile</title>
 </head>
 
@@ -30,7 +32,7 @@
             <div class="profile">
                 <div class="profile-page-inner">
                     <div class="profile-pic">
-                        <img src="/images/profile-pc.jpeg" alt="">
+                        <img src="/<%= profilePhoto%>" alt="">
                     </div>
                     <div>
                         <button class="btn"><i class="bi-pencil"></i> Edit Profile</button>
@@ -59,11 +61,11 @@
                     </div>
                     <div class="single-row">
                         <span class="left-part">Personal Email:</span>
-                        <span class="right-part"> <%=emails[0]%></span>
+                        <span class="right-part"> <%=email%></span>
                     </div>
                     <div class="single-row">
                         <span class="left-part">Company Email:</span>
-                        <span class="right-part"> <%=dataset.fk_emp_id%></span>
+                        <span class="right-part"></span>
                     </div>
                     <div class="single-row">
                         <span class="left-part">Gender:</span>
@@ -79,7 +81,7 @@
                     </div>
                     <div class="single-row">
                         <span class="left-part">Status:</span>
-                        <span class="right-part"> <i class="fa bi-forward"></i></span>
+                        <span class="right-part"> <i class="fa-solid fa-check"></i>Active</span>
                     </div>
                     <div class="single-row">
                         <span class="left-part">Allowed WFH:</span>
@@ -152,11 +154,11 @@
                     </div>
                     <div class="single-row">
                         <span class="left-part">PAN Number:</span>
-                        <span class="right-part"> </span>
+                        <a href="/<%=document[0].pan_card%>"><span class="right-part">Click here to view</span></a>
                     </div>
                     <div class="single-row">
                         <span class="left-part">Aadhar Number/SSN:</span>
-                        <span class="right-part"> </span>
+                        <a href="/<%=document[0].aadhar_card%>"><span class="right-part">Click here to view</span></a>
                     </div>
                     <div class="single-row">
                         <span class="left-part">Voter ID Number:</span>

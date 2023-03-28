@@ -1,5 +1,5 @@
 .your_comment{
-    background-color: white;
+    background-color: var(--white);
     padding: 1rem;
 }
 
@@ -17,7 +17,7 @@
 }   
 
 button{
-    background-color: #00b04b;
+    background-color: var(--green-disable);
     color: #fff;
     padding: .8rem;
     border-radius: 10px;

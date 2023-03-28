@@ -1,5 +1,5 @@
 .hotline{
-    background-color: white;
+    /* background-color: var(--white); */
     padding: 1rem;
     width: 100%;
 }
@@ -10,7 +10,7 @@
    
 }
 .col_5{
-    width: calc(100%/5);
+    width: calc(100%/4);
     padding: .5rem;
 }
 
@@ -21,18 +21,49 @@
 .user_card{
     padding: .5rem;
     border-radius: 10px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: var(--bg-card);
+    box-shadow: 0px 0px 3px 1px var(--card-shadow);
 }
 .uses{
     margin-top: 2rem;
 }
-.user_card span{
-    background-color: rgba(178, 224, 107, 0.336);
+.user_card .online span{
+    /* background-color: rgba(178, 224, 107, 0.336); */
     color: green;
     border-radius: 5px;
+    font-weight: 700;
     border: 1px solid green;
     padding: 5px;
+}
+.user_card .onBreak span{
+    background-color: rgba(255, 166, 0, 0.212);
+    color: orange;
+    border-radius: 5px;
+    font-weight: 700;
+    border: 1px solid orange;
+    padding: 5px;
+}
+.user_card  .offline span{
+    background-color: rgba(128, 128, 128, 0.26);
+    color: gray;
+    border-radius: 5px;
+    font-weight: 700;
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+.user_card  .onLeave span{
+    background-color: rgba(255, 0, 0, 0.144);
+    color: red;
+    border-radius: 5px;
+    font-weight: 700;
+    border: 1px solid red;
+    padding: 5px;
+}
+
+.staus{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .user_image{
@@ -79,12 +110,7 @@
     color: gray;
 
 }
-.staus{
-    display: flex;
-    justify-content: flex-end;
 
-
-}
 
 .box{
     background-color: brown;
@@ -108,4 +134,10 @@
     font-weight: 600;
     padding-top: .5rem;
     
+    }
+    .hotline-title-text{
+        color: var(--primary-head);
+    }
+    .hotline-detail-text{
+        color: var(--detail-text);
     }

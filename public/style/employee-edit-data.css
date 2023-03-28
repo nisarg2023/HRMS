@@ -5,9 +5,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-form{
+/* form{
     background-color: white;
-}
+} */
 #optionbar{
     display: flex;
     text-transform: capitalize;
@@ -15,21 +15,36 @@ form{
 }
 .optionbar{
     margin: 0px 10px;
+    
 }
 .f{
     padding-left: 50px;
-}
-.f{
+    color: var(--primary-head);
     display: flex;
-    margin: 10px
+    margin: 10px;
+    padding: 8px 10px;
+    border: 1px solid var(--primary-head);
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
 }
-#table1{
+
+#table1, #table2, #table3{
+    margin-top: 16px;
+    margin-inline: 16px;
     display: flex;
-    padding: 30px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+    /* padding: 16px; */
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset; */
+    border: 1px solid var(--card-shadow);
 }
+#table1, #table2, #table3, p,span {
+    color: var(--secondary-text-color);
+}
+
 .pro{
-    border-radius: 200px;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
 }
 
 .col1{
@@ -64,13 +79,14 @@ margin: 20px;
 }
 .mainhedar{
     border: 2px solid rgb(38, 38, 78);
-    margin: 20px;
+    /* margin: 20px; */
     background-color: rgb(38, 38, 78);
     color: white;
 
 }
 .mainhedar p{
-    margin: 20px;
+    margin: 12px;
+    font-size: 1.3rem;
 }
 
 
@@ -78,12 +94,11 @@ margin: 20px;
 
 
 
-.form2col1{
+.form2col1 , .form2col2{
     display: flex;
+    justify-content: center;
 }
-.form2col2{
-    display: flex;
-}
+
 .form2col1 div{
     margin: 20px;
     margin-left:100px;
@@ -93,20 +108,20 @@ margin: 20px;
     margin-left:100px;
 }
 
-button {
-    background-color:rgb(38, 38, 78);
+#add-education-button {
     border: none;
     color: white;
-    padding: 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    width: 100%;
+    font-size: 25px;
+    font-weight: 900;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--card-shadow);
     background-color:rgb(38, 38, 78);
     cursor: pointer;
+    margin-inline: 50%;
+    margin-bottom: 1rem;
   }
   
 
@@ -136,8 +151,8 @@ select, option {
 input[type=text],[type=date]{
     padding: 10px;
     background-color: white;
-    border-radius: 7px;
-    width: 100%;
+    border-radius: 5px;
+    width: 200px;
     margin-top: 5px;
 }
 input[type=radio]{
@@ -150,9 +165,8 @@ select , option{
     margin-top: 5px;
     padding: 10px;
     background-color:  white;
-    border-radius: 10px;
-    width: 100%;
-    width: 180px;
+    border-radius: 5px;
+    width: 200px;
 
 }
 option {
@@ -176,21 +190,26 @@ option {
   
   .button1 {
     border: 2px solid #222344;
+    border-radius: 8px;
+    border: 1px solid var(--card-shadow);
   }
   
   .button1:hover {
     background-color: #4CAF50;
     color: white;
-    border-radius: 50px;
   }
   .sbt{
     margin-top: 15px;
   }
-  a{
+  .remove-photo{
+    text-align: center;
+  }
+  .remove-photo> a{
     background-color: #222344;
     border: none;
     color: white;
-    padding: 16px 32px;
+    border: 1px solid var(--card-shadow);
+    padding: 16px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -199,12 +218,13 @@ option {
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 7px;
+    text-align: center;
   }
-a:hover{
+/* a:hover{
     background-color: #fc0404;
     color: white;
     border-radius: 50px;
-}
+} */
 .remove{
     margin-left: 50px;
     width: 50%;

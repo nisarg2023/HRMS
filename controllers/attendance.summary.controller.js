@@ -7,7 +7,7 @@ const moment = require("moment");
 
 const attendancy_summary = async(req, res) => {
     console.log("Heloo fromm att")
-    // let total_time = [];
+        // let total_time = [];
     let braketime = 0;
     let alltime_work_hours = 0;
     let total_brake = [];
@@ -65,37 +65,37 @@ const attendancy_summary = async(req, res) => {
     }
 
 
-const getUserBasicinfo = async(id = "") => {
+    const getUserBasicinfo = async(id = "") => {
 
-    if (id == "") {
+        if (id == "") {
 
-        const data = await query(`SELECT * FROM hrms.basic_info `)
-        return data;
-    } else {
+            const data = await query(`SELECT * FROM hrms.basic_info `)
+            return data;
+        } else {
 
-        const data = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${id};`)
-        return data;
+            const data = await query(`SELECT basic_info_id,first_name FROM hrms.basic_info where fk_emp_id = ${id};`)
+            return data;
+        }
+
     }
 
-}
+    const getUserProfilePhoto = async(fields = "*", id = "") => {
 
-const getUserProfilePhoto = async(fields = "*", id = "") => {
+        if (id == "") {
+            const data = await query(`SELECT ${fields.toString()}  FROM hrms.document;`)
+            return data;
+        } else {
+            const data = await query(`SELECT ${fields.toString()} FROM hrms.document where fk_emp_id=${id}`);
+            return data;
+        }
 
-    if (id == "") {
-        data = await query(`SELECT ${fields.toString()}  FROM hrms.document;`)
-        return data;
-    } else {
-        data = await query(`SELECT ${fields.toString()} FROM hrms.document where fk_emp_id=${id}`);
-        return data;
+
     }
 
 
-}
 
-   
-
-        const userInfo = await getUserBasicinfo(req.session.emp_id);
-        const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
+    const userInfo = await getUserBasicinfo(req.session.emp_id);
+    const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
 
 
     let totlchecktime = moment.duration(alltime_work_hours);
@@ -103,7 +103,7 @@ const getUserProfilePhoto = async(fields = "*", id = "") => {
     let h = totlchecktime.hours();
     let all_work_hours = h + ":" + m;
     console.log("brakes", total_brake);
-    res.render("attendance", { data1, total_brake, total_workhours, all_work_hours ,"first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo })
+    res.render("attendance", { data1, total_brake, total_workhours, all_work_hours, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo })
 }
 
 module.exports = { attendancy_summary }

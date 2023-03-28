@@ -3,12 +3,7 @@
  padding: 1rem;
 }
 
-.heading h4
-{
-   
-    font-size: 25px;
-    color: rgb(44, 39, 39);
-}
+
 .record{
     display: flex;
     flex-wrap: wrap;
@@ -20,7 +15,7 @@
 }
 .title{
     font-size: 16px;
-    color: #002f4b;
+    color: var(--secondary-text-color);
     display: block;
     font-weight: 600;
     margin-bottom: 2px;
@@ -28,7 +23,7 @@
 .detail{
     font-size: 16px;
     font-weight: 500;
-    color: rgba(0,47,75,.5);
+    color: var(--detail-text);
 }
 .staffing{
     background: rgba(255,6,0,.1);

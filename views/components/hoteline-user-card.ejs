@@ -1,16 +1,16 @@
 <div class="col_4">
     <div class="user_card">
-        <div class="staus">
-            <span>online</span>
+        <div class="staus <%=status%>">
+            <span><%=status%></span>
         </div>
 
         <div class="user_image">
-            <img src=' /<%=profile_photo.toString() %> 'alt="">
+            <img src=' /<%=profile_photo %> 'alt="">
         </div>
 
         <div class="detail">
-            <h4><%=first_name%> <%=last_name%></h4>
-            <p>Jr. Software Developer</p>
+            <h4 class="hotline-title-text"><%=first_name%> <%=last_name%></h4>
+            <p class="hotline-detail-text">Jr. Software Developer</p>
         </div>
 
         <div class="info">
@@ -28,7 +28,7 @@
             </div>
 
             <p> <i class="fa-sharp fa-solid fa-envelope"> </i><%=email%> </p>
-            <p><i class="fa-solid fa-phone"></i> Not available</p>
+            <p><i class="fa-solid fa-phone"></i><%=phone_number %></p>
         </div>
     </div>
 </div>

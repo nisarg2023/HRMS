@@ -1,0 +1,43 @@
+.admin-comments-table-container{
+    padding: 16px;
+    width: 100%;
+}
+
+.admin-comments-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.admin-comments-table-head-tr{
+    background-color:  var(--blue-head);
+    color: var(--white);
+}
+th{
+    padding: 16px;
+}
+
+table tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+    
+table tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.admin-comments-table-body-tr{
+    text-align: center;
+    border: 1px solid var(--secondary-text-color);
+}
+td{
+    padding: 16px;
+    color: var(--secondary-text-color);
+}
+.admin-comment-read-btn{
+    cursor: pointer;
+    background-color: var(--green);
+    padding: 6px 8px;
+    color: var(--white);
+    border-radius: 5px;
+}
+.admin-comment-read-btn:hover{
+    background-color: var(--green-hover);
+}

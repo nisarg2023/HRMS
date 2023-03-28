@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Form </title>
+
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="login form">
+            <header>Enter your email Here </header>
+            <form action="/active-email" method="post">
+                <label for="email">Email </label>
+                <p id="emailErr"></p>
+                <input type="text" placeholder="Enter your email" name="user_email" id="email" onchange="emailCorrect3()">
+                <input type="submit" class="button" value="submit" id="submit_btn" disabled>
+            </form>
+
+        </div>
+        <div class="signup">
+            <span class="signup">Don't have an account?
+             <a href="/get-registration" for="check">Signup</a>
+                </span>
+        </div>
+
+    </div>
+
+    <script>
+        const emailCorrect = () => {
+
+            let regex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+
+            let email = document.getElementById('email').value;
+            let emailErr = document.getElementById("emailErr");
+
+
+            fetch('/all-email')
+                .then(res => res.json())
+                .then((emails) => {
+                    if (!emails.includes(email)) {
+                        emailErr.innerHTML = 'user not register';
+                        emailErr.style.color = 'red';
+                        submit_btn.disabled = true;
+                        submit_btn.style = "opacity: 0.5"
+                        return false;
+                    } else {
+                        emailErr.innerHTML = '';
+                        submit_btn.disabled = false;
+                        submit_btn.style = "opacity: 1"
+                    }
+
+                })
+
+
+
+        }
+    </script>
+</body>
+
+</html>

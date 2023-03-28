@@ -1,0 +1,81 @@
+.admin-dashboard-data-container{
+   padding: 1rem;
+   /* border: 1px solid black */
+}
+.admin-leave-table-container{
+    width: 100% !important;
+    padding: 16px;
+    
+}
+.admin-leave-table{
+    border-collapse: collapse;
+    width:100%;
+}
+
+thead{
+    border-radius: 10px;
+}
+.admin-leave-table-head-tr{
+    background-color: var(--blue-head);
+}
+th{
+    color: var(--white);
+    padding: 16px;
+}
+table tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+    
+table tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.admin-leave-table-tr-th{
+    width: calc(100%/7) ;
+}
+
+.admin-leave-table-tr-th-textarea{
+    width: calc(2*(100%/6));
+}
+
+.admin-leave-table-body-tr{
+    border: 1px solid var(--secondary-text-color);
+}
+
+td{
+    color: var(--secondary-text-color);
+    padding: 16px;
+    text-align: center;
+}
+
+
+.approved{
+    color:  var(--green);
+}
+.rejected{
+    color: var(--red);
+}
+
+.approve-leave{
+    cursor: pointer;
+    background-color: var(--green);
+    padding: 6px;
+    border-radius: 4px;
+    color: var(--white);
+    display: inline;
+}
+.approve-leave:hover{
+    background-color: var(--green-hover);
+}
+
+.reject-leave{
+    cursor: pointer;
+    background-color: var(--red);
+    padding: 6px;
+    border-radius: 4px;
+    color: var(--white);
+    display: inline;
+}
+.reject-leave:hover{
+    background-color: var(--red-hover);
+}

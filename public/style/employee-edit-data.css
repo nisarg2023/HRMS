@@ -107,7 +107,6 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     width: 100%;
-    background-color:rgb(38, 38, 78);
     cursor: pointer;
   }
   
@@ -163,7 +162,7 @@ option {
     text-overflow: ellipsis;
 }
 .button {
-    background-color: #222344;/* Green */
+    background-color: #5357c2;/* Green */
     border: none;
     color: white;
     padding: 16px 32px;

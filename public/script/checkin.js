@@ -263,10 +263,10 @@ const validateComment = () => {
     console.log(comment.value)
     if (comment.value === "") {
         addCommentBtn.disabled = true
-        addCommentBtn.style.opacity = 0.7
+        addCommentBtn.style.backgroundColor = "var(--green-disable)"
     }
     if (comment.value != "") {
         addCommentBtn.disabled = false
-        addCommentBtn.style.opacity = 1
+        addCommentBtn.style.backgroundColor = "var(--green)"
     }
 }

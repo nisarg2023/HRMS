@@ -3,6 +3,7 @@ const util = require('util');
 const query = util.promisify(conn.query).bind(conn);
 
 const multer = require('multer');
+
 const getEmployeedata = async (req, res) => {
     state_query = `select state_name from state_master;`
     var stateName = await query(state_query);

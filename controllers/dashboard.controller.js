@@ -70,12 +70,22 @@ const getAllEmployeesLog = async (currentDate) => {
 
 
 const getDashboard = async(req, res) => {
-    const userInfo = await getUserBasicinfo(req.session.emp_id);
-    const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
-    var commentSql = `select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`
-    var commentData = await query(commentSql)
-    res.render('dashboard', { commentData, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo, "emp_id": req.session.emp_id })
-        // <%- include("components/add-your-comment.ejs") %>
+   try{
+    let sqlData = await query(`select * from basic_info where fk_emp_id = ${req.session.emp_id}`)
+    if(sqlData.length == 0){
+        res.redirect('/employee/get-employee-data')
+    }
+    else{
+        const userInfo = await getUserBasicinfo(req.session.emp_id);
+        const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
+        var commentSql = `select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`
+        var commentData = await query(commentSql)
+        res.render('dashboard', { commentData, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo, "emp_id": req.session.emp_id })    
+    }
+   }
+   catch(err){
+    console.log(err)
+   }
 }
 
 

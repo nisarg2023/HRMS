@@ -447,9 +447,10 @@ box-shadow:0px 1px 1px var(--card-shadow);
     
 }
 #comment-container > p{
-    margin-top: 4px;
+    margin-top: 10px;
     padding: 8px;
     background-color: var(--bg-color);
+    color: var(--secondary-text-color);
     border-radius: 8px;
 }
 

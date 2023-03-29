@@ -226,7 +226,7 @@ let commentContainer = document.getElementById('comment-container')
 
 async function addComment() {
     var comment = document.getElementById('comment').value;
-    fetch(`http://localhost:8000/dashbord/get-comment?comment=${comment}`, {
+    fetch(`/dashbord/get-comment?comment=${comment}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -238,7 +238,7 @@ async function addComment() {
 
     });
     await updateCommentCard()
-    commentContainer.innerHTML += `<p>${comment}</p>`
+    // commentContainer.innerHTML += `<p>${comment}</p>`
 
     addCommentBtn.disabled = true
     addCommentBtn.style.opacity = 0.7
@@ -248,7 +248,7 @@ async function addComment() {
 
 const updateCommentCard = async() => {
     commentContainer.innerHTML = ''
-    await fetch(`http://localhost:8000/dashbord/updateCommentCard`)
+    await fetch(`/dashbord/updateCommentCard`)
         .then(res => res.json())
         .then(data => {
             data.forEach((singleComment) => {

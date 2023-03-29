@@ -52,7 +52,7 @@ const emailCorrect = () => {
     let email = document.getElementById('email').value;
     let emailErr = document.getElementById("emailErr");
 
-    fetch('http://localhost:8000/get-allUsersEmail')
+    fetch('/get-allUsersEmail')
     .then(res=>res.json())
     .then((emails) => {
         if(emails.includes(email))

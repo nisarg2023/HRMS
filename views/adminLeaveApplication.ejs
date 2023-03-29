@@ -77,11 +77,15 @@
 
     <script>
         function approve(id,field,val){
-            fetch(`../post-approveleave?leaveId=${id}&field=${field}&val=${val}`)
+            fetch(`../post-approveleave?leaveId=${id}&field=${field}&val=${val}`,{
+                method: "POST"
+            })
             location.reload()
         }
         function reject(id,field,val){
-            fetch(`../post-approveleave?leaveId=${id}&field=${field}&val=${val}`)
+            fetch(`../post-approveleave?leaveId=${id}&field=${field}&val=${val}`,{
+                method: "POST"
+            })
             location.reload()
         }
     </script>

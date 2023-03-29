@@ -35,8 +35,8 @@
         <div class="col_7">
             <div class="box">
                 <label> Total Office</label>
+               <p><%=total_workhours%></p> 
                 
-                </p>
             </div>
         </div>
 
@@ -72,10 +72,10 @@
             <% for(i=0;i<data1.length;i++) {%>
                 <tr>
                     <td>
-                        <%=data1[i].check_date %>
+                        <%= moment(data1[i].check_date).utcOffset(tz).format("YYYY-MM-DD") %>
                     </td>
                     <td>
-                        <%=data1[i].checkin_time %>
+                        <%=moment(data1[i].checkin_time).utcOffset(tz).format("hh:mm:ss")%>
                     </td>
                     <td>
                         <%=data1[i].checkout_time %>
@@ -95,3 +95,4 @@
         </table>
     </div>
 </div>
+<script src="/js/moment.min.js"></script>

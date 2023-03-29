@@ -1,6 +1,7 @@
 const conn = require('../config/dbConnect');
 const util = require('util');
 const query = util.promisify(conn.query).bind(conn)
+const moment =  require('moment');
 
 const getUserBasicinfo = async(id = "") => {
 
@@ -70,6 +71,8 @@ const getAllEmployeesLog = async (currentDate) => {
 
 
 const getDashboard = async(req, res) => {
+
+
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
     var commentSql = `select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`

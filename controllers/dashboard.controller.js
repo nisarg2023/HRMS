@@ -197,10 +197,8 @@ const getOfflineEmployeeLogs = async (req,res)=>{
     const OfflineEmployeeData = await query(`select first_name,last_name,profile_photo,email,phone_number from basic_info inner join document on basic_info.fk_emp_id = document.fk_emp_id 
     inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  
     not in (select basic_info_id from check_system where check_date = '${currentDate}' 
-    and checkout_time is null 
-    and basic_info_id not in(select brake_system.basic_info_id 
-    from check_system join brake_system on brake_system.basic_info_id = check_system.basic_info_id 
-    where checkout_time is null and brake_system.brakeout_time is null and check_system.check_date = '${currentDate}'));`)
+    and checkout_time is null
+    and basic_info_id not in (select fk_emp_id from leave_application where is_cto_approved='1'and is_hr_approved='1' and leave_date='${currentDate}'));`)
 
     res.json(OfflineEmployeeData)
 }

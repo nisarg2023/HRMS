@@ -22,25 +22,25 @@ const getAllEmployeesLogs = () => {
                     s += `<div class="flex">
             <div class="employee_name"><label>${x.first_name} ${x.last_name}</label> </div>
              <div class="today_logs check_in"><span>Check in</span> </div>
-                <div class="time"><label>${x.checkin_time}</label> </div>
+                <div class="time"><label>${moment(x.checkin_time).utcOffset(tz).format("hh:mm:ss")}</label> </div>
                 </div>`
 
                     if (x.checkout_time) {
                         s += `<div class="flex">
                     <div class="employee_name"><label>${x.first_name} ${x.last_name}</label> </div>
                      <div class="today_logs check_out"><span>Check Out</span> </div>
-                        <div class="time"><label>${x.checkout_time}</label> </div>
+                        <div class="time"><label>${moment(x.checkout_time).utcOffset(tz).format("hh:mm:ss")}</label> </div>
                         </div>`
                     }
                 }
-
+                moment(x.checkout_time).utcOffset(tz).format("hh:mm:ss")
 
 
                 if (x.brakein_time) {
                     s += `<div class="flex">
             <div class="employee_name"><label>${x.first_name} ${x.last_name}</label> </div>
              <div class="today_logs brake_in"><span>Brake in</span> </div>
-                <div class="time"><label>${x.brakein_time}</label> </div>
+                <div class="time"><label>${moment(x.brakein_time).utcOffset(tz).format("hh:mm:ss")}</label> </div>
                 </div>`
 
 
@@ -48,7 +48,7 @@ const getAllEmployeesLogs = () => {
                         s += `<div class="flex">
             <div class="employee_name"><label>${x.first_name} ${x.last_name}</label> </div>
               <div class="today_logs brake_out"><span>Brake Out</span> </div>
-                <div class="time"><label>${x.brakeout_time}</label> </div>
+                <div class="time"><label>${moment(x.brakeout_time).utcOffset(tz).format("hh:mm:ss")}</label> </div>
                 </div>`
                     }
                 }
@@ -77,14 +77,14 @@ const handelUsersLogSearch = (value) => {
                 s += `<div class="flex">
         <div class="employee_name"><label>${x.first_name} ${x.last_name}</label> </div>
          <div class="today_logs check_in"><span>Check in</span> </div>
-            <div class="time"><label>${x.checkin_time}</label> </div>
+            <div class="time"><label>${moment(x.checkin_time).utcOffset(tz).format("hh:mm:ss")}</label> </div>
             </div>`
 
                 if (x.checkout_time) {
                     s += `<div class="flex">
                 <div class="employee_name"><label>${x.first_name} ${x.last_name}</label> </div>
                  <div class="today_logs check_out"><span>Check Out</span> </div>
-                    <div class="time"><label>${x.checkout_time}</label> </div>
+                    <div class="time"><label>${moment(x.checkout_time).utcOffset(tz).format("hh:mm:ss")}</label> </div>
                     </div>`
                 }
             }
@@ -95,7 +95,7 @@ const handelUsersLogSearch = (value) => {
                 s += `<div class="flex">
         <div class="employee_name"><label>${x.first_name} ${x.last_name}</label> </div>
          <div class="today_logs brake_in"><span>Brake in</span> </div>
-            <div class="time"><label>${x.brakein_time}</label> </div>
+            <div class="time"><label>${moment(x.brakein_time).utcOffset(tz).format("hh:mm:ss")}</label> </div>
             </div>`
 
 
@@ -103,7 +103,7 @@ const handelUsersLogSearch = (value) => {
                     s += `<div class="flex">
         <div class="employee_name"><label>${x.first_name} ${x.last_name}</label> </div>
           <div class="today_logs brake_out"><span>Brake Out</span> </div>
-            <div class="time"><label>${x.brakeout_time}</label> </div>
+            <div class="time"><label>${moment(x.brakeout_time).utcOffset(tz).format("hh:mm:ss")}</label> </div>
             </div>`
                 }
             }

@@ -319,6 +319,7 @@ li {
     z-index: 1;
     width: 24px;
     height: 24px;
+<<<<<<< HEAD
 }
 
 
@@ -329,6 +330,16 @@ li {
 }
 
 @keyframes rotate {
+=======
+  }
+  
+  /* .switch:hover */.sun svg {
+    animation: rotate 2s linear infinite;
+  }
+  
+  @keyframes rotate {
+   
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
     0% {
         transform: rotate(0);
     }

@@ -14,9 +14,9 @@ let brakeouttimes1;
 
 const get_checkin = async(req, res) => {
 
-    const date = moment().format("HH:mm:ss")
+    const date = moment().format('YYYY-MM-DD HH:mm:ss')
     currenttimestring = `${date}`;
-    const datecurrent = moment().format("YYYY-MM-DD");
+    const datecurrent = moment().format('YYYY-MM-DD HH:mm:ss')
     checkouttime1 = `${date}`;
 
 
@@ -24,6 +24,7 @@ const get_checkin = async(req, res) => {
     let currentTime = moment(checkouttime1, "hh:mm:ss");
     let minsDiff = currentTime.diff(startTime, "miutes");
 
+<<<<<<< HEAD
     try {
         let querychecktime = ` insert into check_system (checkin_time,total_office_time,basic_info_id,check_date) values("${currenttimestring}","${minsDiff}","${req.session.emp_id}","${datecurrent}")`
         let result = await query(querychecktime);
@@ -33,13 +34,26 @@ const get_checkin = async(req, res) => {
     } catch (err) {
         res.send(err);
     }
+=======
+        try {
+                let querychecktime = ` insert into check_system (checkin_time,total_office_time,basic_info_id,check_date) values("${currenttimestring}","${minsDiff}","${req.session.emp_id}","${datecurrent}")`
+                let result = await query(querychecktime);
+                checkInLastInsertid = result.insertId;
+
+                res.json({ msg: "okay-checkin", checkindate: date });
+        }
+        catch (err) {
+            console.log(err)
+                res.send(err);
+        }
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
 }
 
 const get_checkout = async(req, res) => {
 
 
-    const date = moment().format("HH:mm:ss");
-    const datecurrent = moment().format("YYYY-MM-DD");
+    const date = moment().format('YYYY-MM-DD')
+    const datecurrent = moment().format('YYYY-MM-DD HH:mm:ss')
     checkouttime1 = `${date}`;
 
 
@@ -64,13 +78,13 @@ const get_checkout = async(req, res) => {
 
 const get_brakein = async(req, res) => {
 
-    const date = moment().format("HH:mm:ss")
+    const date = moment().format('YYYY-MM-DD HH:mm:ss')
     brakeintime1 = `${date}`;
 
     let startTime = moment(brakeintime1, "hh:mm:ss");
     let currentTime = moment(brakeouttimes1, "hh:mm:ss");
     let minsDiff = currentTime.diff(startTime, "miutes");
-    const datecurrent = moment().format("YYYY-MM-DD");
+    const datecurrent = moment().format('YYYY-MM-DD HH:mm:ss')
 
     try {
 
@@ -87,14 +101,14 @@ const get_brakein = async(req, res) => {
 const get_brakeout = async(req, res) => {
 
 
-    const date = moment().format("HH:mm:ss")
+    const date = moment().format('YYYY-MM-DD HH:mm:ss')
     brakeouttimes1 = `${date}`;
 
 
     let startTime = moment(brakeintime1, "hh:mm:ss");
     let currentTime = moment(brakeouttimes1, "hh:mm:ss");
     let minsDiff = currentTime.diff(startTime, "miutes");
-    const datecurrent = moment().format("YYYY-MM-DD");
+    const datecurrent = moment().format('YYYY-MM-DD HH:mm:ss')
 
 
     try {

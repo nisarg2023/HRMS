@@ -24,10 +24,18 @@ const postActivate = async(req, res) => {
     try {
         let email = req.session.email;
         let activate = await query(`update hrms_employee set isactivate = 1 where email = '${email}'`)
+<<<<<<< HEAD
 
         res.redirect('/employee/get-employee-data');
     } catch (error) {
         console.log('error in active action fucntion', error)
+=======
+       
+        res.redirect('/dashbord');    
+    }
+    catch(error){
+        console.log('error in active action fucntion' ,error)
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
     }
 }
 

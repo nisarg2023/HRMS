@@ -20,13 +20,11 @@ const attendancy_summary = async(req, res) => {
 
 
     let data1 = await query(querychecktime);
-
-
+    
     for (let i = 0; i < data1.length; i++) {
         let timestmp = data1[i].total_office_time;
         alltime_work_hours += timestmp;
-
-
+        
         let totlchecktime = moment.duration(timestmp);
         let m = totlchecktime.minutes();
         let h = totlchecktime.hours();
@@ -40,7 +38,7 @@ const attendancy_summary = async(req, res) => {
 
     for (let i = 0; i < data1.length; i++) {
 
-        let querybraketime = `select total_brake_time from brake_system where brake_date ="${data1[i].check_date}";`
+        let querybraketime = `select total_brake_time from brake_system where brake_date ="${moment(data1[i].check_date).format("YYYY-MM-DD")} and basic_info_id = ${req.session.emp_id}";`
 
 
         let data2 = await query(querybraketime);
@@ -115,7 +113,36 @@ const attendancy_summary = async(req, res) => {
 
 
     }
+<<<<<<< HEAD
     res.render("attendance", { data1, total_brake, total_workhours, all_work_hours, all_stafing_hours, productiveratio, totalratio, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo })
+=======
+
+
+
+    const userInfo = await getUserBasicinfo(req.session.emp_id);
+    const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
+
+
+
+    totalworkinhours += alltime_work_hours;
+    let q = moment.duration(totalworkinhours);
+
+    let ho = q.hours();
+    let all_stafing_hours = ho;
+    let execute = totalworkinhours - alltime_work_hours;
+
+    let dif_mins = moment.duration(totalworkinhours);
+
+    // let gg = todasd.minutes();
+    // let minuts = dif_mins.minutes();
+    let totlchecktime = moment.duration(alltime_work_hours);
+    let m = totlchecktime.minutes();
+    let h = totlchecktime.hours();
+    let all_work_hours = h;
+    console.log("brakes", total_brake);
+
+    res.render("attendance", { data1, total_brake, total_workhours, all_work_hours, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo, "tz":`${req.cookies.tz}` })
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
 }
 
 module.exports = { attendancy_summary }

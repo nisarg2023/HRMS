@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+<<<<<<< HEAD
 
 
 /* form{
@@ -11,6 +12,12 @@
 } */
 
 #optionbar {
+=======
+form{
+    background-color: white;
+}
+#optionbar{
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
     display: flex;
     text-transform: capitalize;
     cursor: pointer;
@@ -22,26 +29,21 @@
 
 .f {
     padding-left: 50px;
-    color: var(--primary-head);
-    display: flex;
-    margin: 10px;
-    padding: 8px 10px;
-    border: 1px solid var(--primary-head);
-    border-radius: 8px;
-    align-items: center;
-    justify-content: center;
 }
+<<<<<<< HEAD
 
 #table1,
 #table2,
 #table3 {
     margin-top: 16px;
     margin-inline: 16px;
+=======
+.f{
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
     display: flex;
-    /* padding: 16px; */
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset; */
-    border: 1px solid var(--card-shadow);
+    margin: 10px
 }
+<<<<<<< HEAD
 
 #table1,
 #table2,
@@ -52,6 +54,14 @@ span {
 }
 
 .pro {
+=======
+#table1{
+    display: flex;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+}
+.pro{
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
     width: 200px;
     height: 200px;
     border-radius: 10px;
@@ -91,10 +101,11 @@ span {
 
 .mainhedar {
     border: 2px solid rgb(38, 38, 78);
-    /* margin: 20px; */
+    margin: 20px;
     background-color: rgb(38, 38, 78);
     color: white;
 }
+<<<<<<< HEAD
 
 .mainhedar p {
     margin: 12px;
@@ -103,11 +114,29 @@ span {
 
 .form2col1,
 .form2col2 {
-    display: flex;
-    justify-content: center;
+=======
+.mainhedar p{
+    margin: 20px;
 }
 
+
+
+
+
+
+.form2col1{
+    display: flex;
+}
+.form2col2{
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
+    display: flex;
+}
+<<<<<<< HEAD
+
 .form2col1 div {
+=======
+.form2col1 div{
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
     margin: 20px;
     margin-left: 100px;
 }
@@ -117,11 +146,14 @@ span {
     margin-left: 100px;
 }
 
-#add-education-button {
+button {
+    background-color:rgb(38, 38, 78);
     border: none;
     color: white;
+    padding: 20px;
     text-align: center;
     text-decoration: none;
+<<<<<<< HEAD
     font-size: 25px;
     font-weight: 900;
     padding: 10px 14px;
@@ -132,6 +164,16 @@ span {
     margin-inline: 50%;
     margin-bottom: 1rem;
 }
+=======
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
 
 .first {
     display: flex;
@@ -165,8 +207,8 @@ input[type=text],
 [type=date] {
     padding: 10px;
     background-color: white;
-    border-radius: 5px;
-    width: 200px;
+    border-radius: 7px;
+    width: 100%;
     margin-top: 5px;
 }
 
@@ -194,8 +236,12 @@ option {
 }
 
 .button {
+<<<<<<< HEAD
     background-color: #222344;
     /* Green */
+=======
+    background-color: #5357c2;/* Green */
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
     border: none;
     color: white;
     padding: 16px 32px;
@@ -210,6 +256,7 @@ option {
 
 .button1 {
     border: 2px solid #222344;
+<<<<<<< HEAD
     border-radius: 8px;
     border: 1px solid var(--card-shadow);
 }
@@ -228,11 +275,23 @@ option {
 }
 
 .remove-photo>a {
+=======
+  }
+  
+  .button1:hover {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 50px;
+  }
+  .sbt{
+    margin-top: 15px;
+  }
+  a{
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
     background-color: #222344;
     border: none;
     color: white;
-    border: 1px solid var(--card-shadow);
-    padding: 16px;
+    padding: 16px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -241,6 +300,7 @@ option {
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 7px;
+<<<<<<< HEAD
     text-align: center;
 }
 
@@ -252,6 +312,15 @@ option {
 } */
 
 .remove {
+=======
+  }
+a:hover{
+    background-color: #fc0404;
+    color: white;
+    border-radius: 50px;
+}
+.remove{
+>>>>>>> 2bf6a464de941ab7e14c0c9bd035a563b138b6da
     margin-left: 50px;
     width: 50%;
 }

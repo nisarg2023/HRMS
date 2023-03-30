@@ -99,10 +99,10 @@
                             <div>
                                 <p>Relationship :</p>
                                 <select name="relationship" id="status">
-                                    <%if(basic_info[0].relationship=='married') {%>
+                                    <%if(basic_info[0].relationship =='married') {%>
                                         <option value="married" selected>married</option>
                                         <option value="unmarried">unmarried</option>
-                                    <%} else if (basic_info[0].relationship=='unmarried') { %>
+                                    <%} else if (basic_info[0].relationship == 'unmarried') { %>
                                         <option value="married" >married</option>
                                         <option value="unmarried" selected>unmarried</option>
                                     <%}%>  
@@ -114,7 +114,7 @@
                             </div>
                             <div>
                                 <p>State :</p>
-                                <select name="state" id="stateName">
+                                <select name="state" id="stateName" onchange="fetchState()">
                                         <!-- <option hidden disabled selected value>
                                             select state
                                         </option> -->
@@ -150,6 +150,7 @@
                                    <%for(i=0;i<education.length;i++){%>
                                 <div class="form2col1">
                                     <div>
+                                        <input type="text" name="edu_id" value="<%= education[i].education_id %>" hidden>
                                         <p>Course</p>
                                         <select name="course_name" id="status">
                                             <%if(education[0].course_name=='HSC') {%>
@@ -232,10 +233,10 @@
         stateSelect.addEventListener('change', () => {
             const stateId = stateSelect.value;
             console.log(stateId)
-            fetch(`/get-city-data?stateValue=${stateId}`)
+            fetch(`/employee/get-city-data?stateValue=${stateId}`)
                 .then((response) => {return response.json()})
                 .then((cityData) => {
-                    console.log(cityData)
+                    // console.log(cityData)
                     citySelect.innerHTML = '';
                     cityData.forEach(city => {
                         const option = document.createElement('option');
@@ -257,29 +258,25 @@
         <div class="form2col1">
         <div>
             <p>Course</p>
-            <select name="course_name" id="status">
-                <%if(education[0].course_name=='HSC') {%>
-                    <option value="HSC" selected>HSC</option>
-                    <option value="SSC">SSC</option>
-                <%} else if (education[0].course_name=='SSC') { %>
+            <select name="new_course_name" id="status">
+                    <option value="" disabled hidden selected >Select education</option>
                     <option value="HSC" >HSC</option>
-                    <option value="SSC" selected>SSC</option>
-                <%}%>  
+                    <option value="SSC" >SSC</option>
             </select>
         </div>
         <div>
             <p>Passing Year :</p>
-            <input type="text" name="passing_year" class="passing_year" />
+            <input type="text" name="new_passing_year" class="passing_year" />
         </div>
     </div>
     <div class="form2col2">
         <div>
             <p>percentage :</p>
-            <input type="text" name="marks" />
+            <input type="text" name="new_marks" />
         </div>
         <div>
             <p>College :</p>
-            <input type="text" name="college_school" />       
+            <input type="text" name="new_college_school" />       
         </div>
     </div>
 
@@ -344,6 +341,16 @@
         }
        
     })
+
+
+    const fetchState = () =>{
+            console.log("changed state")
+        }
+
+
+
+
+
 
 </script>
 </html>

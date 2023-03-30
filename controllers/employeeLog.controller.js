@@ -5,7 +5,7 @@ const query = util.promisify(conn.query).bind(conn);
 
 const getBrakeInfo = async(req, res) => {
     const data = await query(`SELECT * FROM brake_system where basic_info_id =${req.query.emp_id} and brake_date ="${req.query.date}"`);
-
+    console.log(data)
     res.json(data);
 };
 

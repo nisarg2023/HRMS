@@ -238,7 +238,7 @@ async function addComment() {
 
     });
     await updateCommentCard()
-    commentContainer.innerHTML += `<p>${comment}</p>`
+    // commentContainer.innerHTML += `<p>${comment}</p>`
 
     addCommentBtn.disabled = true
     addCommentBtn.style.opacity = 0.7

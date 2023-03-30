@@ -107,7 +107,6 @@ const getHotlines = async(req, res) => {
     let currentDate = `${year}-${(month > 9) ? (month) : ("0" + month)}-${(day > 9) ? (day) : ("0" + day)}`;
 
     const allEmployeesLog = await getAllEmployeesLog(currentDate);
-    console.log(allEmployeesLog)
     const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
     res.render('hotline', { "first_name": userInfo[0].first_name, allUsers, profilePhotos, "profilePhoto": profilePhoto[0].profile_photo, emails,allEmployeesLog });
 }
@@ -124,7 +123,6 @@ const getComment = async(req, res) => {
 
 
 const updateCommentCard = async(req, res) => {
-    // console.log("Hello")
     var commentSql = `select comment from employee_comment where comment_status='0' and fk_emp_id='${req.session.emp_id}' ;`
     var commentData = await query(commentSql)
     res.json(commentData)
@@ -139,7 +137,6 @@ const getDataProfile= async(req,res)=>{
     const profilePhoto = await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
     const e_id = req.session.emp_id;
     
-    console.log(userInfo[0]);
     const document_query = await query(`select * from document where fk_emp_id = "${e_id}"`);
     res.render('viewProfile',{"first_name": userInfo[0].first_name,dataset: userInfo[0],allUsers,profilePhotos,"profilePhoto":profilePhoto[0].profile_photo,email,document:document_query});
     
@@ -180,8 +177,7 @@ const getBreakEmployeeLogs = async (req,res)=>{
 
 
     let currentDate = `${year}-${(month > 9) ? (month) : ("0" + month)}-${(day > 9) ? (day) : ("0" + day)}`;
-
-    console.log(currentDate)
+    
 
     const BreakEmployeeData = await query(`select first_name,last_name,profile_photo,email,phone_number from basic_info inner join document on basic_info.fk_emp_id = document.fk_emp_id 
     inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  

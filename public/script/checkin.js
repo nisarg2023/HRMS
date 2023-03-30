@@ -15,7 +15,6 @@ const checkIn = async() => {
 
     let data = await res.json();
 
-    console.log(data);
 
 
 
@@ -82,7 +81,6 @@ const brakeIn = async() => {
 
     let data = await res.json();
 
-    console.log(data);
 
 
 
@@ -146,7 +144,6 @@ const handelPageLoad = () => {
     }, 1000);
 
     const currentDate = moment().format("YYYY-MM-DD");
-    console.log(currentDate);
     document.getElementById('date').innerText = currentDate
 
     let emp_id = document.getElementById("emp_id").value;
@@ -156,7 +153,6 @@ const handelPageLoad = () => {
         .then((data) => {
             for (x of data) {
 
-                // console.log(x)
                 if (x.brakein_time) {
                     document.getElementById("brakein").classList.toggle("btn-brakein1");
                     document.getElementById("checkout").classList.toggle("btn-checkout1");
@@ -245,7 +241,6 @@ const updateCommentCard = async() => {
         .then(res => res.json())
         .then(data => {
             data.forEach((singleComment) => {
-                console.log(singleComment)
                 commentContainer.innerHTML += `<p>${singleComment.comment}</p>`
             })
         })
@@ -253,7 +248,6 @@ const updateCommentCard = async() => {
 
 let comment = document.getElementById('comment');
 const validateComment = () => {
-    console.log(comment.value)
     if (comment.value === "") {
         addCommentBtn.disabled = true
         addCommentBtn.style.backgroundColor = "var(--green-disable)"

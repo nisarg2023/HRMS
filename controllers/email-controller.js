@@ -9,7 +9,7 @@ const postCode = async(req, res) => {
     OTP = Math.floor(Math.random() * 10000);
 
     email1 = req.body.email;
-    console.log(email1);
+ 
 
 
     let query1 = `update hrms_employee set code="${OTP}" where email="${email1}" `;

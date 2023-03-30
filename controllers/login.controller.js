@@ -24,7 +24,6 @@ const postLogin = async (req, res) => {
    
     try {
         let {user_email,user_password} = req.body;
-        console.log(user_email, user_password)
         
         var sql = `select emp_id,email,isactivate,isdelete,password from hrms_employee where email = '${user_email}'`;
         var result = await query(sql)

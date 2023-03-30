@@ -69,7 +69,6 @@ function checkBasicDetails(){
 function showErrorNumber(){
     let showError=document.querySelector("#errorPhonenumber");
     let phone_number=document.querySelector("#phone_number").value;
-    console.log(phone_number);
     if(phone_number.length!=10){
         showError.innerText="Phone Number must 10 digits!."
         showError.style.color="red"

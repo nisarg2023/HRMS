@@ -14,7 +14,7 @@ const getApproveLeave = async(req,res)=>{
 
 
     const result = await query(sqlQuery)
-    res.render('adminLeaveApplication', {result, "first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo})
+    res.render('adminLeaveApplication', {result, "first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo,"tz": req.cookies.tz})
 }
 
 const postApproveLeave = async(req,res)=>{

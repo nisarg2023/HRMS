@@ -2,7 +2,7 @@
     margin-top: 1rem;
 }
 .employee_name{
-    color:#002f4b;
+    color: var(--secondary-text-color);
     font-size: 18px;
     padding: .2rem .5rem .2rem 0rem;
 
@@ -15,9 +15,10 @@
 }
 
 .time{
-    color: rgba(0,47,75,.5);
+    color: var(--secondary-text-color);
     font-size: 16px;
     padding: .2rem .5rem;
+    font-style: italic;
 }
 .check_in{
 color:green;

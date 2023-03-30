@@ -5,7 +5,7 @@
     margin: 16px;
 }
 input, select{
-    color: var(--secondary-text-color);
+    /* color: var(--secondary-text-color); */
     font-size: 16px;
     border: 1px solid rgba(131, 131, 131, 0.445);
     padding: 6px 12px;
@@ -48,7 +48,6 @@ label{
 .leave-form-container{
     padding: 16px;
     margin-top: 16px;
-    background-color: white;
 }
 
 .leave-form-header{
@@ -98,7 +97,6 @@ label{
 .applied-leave-container{
     margin: 16px;
     padding: 16px 16px;
-    background-color: white;
 }
 table{
     border-radius: 10px;
@@ -144,9 +142,9 @@ th{
     background-color: rgb(160, 13, 13);
 }
 
-.leave-cards{
+/* .leave-cards{
     background-color: rgb(255, 255, 255);
-}
+} */
 .leave-card-col{
     width: calc(100%/4);
     padding: 16px;
@@ -160,7 +158,6 @@ th{
     display: flex;
     flex-direction: column;
     row-gap: 6px;
-    border: 2px solid black;
     
 }
 

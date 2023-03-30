@@ -3,6 +3,7 @@ const util = require('util');
 const query = util.promisify(conn.query).bind(conn);
 
 const multer = require('multer');
+const session = require('express-session');
 const getEmployeedata = async(req, res) => {
     state_query = `select state_name from state_master;`
     var stateName = await query(state_query);
@@ -249,23 +250,37 @@ const postEmployeeEdit = async(req, res) => {
     let desig = req.body.designation;
     let start = req.body.start_date;
     let end = req.body.end_date;
-    console.log(c_name);
-    console.log(desig);
-    console.log(start);
-    console.log(end);
+    // console.log(c_name);
+    // console.log(desig);
+    // console.log(start);
+    // console.log(end);
     if (typeof(c_name, desig, start, end) == "string") {
         let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${id}`;
         let expSql1 = await query(expSql)
-        console.log("expsql1", expSql1)
+        // console.log("expsql1", expSql1)
 
     } else {
         for (i = 0; i < c_name.length; i++) {
             let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${id}`;
             let expSql1 = await query(expSql)
-            console.log("expsql1", expSql1)
+            // console.log("expsql1", expSql1)
         }
     }
     res.redirect('/dashbord')
 }
 
-module.exports = { getEmployeedata, postEmployeedata, getCitydata, getEmployeeBasicInfo, getEmployeeEdit, postEmployeeEdit };
+const removePhoto= async (req,res)=>{
+    console.log("Hello Divyang Remove Photo!..............");
+    emp_id=req.session.emp_id;
+    if(emp_id){
+
+        const removePhoto=await query(`update  document set profile_photo ="" where fk_emp_id='${emp_id}';`)
+        console.log(" Removed Photo!..........");
+    }
+}
+
+const addPhoto = async (req,res)=>{
+    console.log("Hello Divyang you add  Photo!..............")
+}
+
+module.exports = { getEmployeedata, postEmployeedata, getCitydata, getEmployeeBasicInfo, getEmployeeEdit, postEmployeeEdit,removePhoto,addPhoto};

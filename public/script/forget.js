@@ -94,7 +94,7 @@ const emailCorrect2 = () => {
     let emailErr = document.getElementById("emailErr");
 
 
-    fetch('http://localhost:8000/all-email')
+    fetch('/all-email')
         .then(res => res.json())
         .then((emails) => {
             if (!emails.includes(email)) {
@@ -170,19 +170,4 @@ togglePassword.addEventListener("mouseout", function () {
 });
 
 
-    // fetch('http://localhost:8000/all-email')
-    //     .then(res => res.json())
-    //     .then((emails) => {
-    //         if (!emails.includes(email)) {
-    //             emailErr.innerHTML = 'user not register';
-    //             emailErr.style.color = 'red';
-    //             submit_btn.disabled = true;
-    //             submit_btn.style = "opacity: 0.5"
-    //             return false;
-    //         } else {
-    //             emailErr.innerHTML = '';
-    //             submit_btn.disabled = false;
-    //             submit_btn.style = "opacity: 1"
-    //         }
-
-    //     })
+    

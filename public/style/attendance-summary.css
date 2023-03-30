@@ -1,6 +1,6 @@
 .attendance-summary
 {
-    background-color: white;
+    /* background-color: white; */
     padding: 1rem;
 }
 .row{
@@ -18,7 +18,7 @@
     background-color: brown;
     border-radius: 10px;
     padding: 1rem .5rem;
-    color: white;
+    color: var(--white);
 }
 .box label{
     font-size: 14px;
@@ -47,6 +47,7 @@ th{
 td{
     text-align: center;
     padding: .5rem;
+    color: var(--secondary-text-color);
     border-bottom: 1px solid #c8ced3;
 }
 

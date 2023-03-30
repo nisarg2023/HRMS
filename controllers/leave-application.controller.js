@@ -78,7 +78,7 @@ const getLeaveapplication = async(req, res) => {
         }
         const userInfo = await getUserBasicinfo(req.session.emp_id);
         const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
-        res.render('leaveapplication',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo,result,leavesObject});
+        res.render('leaveapplication',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo,result,leavesObject, "tz":req.cookies.tz});
     }
     catch(error){
         res.redirect('/dashbord')

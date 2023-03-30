@@ -303,7 +303,7 @@ box-shadow:0px 1px 1px var(--card-shadow);
   }
   
   /* .switch:hover */.sun svg {
-    animation: rotate 15s linear infinite;
+    animation: rotate 2s linear infinite;
   }
   
   @keyframes rotate {

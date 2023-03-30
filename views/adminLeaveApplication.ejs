@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HRMS- Admin Leave</title>
+    <link rel="icon" type="image/x-icon" href="/images/fevicon_logo.jpeg">
     <link rel="stylesheet" href="/style/dashboard.css">
     <link rel="stylesheet" href="/style/adminDashboard.css">
     <link rel="stylesheet" href="/style/adminLeaveApllication.css">
@@ -36,7 +37,7 @@
                                 <tr class="admin-leave-table-body-tr">
                                     <td><%=data.fk_emp_id %></td>
                                     <td><%=data.first_name %> <%=data.last_name %></td>
-                                    <td><%=data.leave_date.toJSON('dd-mm-yyyy').slice(0,10) %></td>
+                                    <td><%=moment(data.leave_date).utc(tz).format("DD-MM-YYYY") %></td>
                                     <% if(data.is_halfday === 1){%>
                                         <td>Half Day</td>
                                     <% }else if(data.is_halfday === 0){%>

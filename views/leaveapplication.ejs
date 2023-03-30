@@ -7,6 +7,7 @@
     <title>Leave Application</title>
     <link rel="stylesheet" href="/style/leave-application.css">
     <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="icon" type="image/x-icon" href="/images/fevicon_logo.jpeg">
     <script
     src="https://kit.fontawesome.com/2d11fdd863.js"
     crossorigin="anonymous"
@@ -140,7 +141,7 @@
                     </tr>
                     <% result.forEach((data)=>{ %>
                         <tr>
-                            <td><%= data.leave_date.toJSON('dd-mm-yyyy').slice(0,10)%></td>
+                            <td><%= moment(data.leave_date).utc(tz).format("DD-MM-YYYY")%></td>
                             <td><%= data.leave_type%></td>
                             
                             <% if(data.is_halfday == 0){%>

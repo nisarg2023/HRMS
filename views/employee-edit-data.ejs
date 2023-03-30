@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="/images/fevicon_logo.jpeg">
     <link rel="stylesheet" href="/style/dashboard.css">
     <link rel="stylesheet" href="/style/employee-edit-data.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
@@ -23,120 +24,103 @@
             <%- include('components/header.ejs',{name:"Dashboard"}) %>
                 <div class="dashboard-data-container ">
 
-                    <form action="/post-employee-edit" method="post">
-                        <input type="hidden" name="id" value="<%= basic_info[0].basic_info_id %>">
-                        <div>
-                            <div id="optionbar">
-                                <div class="f">
-                                    <i class="fa-solid fa-info"></i>
-                                    <div class="optionbar" id="Basic_info">Basic info</div>
-                                </div>
-                                <div class="f">
-                                    <i class="fa-solid fa-school"></i>
-                                    <div class="optionbar" id="Education_info">Education info</div>
-                                </div>
-                                <div class="f">
-                                    <i class="fa-solid fa-briefcase"></i>
-                                    <div class="optionbar" id="Work_Experince">Work Experince</div>
-                                </div>
+            <form action="/post-employee-edit" method="post">
+                <input type="hidden" name="id" value="<%= basic_info[0].basic_info_id %>">
+                    <div>
+                        <div id="optionbar">
+                            <div class="f">
+                                <i class="fa-solid fa-info"></i>
+                                <div class="optionbar" id="Basic_info">Basic info</div>
+                            </div>
+                            <div class="f">
+                                <i class="fa-solid fa-school"></i>
+                                <div class="optionbar" id="Education_info">Education info</div>
+                            </div>
+                            <div class="f">
+                                <i class="fa-solid fa-briefcase"></i>
+                                <div class="optionbar" id="Work_Experince">Work Experince</div>
                             </div>
                         </div>
-                        <div id="table1" style="display: block;">
-                            <div class="mainhedar">
-                                <p>Basic Info</p>
+                    </div>
+                    <div id="table1" style="display: block;">
+                        <div class="mainhedar">
+                            <p>Basic Info</p>
+                         </div>
+                        <div class="first">
+                        <div class="basicinfo">
+                            <!-- <div>Photos</div> -->
+                            <div><img src="<%= profilePhoto%>" alt="Error" class="pro"></div>
+                            <div class="remove-photo"><a href="#" class="remove">Remove</a></div>
+                        </div>
+                        <div class="formgroup">
+                        <div>
+                            <div>
+                                <p>First Name:</p>
+                                <input type="text" id="fname" name="first_name" value="<%=basic_info[0].first_name%>" />
                             </div>
-                            <div class="first">
-                                <div class="basicinfo">
-                                    <!-- <div>Photos</div> -->
-
-                                    <%if(profilePhoto){%>
-
-                                        <div><img src="<%= profilePhoto%>" alt="Error" class="pro"></div>
-                                        <div class="remove-photo"><a href="#" 
-                                                class="remove">Remove</a></div>
-                                        <%}else{%>
-
-                                            <div>
-                                                <label for="add_photo" class="remove">Select Image</label>
-                                                <input type="file" name="addPhoto" id="add_photo"
-                                                    placeholder="Add Photo" style="visibility:hidden;">
-                                            </div>
-                                            <div class="remove-photo"><a href="#" class="remove">Upload</a></div>
-                                            <%}%>
-                                </div>
-                                <div class="formgroup">
-                                    <div>
-                                        <div>
-                                            <p>First Name:</p>
-                                            <input type="text" id="fname" name="first_name"
-                                                value="<%=basic_info[0].first_name%>" />
-                                        </div>
-                                        <div>
-                                            <p>Last Name:</p>
-                                            <input type="text" id="lname" name="last_name"
-                                                value="<%=basic_info[0].last_name%>" />
-                                        </div>
-                                        <div>
-                                            <% if(basic_info[0].gender=='female' ) {%>
-                                                <span> Gender :</span>
-                                                <input type="radio" id="male" name="gender" value="male" />
-                                                <span>Male</span>
-                                                <input type="radio" id="female" name="gender" value="female" checked />
-                                                <span> Female</span>
-                                                <input type="radio" id="other" name="gender" value="other" />
-                                                <span> Other</span>
-                                                <%}%>
-                                        </div>
-                                        <div>
-                                            <% if(basic_info[0].gender=='male' ) {%>
-                                                <span> Gender :</span>
-                                                <input type="radio" id="male" name="gender" value="male" checked />
-                                                <span>Male</span>
-                                                <input type="radio" id="female" name="gender" value="female" />
-                                                <span> Female</span>
-                                                <input type="radio" id="other" name="gender" value="other" />
-                                                <span> Other</span>
-                                                <%}%>
-                                        </div>
-                                        <div>
-                                            <% if(basic_info[0].gender=='other' ) {%>
-                                                <span> Gender :</span>
-                                                <input type="radio" id="male" name="gender" value="male" />
-                                                <span>Male</span>
-                                                <input type="radio" id="female" name="gender" value="female" />
-                                                <span> Female</span>
-                                                <input type="radio" id="other" name="gender" value="other" checked />
-                                                <span> Other</span>
-                                                <%}%>
-                                        </div>
-                                        <div>
-                                            <p>Date of Birth :</p>
-                                            <input type="date" id="birth_date" name="birth_date"
-                                                value="<%=basic_info[0].birth_date%>" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div>
-                                            <p>Relationship :</p>
-                                            <select name="relationship" id="status">
-                                                <%if(basic_info[0].relationship=='married') {%>
-                                                    <option value="married" selected>married</option>
-                                                    <option value="unmarried">unmarried</option>
-                                                    <%} else if (basic_info[0].relationship=='unmarried' ) { %>
-                                                        <option value="married">married</option>
-                                                        <option value="unmarried" selected>unmarried</option>
-                                                        <%}%>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <p>Blood Group :</p>
-                                            <input type="text" id="blood_group" name="blood_group"
-                                                value="<%=basic_info[0].blood_group%>" />
-                                        </div>
-                                        <div>
-                                            <p>State :</p>
-                                            <select name="state" id="stateName">
-                                                <!-- <option hidden disabled selected value>
+                            <div>
+                                <p>Last Name:</p>
+                                <input type="text" id="lname" name="last_name" value="<%=basic_info[0].last_name%>" />
+                            </div>
+                            <div>
+                                <% if(basic_info[0].gender=='female' ) {%>
+                                    <span> Gender :</span>
+                                    <input type="radio" id="male" name="gender" value="male" />
+                                    <span>Male</span>
+                                    <input type="radio" id="female" name="gender" value="female" checked />
+                                    <span> Female</span>
+                                    <input type="radio" id="other" name="gender" value="other" />
+                                    <span> Other</span>
+                                <%}%>
+                            </div>
+                            <div>
+                                <% if(basic_info[0].gender=='male' ) {%>
+                                    <span> Gender :</span>
+                                    <input type="radio" id="male" name="gender" value="male" checked />
+                                    <span>Male</span>
+                                    <input type="radio" id="female" name="gender" value="female"  />
+                                    <span> Female</span>
+                                    <input type="radio" id="other" name="gender" value="other" />
+                                    <span> Other</span>
+                                <%}%>
+                            </div>
+                            <div>
+                                <% if(basic_info[0].gender=='other' ) {%>
+                                    <span> Gender :</span>
+                                    <input type="radio" id="male" name="gender" value="male"  />
+                                    <span>Male</span>
+                                    <input type="radio" id="female" name="gender" value="female"  />
+                                    <span> Female</span>
+                                    <input type="radio" id="other" name="gender" value="other" checked/>
+                                    <span> Other</span>
+                                <%}%>
+                            </div>
+                            <div>
+                                <p>Date of Birth :</p>
+                                <input type="date" id="birth_date" name="birth_date" value="<%=basic_info[0].birth_date%>" />
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>Relationship :</p>
+                                <select name="relationship" id="status">
+                                    <%if(basic_info[0].relationship=='married') {%>
+                                        <option value="married" selected>married</option>
+                                        <option value="unmarried">unmarried</option>
+                                    <%} else if (basic_info[0].relationship=='unmarried') { %>
+                                        <option value="married" >married</option>
+                                        <option value="unmarried" selected>unmarried</option>
+                                    <%}%>  
+                                </select>
+                            </div>
+                            <div>
+                                <p>Blood Group :</p>
+                                <input type="text" id="blood_group" name="blood_group"value="<%=basic_info[0].blood_group%>" />
+                            </div>
+                            <div>
+                                <p>State :</p>
+                                <select name="state" id="stateName">
+                                        <!-- <option hidden disabled selected value>
                                             select state
                                         </option> -->
                                                 <% for(let i=0; i < stateName.length; i++) {%>
@@ -161,52 +145,49 @@
                         </div>
 
                         <div id="table2" style="display: none;">
-                            <div class="mainhedar">
-                                <p>Education Info</p>
-                            </div>
-                            <div class="form2">
-                                <div class="form-group">
-                                    <div id="education" class="block">
-                                        <div class="education-item">
-                                            <%for(i=0;i<education.length;i++){%>
-                                                <div class="form2col1">
-                                                    <div>
-                                                        <p>Course</p>
-                                                        <select name="course_name" id="status">
-                                                            <%if(education[0].course_name=='HSC') {%>
-                                                                <option value="HSC" selected>HSC</option>
-                                                                <option value="SSC">SSC</option>
-                                                                <%} else if (education[0].course_name=='SSC' ) { %>
-                                                                    <option value="HSC">HSC</option>
-                                                                    <option value="SSC" selected>SSC</option>
-                                                                    <%}%>
-                                                        </select>
-                                                    </div>
-                                                    <div>
-                                                        <p>Passing Year :</p>
-                                                        <input type="text" name="passing_year"
-                                                            value="<%=education[i].passing_year%>" />
-                                                    </div>
-                                                </div>
-                                                <div class="form2col2">
-                                                    <div>
-                                                        <p>percentage :</p>
-                                                        <input type="text" name="marks"
-                                                            value="<%=education[i].marks%>" />
-                                                    </div>
-                                                    <div>
-                                                        <p>College :</p>
-                                                        <input type="text" name="college_school" class="board"
-                                                            value="<%=education[i].college_school%>" />
-                                                    </div>
-                                                </div>
-                                                <%}%>
-                                        </div>
+                        <div class="mainhedar">
+                           <p>Education Info</p>
+                        </div>
+                           <div class="form2">
+                               <div class="form-group">
+                                <div id="education" class="block">
+                                    <div class="education-item">
+                                   <%for(i=0;i<education.length;i++){%>
+                                <div class="form2col1">
+                                    <div>
+                                        <p>Course</p>
+                                        <select name="course_name" id="status">
+                                            <%if(education[0].course_name=='HSC') {%>
+                                                <option value="HSC" selected>HSC</option>
+                                                <option value="SSC">SSC</option>
+                                            <%} else if (education[0].course_name=='SSC') { %>
+                                                <option value="HSC" >HSC</option>
+                                                <option value="SSC" selected>SSC</option>
+                                            <%}%>
+                                        </select>
                                     </div>
-
+                                    <div>
+                                        <p>Passing Year :</p>
+                                        <input type="text" name="passing_year" value="<%=education[i].passing_year%>" />
+                                    </div>
+                                </div>
+                                <div class="form2col2">
+                                    <div>
+                                        <p>percentage :</p>
+                                        <input type="text" name="marks" value="<%=education[i].marks%>" />
+                                    </div>
+                                    <div>
+                                        <p>College :</p>
+                                        <input type="text" name="college_school" class="board" value="<%=education[i].college_school%>" />
+                                    </div>
+                                </div>
+                                    <%}%>
                                 </div>
                             </div>
-                            <button type="button" id="add-education-button">+</button>
+                            
+                        </div>
+                        </div>   
+                        <button type="button" id="add-education-button">+</button>
                         </div>
 
                         <div id="table3" style="display: none;">
@@ -289,9 +270,9 @@
             const stateId = stateSelect.value;
             console.log(stateId)
             fetch(`/get-city-data?stateValue=${stateId}`)
-                .then((response) => { return response.json() })
+                .then((response) => {return response.json()})
                 .then((cityData) => {
-                    console.log(cityData)
+                    // console.log(cityData)
                     citySelect.innerHTML = '';
                     cityData.forEach(city => {
                         const option = document.createElement('option');
@@ -313,29 +294,25 @@
         <div class="form2col1">
         <div>
             <p>Course</p>
-            <select name="course_name" id="status">
-                <%if(education[0].course_name=='HSC') {%>
-                    <option value="HSC" selected>HSC</option>
-                    <option value="SSC">SSC</option>
-                <%} else if (education[0].course_name=='SSC') { %>
+            <select name="new_course_name" id="status">
+                    <option value="" disabled hidden selected >Select education</option>
                     <option value="HSC" >HSC</option>
-                    <option value="SSC" selected>SSC</option>
-                <%}%>  
+                    <option value="SSC" >SSC</option>
             </select>
         </div>
         <div>
             <p>Passing Year :</p>
-            <input type="text" name="passing_year" class="passing_year" />
+            <input type="text" name="new_passing_year" class="passing_year" />
         </div>
     </div>
     <div class="form2col2">
         <div>
             <p>percentage :</p>
-            <input type="text" name="marks" />
+            <input type="text" name="new_marks" />
         </div>
         <div>
             <p>College :</p>
-            <input type="text" name="college_school" />       
+            <input type="text" name="new_college_school" />       
         </div>
     </div>
 
@@ -400,6 +377,16 @@
         }
 
     })
+
+
+    const fetchState = () =>{
+            console.log("changed state")
+        }
+
+
+
+
+
 
 </script>
 

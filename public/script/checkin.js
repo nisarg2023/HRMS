@@ -1,3 +1,5 @@
+const tz = moment().utcOffset()
+
 const checkIn = async() => {
 
     let res = await fetch("/checkin", {
@@ -25,10 +27,8 @@ const checkIn = async() => {
     document.getElementById("checkout").classList.toggle("btn-checkout1");
 
     document.getElementById("green").innerHTML += ` <div class="check-green">
-    <span ><label>Checked In :</label>${data.checkindate}  </span>
+    <span ><label>Checked In :</label>${moment(data.checkindate).utcOffset(tz).format("hh:mm:ss")}  </span>
 </div>`
-
-
 
 
 }
@@ -60,7 +60,7 @@ const brakeOut = async() => {
 
 
     document.getElementById("yellow").innerHTML += `  <div class="check-yellow">
-    <span ><label >Break Out :</label> ${data.brakeoutdate}</span>
+    <span ><label >Break Out :</label> ${moment(data.breakoutdate).utcOffset(tz).format("hh:mm:ss")}</span>
 </div>`
 
 }
@@ -92,7 +92,7 @@ const brakeIn = async() => {
         document.getElementById("checkout").classList.toggle("btn-checkout1");
         document.getElementById("brakeout").classList.toggle("btn-brakeout1");
         document.getElementById("orange").innerHTML += `  <div class="check-orange">
-        <span ><label > Break In :</label> ${data.brakeindata}</span>
+        <span ><label > Break In :</label> ${moment(data.brakeindate).utcOffset(tz).format("hh:mm:ss") }</span>
     </div>`
 
 
@@ -119,24 +119,24 @@ const checkOut = async() => {
     })
     let data = await res.json();
     // 
-
+    
     if (confirm("Do you really want to checkout") == true) {
         document.getElementsByClassName("check-inout")[0].style.display = "none";
         document.getElementsByClassName("check-inout")[0].innerHTML = "none";
 
         document.getElementById("red").innerHTML += `  <div class="check-red">
-        <span ><label > Check Out :</label>${data.checkoutdata}</span>
+        <span ><label > Check Out :</label>${moment(data.checkoutdata).utcOffset(tz).format("hh:mm:ss")}</span>
     </div>`
     } else {
         return false
     }
 }
-
 //
 
 
 
 const handelPageLoad = () => {
+    document.cookie = `tz=${tz}`;
     setInterval(() => {
         time = new Date();
         let t = time.toLocaleTimeString();
@@ -145,14 +145,9 @@ const handelPageLoad = () => {
 
     }, 1000);
 
-    const date = new Date();
-
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-
-
-    let currentDate = `${year}-${(month > 9) ? (month) : ("0" + month)}-${(day > 9) ? (day) : ("0" + day)}`;
+    const currentDate = moment().format("YYYY-MM-DD");
+    console.log(currentDate);
+    document.getElementById('date').innerText = currentDate
 
     let emp_id = document.getElementById("emp_id").value;
 
@@ -168,17 +163,17 @@ const handelPageLoad = () => {
                     document.getElementById("brakeout").classList.toggle("btn-brakeout1");
 
                     document.getElementById("orange").innerHTML += `  <div class="check-orange">
-                    <span ><label > Break In :</label> ${x.brakein_time}</span>
+                    <span ><label > Break In :</label> ${moment(x.brakein_time).utcOffset(tz).format("hh:mm:ss")}</span>
                     </div>`;
                 }
-
+                
                 if (x.brakeout_time) {
                     document.getElementById("brakein").classList.toggle("btn-brakein1");
                     document.getElementById("checkout").classList.toggle("btn-checkout1");
                     document.getElementById("brakeout").classList.toggle("btn-brakeout1");
 
                     document.getElementById("yellow").innerHTML += `  <div class="check-yellow">
-                    <span ><label >Break Out :</label> ${x.brakeout_time}</span>
+                    <span ><label >Break Out :</label> ${moment(x.brakeout_time).utcOffset(tz).format("hh:mm:ss")}</span>
                     </div>`
                 }
 
@@ -190,11 +185,9 @@ const handelPageLoad = () => {
         .then(res => res.json())
         .then((data) => {
             
-
-
             if (data[0].checkin_time) {
                 document.getElementById("green").innerHTML += ` <div class="check-green">
-                        <span ><label>Checked In :</label>${data[0].checkin_time}  </span>
+                        <span ><label>Checked In :</label>${moment(data[0].checkin_time).utcOffset(tz).format("hh:mm:ss")}  </span>
                         </div>`;
                 document.getElementById("checkin").classList.toggle("btn-checkin1");
                 document.getElementById("brakein").classList.toggle("btn-brakein1");
@@ -208,7 +201,7 @@ const handelPageLoad = () => {
                 document.getElementsByClassName("check-inout")[0].innerHTML = "none";
 
                 document.getElementById("red").innerHTML += `  <div class="check-red">
-                    <span ><label > Check Out :</label>${data[0].checkout_time}</span>
+                    <span ><label > Check Out :</label>${moment(data[0].checkout_time).utcOffset(tz).format("hh:mm:ss")}</span>
                     </div>`;
             }
 

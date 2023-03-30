@@ -8,10 +8,11 @@ const adminComments = require('../controllers/adminComments.controller')
 
 
 
+router.get('/', adminDashboardcontroller.adminDashboardRedirecting)
 router.get('/dashboard', adminDashboardcontroller.adminDashboard)
 
 router.get('/dashboard/approveleave', leaveApprove.getApproveLeave)
-router.get('/post-approveleave', leaveApprove.postApproveLeave)
+router.post('/post-approveleave', leaveApprove.postApproveLeave)
 router.get('/dashboard/comments', adminComments.getCommentData)
 router.get('/dashboard/commentId', adminComments.getCommentId);
 

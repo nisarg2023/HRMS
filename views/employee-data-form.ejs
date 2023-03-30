@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HRMS</title>
+    <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/employee-data.css">
 </head>
 
@@ -13,6 +14,7 @@
 
 
 <body>
+    
     <div class="wrapper">
         <h2 style="text-align: center;margin-bottom: 20px;">Employee Information</h2>
         <form action="/employee/post-employee-data" method="post" enctype="multipart/form-data" >
@@ -72,6 +74,11 @@
                                 <label class="text-label" for="blood_group">Blood Group</label>
                                 <input type="text" placeholder="e.g, B+" name="blood_group" class="input"
                                     id="blood_group">
+                            </div>
+                            <div class="input_wrap">
+                                <p id="errorPhonenumber"></p>
+                                <label class="text-label" for="phone_number">phone_number</label>
+                                <input type="number" onchange="showErrorNumber()" name="phone_number" class="input" id="phone_number" length="10">
                             </div>
 
                             <div class="gender-panel">
@@ -238,9 +245,7 @@
 
     <script src="/script/employee-data.js"></script>
     <script>
-        function submitBtn() {
-            console.log("e")
-        }
+      
     </script>
 </body>
 

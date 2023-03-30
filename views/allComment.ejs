@@ -68,14 +68,14 @@
             <td><%=c[i].comment%></td>
             <td><%=c[i].comment_status%></td>
 
-            <td> <a href="http://localhost:8000/dashbord/commentId?commentId=<%=c[i].emp_comment_id%>&comment=<%=c[i].comment%>" onclick="readComment(this.id)" id="<%=c[i].emp_comment_id%>"> Click </a></td>
+            <td> <a href="/dashbord/commentId?commentId=<%=c[i].emp_comment_id%>&comment=<%=c[i].comment%>" onclick="readComment(this.id)" id="<%=c[i].emp_comment_id%>"> Click </a></td>
         </tr>
         <%}%>
     </table>
     <script>
        async function readComment(id){
             console.log(id);
-            const ans = await fetch(`http://localhost:8000/deshbord/comment-id?commentId=${id}`);
+            const ans = await fetch(`/dashbord/comment-id?commentId=${id}`);
         }
     </script>
 </body>

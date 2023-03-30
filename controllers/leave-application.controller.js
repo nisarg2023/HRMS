@@ -42,22 +42,46 @@ const getLeaveapplication = async(req, res) => {
             upLeave: 0,
         }
 
-        for (x of result) {
-            if (x.leave_type == 'SL') {
-                leavesObject.sLeave += 1;
-            } else if (x.leave_type == 'CL') {
-                leavesObject.cLeave += 1;
-            } else if (x.leave_type == 'PL') {
-                leavesObject.pLeave += 1;
-            } else if (x.leave_type == 'UPL') {
-                leavesObject.upLeave += 1;
+        for(x of result){
+            if(x.leave_type == 'SL' && x.is_hr_approved === 1){
+                if(x.is_halfday === 1){
+                    leavesObject.sLeave+=0.5;
+                }
+                else if(x.is_halfday == 0){
+                    leavesObject.sLeave+=1;
+                }
+            }
+            else if(x.leave_type == 'CL' && x.is_hr_approved === 1){
+                if(x.is_halfday == 1){
+                    leavesObject.cLeave+=0.5;
+                }
+                else if(x.is_halfday == 0){
+                    leavesObject.cLeave+=1;
+                }
+            }
+            else if(x.leave_type == 'PL' && x.is_hr_approved === 1){
+                if(x.is_halfday == 1){
+                    leavesObject.pLeave+=0.5;
+                }
+                else if(x.is_halfday == 0){
+                    leavesObject.pLeave+=1;
+                }
+            }
+            else if(x.leave_type == 'UPL' && x.is_hr_approved === 1){
+                if(x.is_halfday == 1){
+                    leavesObject.upLeave+=0.5;
+                }
+                else if(x.is_halfday == 0){
+                    leavesObject.upLeave+=1;
+                }
             }
         }
         const userInfo = await getUserBasicinfo(req.session.emp_id);
-        const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
-        res.render('leaveapplication', { "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo, result, leavesObject });
-    } catch (error) {
-        res.redirect('/dashbord/leave')
+        const profilePhoto =  await getUserProfilePhoto(["profile_photo"],req.session.emp_id);
+        res.render('leaveapplication',{"first_name": userInfo[0].first_name,"profilePhoto":profilePhoto[0].profile_photo,result,leavesObject});
+    }
+    catch(error){
+        res.redirect('/dashbord')
     }
 }
 const postLeaveapplication = async(req, res) => {
@@ -65,8 +89,9 @@ const postLeaveapplication = async(req, res) => {
         let result = await query(`insert into leave_application(fk_emp_id, leave_date,leave_reason,leave_type,is_halfday) values('${req.session.emp_id}','${req.body.leave_date}','${req.body.leave_reason}','${req.body.leave_type}','${req.body.is_half}')`)
         res.redirect('/dashbord/get-leave')
 
-    } catch (error) {
-        res.redirect('/dashbord/leave')
+    }
+    catch(error){
+        res.redirect('/dashbord')
     }
 }
 

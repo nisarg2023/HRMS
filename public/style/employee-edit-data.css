@@ -1,24 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lato&family=Oswald&display=swap');
 * {
-    font-family: 'Delicious Handrawn', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+
+/* form{
+    background-color: white;
+} */
 
 #optionbar {
     display: flex;
     text-transform: capitalize;
+    cursor: pointer;
 }
 
 .optionbar {
     margin: 0px 10px;
 }
 
-#optionbar {
-    border: 1px solid black;
+.f {
+    padding-left: 50px;
+    color: var(--primary-head);
+    display: flex;
+    margin: 10px;
+    padding: 8px 10px;
+    border: 1px solid var(--primary-head);
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
 }
 
-#table1 {
+#table1,
+#table2,
+#table3 {
+    margin-top: 16px;
+    margin-inline: 16px;
     display: flex;
-    border: 1px solid black;
+    /* padding: 16px; */
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset; */
+    border: 1px solid var(--card-shadow);
+}
+
+#table1,
+#table2,
+#table3,
+p,
+span {
+    color: var(--secondary-text-color);
+}
+
+.pro {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
 }
 
 .col1 {
@@ -28,36 +64,24 @@
 }
 
 #table2 {
-    border: 1px solid rgb(0, 0, 0);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 #table3 {
-    border: 1px solid rgb(27, 27, 63);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
 }
 
 .form3 {
     display: flex;
 }
 
-
-/* .thirdone{
-    border: 2px solid black;
-    margin: 20px;
-} */
-
 .form3col1 {
     width: 50%;
     margin: 20px;
-    /* border: 2px solid black; */
 }
 
 .form3col2 {
-    /* border: 2px solid black; */
     width: 50%;
-    margin: 20px;
-}
-
-.form3col1 div {
     margin: 20px;
 }
 
@@ -67,24 +91,20 @@
 
 .mainhedar {
     border: 2px solid rgb(38, 38, 78);
-    margin: 20px;
+    /* margin: 20px; */
     background-color: rgb(38, 38, 78);
     color: white;
 }
 
 .mainhedar p {
-    margin: 20px;
+    margin: 12px;
+    font-size: 1.3rem;
 }
 
-.form2col1 {
-    display: flex;
-    /* border: 2px solid black; */
-    /* width: 200%; */
-}
-
+.form2col1,
 .form2col2 {
     display: flex;
-    /* border:2px solid rgb(0, 0, 0) */
+    justify-content: center;
 }
 
 .form2col1 div {
@@ -97,29 +117,30 @@
     margin-left: 100px;
 }
 
-button {
-    background-color: rgb(38, 38, 78);
+#add-education-button {
     border: none;
     color: white;
-    padding: 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    width: 100%;
+    font-size: 25px;
+    font-weight: 900;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--card-shadow);
     background-color: rgb(38, 38, 78);
     cursor: pointer;
+    margin-inline: 50%;
+    margin-bottom: 1rem;
 }
 
 .first {
     display: flex;
-    /* border: 1px solid black; */
 }
 
 .basicinfo {
-    width: 20%;
+    width: 30%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    margin-left: 27px;
 }
 
 .formgroup {
@@ -132,7 +153,7 @@ button {
 }
 
 .basicinfo div {
-    margin: 50px;
+    margin: 50px
 }
 
 select,
@@ -143,18 +164,27 @@ option {
 input[type=text],
 [type=date] {
     padding: 10px;
-    background-color: rgb(248, 244, 240);
-    border-radius: 10px;
-    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    width: 200px;
+    margin-top: 5px;
+}
+
+input[type=radio] {
+    margin-top: 5px;
+}
+
+span {
+    margin: 5px;
 }
 
 select,
 option {
+    margin-top: 5px;
     padding: 10px;
-    background-color: rgb(248, 244, 240);
-    border-radius: 10px;
-    width: 100%;
-    width: 180px;
+    background-color: white;
+    border-radius: 5px;
+    width: 200px;
 }
 
 option {
@@ -179,9 +209,9 @@ option {
 }
 
 .button1 {
-    /* background-color: white; 
-    color: black;  */
     border: 2px solid #222344;
+    border-radius: 8px;
+    border: 1px solid var(--card-shadow);
 }
 
 .button1:hover {
@@ -193,24 +223,35 @@ option {
     margin-top: 15px;
 }
 
-a {
+.remove-photo {
+    text-align: center;
+}
+
+.remove-photo>a {
     background-color: #222344;
-    ;
-    /* Green */
     border: none;
     color: white;
-    padding: 16px 32px;
+    border: 1px solid var(--card-shadow);
+    padding: 16px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 4px 20px;
     transition-duration: 0.4s;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 7px;
+    text-align: center;
 }
 
-a:hover {
+
+/* a:hover{
     background-color: #fc0404;
     color: white;
+    border-radius: 50px;
+} */
+
+.remove {
+    margin-left: 50px;
+    width: 50%;
 }

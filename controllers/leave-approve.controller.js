@@ -18,7 +18,6 @@ const getApproveLeave = async(req,res)=>{
 }
 
 const postApproveLeave = async(req,res)=>{
-    console.log(req.query.field)
     const result = await query(`update leave_application set ${req.query.field} = '${req.query.val}' where leave_id = ${req.query.leaveId}`)
 }
 

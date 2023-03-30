@@ -31,7 +31,7 @@ const get_checkin = async(req, res) => {
 
         res.json({ msg: "okay-checkin", checkindate: date });
     } catch (err) {
-        res.sende(err);
+        res.send(err);
     }
 }
 

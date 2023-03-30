@@ -87,18 +87,16 @@ const postEmployeedata = async(req, res) => {
 
             var key = Object.keys(req.files);
 
-            console.log(req.session.emp_id);
+            var i = 0;
+            for (x of key) {
+                path.push(req.files[x][i].path)
 
+            }
 
             let data = req.body
-            console.log(data);
 
             var document_query = `insert into document (fk_emp_id,resume,bank_detail,pan_card,aadhar_card,profile_photo) values ('${req.session.emp_id}','${path[0]}','${path[1]}','${path[2]}','${path[3]}','${path[4]}');`
             var document_info = await query(document_query);
-
-
-            //     For Eduction Data
-
 
 
             let moreEdudata = req.body.moreEdu_data;
@@ -109,8 +107,8 @@ const postEmployeedata = async(req, res) => {
             // for basic info
 
             var basic_info_query = `insert into basic_info (fk_emp_id,first_name,last_name,birth_date,relationship,blood_group,
-            gender,city,state) values ('${req.session.emp_id}','${data.fname}','${data.lname}','${data.dob}','${data.relationship}','${data.blood_group}',
-            '${data.gender}','${data.city}','${data.state}');`
+            gender,city,state,phone_number) values ('${req.session.emp_id}','${data.fname}','${data.lname}','${data.dob}','${data.relationship}','${data.blood_group}',
+            '${data.gender}','${data.city}','${data.state}','${data.phone_number}');`
             var basic_info = await query(basic_info_query);
 
             // for education
@@ -152,17 +150,11 @@ const postEmployeedata = async(req, res) => {
             var experience_info = await query(experience_query)
             conn.commit()
             res.redirect('../dashbord');
-
-
-
         })
 
-
-
     } catch (err) {
-        res.send(" postEmployeedata", err);
+        res.send(toString(" postEmployeedata", err));
         conn.rollback()
-
     }
 }
 
@@ -182,8 +174,8 @@ const getEmployeeEdit = async(req, res) => {
 
     state_query = `select state_name from state_master;`
     let stateName = await query(state_query);
-
-    //basicInfo
+    userProfilePhoto = await query(`select profile_photo from document where fk_emp_id = ${req.session.emp_id}`)
+        //basicInfo
     basic_info = await query(`select * from basic_info where fk_emp_id = ${req.session.emp_id}`)
     console.log("basic_info", basic_info)
     let stateId = basic_info[0].state;

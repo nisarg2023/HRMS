@@ -9,12 +9,12 @@ const postCode = async(req, res) => {
     OTP = Math.floor(Math.random() * 10000);
 
     email1 = req.body.email;
-
-
-    let query1 = `update hrms_employee set code="${OTP}" where email="${email}" `;
-    var updateData = await query(query1);
-
     console.log(email1);
+
+
+    let query1 = `update hrms_employee set code="${OTP}" where email="${email1}" `;
+    var updateData = await query(query1);
+    sendMail(email1);
     res.json({ OTP });
 
     OTP = "";
@@ -25,8 +25,7 @@ const postCode = async(req, res) => {
 
 
 
-const sendMail = async(email) => {
-    // let testAccount = await nodemailer.createTestAccount();
+const sendMail = async(email1) => {
 
     let transporter = nodemailer.createTransport({
         host: "smtp.ethereal.email",
@@ -37,7 +36,7 @@ const sendMail = async(email) => {
         },
     })
     let mailInfo = {
-        from: '"HRMS" <concepcion.lindgren@ethereal.email>',
+        from: `"HRMS" <alia21@ethereal.email>`,
         to: email1,
         subject: 'Welcome to HRMS',
         html: `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
@@ -76,4 +75,6 @@ const sendMail = async(email) => {
         }
     })
 }
-sendMail(email1);
+
+
+module.exports = { postCode };

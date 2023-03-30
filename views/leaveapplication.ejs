@@ -140,7 +140,7 @@
                     </tr>
                     <% result.forEach((data)=>{ %>
                         <tr>
-                            <td><%= data.leave_date.toJSON('dd-mm-yyyy').slice(0,10)%></td>
+                            <td><%= moment(data.leave_date).utc(tz).format("DD-MM-YYYY")%></td>
                             <td><%= data.leave_type%></td>
                             
                             <% if(data.is_halfday == 0){%>

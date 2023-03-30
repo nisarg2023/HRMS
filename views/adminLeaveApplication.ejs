@@ -36,7 +36,7 @@
                                 <tr class="admin-leave-table-body-tr">
                                     <td><%=data.fk_emp_id %></td>
                                     <td><%=data.first_name %> <%=data.last_name %></td>
-                                    <td><%=data.leave_date.toJSON('dd-mm-yyyy').slice(0,10) %></td>
+                                    <td><%=moment(data.leave_date).utc(tz).format("DD-MM-YYYY") %></td>
                                     <% if(data.is_halfday === 1){%>
                                         <td>Half Day</td>
                                     <% }else if(data.is_halfday === 0){%>

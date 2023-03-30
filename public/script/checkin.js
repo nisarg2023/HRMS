@@ -147,7 +147,7 @@ const handelPageLoad = () => {
 
     const currentDate = moment().format("YYYY-MM-DD");
     console.log(currentDate);
-    
+    document.getElementById('date').innerText = currentDate
 
     let emp_id = document.getElementById("emp_id").value;
 
@@ -231,7 +231,7 @@ async function addComment() {
 
     });
     await updateCommentCard()
-    commentContainer.innerHTML += `<p>${comment}</p>`
+    // commentContainer.innerHTML += `<p>${comment}</p>`
 
     addCommentBtn.disabled = true
     addCommentBtn.style.opacity = 0.7

@@ -26,9 +26,9 @@
 .activity-btn{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    padding-left: 10px;
     align-items: center;
-    column-gap: px;
+    column-gap: 5px;
 }
 
 .btn-checkin {

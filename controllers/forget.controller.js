@@ -13,7 +13,6 @@ const updatePassword = async(req, res) => {
         res.render('forgot1')
     } else {
         const otpget = await query(`SELECT code FROM hrms_employee where email="${user_email}"`);
-        console.log("its your otp", otpget[0].code);
         if (otpget[0].code == otp) {
             res.json({'isVerified':true})
         } else {
@@ -29,7 +28,6 @@ const forgetPassword = (req, res) => {
 }
 const checkEmail = async(req, res) => {
         const allUsersEmail = await query('SELECT email FROM hrms_employee;');
-        // console.log(allUsersEmail);
         res.json(allUsersEmail.map(x => x.email));
 
     }
@@ -37,11 +35,7 @@ const checkEmail = async(req, res) => {
 
 const postEmail = async(req, res) => {
     var { user_email, user_password } = req.body;
-    console.log("body",req.body)
-    console.log(user_email);
-    console.log(user_password);
     var hashPass = await bcrypt.hash(user_password, 10);
-    console.log("hash" + hashPass);
     if (user_email) {
         var updateQuery = `update hrms_employee set password="${hashPass}" where email="${user_email}";`
         var updateData = await query(updateQuery);

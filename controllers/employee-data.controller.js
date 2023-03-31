@@ -257,13 +257,13 @@ const postEmployeeEdit = async(req, res) => {
     // console.log(start);
     // console.log(end);
     if (typeof(c_name, desig, start, end) == "string") {
-        let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${id}`;
+        let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${req.body.workexp_id}`;
         let expSql1 = await query(expSql)
         // console.log("expsql1", expSql1)
 
     } else {
         for (i = 0; i < c_name.length; i++) {
-            let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${id}`;
+            let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${req.body.workexp_id}`;
             let expSql1 = await query(expSql)
             // console.log("expsql1", expSql1)
         }

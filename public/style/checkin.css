@@ -23,6 +23,13 @@
     display: flex;
     flex-wrap: wrap;
 }
+.activity-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: px;
+}
 
 .btn-checkin {
     width: 45%;
@@ -32,6 +39,7 @@
     border-radius: 5px;
     padding: 5px;
     pointer-events: auto;
+    cursor: pointer;
 }
 
 .btn-checkin1 {
@@ -62,6 +70,7 @@
     border-radius: 5px;
     padding: 5px;
     pointer-events: auto;
+    cursor: pointer;
 }
 
 .btn-checkout {
@@ -84,6 +93,7 @@
     border-radius: 5px;
     padding: 5px;
     pointer-events: auto;
+    cursor: pointer;
 }
 
 .btn-brakeout {
@@ -104,6 +114,7 @@
     border-radius: 5px;
     padding: 5px;
     pointer-events: auto;
+    cursor: pointer;
 }
 
 .btn-checkin a {

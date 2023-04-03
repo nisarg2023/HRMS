@@ -43,6 +43,8 @@ router.post('/checkout', checkin.get_checkout);
 router.get('/get-employee-basicinfo', employeedataController.getEmployeeBasicInfo);
 router.get('/get-employee-edit', employeedataController.getEmployeeEdit);
 router.post('/post-employee-edit', employeedataController.postEmployeeEdit);
+router.post('/post-remove-photo', employeedataController.removePhoto);
+router.post('/post-add-photo', employeedataController.addPhoto);
 
 
 

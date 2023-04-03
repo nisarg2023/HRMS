@@ -3,6 +3,7 @@ const util = require('util');
 const query = util.promisify(conn.query).bind(conn);
 
 const multer = require('multer');
+const session = require('express-session');
 const getEmployeedata = async(req, res) => {
     state_query = `select state_name from state_master;`
     var stateName = await query(state_query);
@@ -271,4 +272,18 @@ const postEmployeeEdit = async(req, res) => {
     res.redirect('/dashbord')
 }
 
-module.exports = { getEmployeedata, postEmployeedata, getCitydata, getEmployeeBasicInfo, getEmployeeEdit, postEmployeeEdit };
+const removePhoto= async (req,res)=>{
+    console.log("Hello Divyang Remove Photo!..............");
+    emp_id=req.session.emp_id;
+    if(emp_id){
+
+        const removePhoto=await query(`update  document set profile_photo ="" where fk_emp_id='${emp_id}';`)
+        console.log(" Removed Photo!..........");
+    }
+}
+
+const addPhoto = async (req,res)=>{
+    console.log("Hello Divyang you add  Photo!..............")
+}
+
+module.exports = { getEmployeedata, postEmployeedata, getCitydata, getEmployeeBasicInfo, getEmployeeEdit, postEmployeeEdit,removePhoto,addPhoto};

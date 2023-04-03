@@ -13,68 +13,77 @@
 </head>
 
 <body>
-    <div class="leave-application-wrapper flex">
-
+    <div class="dashboard-wrapper flex flex-row">
         <div class="dashboard-right">
             <%- include('components/sidebar.ejs') %>
 
         </div>
-
-        <div class="dashboard-left ">
-            <div class="sensation-top">
-                <%- include('components/header.ejs',{name:"sensation"}) %>
-            </div>
-            <div class="side-container">
-                <div class="main-sensation">
-                    
-                        <div id="userMessage">
-                            <% for(i=0;i<data.length;i++){%>
-                                <div class="flex flex-row  text-container">
-                                    <div class="">
-                                        <img class="sensation-img" src='/<%=data[i].profile_photo%>'
-                                            alt="employee profile picture" />
-                                    </div>
-                                    <div class="contain ">
-                                        <div class="emp-name">
-                                            <p>
-                                                <%=data[i].first_name%>
-                                            </p>
-                                        </div>
-                                        <div class="emp-comment">
-                                            <p>
-                                                <%=data[i].sensation_comment%>
-                                            </p>
-                                        </div>
-                                    </div>
+        <div class="dashboard-left">
+            <%- include('components/header.ejs',{name:"Dashboard"}) %>
+            <div class="dashboard-data-container sensation-wrapper flex flex-row">
+                
+                <div class="sensation-messages">
+                    <% for(i=0;i<data.length;i++){%>
+                       <% if(data[i].fk_emp_id == emp_id){ %>
+                        <div class="flex flex-row text-container container-right">
+                            <div class="">
+                                <img class="sensation-img" src='/<%=data[i].profile_photo%>'
+                                    alt="employee profile picture" />
+                            </div>
+                            <div class="contain flex flex-col">
+                                <p class="emp-name">
+                                    <%=data[i].first_name%>
+                                </p>
+                                <p class="emp-comment">
+                                    <%=data[i].sensation_comment%>
+                                </p>
+                            </div>
+                        </div>
+                        <% } else { %>
+                            <div class="flex flex-row text-container">
+                                <div class="">
+                                    <img class="sensation-img" src='/<%=data[i].profile_photo%>'
+                                        alt="employee profile picture" />
                                 </div>
-                                <% } %>
-                        </div>
-                        <div class="flex flex-column input-tag">
-                            <div class="input-img">
-                                <img class="sensation-img" src='/<%= profilePhoto%>' alt="employee profile picture" />
+                                <div class="contain ">
+                                    <p class="emp-name">
+                                        <%=data[i].first_name%>
+                                    </p>
+                                    <p class="emp-comment">
+                                        <%=data[i].sensation_comment%>
+                                    </p>
+                                </div>
                             </div>
+                        <% } %>
+                    <% } %>
+                </div>
 
-                            <div class="input-text">
-                                <form action="/dashbord/post-sensation" method="post" onsubmit="" class="form">
+                <div class="flex flex-column input-tag">
+                    <div class="input-img">
+                        <img class="sensation-img" src='/<%= profilePhoto%>' alt="employee profile picture" />
+                    </div>
+
+                    <div class="input-text">
+                        <form action="/dashbord/post-sensation" method="post" onsubmit="" class="form">
 
 
-                                    <input type="text" name="sensation" id="sensation">
-                                    <input type="submit" value=" Post " class="sensation-submit">
-                                </form>
-                            </div>
-                        </div>
-                    
+                            <input type="text" name="sensation" id="sensation">
+                            <input type="submit" value=" Post " class="sensation-submit">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+
+
+
 </body>
 <script>
     function addSesaction() {
         var userMesage = document.getElementById('userMessage')
         var inputValue = document.getElementById('sensation').value;
-        fetch(`http://localhost:8000/dashbord/post-sensation`, {
+        fetch(`/dashbord/post-sensation`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",

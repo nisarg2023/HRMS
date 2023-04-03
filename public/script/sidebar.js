@@ -1,4 +1,4 @@
-const openMenu= () =>{
+const openMenu = () =>{
     let profile = document.getElementById('user-profile-edit')
     // console.log(profile.style.display)
     if(profile.style.display =="block"){
@@ -8,6 +8,5 @@ const openMenu= () =>{
     else{
         // console.log("else")
     profile.style.display ="block"
-    }
-
+    }  
 }

@@ -226,7 +226,9 @@ async function addComment() {
         var comment = document.getElementById('comment').value = "";
 
     });
-    await updateCommentCard()
+    setTimeout( async()=>{
+        await updateCommentCard()
+    },100)
     // commentContainer.innerHTML += `<p>${comment}</p>`
 
     addCommentBtn.disabled = true

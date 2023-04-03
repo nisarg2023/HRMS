@@ -51,7 +51,7 @@ const getAllEmployeesLog = async (currentDate) => {
          data.push(checkInfo)
 
         const brakeInfo  = await query(`select fk_emp_id,first_name,last_name, brakein_time,brakeout_time from basic_info join brake_system on basic_info.fk_emp_id
-        = brake_system.basic_info_id where brake_date= '${currentDate}'`)
+        = brake_system.basic_info_id where brake_date= '${currentDate}' `)
          
         data.push(brakeInfo)
         return data;
@@ -160,7 +160,7 @@ const getOnlineEmployeeLogs = async (req,res)=>{
     inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  
     in (select basic_info_id from check_system where check_date = '${currentDate}' 
     and checkout_time is null 
-    and basic_info_id not in(select brake_system.basic_info_id 
+    and basic_info_id not in(select brake_syReadstem.basic_info_id 
     from check_system join brake_system on brake_system.basic_info_id = check_system.basic_info_id 
     where checkout_time is null and brake_system.brakeout_time is null and check_system.check_date = '${currentDate}'));`)
 
@@ -220,6 +220,8 @@ const getOfflineEmployeeLogs = async (req,res)=>{
     inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id
     not in (select fk_emp_id from leave_application where is_hr_approved = 1 and leave_date = '${currentDate}')
     and basic_info.fk_emp_id not in (select basic_info_id from check_system where check_date = '${currentDate}');`)
+
+
     res.json(OfflineEmployeeData)
 }
 

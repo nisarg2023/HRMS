@@ -66,6 +66,48 @@ function checkBasicDetails(){
    
     return true;
 }
+function checkEducationDetails(){
+    let coursName = document.querySelector('#course').value
+    let passingYear = document.querySelector('#passing_Year').value
+    let percentage = document.querySelector('#percentage').value
+    let college = document.querySelector('#college').value
+
+    if(coursName == "" || passingYear.trim()=="" || percentage.trim()=="" || college.trim()==""){
+        return false
+    }
+
+    return true
+
+}
+
+function checkExperienceDetails(){
+    let companyName = document.querySelector('#company_name').value
+    let startDate = document.querySelector('#start_date').value
+    let endDate = document.querySelector('#end_date').value
+    let designation = document.querySelector('#designation').value
+
+    if(companyName.trim()=="" || startDate.trim()=="" || endDate.trim()=="" || designation.trim()==""){
+        return false;
+    }
+    return true
+}
+
+function checkDocumentDetails(){
+    let resume = document.querySelector('resume').value
+    let profilePhoto = document.querySelector('profile_photo').value
+    let panCard =  document.querySelector('pan_card').value
+    let aadharCard =  document.querySelector('aadhar_card').value
+    let bankDetail = document.querySelector('bank_detail').value
+
+    if(resume == "" || profilePhoto=="" || panCard=="" || aadharCard=="" || bankDetail==""){
+        return false;
+    }
+    return true
+}
+
+
+
+
 function showErrorNumber(){
     let showError=document.querySelector("#errorPhonenumber");
     let phone_number=document.querySelector("#phone_number").value;
@@ -80,9 +122,9 @@ function showErrorNumber(){
 
 form_1_next_btn.addEventListener("click", function(){
     
-    // if(!checkBasicDetails()){
-    //     return false;
-    // }
+    if(!checkBasicDetails()){
+        return false;
+    }
 
 	form_1.style.display = "none";
 	form_2.style.display = "block";
@@ -104,6 +146,11 @@ form_2_back_btn.addEventListener("click", function(){
 });
 
 form_2_next_btn.addEventListener("click", function(){
+
+    if(!checkEducationDetails()){
+        return false;
+    }
+
 	form_2.style.display = "none";
 	form_3.style.display = "block";
 
@@ -124,6 +171,11 @@ form_3_back_btn.addEventListener("click", function(){
 });
 
 form_3_next_btn.addEventListener("click", function(){
+
+    if(!checkExperienceDetails()){
+        return false;
+    }
+
 	form_4.style.display = "block";
 	form_3.style.display = "none";
 
@@ -257,5 +309,7 @@ addEducation.addEventListener("click", function(){
 })
 
 function submitBtn(){
-    console.log("helloo")
+    if(!checkDocumentDetails()){
+        return false;
+    }
 }

@@ -8,6 +8,7 @@
     <title>HRMS</title>
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/employee-data.css">
+    <link rel="icon" type="image/x-icon" href="/images/fevicon_logo.jpeg">
 </head>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -96,7 +97,7 @@
 
                             <div class="input_wrap">
                                 <label class="text-label">state</label>
-                                <select name="state" id="state" onchange="fetch_state()">
+                                <select name="state" id="state" onchange="fetch_state()" required>
                                     <option value="" selected>Select state</option>
                                      <% for(let i=0;i<stateName.length;i++){%>
                                          <option value="<%=stateName[i].state_name%>"><%=stateName[i].state_name%></option>
@@ -120,7 +121,7 @@
                         <div class="form_container">
                             <div class="input_wrap">
                                 <label class="text-label">Course</label>
-                                <select name="course" id="course">
+                                <select name="course" id="course" required>
                                     <option value="" selected disabled>Select course</option>
                                     <option value="HSC">HSC</option>
                                     <option value="SSC">SSC</option>
@@ -129,17 +130,17 @@
                             <div class="input_wrap">
                                 <label for="Passing_Year">Passing Year</label>
                                 <input type="number" placeholder="e.g, 2023" name="passing_year" class="input"
-                                    id="passing_Year">
+                                    id="passing_Year" required>
                             </div>
                             <div class="input_wrap">
                                 <label for="percentage">Percentage</label>
                                 <input type="text" name="percentage" placeholder="e.g, 87.45" class="input"
-                                    id="percentage">
+                                    id="percentage" required>
                             </div>
                             <div class="input_wrap">
                                 <label for="college">College</label>
                                 <input type="text" placeholder="e.g, PG department of Computer Science" name="college"
-                                    class="input" id="college">
+                                    class="input" id="college" required>
                             </div>
                             <div class="input_wrap">
                                 <input type="hidden" name="moreEdu_data" id="hidden_edu" value="">
@@ -164,20 +165,20 @@
                             <div class="input_wrap">
                                 <label for="company_name">Company name</label>
                                 <input type="text" name="company_name" placeholder="e.g, abc company" class="input"
-                                    id="company_name">
+                                    id="company_name" required>
                             </div>
                             <div class="input_wrap">
                                 <label class="text-label" for="start_date">Start date</label>
-                                <input type="date" name="start_date" class="input" id="start_date">
+                                <input type="date" name="start_date" class="input" id="start_date" required>
                             </div>
                             <div class="input_wrap">
                                 <label class="text-label" for="end_date">End date</label>
-                                <input type="date" name="end_date" class="input" id="end_date">
+                                <input type="date" name="end_date" class="input" id="end_date" required>
                             </div>
                             <div class="input_wrap">
                                 <label for="designation">Designation</label>
                                 <input type="text" name="designation" placeholder="e.g, Web Designer" class="input"
-                                    id="designation">
+                                    id="designation" required>
                             </div>
                         </div>
                     </section>
@@ -188,23 +189,23 @@
                         <div class="form_container">
                             <div class="input_wrap">
                                 <label for="company">Resume</label>
-                                <input type="file" name="resume" class="input" id="resume">
+                                <input type="file" name="resume" class="input" id="resume" required>
                             </div>
                             <div class="input_wrap">
                                 <label for="company">Bank Cheque</label>
-                                <input type="file" name="bank_detail" class="input" id="resume">
+                                <input type="file" name="bank_detail" class="input" id="bank_detail" required>
                             </div>
                             <div class="input_wrap">
                                 <label for="company">PAN Card</label>
-                                <input type="file" name="pan_card" class="input" id="resume">
+                                <input type="file" name="pan_card" class="input" id="pan_card" required>
                             </div>
                             <div class="input_wrap">
                                 <label for="company">Aadhar Card</label>
-                                <input type="file" name="aadhar_card" class="input" id="resume">
+                                <input type="file" name="aadhar_card" class="input" id="aadhar_card" required>
                             </div>
                             <div class="input_wrap">
                                 <label for="company">Profile Photo</label>
-                                <input type="file" name="profile_photo" class="input" id="resume">
+                                <input type="file" name="profile_photo" class="input" id="profile_photo" required>
                             </div>
 
                         </div>

@@ -28,15 +28,15 @@ const postCode = async(req, res) => {
 const sendMail = async(email1) => {
 
     let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
+        host: "smtp.gmail.com",
         port: 587,
         auth: {
-            user: "alia21@ethereal.email",
-            pass: "hsXAYR5Z1t7gAdVGMN",
+            user: process.env.email,
+            pass: process.env.password
         },
     })
     let mailInfo = {
-        from: `"HRMS" <alia21@ethereal.email>`,
+        from: `"HRMS" <process.env.email>`,
         to: email1,
         subject: 'Welcome to HRMS',
         html: `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
@@ -49,7 +49,7 @@ const sendMail = async(email1) => {
         ;text-decoration:none;font-weight:600">Your Brand</a>
         </div>
         <p style="font-size:1.1em">Hi,</p>
-        <p>Thank you for choosing Your Brand. Use the following OTP to complete your Sign Up procedures. OTP is valid for 5 minutes</p>
+        <p>Thank you for choosing our Brand. Use the following OTP to complete your Sign Up procedures. OTP is valid for 5 minutes</p>
         <h2 style="background:
         #00466A
         ;margin: 0 auto;width: max-content;padding: 0 10px;color:

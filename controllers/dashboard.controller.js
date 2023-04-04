@@ -160,7 +160,7 @@ const getOnlineEmployeeLogs = async (req,res)=>{
     inner join hrms_employee on hrms_employee.emp_id=basic_info.fk_emp_id where basic_info.fk_emp_id  
     in (select basic_info_id from check_system where check_date = '${currentDate}' 
     and checkout_time is null 
-    and basic_info_id not in(select brake_syReadstem.basic_info_id 
+    and basic_info_id not in(select brake_system.basic_info_id 
     from check_system join brake_system on brake_system.basic_info_id = check_system.basic_info_id 
     where checkout_time is null and brake_system.brakeout_time is null and check_system.check_date = '${currentDate}'));`)
 

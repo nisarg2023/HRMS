@@ -33,7 +33,6 @@ const getSensation = async (req, res) => {
     inner join basic_info on sensation.fk_emp_id=basic_info.fk_emp_id 
     inner join document on sensation.fk_emp_id=document.fk_emp_id order by created_time; ` );
     const userData = await getUserBasicinfo(req.session.emp_id);
-    console.log(data);
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
     res.render('sensation', {data,"first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo, "emp_id":req.session.emp_id });
@@ -43,7 +42,7 @@ const postSensation = (req, res) => {
     try {
 
         var inputValue = req.body.sensation;
-        console.log("Input Value", inputValue);
+        
         const data = query(`insert into sensation (fk_emp_id,sensation_comment) values ('${req.session.emp_id}','${inputValue}')`)
         res.redirect("/dashbord/get-sensation")
 

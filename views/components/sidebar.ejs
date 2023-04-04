@@ -41,7 +41,8 @@
         <img
           class="employee-profile-image"
           src='/<%= profilePhoto%>'
-          alt="employee profile picture"
+          onerror="this.src='/images/man.png';this.onerror='';"
+          alt='/images/man.png'
         />
       </div>
       <div class="employee-name" >

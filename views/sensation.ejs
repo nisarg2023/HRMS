@@ -28,7 +28,8 @@
                         <div class="flex flex-row text-container container-right">
                             <div class="">
                                 <img class="sensation-img" src='/<%=data[i].profile_photo%>'
-                                    alt="employee profile picture" />
+                                onerror="this.src='/images/man.png';this.onerror='';"    
+                                alt="employee profile picture" />
                             </div>
                             <div class="contain flex flex-col">
                                 <p class="emp-name">
@@ -43,7 +44,8 @@
                             <div class="flex flex-row text-container">
                                 <div class="">
                                     <img class="sensation-img" src='/<%=data[i].profile_photo%>'
-                                        alt="employee profile picture" />
+                                    onerror="this.src='/images/man.png';this.onerror='';"    
+                                    alt="employee profile picture" />
                                 </div>
                                 <div class="contain ">
                                     <p class="emp-name">
@@ -60,7 +62,9 @@
 
                 <div class="flex flex-column input-tag">
                     <div class="input-img">
-                        <img class="sensation-img" src='/<%= profilePhoto%>' alt="employee profile picture" />
+                        <img class="sensation-img" src='/<%= profilePhoto%>'
+                        onerror="this.src='/images/man.png';this.onerror='';"
+                        alt="employee profile picture" />
                     </div>
 
                     <div class="input-text">

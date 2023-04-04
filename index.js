@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
@@ -8,8 +9,8 @@ const session = require('express-session');
 const conn = require('./config/dbConnect');
 const util = require('util');
 const query = util.promisify(conn.query).bind(conn);
-require('dotenv').config()
 
+const PORT = process.env.PORT
 
 
 //require routes
@@ -52,7 +53,7 @@ app.use("/*", pageNotFound);
 //     res.render('dashboard.ejs')
 // })
 
-app.listen(8000, () => {
+app.listen(PORT, () => {
     console.log("Server is running on port 8000");
 
 })

@@ -14,6 +14,11 @@ const checkIn = async() => {
     })
 
     let data = await res.json();
+    if(data.isAlreadyCheckin)
+    {
+        alert("goli beta masti nay");
+        location.reload();
+    }
 
     document.getElementById("checkin").classList.toggle("btn-checkin1");
     document.getElementById("brakein").classList.toggle("btn-brakein1");
@@ -85,6 +90,9 @@ const brakeOut = async() => {
 
 
 const brakeIn = async() => {
+    
+    if (confirm("Do you really want to break in") == true) {    
+    
 
     let res = await fetch("/brakein", {
         method: "post",
@@ -98,8 +106,17 @@ const brakeIn = async() => {
     })
 
     let data = await res.json();
+    console.log(data)
+    console.log("sss",data.isAlreadyBrakein)
+    if(data.isAlreadyBrakein)
+    {
+        console.log("if",data.isAlreadyBrakein)
+        alert("goli beta masti nay");
+        location.reload();
+        return;
+    }
 
-    if (confirm("Do you really want to break in") == true) {
+   
         document.getElementById("brakein").classList.toggle("btn-brakein1");
         document.getElementById("checkout").classList.toggle("btn-checkout1");
         document.getElementById("brakeout").classList.toggle("btn-brakeout1");
@@ -112,6 +129,7 @@ const brakeIn = async() => {
     }
 
 }
+
 
 
 const handelPageLoad = () => {

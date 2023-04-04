@@ -31,8 +31,8 @@ const sendMail = async(email1) => {
         host: "smtp.gmail.com",
         port: 587,
         auth: {
-            user: process.env.email,
-            pass: process.env.password
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
         },
     })
     let mailInfo = {

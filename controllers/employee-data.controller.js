@@ -89,7 +89,7 @@ const postEmployeedata = async(req, res) => {
 
             var i = 0;
             for (x of key) {
-                path.push(req.files[x][i].path)
+                path.push(await req.files[x][i].path)
 
             }
         

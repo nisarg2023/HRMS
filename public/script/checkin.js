@@ -14,13 +14,11 @@ const checkIn = async() => {
     })
 
     let data = await res.json();
-
-    console.log(data);
-
-
-
-
-
+    if(data.isAlreadyCheckin)
+    {
+        alert("goli beta masti nay");
+        location.reload();
+    }
 
     document.getElementById("checkin").classList.toggle("btn-checkin1");
     document.getElementById("brakein").classList.toggle("btn-brakein1");
@@ -28,83 +26,10 @@ const checkIn = async() => {
 
     document.getElementById("green").innerHTML += ` <div class="check-green">
     <span ><label>Checked In :</label>${moment(data.checkindate).utcOffset(tz).format("hh:mm:ss")}  </span>
-</div>`
-
-
-}
-
-const brakeOut = async() => {
-
-
-    let res = await fetch("/brakeout", {
-        method: "post",
-        headers: {
-            "Content-Type": 'application/json'
-        },
-        body: JSON.stringify({
-
-        })
-
-    })
-
-    let data = await res.json();
-
-
-
-    // 
-
-
-    document.getElementById("brakein").classList.toggle("btn-brakein1");
-    document.getElementById("checkout").classList.toggle("btn-checkout1");
-    document.getElementById("brakeout").classList.toggle("btn-brakeout1");
-
-
-    document.getElementById("yellow").innerHTML += `  <div class="check-yellow">
-    <span ><label >Break Out :</label> ${moment(data.breakoutdate).utcOffset(tz).format("hh:mm:ss")}</span>
-</div>`
-
-}
-
-
-
-const brakeIn = async() => {
-
-    let res = await fetch("/brakein", {
-        method: "post",
-        headers: {
-            "Content-Type": 'application/json'
-        },
-        body: JSON.stringify({
-
-        })
-
-    })
-
-    let data = await res.json();
-
-    console.log(data);
-
-
-
-
-    if (confirm("Do you really want to break in") == true) {
-        document.getElementById("brakein").classList.toggle("btn-brakein1");
-        document.getElementById("checkout").classList.toggle("btn-checkout1");
-        document.getElementById("brakeout").classList.toggle("btn-brakeout1");
-        document.getElementById("orange").innerHTML += `  <div class="check-orange">
-        <span ><label > Break In :</label> ${moment(data.brakeindate).utcOffset(tz).format("hh:mm:ss") }</span>
     </div>`
 
-
-
-    } else {
-        return false
-    }
-
-
-
-
 }
+
 const checkOut = async() => {
 
     let res = await fetch("/checkout", {
@@ -124,7 +49,7 @@ const checkOut = async() => {
         document.getElementsByClassName("check-inout")[0].style.display = "none";
         document.getElementsByClassName("check-inout")[0].innerHTML = "none";
 
-        document.getElementById("red").innerHTML += `  <div class="check-red">
+        document.getElementById("green").innerHTML += `  <div class="check-red">
         <span ><label > Check Out :</label>${moment(data.checkoutdata).utcOffset(tz).format("hh:mm:ss")}</span>
     </div>`
     } else {
@@ -132,6 +57,78 @@ const checkOut = async() => {
     }
 }
 //
+
+
+
+const brakeOut = async() => {
+
+
+    let res = await fetch("/brakeout", {
+        method: "post",
+        headers: {
+            "Content-Type": 'application/json'
+        },
+        body: JSON.stringify({
+
+        })
+
+    })
+
+    let data = await res.json();
+
+    document.getElementById("brakein").classList.toggle("btn-brakein1");
+    document.getElementById("checkout").classList.toggle("btn-checkout1");
+    document.getElementById("brakeout").classList.toggle("btn-brakeout1");
+
+
+    document.getElementById("green").innerHTML += `  <div class="check-yellow">
+    <span ><label >Break Out :</label> ${moment(data.breakoutdate).utcOffset(tz).format("hh:mm:ss")}</span>
+    </div>`
+
+}
+
+
+
+const brakeIn = async() => {
+    
+    if (confirm("Do you really want to break in") == true) {    
+    
+
+    let res = await fetch("/brakein", {
+        method: "post",
+        headers: {
+            "Content-Type": 'application/json'
+        },
+        body: JSON.stringify({
+
+        })
+
+    })
+
+    let data = await res.json();
+    console.log(data)
+    console.log("sss",data.isAlreadyBrakein)
+    if(data.isAlreadyBrakein)
+    {
+        console.log("if",data.isAlreadyBrakein)
+        alert("goli beta masti nay");
+        location.reload();
+        return;
+    }
+
+   
+        document.getElementById("brakein").classList.toggle("btn-brakein1");
+        document.getElementById("checkout").classList.toggle("btn-checkout1");
+        document.getElementById("brakeout").classList.toggle("btn-brakeout1");
+        document.getElementById("green").innerHTML += `  <div class="check-orange">
+        <span ><label > Break In :</label> ${moment(data.brakeindate).utcOffset(tz).format("hh:mm:ss") }</span>
+    </div>`
+
+    } else {
+        return false
+    }
+
+}
 
 
 
@@ -146,44 +143,14 @@ const handelPageLoad = () => {
     }, 1000);
 
     const currentDate = moment().format("YYYY-MM-DD");
-    console.log(currentDate);
     document.getElementById('date').innerText = currentDate
 
     let emp_id = document.getElementById("emp_id").value;
 
-    fetch(`/dashbord/getBrakeInfo?emp_id=${emp_id}&date=${currentDate}`)
-        .then(res => res.json())
-        .then((data) => {
-            for (x of data) {
-
-                // console.log(x)
-                if (x.brakein_time) {
-                    document.getElementById("brakein").classList.toggle("btn-brakein1");
-                    document.getElementById("checkout").classList.toggle("btn-checkout1");
-                    document.getElementById("brakeout").classList.toggle("btn-brakeout1");
-
-                    document.getElementById("orange").innerHTML += `  <div class="check-orange">
-                    <span ><label > Break In :</label> ${moment(x.brakein_time).utcOffset(tz).format("hh:mm:ss")}</span>
-                    </div>`;
-                }
-                
-                if (x.brakeout_time) {
-                    document.getElementById("brakein").classList.toggle("btn-brakein1");
-                    document.getElementById("checkout").classList.toggle("btn-checkout1");
-                    document.getElementById("brakeout").classList.toggle("btn-brakeout1");
-
-                    document.getElementById("yellow").innerHTML += `  <div class="check-yellow">
-                    <span ><label >Break Out :</label> ${moment(x.brakeout_time).utcOffset(tz).format("hh:mm:ss")}</span>
-                    </div>`
-                }
-
-
-            }
-        })
-
+   
     fetch(`/dashbord/getCkeckInOutInfo?emp_id=${emp_id}&date=${currentDate}`)
         .then(res => res.json())
-        .then((data) => {
+        .then(async (data) => {
             
             if (data[0].checkin_time) {
                 document.getElementById("green").innerHTML += ` <div class="check-green">
@@ -195,20 +162,46 @@ const handelPageLoad = () => {
 
             }
 
+             await fetch(`/dashbord/getBrakeInfo?emp_id=${emp_id}&date=${currentDate}`)
+            .then(res => res.json())
+            .then((data) => {
+                for (x of data) {
+    
+                    if (x.brakein_time) {
+                        document.getElementById("brakein").classList.toggle("btn-brakein1");
+                        document.getElementById("checkout").classList.toggle("btn-checkout1");
+                        document.getElementById("brakeout").classList.toggle("btn-brakeout1");
+    
+                        document.getElementById("green").innerHTML += `  <div class="check-orange">
+                        <span ><label > Break In :</label> ${moment(x.brakein_time).utcOffset(tz).format("hh:mm:ss")}</span>
+                        </div>`;
+                    }
+                    
+                    if (x.brakeout_time) {
+                        document.getElementById("brakein").classList.toggle("btn-brakein1");
+                        document.getElementById("checkout").classList.toggle("btn-checkout1");
+                        document.getElementById("brakeout").classList.toggle("btn-brakeout1");
+    
+                        document.getElementById("green").innerHTML += `  <div class="check-yellow">
+                        <span ><label >Break Out :</label> ${moment(x.brakeout_time).utcOffset(tz).format("hh:mm:ss")}</span>
+                        </div>`
+                    }
+    
+    
+                }
+            })
+
             if (data[0].checkout_time) {
 
                 document.getElementsByClassName("check-inout")[0].style.display = "none";
-                document.getElementsByClassName("check-inout")[0].innerHTML = "none";
 
-                document.getElementById("red").innerHTML += `  <div class="check-red">
+                document.getElementById("green").innerHTML += `  <div class="check-red">
                     <span ><label > Check Out :</label>${moment(data[0].checkout_time).utcOffset(tz).format("hh:mm:ss")}</span>
                     </div>`;
             }
 
 
         })
-
-
 
 }
 
@@ -230,7 +223,9 @@ async function addComment() {
         var comment = document.getElementById('comment').value = "";
 
     });
-    await updateCommentCard()
+    setTimeout( async()=>{
+        await updateCommentCard()
+    },100)
     // commentContainer.innerHTML += `<p>${comment}</p>`
 
     addCommentBtn.disabled = true
@@ -245,7 +240,6 @@ const updateCommentCard = async() => {
         .then(res => res.json())
         .then(data => {
             data.forEach((singleComment) => {
-                console.log(singleComment)
                 commentContainer.innerHTML += `<p>${singleComment.comment}</p>`
             })
         })
@@ -253,7 +247,6 @@ const updateCommentCard = async() => {
 
 let comment = document.getElementById('comment');
 const validateComment = () => {
-    console.log(comment.value)
     if (comment.value === "") {
         addCommentBtn.disabled = true
         addCommentBtn.style.backgroundColor = "var(--green-disable)"

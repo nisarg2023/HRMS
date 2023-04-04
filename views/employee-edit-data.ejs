@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="icon" type="image/x-icon" href="/images/fevicon_logo.jpeg">
     <link rel="stylesheet" href="/style/dashboard.css">
     <link rel="stylesheet" href="/style/employee-edit-data.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
 <body>
     <div class="dashboard-wrapper flex flex-row">
         <div class="dashboard-right">
@@ -22,7 +17,7 @@
         </div>
         <div class="dashboard-left">
             <%- include('components/header.ejs',{name:"Dashboard"}) %>
-                <div class="dashboard-data-container ">
+        <div class="dashboard-data-container ">
 
             <form action="/post-employee-edit" method="post">
                 <input type="hidden" name="id" value="<%= basic_info[0].basic_info_id %>">
@@ -104,10 +99,10 @@
                             <div>
                                 <p>Relationship :</p>
                                 <select name="relationship" id="status">
-                                    <%if(basic_info[0].relationship=='married') {%>
+                                    <%if(basic_info[0].relationship =='married') {%>
                                         <option value="married" selected>married</option>
                                         <option value="unmarried">unmarried</option>
-                                    <%} else if (basic_info[0].relationship=='unmarried') { %>
+                                    <%} else if (basic_info[0].relationship == 'unmarried') { %>
                                         <option value="married" >married</option>
                                         <option value="unmarried" selected>unmarried</option>
                                     <%}%>  
@@ -119,31 +114,31 @@
                             </div>
                             <div>
                                 <p>State :</p>
-                                <select name="state" id="stateName">
+                                <select name="state" id="stateName" onchange="fetchState()">
                                         <!-- <option hidden disabled selected value>
                                             select state
                                         </option> -->
-                                                <% for(let i=0; i < stateName.length; i++) {%>
-                                                    <option value="<%= stateName[i].state_name %>" <%
-                                                        if(stateName[i].state_name==basic_info[0].state) { %>
-                                                        selected <% } %> ><%= stateName[i].state_name %>
-                                                    </option>
-                                                    <% } %>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <p>City :</p>
-                                            <select name="city" id="city">
-                                                <option hidden disabled selected value>
-                                                    <%=basic_info[0].city%>
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <% for(let i=0; i < stateName.length; i++) {%>
+                                            <option value="<%= stateName[i].state_name %>" 
+                                                <% if(stateName[i].state_name==basic_info[0].state) { %>
+                                                selected <% } %> ><%= stateName[i].state_name %>
+                                            </option>
+                                            <% } %>
+                                </select>
+                            </div>
+                            <div>
+                                <p>City :</p>
+                                <select name="city" id="city">
+                                    <option hidden disabled selected value>
+                                        <%=basic_info[0].city%>
+                                    </option>
+                                </select>
+                            </div>
                             </div>
                         </div>
-
+                        </div>
+                    </div>
+                                   
                         <div id="table2" style="display: none;">
                         <div class="mainhedar">
                            <p>Education Info</p>
@@ -155,6 +150,7 @@
                                    <%for(i=0;i<education.length;i++){%>
                                 <div class="form2col1">
                                     <div>
+                                        <input type="text" name="edu_id" value="<%= education[i].education_id %>" hidden>
                                         <p>Course</p>
                                         <select name="course_name" id="status">
                                             <%if(education[0].course_name=='HSC') {%>
@@ -189,87 +185,56 @@
                         </div>   
                         <button type="button" id="add-education-button">+</button>
                         </div>
-
+           
                         <div id="table3" style="display: none;">
-
+                           
                             <div class="thirdone">
                                 <div class="mainhedar">
                                     <p>Work Experience</p>
                                 </div>
                                 <div class="form3">
                                     <%for(i=0;i<work.length;i++){%>
-                                        <div class="form3col1">
-                                            <div>
-                                                <p>Comapany Name :</p>
-                                                <input type="text" id="company_name" name="company_name"
-                                                    value="<%=work[i].company_name%>" />
-                                            </div>
-                                            <div>
-                                                <p>From :</p>
-                                                <input type="date" id="start-date" name="start_date"
-                                                    value="<%=work[i].start_date.toJSON('dd-mm-yyyy').slice(0,10)%>" />
-                                            </div>
+                                    <input type="text" name="workexp_id" value="<%= work[i].expreience_id %>" hidden>
+                                    <div class="form3col1">
+                                        <div>
+                                            <p>Comapany Name :</p>
+                                            <input type="text" id="company_name" name="company_name" value="<%=work[i].company_name%>" />
                                         </div>
-                                        <div class="form3col2">
-                                            <div>
-                                                <p>To :</p>
-                                                <input type="date" id="end-date" name="end_date"
-                                                    value="<%=work[i].end_date.toJSON('dd-mm-yyyy').slice(0,10)%>" />
-                                            </div>
-                                            <div>
-                                                <p>Designation :</p>
-                                                <input type="text" name="designation"
-                                                    value="<%=work[i].designation%>" />
-                                            </div>
+                                        <div>
+                                            <p>From :</p>
+                                            <input type="date" id="start-date" name="start_date" value="<%=work[i].start_date.toJSON('dd-mm-yyyy').slice(0,10)%>" />
                                         </div>
-                                        <%}%>
+                                    </div>
+                                    <div class="form3col2">
+                                        <div>
+                                            <p>To :</p> 
+                                            <input type="date" id="end-date" name="end_date" value="<%=work[i].end_date.toJSON('dd-mm-yyyy').slice(0,10)%>" />
+                                        </div>
+                                        <div>
+                                            <p>Designation :</p>
+                                            <input type="text" name="designation" value="<%=work[i].designation%>" />
+                                        </div>
+                                    </div>
+                                    <%}%>
                                 </div>
                             </div>
                         </div>
-                        <div class="sbt" align="center">
-                            <input type="submit" class="button button1" value="submit">
-                        </div>
-                    </form>
-                </div>
-        </div>
+                    <div class="sbt"  align="center">    
+                        <input type="submit" class="button button1" value="submit">
+                    </div>
+        </form>
+    </div>
+    </div>
     </div>
 </body>
 <script>
-
-    function removePhoto() {
-        alert("Remove Photo!...")
-        fetch("/post-remove-photo", {
-            method: "post",
-            headers: {
-                "Content-Type": 'application/json'
-            },
-            body: {
-
-            }
-        })
-    }
-    function addPhoto() {
-        alert("Add Photo!...")
-        
-        var addPhoto=document.getElementById('add_photo').value;
-        console.log(addPhoto);
-        fetch("/post-add-photo", {
-            method: "post",
-            headers: {
-                "Content-Type": 'application/json'
-            },
-            body: {
-
-            }
-        })
-    }
     document.addEventListener('DOMContentLoaded', () => {
         const stateSelect = document.getElementById('stateName');
         const citySelect = document.getElementById('city');
         stateSelect.addEventListener('change', () => {
             const stateId = stateSelect.value;
             console.log(stateId)
-            fetch(`/get-city-data?stateValue=${stateId}`)
+            fetch(`/employee/get-city-data?stateValue=${stateId}`)
                 .then((response) => {return response.json()})
                 .then((cityData) => {
                     // console.log(cityData)
@@ -329,7 +294,7 @@
     let table3 = document.getElementById('table3');
     Basic_info.style.fontWeight = '600';
 
-    Basic_info.addEventListener('click', (req, res) => {
+    Basic_info.addEventListener('click',(req,res)=>{
         Basic_info.style.fontWeight = '600';
         Education_info.style.fontWeight = '100';
         Work_Experince.style.fontWeight = '100';
@@ -337,30 +302,30 @@
         Basic_info.style.borderWidth = '2px 2px 2px 0px'
         Education_info.style.borderBottom = 'none';
         Work_Experince.style.borderBottom = 'none'
-        if (table1.style.display == "none") {
+        if(table1.style.display == "none"){
             table1.style.display = "block"
             table2.style.display = "none"
             table3.style.display = "none"
         }
-
+        
     })
-    Education_info.addEventListener('click', (req, res) => {
+    Education_info.addEventListener('click',(req,res)=>{
         Basic_info.style.fontWeight = '100';
-
+        
         Education_info.style.fontWeight = '600';
         Work_Experince.style.fontWeight = '100';
 
         Basic_info.style.borderBottom = 'none';
         Education_info.style.borderBottom = '1px 1px 1px 0px solid red'
         Work_Experince.style.borderBottom = 'none'
-
-        if (table2.style.display == "none") {
+        
+        if(table2.style.display == "none"){
             table1.style.display = "none"
             table2.style.display = "block"
             table3.style.display = "none"
         }
     })
-    Work_Experince.addEventListener("click", (req, res) => {
+    Work_Experince.addEventListener("click",(req,res)=>{
         Basic_info.style.fontWeight = '100';
         Education_info.style.fontWeight = '100';
         Work_Experince.style.fontWeight = '600';
@@ -368,14 +333,14 @@
         Basic_info.style.borderBottom = 'none';
         Education_info.style.borderBottom = 'none';
         Work_Experince.style.borderBottom = '1px 1px 1px 0px solid red'
+        
 
-
-        if (table3.style.display == "none") {
+        if(table3.style.display == "none"){
             table1.style.display = "none"
-            table2.style.display = "none"
-            table3.style.display = "block"
+        table2.style.display = "none"
+        table3.style.display = "block"
         }
-
+       
     })
 
 
@@ -389,5 +354,4 @@
 
 
 </script>
-
 </html>

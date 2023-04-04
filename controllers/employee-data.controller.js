@@ -17,7 +17,6 @@ var storage = multer.diskStorage({
         cb(null, `./uploads/${files.fieldname}/`);
     },
     filename: function(req, files, cb, ) {
-        //  console.log(files)
 
         cb(null, files.originalname.split(".")[0] + Date.now() + ".jpg");
     }
@@ -90,7 +89,7 @@ const postEmployeedata = async(req, res) => {
 
             var i = 0;
             for (x of key) {
-                path.push(req.files[x][i].path)
+                path.push(await req.files[x][i].path)
 
             }
         
@@ -126,8 +125,6 @@ const postEmployeedata = async(req, res) => {
 
             let moreEdudata1 = JSON.parse(moreEdudata);
 
-            // console.log(moreEdudata1.length);
-            console.log(moreEdudata1);
             if (moreEdudata1) {
 
                 for (i = 0; i < moreEdudata1.length; i++) {
@@ -148,7 +145,6 @@ const postEmployeedata = async(req, res) => {
 
                 var experience_info = await query(experience_query)
             };
-            var experience_info = await query(experience_query)
             conn.commit()
             res.redirect('../dashbord');
         })
@@ -164,7 +160,6 @@ const postEmployeedata = async(req, res) => {
 const getEmployeeBasicInfo = async(req, res) => {
     basic = `select basic_info_id,first_name,last_name,birth_date,relationship,blood_group,gender,city,state from basic_info;`
     var basic_details = await query(basic);
-    console.log(basic_details)
     res.render("employee-basic-info.ejs", { basic_details })
 }
 
@@ -172,9 +167,6 @@ const getEmployeeBasicInfo = async(req, res) => {
 //Get Particular employee data from  ID
 const getEmployeeEdit = async (req,res)=>{
   let id = req.query.id;
-//   console.log(id)
-
-//   console.log(req.session.emp_id)
 
         state_query = `select state_name from state_master;`
         let stateName = await query(state_query);
@@ -229,13 +221,9 @@ const postEmployeeEdit = async(req, res) => {
     const marks = req.body.marks;
     const college_school = req.body.college_school;
 
-    console.log(typeof(course_name) , course_name ,req.body.new_passing_year)
-    console.log(typeof(edu_id), edu_id)
-
     if (typeof(course_name) == "string") {
         let expSql = `update education set course_name='${course_name}',passing_year='${passing_year}',marks='${marks}',college_school='${college_school}' where education_id=${edu_id}`;
         let expSql1 = await query(expSql)
-        // console.log("expsql1", expSql1)
 
     } else if(typeof(course_name) == "object") {
         for (var i = 0; i < course_name.length; i++) {
@@ -246,12 +234,10 @@ const postEmployeeEdit = async(req, res) => {
 
     if(req.body.new_course_name){
         if (typeof(req.body.new_course_name) == "string") {
-            console.log("if", typeof(req.body.new_course_name))
             let expSql =  `insert into education (fk_emp_id,course_name, passing_year, marks, college_school) values('${req.session.emp_id}','${req.body.new_course_name}','${req.body.new_passing_year}','${req.body.new_marks}','${req.body.new_college_school}')`
             let expSql1 = await query(expSql)
     
         } else if(typeof(req.body.new_course_name) == "object") {
-            console.log("else", typeof(req.body.new_course_name))
             for (var i = 0; i < req.body.new_course_name.length; i++) {
 
                 let expSql =  `insert into education (fk_emp_id,course_name, passing_year, marks, college_school) values('${req.session.emp_id}','${req.body.new_course_name[i]}','${req.body.new_passing_year[i]}','${req.body.new_marks[i]}','${req.body.new_college_school[i]}')`
@@ -272,13 +258,13 @@ const postEmployeeEdit = async(req, res) => {
     // console.log(start);
     // console.log(end);
     if (typeof(c_name, desig, start, end) == "string") {
-        let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${id}`;
+        let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${req.body.workexp_id}`;
         let expSql1 = await query(expSql)
         // console.log("expsql1", expSql1)
 
     } else {
         for (i = 0; i < c_name.length; i++) {
-            let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${id}`;
+            let expSql = `update expreience set company_name='${c_name}',designation='${desig}',start_date='${start}',end_date='${end}' where expreience_id=${req.body.workexp_id}`;
             let expSql1 = await query(expSql)
             // console.log("expsql1", expSql1)
         }

@@ -8,7 +8,7 @@ const session = require('express-session');
 const conn = require('./config/dbConnect');
 const util = require('util');
 const query = util.promisify(conn.query).bind(conn);
-
+require('dotenv').config()
 
 
 

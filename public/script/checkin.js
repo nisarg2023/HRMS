@@ -14,6 +14,11 @@ const checkIn = async() => {
     })
 
     let data = await res.json();
+    if(data.isAlreadyCheckin)
+    {
+        alert("goli beta masti nay");
+        location.reload();
+    }
 
 
 
@@ -67,6 +72,9 @@ const brakeOut = async() => {
 
 
 const brakeIn = async() => {
+    
+    if (confirm("Do you really want to break in") == true) {    
+    
 
     let res = await fetch("/brakein", {
         method: "post",
@@ -80,12 +88,13 @@ const brakeIn = async() => {
     })
 
     let data = await res.json();
+    console.log(data)
+    if(data.isAlreadyBrakein)
+    {
+        alert("goli beta masti nay");
+        location.reload();
+    }
 
-
-
-
-
-    if (confirm("Do you really want to break in") == true) {
         document.getElementById("brakein").classList.toggle("btn-brakein1");
         document.getElementById("checkout").classList.toggle("btn-checkout1");
         document.getElementById("brakeout").classList.toggle("btn-brakeout1");

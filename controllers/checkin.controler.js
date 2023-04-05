@@ -17,11 +17,18 @@ const get_checkin = async(req, res) => {
     const date = moment().format('YYYY-MM-DD HH:mm:ss')
 
         try {
+                let isAlreadyCheckin = await query(`SELECT * FROM check_system where basic_info_id = ${req.session.emp_id} and check_date = "${moment().format('YYYY-MM-DD')}";`)
+                if(isAlreadyCheckin.length!=0) 
+                {
+                    res.json({"isAlreadyCheckin": true})
+                }
+                else{
                 let querychecktime = ` insert into check_system (checkin_time,basic_info_id,check_date) values("${date}","${req.session.emp_id}","${date}")`
                 
                 await query(querychecktime);
 
                 res.json({ msg: "okay-checkin", checkindate: date });
+                }
         }
         catch (err) {
                 res.send(err);
@@ -75,12 +82,22 @@ const get_brakein = async(req, res) => {
 
     try {
 
+        let isAlreadyBrakein = await query(`SELECT  brakeout_time  FROM brake_system  where idbrake_system in (SELECT  max(idbrake_system)  FROM brake_system where basic_info_id = ${req.session.emp_id} and brake_date = "${moment().format('YYYY-MM-DD')}");`)
+
+        if(isAlreadyBrakein.length!=0)
+        {
+            
+            res.json({"isAlreadyBrakein": true});
+        }
+        else{
         let querybraketime = `insert into brake_system (brakein_time,basic_info_id,brake_date) values("${date}","${req.session.emp_id}","${date}")`;
         
         await query(querybraketime);
 
         res.json({ msg: "okay-brakein", brakeindata: date });
+        }
     } catch (err) {
+        console.log(err);
         res.send(err);
     }
 

@@ -50,8 +50,8 @@ const getUserBasicinfo = async(id = "") => {
 
 }
 
-
-const upload = multer({ storage: storage }).fields([{ name: 'resume', maxCount: 1 },
+const fileSize = 1024 * 1024;
+const upload = multer({ storage: storage,limits: { fileSize: fileSize }, }).fields([{ name: 'resume', maxCount: 1 },
     { name: 'bank_detail', maxCount: 1 },
     { name: 'pan_card', maxCount: 1 },
     { name: 'aadhar_card', maxCount: 1 },

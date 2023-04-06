@@ -6,6 +6,7 @@ const leaveApplication = require('../controllers/leave-application.controller')
 const employeeLog = require('../controllers/employeeLog.controller')
 
 const attendanceSummary = require('../controllers/attendance.summary.controller')
+const sensation =require('../controllers/sensation.controller')
 
 router.get('/', dashboard.getDashboard);
 router.get('/get-hotline', dashboard.getHotlines);
@@ -31,6 +32,10 @@ router.get('/onlineEmployeeData',dashboard.getOnlineEmployeeLogs);
 router.get('/breakEmployeeData',dashboard.getBreakEmployeeLogs);
 router.get('/offlineEmployeeData',dashboard.getOfflineEmployeeLogs);
 router.get('/leaveEmployeeData',dashboard.getLeaveEmployeeData);
+
+// router for sensation
+router.get('/get-sensation',sensation.getSensation); 
+router.post('/post-sensation',sensation.postSensation); 
 
 
 module.exports = router;

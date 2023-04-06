@@ -26,6 +26,7 @@ const checkIn = async() => {
 
     document.getElementById("green").innerHTML += ` <div class="check-green">
     <span ><label>Checked In :</label>${moment(data.checkindate).utcOffset(tz).format("hh:mm:ss")}  </span>
+    console.log(${moment(data.checkindate).utcOffset(tz).format("hh:mm:ss")})
     </div>`
 
 }
@@ -133,6 +134,7 @@ const brakeIn = async() => {
 
 
 const handelPageLoad = () => {
+    document.getElementById("Time").innerHTML = new Date().toLocaleTimeString();
     document.cookie = `tz=${tz}`;
     setInterval(() => {
         time = new Date();
@@ -195,7 +197,7 @@ const handelPageLoad = () => {
 
                 document.getElementsByClassName("check-inout")[0].style.display = "none";
 
-                document.getElementById("green").innerHTML += `  <div class="check-red">
+                document.getElementById("green").innerHTML += `<div class="check-red">
                     <span ><label > Check Out :</label>${moment(data[0].checkout_time).utcOffset(tz).format("hh:mm:ss")}</span>
                     </div>`;
             }
@@ -212,6 +214,7 @@ let commentContainer = document.getElementById('comment-container')
 
 async function addComment() {
     var comment = document.getElementById('comment').value;
+    comment = comment.toString()
     fetch(`/dashbord/get-comment?comment=${comment}`, {
         method: "GET",
         headers: {
@@ -240,9 +243,11 @@ const updateCommentCard = async() => {
         .then(res => res.json())
         .then(data => {
             data.forEach((singleComment) => {
-                commentContainer.innerHTML += `<p>${singleComment.comment}</p>`
-            })
+                let p = document.createElement('p')
+                p.innerText += `${singleComment.comment}`
+                commentContainer.appendChild(p)
         })
+    })
 }
 
 let comment = document.getElementById('comment');

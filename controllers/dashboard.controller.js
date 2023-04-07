@@ -162,7 +162,7 @@ const getOnlineEmployeeLogs = async (req,res)=>{
     and checkout_time is null 
     and basic_info_id not in(select brake_system.basic_info_id 
     from check_system join brake_system on brake_system.basic_info_id = check_system.basic_info_id 
-    where checkout_time is null and brake_system.brakeout_time is null and check_system.check_date = '${currentDate}'));`)
+    where checkout_time is null and brake_system.brakeout_time is null and check_system.check_date = '${currentDate}' and brake_system.brake_date = '${currentDate}'));`)
 
     res.json(OnlineEmployeeData)
 }
@@ -184,7 +184,7 @@ const getBreakEmployeeLogs = async (req,res)=>{
     in 
     (select brake_system.basic_info_id from check_system join brake_system
      on brake_system.basic_info_id = check_system.basic_info_id 
-     where checkout_time is null and brake_system.brakeout_time is null and check_system.check_date = '${currentDate}')`)
+     where checkout_time is null and brake_system.brakeout_time is null and check_system.check_date = '${currentDate}' and brake_system.brake_date = '${currentDate}')`)
 
     res.json(BreakEmployeeData)
 }

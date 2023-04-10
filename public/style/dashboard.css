@@ -454,7 +454,7 @@ li{
 .user-profile-edit{
     position: absolute;
     width: 210px;
-    z-index: 2;
+    z-index: 99;
     bottom: 10px;
     left: 250px;
     

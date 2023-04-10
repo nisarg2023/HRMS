@@ -1,5 +1,4 @@
 const tz = moment().utcOffset()
-
 const checkIn = async() => {
 
     let res = await fetch("/checkin", {

@@ -78,7 +78,8 @@
                         <%= moment(data1[i].check_date).utcOffset(tz).format("YYYY-MM-DD") %>
                     </td>
                     <td>
-                        <%=moment(data1[i].checkin_time).utcOffset(tz).format("hh:mm:ss")%>
+                        <%=moment(data1[i].checkin_time).utcOffset(parseInt(tz)).format("hh:mm:ss")%>
+                        
                     </td>
                     <td>
                         <% if(data1[i].checkout_time){ %>
@@ -92,7 +93,6 @@
                     <td><span><%=  Math.floor(dailyWorkHoursArr[i]/60) %> Hours <%= dailyWorkHoursArr[i]%60 %> Min</span><br />
                         <progress id="file" value="<%= dailyWorkHoursArr[i] %>" max="540"></progress></td>
 
-                       
                     <%} %>
 
 

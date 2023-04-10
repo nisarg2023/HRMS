@@ -90,7 +90,7 @@ const attendancy_summary = async(req, res) => {
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
 
-    res.render("attendance", { data1, dailyBreakTime, monthlyBreakArr, dailyWorkHoursArr,monthlyWorkHours, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo, "tz":`${req.cookies.tz}` })
+    res.render("attendance", { data1, dailyBreakTime, monthlyBreakArr, dailyWorkHoursArr,monthlyWorkHours, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo, "tz":`${parseInt(req.cookies.tz)}` })
 }
 
 module.exports = { attendancy_summary }

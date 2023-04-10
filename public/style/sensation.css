@@ -83,12 +83,13 @@
     outline: none;
 }
 .input-tag{
-    
+    margin-top: 20px;
     bottom: 10px;
-    position:fixed;
+    position:absolute;
     width: 77%;
     align-items: center;
     justify-content: center;
+    z-index: -1;
 }
 
 .form input:focus {

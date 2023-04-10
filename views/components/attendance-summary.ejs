@@ -4,7 +4,7 @@
             <div class="box">
                 <label> Days</label>
                 <p>
-                    <%= data1.length  %>
+                    <%= attendanceData.data1.length  %>
                 </p>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="col_7">
             <div class="box">
                 <label> Total Office</label>
-               <p><%= data1.length*9 %>(H)</p> 
+               <p><%= attendanceData.data1.length*9 %>(H)</p> 
                 
             </div>
         </div>
@@ -44,7 +44,7 @@
             <div class="box">
                 <label> Total worked</label>
                 <p>
-                    <%= Math.floor(monthlyWorkHours/60) %> Hours <%= monthlyWorkHours%60 %> Min
+                    <%= Math.floor(attendanceData.monthlyWorkHours/60) %> Hours <%= attendanceData.monthlyWorkHours%60 %> Min
                 </p>
             </div>
         </div>
@@ -53,7 +53,7 @@
             <div class="box">
                 <label> Productivity Ratio</label>
                 <p>
-                    <%= (parseFloat(((monthlyWorkHours/60)/(data1.length*9))*100).toFixed(2)) %> %
+                    <%= (parseFloat(((attendanceData.monthlyWorkHours/60)/(attendanceData.data1.length*9))*100).toFixed(2)) %> %
                 </p>
             </div>
         </div>
@@ -72,26 +72,26 @@
 
 
             </tr>
-            <% for(i= data1.length-1;i>=0;i--){%>
+            <% for(i= attendanceData.data1.length-1;i>=0;i--){%>
                 <tr>
                     <td>
-                        <%= moment(data1[i].check_date).utcOffset(tz).format("YYYY-MM-DD") %>
+                        <%= moment(attendanceData.data1[i].check_date).utcOffset(tz).format("YYYY-MM-DD") %>
                     </td>
                     <td>
-                        <%=moment(data1[i].checkin_time).utcOffset(parseInt(tz)).format("hh:mm:ss")%>
+                        <%=moment(attendanceData.data1[i].checkin_time).utcOffset(parseInt(tz)).format("hh:mm:ss")%>
                         
                     </td>
                     <td>
-                        <% if(data1[i].checkout_time){ %>
-                            <%=moment(data1[i].checkout_time).utcOffset(tz).format("hh:mm:ss")%>
+                        <% if(attendanceData.data1[i].checkout_time){ %>
+                            <%=moment(attendanceData.data1[i].checkout_time).utcOffset(tz).format("hh:mm:ss")%>
                         <% } %>
                     </td>
                     <td>
-                        <%=  Math.floor(monthlyBreakArr[i]/60) %> Hours <%= monthlyBreakArr[i]%60 %> Min
+                        <%=  Math.floor(attendanceData.monthlyBreakArr[i]/60) %> Hours <%= attendanceData.monthlyBreakArr[i]%60 %> Min
                     </td>
 
-                    <td><span><%=  Math.floor(dailyWorkHoursArr[i]/60) %> Hours <%= dailyWorkHoursArr[i]%60 %> Min</span><br />
-                        <progress id="file" value="<%= dailyWorkHoursArr[i] %>" max="540"></progress></td>
+                    <td><span><%=  Math.floor(attendanceData.dailyWorkHoursArr[i]/60) %> Hours <%= attendanceData.dailyWorkHoursArr[i]%60 %> Min</span><br />
+                        <progress id="file" value="<%= attendanceData.dailyWorkHoursArr[i] %>" max="540"></progress></td>
 
                     <%} %>
 

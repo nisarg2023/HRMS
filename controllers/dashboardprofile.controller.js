@@ -73,6 +73,8 @@ const empolyeeAttendanceData = async (req,res) =>{
 
 
     }
+    // const data =await query(`select * from basic_info where fk_emp_id = ? `,29)
+
     let attendanceObj = {dailyBreakTime,monthlyWorkHours,monthlyBreakArr,dailyWorkHoursArr,data1}
     console.log(attendanceObj)
     return attendanceObj

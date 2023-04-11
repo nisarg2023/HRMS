@@ -9,6 +9,7 @@ const session = require('express-session');
 const conn = require('./config/dbConnect');
 const util = require('util');
 const query = util.promisify(conn.query).bind(conn);
+const socketIo = require('socket.io');
 
 const PORT = process.env.PORT
 
@@ -53,7 +54,22 @@ app.use("/*", pageNotFound);
 //     res.render('dashboard.ejs')
 // })
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log("Server is running on port 8000");
+
+});
+const io = socketIo(server)
+io.on('connection',(socket) => {
+    console.log("connect to socket");
+
+    socket.on('chat',({emp_id,inputValue,userImage,userName})=>{
+      
+        io.emit('chat',{emp_id,inputValue,userImage,userName})
+    })
+    
+
+    socket.on('disconnect', function () {
+        console.log('A user disconnected');
+    })
 
 })

@@ -32,19 +32,19 @@ const getSensation = async (req, res) => {
     const data= await query(`select sensation.fk_emp_id,sensation.comment_id,basic_info.first_name,sensation.sensation_comment,document.profile_photo from sensation 
     inner join basic_info on sensation.fk_emp_id=basic_info.fk_emp_id 
     inner join document on sensation.fk_emp_id=document.fk_emp_id order by created_time; ` );
-    const userData = await getUserBasicinfo(req.session.emp_id);
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
     res.render('sensation', {data,"first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo, "emp_id":req.session.emp_id });
 }
 
-const postSensation = (req, res) => {
+const postSensation = async(req, res) => {
     try {
 
-        var inputValue = req.body.sensation;
+        var inputValue = req.body.inputValue;
         
         const data = query(`insert into sensation (fk_emp_id,sensation_comment) values ('${req.session.emp_id}','${inputValue}')`)
-        res.redirect("/dashbord/get-sensation")
+    
+
 
     }
     catch {

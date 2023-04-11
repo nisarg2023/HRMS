@@ -62,9 +62,9 @@ const io = socketIo(server)
 io.on('connection',(socket) => {
     console.log("connect to socket");
 
-    socket.on('chat',({emp_id,inputValue,userImage,userName})=>{
-      
-        io.emit('chat',{emp_id,inputValue,userImage,userName})
+    socket.on('chat',({emp_id,inputValue,userImage,userName,image})=>{
+        console.log(image)
+        io.emit('chat',{emp_id,inputValue,userImage,userName,image})
     })
     
 

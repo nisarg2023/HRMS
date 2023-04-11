@@ -62,14 +62,6 @@ const attendancy_summary = async(req, res) => {
 
 
     
-    for (let i = 0; i < data1.length; i++) {
-        dailyWorkHoursArr.push(data1[i].total_office_time);
-        monthlyWorkHours += Number(data1[i].total_office_time);
-        // in minutes
-        
-
-
-    }
 
     for (let i = 0; i < data1.length; i++) {
         console.log("checkdate",data1[i].check_date)
@@ -84,6 +76,16 @@ const attendancy_summary = async(req, res) => {
         monthlyBreakArr.push(dailyBreakTime);
 
         dailyBreakTime = 0;
+
+
+    }
+
+
+    for (let i = 0; i < data1.length; i++) {
+        dailyWorkHoursArr.push(data1[i].total_office_time - monthlyBreakArr[i]);
+        monthlyWorkHours += Number(data1[i].total_office_time);
+        // in minutes
+        
 
 
     }

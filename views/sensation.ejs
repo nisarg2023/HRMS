@@ -21,8 +21,8 @@
         <div class="dashboard-left">
             <%- include('components/header.ejs',{name:"Dashboard"}) %>
             <div class="dashboard-data-container sensation-wrapper flex flex-row">
-                
-                <div class="sensation-messages">
+                <input type="hidden" id="emp_id" value="<%=emp_id%>">
+                <div class="sensation-messages" id="messageContaine">
                     <% for(i=0;i<data.length;i++){%>
                        <% if(data[i].fk_emp_id == emp_id){ %>
                         <div class="flex flex-row text-container container-right">
@@ -62,17 +62,17 @@
 
                 <div class="flex flex-column input-tag">
                     <div class="input-img">
-                        <img class="sensation-img" src='/<%= profilePhoto%>'
+                        <img id ="userImage"class="sensation-img" src='/<%= profilePhoto%>'
                         onerror="this.src='/images/man.png';this.onerror='';"
                         alt="employee profile picture" />
                     </div>
 
                     <div class="input-text">
-                        <form action="/dashbord/post-sensation" method="post" onsubmit="" class="form">
+                        <form  method="post" onsubmit="" class="form">
 
 
                             <input type="text" name="sensation" id="sensation">
-                            <input type="submit" value=" Post " class="sensation-submit">
+                            <input type="button" value=" Post " class="sensation-submit" onclick="addSesaction()">
                         </form>
                     </div>
                 </div>
@@ -83,10 +83,27 @@
 
 
 </body>
+<script src="/socket.io/socket.io.js"></script>
 <script>
+
+    var socket = io();
+    socket.on('message',() => {console.log("hello!")})
+
+    
+    
+
+    var userMesage = document.getElementById('userMessage')
+    var messageContaine = document.getElementById('messageContaine');
+    var emp_id = document.getElementById('emp_id').value;
+    var userImage = document.getElementById('userImage').src;
+    var userName = document.getElementById('userName').innerText;
+
     function addSesaction() {
-        var userMesage = document.getElementById('userMessage')
-        var inputValue = document.getElementById('sensation').value;
+       
+    var inputValue = document.getElementById('sensation').value;
+        socket.emit('chat',{emp_id,inputValue,userImage,userName});
+       
+       
         fetch(`/dashbord/post-sensation`, {
             method: "POST",
             headers: {
@@ -99,11 +116,57 @@
             .then((res) => {
                 return res.json()
             })
-            .then((res) => {
-                console.log("data Received");
+            .then((data) => {
+                console.log(data)
             })
     }
+    socket.on('chat',(data) => {
+        
+        let s=``;
 
+        if(data.emp_id == emp_id)
+        {
+            s+=`<div class="flex flex-row text-container container-right">
+                            <div class="">
+                                <img class="sensation-img" src='${data.userImage}'
+                                onerror="this.src='/images/man.png';this.onerror='';"    
+                                alt="employee profile picture" />
+                            </div>
+                            <div class="contain flex flex-col">
+                                <p class="emp-name">
+                                    ${data.userName}
+                                </p>
+                                <p class="emp-comment">
+                                    ${data.inputValue}
+                                </p>
+                            </div>
+                        </div>`
+        }
+        else{
+            s+=`<div class="flex flex-row text-container">
+                                <div class="">
+                                    <img class="sensation-img" src=${data.userImage}
+                                    onerror="this.src='/images/man.png';this.onerror='';"    
+                                    alt="employee profile picture" />
+                                </div>
+                                <div class="contain flex flex-col">
+                                    <p class="emp-name">
+                                        ${data.userName}
+                                    </p>
+                                    <p class="emp-comment">
+                                        ${data.inputValue}
+                                    </p>
+                                </div>
+                            </div>`
+        }
+
+        messageContaine.innerHTML+=s;
+        messageContaine.scrollTo(0, messageContaine.scrollHeight);
+       
+    })
+
+
+    messageContaine.scrollTo(0, messageContaine.scrollHeight);
 
 </script>
 

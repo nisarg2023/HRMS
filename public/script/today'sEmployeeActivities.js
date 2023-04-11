@@ -39,7 +39,7 @@ const getAllEmployeesLogs = () => {
                 if (x.brakein_time) {
                     s += `<div class="flex">
             <div class="employee_name"><label>${x.first_name} ${x.last_name}</label> </div>
-             <div class="today_logs brake_in"><span>Brake in</span> </div>
+             <div class="today_logs brake_in"><span>Break in</span> </div>
                 <div class="time"><label>${moment(x.brakein_time).utcOffset(tz).format("hh:mm:ss")}</label> </div>
                 </div>`
 
@@ -47,7 +47,7 @@ const getAllEmployeesLogs = () => {
                     if (x.brakeout_time) {
                         s += `<div class="flex">
             <div class="employee_name"><label>${x.first_name} ${x.last_name}</label> </div>
-              <div class="today_logs brake_out"><span>Brake Out</span> </div>
+              <div class="today_logs brake_out"><span>Break Out</span> </div>
                 <div class="time"><label>${moment(x.brakeout_time).utcOffset(tz).format("hh:mm:ss")}</label> </div>
                 </div>`
                     }

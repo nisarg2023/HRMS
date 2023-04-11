@@ -6,7 +6,7 @@
     <div class="record">
         <div class="col_3" >
             <div class="title"><label> Attendance</label> </div>
-            <div class="detail"><label > 14 Days </label></div>
+            <div class="detail"><label ><%=attendanceData.data1.length%></label></div>
         </div>
 
         <div class="col_3">
@@ -16,17 +16,17 @@
 
         <div class="col_3">
             <div class="title"><label >Absent</label></div>
-            <div class="detail"> <label > 0 Days</label></div>
+            <div class="detail"> <label > 0 Day</label></div>
         </div>
 
-        <div class="col_3">
+        <div class="col_2">
             <div class="title"> <label > Half Days</label></div>
             <div class="detail"><label > 0 Day </label></div>
         </div>
 
         <div class="col_2">
             <div class="title"><label > Worked hours</label></div>
-            <div class="detail"><label >122 hr 10 mins</label></div>
+            <div class="detail"><label ><%=Math.floor(attendanceData.monthlyWorkHours/60)%> Hours <%=attendanceData.monthlyWorkHours%60%> Min</label></div>
         </div>
 
         

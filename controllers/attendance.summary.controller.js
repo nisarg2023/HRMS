@@ -34,13 +34,8 @@ const getUserProfilePhoto = async(fields = "*", id = "") => {
 
 
 
-let dailyBreakTime = 0;
-let monthlyWorkHours = 0;
-let monthlyBreakArr = [];
-let dailyWorkHoursArr = [];
 
-
-
+const attendance =  require('./dashboardprofile.controller')
 
 const attendancy_summary = async(req, res) => {
 
@@ -89,10 +84,13 @@ const attendancy_summary = async(req, res) => {
 
 
     }
+    let attendanceData = await attendance.empolyeeAttendanceData(req)
+
+
     const userInfo = await getUserBasicinfo(req.session.emp_id);
     const profilePhoto = await getUserProfilePhoto(["profile_photo"], req.session.emp_id);
 
-    res.render("attendance", { data1, dailyBreakTime, monthlyBreakArr, dailyWorkHoursArr,monthlyWorkHours, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo, "tz":`${parseInt(req.cookies.tz)}` })
+    res.render("attendance", {attendanceData, "first_name": userInfo[0].first_name, "profilePhoto": profilePhoto[0].profile_photo, "tz":`${parseInt(req.cookies.tz)}` })
 }
 
 module.exports = { attendancy_summary }
